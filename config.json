@@ -1,0 +1,19 @@
+{
+"appDescription": "test",
+	"artifactVersion": "0.0.1-beta2",
+	"ensureUniqueParams": true,
+	"legacyDiscriminatorBehavior": true,
+	"invokerPackage": "Oceanengine\\Open",
+	"hideGenerationTimestamp": true,
+	"packageName":"oceanengine-sdk",
+	"apiPackage": "Api",
+	"modelPackage": "Model",
+	"sortModelPropertiesByRequiredFlag": true,
+	"sortParamsByRequiredFlag": true,
+	"prependFormOrBodyParameters":false,
+	"enumUnknownDefaultCase":false,
+	"disallowAdditionalPropertiesIfNotPresent": true,
+	"allowUnicodeIdentifiers": false,
+	"srcBasePath": "src",
+	"variableNamingConvention": "snake_case"
+}
