@@ -1,0 +1,21 @@
+{
+  "artifactVersion": "0.0.1-beta2",
+  "invokerPackage": "Oceanengine\\Open",
+  "gitUserId": "youxianbo",
+  "gitRepoId": "oceanengineSDK",
+  "srcBasePath": "src",
+  "apiPackage": "Api",
+  "modelPackage": "Model",
+  "packageName": "oceanengine-sdk",
+  "{appDescription}": "test",
+  "ensureUniqueParams": true,
+  "legacyDiscriminatorBehavior": true,
+  "hideGenerationTimestamp": true,
+  "sortModelPropertiesByRequiredFlag": true,
+  "sortParamsByRequiredFlag": true,
+  "prependFormOrBodyParameters": false,
+  "enumUnknownDefaultCase": false,
+  "disallowAdditionalPropertiesIfNotPresent": true,
+  "allowUnicodeIdentifiers": false,
+  "variableNamingConvention": "snake_case"
+}
