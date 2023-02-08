@@ -82,13 +82,25 @@ All URIs are relative to *https://ad.oceanengine.com/open_api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *Oauth2Api* | [**oauth2AccessTokenPost**](docs\Api/Oauth2Api.md#oauth2accesstokenpost) | **POST** /oauth2/access_token/ | access_token
+*Oauth2Api* | [**oauth2AdvertiserGetPost**](docs\Api/Oauth2Api.md#oauth2advertisergetpost) | **POST** /oauth2/advertiser/get/ | 获取已授权账户
+*Oauth2Api* | [**oauth2RefreshTokenPost**](docs\Api/Oauth2Api.md#oauth2refreshtokenpost) | **POST** /oauth2/refresh_token/ | 刷新Refresh Token
 
 
 ## Documentation For Models
 
  - [AccessTokenData](docs\Model/AccessTokenData.md)
+ - [AdvertiserGet](docs\Model/AdvertiserGet.md)
+ - [AdvertiserList](docs\Model/AdvertiserList.md)
+ - [AdvertiserListCompanyList](docs\Model/AdvertiserListCompanyList.md)
  - [InlineObject](docs\Model/InlineObject.md)
+ - [InlineObject1](docs\Model/InlineObject1.md)
+ - [InlineObject2](docs\Model/InlineObject2.md)
  - [InlineResponse200](docs\Model/InlineResponse200.md)
+ - [InlineResponse2001](docs\Model/InlineResponse2001.md)
+ - [InlineResponse2001Data](docs\Model/InlineResponse2001Data.md)
+ - [InlineResponse2002](docs\Model/InlineResponse2002.md)
+ - [InlineResponse2002Data](docs\Model/InlineResponse2002Data.md)
+ - [RefreshTokenData](docs\Model/RefreshTokenData.md)
  - [Result](docs\Model/Result.md)
 
 
