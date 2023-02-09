@@ -21,11 +21,11 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/youxianbo/oceanengineSDK.git"
+      "url": "https://github.com/youxianbo/oceanengine-sdk.git"
     }
   ],
   "require": {
-    "youxianbo/oceanengineSDK": "*@dev"
+    "youxianbo/oceanengine-sdk": "*@dev"
   }
 }
 ```

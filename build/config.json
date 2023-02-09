@@ -2,7 +2,7 @@
   "artifactVersion": "0.0.1-beta2",
   "invokerPackage": "Oceanengine\\Open",
   "gitUserId": "youxianbo",
-  "gitRepoId": "oceanengineSDK",
+  "gitRepoId": "oceanengine-sdk",
   "srcBasePath": "src",
   "apiPackage": "Api",
   "modelPackage": "Model",
