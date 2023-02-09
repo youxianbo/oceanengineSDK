@@ -1,13 +1,19 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "巨量",
-    "description": "",
+    "title": "巨量开放接口",
+    "description": "根据项目需求完成的接口，非所有接口都有相应的代码",
     "version": "1.0.0"
   },
   "tags": [
     {
       "name": "oauth2"
+    },
+    {
+      "name": "advertiser"
+    },
+    {
+      "name": "report"
     }
   ],
   "paths": {
@@ -69,18 +75,18 @@
                   "auth_code"
                 ],
                 "required": [
-                  "app_id",
                   "secret",
                   "grant_type",
-                  "auth_code"
+                  "auth_code",
+                  "app_id"
                 ],
                 "x-apifox-ignore-properties": []
               },
               "example": {
-                "app_id": "1756683357850663",
-                "secret": "187f9de9ea53331ee7fa2964b824b2d6f44ac746",
+                "secret": "{{secret}}",
                 "grant_type": "auth_code",
-                "auth_code": "0454c116e63e3841994115cd558e2fd7ddc97e4d"
+                "auth_code": "{{auth_code}}",
+                "app_id": "{{app_id}}"
               }
             }
           }
@@ -134,16 +140,16 @@
                       "message": "OK",
                       "code": 0,
                       "data": {
-                        "advertiser_name": "成都专属爱文化传播有限公司A1",
+                        "advertiser_name": "成都XXX文化传播有限公司A1",
                         "access_token": "b09a45bfae4b636997acf4621cadb32e5754a40a",
                         "expires_in": 86399,
                         "advertiser_ids": [
-                          1718002824188996,
-                          1747853116891912,
-                          1730041781637704
+                          1711234524188996,
+                          1747823416891912,
+                          1730023481637704
                         ],
                         "refresh_token_expires_in": 25212299,
-                        "advertiser_id": 1712002824788996,
+                        "advertiser_id": 1712012344788996,
                         "refresh_token": "7821da56cb6a554a98a6ec914d3d6633f675d555"
                       },
                       "request_id": "20230206161801EF38CF8AE4FB3C0390B9"
@@ -156,10 +162,1276 @@
         },
         "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-60511063-run"
       }
+    },
+    "/oauth2/refresh_token/": {
+      "post": {
+        "summary": "刷新Refresh Token",
+        "x-apifox-folder": "oauth2",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "oauth2"
+        ],
+        "parameters": [
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "app_id": {
+                    "type": "string"
+                  },
+                  "secret": {
+                    "type": "string"
+                  },
+                  "grant_type": {
+                    "type": "string"
+                  },
+                  "refresh_token": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "app_id",
+                  "secret",
+                  "grant_type",
+                  "refresh_token"
+                ],
+                "required": [
+                  "app_id",
+                  "secret",
+                  "grant_type",
+                  "refresh_token"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": {
+                "app_id": "{{app_id}}",
+                "secret": "{{secret}}",
+                "grant_type": "refresh_token",
+                "refresh_token": "{{refresh_token}}"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "access_token": {
+                          "type": "string"
+                        },
+                        "expires_in": {
+                          "type": "number"
+                        },
+                        "refresh_token": {
+                          "type": "string"
+                        },
+                        "refresh_token_expires_in": {
+                          "type": "number"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "access_token",
+                        "expires_in",
+                        "refresh_token",
+                        "refresh_token_expires_in"
+                      ],
+                      "required": [
+                        "access_token",
+                        "refresh_token_expires_in",
+                        "refresh_token",
+                        "expires_in"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-refs": {
+                    "01GRRASCQ72JYS1X8ZXG2WP5CM": {
+                      "$ref": "#/components/schemas/result"
+                    },
+                    "01GRRB1PMFJN4HTC6VYFGCMP6G": {
+                      "$ref": "#/components/schemas/refreshTokenData"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRRASCQ72JYS1X8ZXG2WP5CM",
+                    "01GRRB1PMFJN4HTC6VYFGCMP6G"
+                  ],
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 4,
+                      "message": "deserunt sint quis",
+                      "request_id": "72",
+                      "data": {
+                        "access_token": "adipisicing eu ut amet cupidatat",
+                        "refresh_token_expires_in": 88,
+                        "refresh_token": "ullamco",
+                        "expires_in": 98
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61177116-run"
+      }
+    },
+    "/oauth2/advertiser/get/": {
+      "get": {
+        "summary": "获取已授权账户",
+        "x-apifox-folder": "oauth2",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "oauth2"
+        ],
+        "parameters": [
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_token": {
+                    "type": "string"
+                  },
+                  "app_id": {
+                    "type": "string"
+                  },
+                  "secret": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "access_token",
+                  "app_id",
+                  "secret"
+                ],
+                "required": [
+                  "access_token",
+                  "secret",
+                  "app_id"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": {
+                "access_token": "{{access_token}}",
+                "secret": "{{secret}}",
+                "app_id": "{{app_id}}"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01GRRBWND0P6TQF8DBXP5PVRXF": {
+                      "$ref": "#/components/schemas/result"
+                    },
+                    "01GRRBWND0R2J5C8Q69F27Z002": {
+                      "$ref": "#/components/schemas/AdvertiserGet"
+                    }
+                  },
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/AdvertiserList"
+                          }
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "list"
+                      ],
+                      "required": [
+                        "list"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "01GRRBWND0P6TQF8DBXP5PVRXF",
+                    "01GRRBWND0R2J5C8Q69F27Z002"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "20230209095310B7CF492DF8FD3A715A1D",
+                      "data": {
+                        "list": [
+                          {
+                            "account_role": "CUSTOMER_ADMIN",
+                            "advertiser_id": 1718034564788996,
+                            "advertiser_name": "成都XXX文化传播有限公司A1",
+                            "advertiser_role": 2,
+                            "is_valid": true
+                          },
+                          {
+                            "account_role": "CUSTOMER_OPERATOR",
+                            "advertiser_id": 1747234556891912,
+                            "advertiser_name": "默认组织",
+                            "advertiser_role": 2,
+                            "is_valid": true
+                          },
+                          {
+                            "account_role": "PLATFORM_ROLE_STAR",
+                            "advertiser_id": 1730046234537704,
+                            "advertiser_name": "XXX",
+                            "advertiser_role": 6,
+                            "is_valid": true
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61179959-run"
+      }
+    },
+    "/2/user/info/": {
+      "get": {
+        "summary": "获取授权User信息",
+        "x-apifox-folder": "oauth2",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "oauth2"
+        ],
+        "parameters": [
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "display_name": {
+                          "type": "string",
+                          "description": "用户名"
+                        },
+                        "email": {
+                          "type": "string",
+                          "description": "邮箱（已经脱敏处理）"
+                        },
+                        "id": {
+                          "type": "integer",
+                          "description": "用户id"
+                        }
+                      },
+                      "required": [
+                        "display_name",
+                        "email",
+                        "id"
+                      ],
+                      "x-apifox-orders": [
+                        "display_name",
+                        "email",
+                        "id"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "20230209095811A2A03281798DCD841B38",
+                      "data": {
+                        "display_name": "成都XX文化传播有限公司A1",
+                        "email": "2***2@qq.com",
+                        "id": 1047112344750472
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61225981-run"
+      }
+    },
+    "/oauth2/app_access_token/": {
+      "post": {
+        "summary": "获取APP Access Token",
+        "x-apifox-folder": "oauth2",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "oauth2"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "app_id": {
+                    "type": "integer",
+                    "format": "sint64"
+                  },
+                  "secret": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "app_id",
+                  "secret"
+                ],
+                "x-apifox-orders": [
+                  "app_id",
+                  "secret"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": "{\n    \"app_id\": {{app_id}},\n    \"secret\": \"{{secret}}\"\n}"
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "access_token": {
+                          "type": "string",
+                          "description": "应用级别token"
+                        },
+                        "expires_in": {
+                          "type": "integer",
+                          "description": "access_token剩余有效时间,单位(秒)"
+                        }
+                      },
+                      "required": [
+                        "access_token",
+                        "expires_in"
+                      ],
+                      "x-apifox-orders": [
+                        "access_token",
+                        "expires_in"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "20230209102431833C5210CE3A28F4055A",
+                      "data": {
+                        "access_token": "946db2195caba11ec56076925eb8c656d5a4b482",
+                        "expires_in": 7199
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61236347-run"
+      }
+    },
+    "/2/advertiser/info/": {
+      "get": {
+        "summary": "广告主信息",
+        "x-apifox-folder": "advertiser",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "advertiser"
+        ],
+        "parameters": [
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "advertiser_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "description": "广告主ID集合(如果包含没有访问权限的ID,将返回no permission error) 取值范围: 1-100"
+                  },
+                  "fields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "查询字段集合, 默认:查询所有。字段详见下方response字段定义 . 允许值: \"id\", \"name\", \"role\", \"status\", \"address\", \"reason\", \"license_url\", \"license_no\", \"license_province\", \"license_city\", \"company\", \"brand\", \"promotion_area\", \"promotion_center_province\", \"promotion_center_city\", \"industry\", \"create_time\""
+                  }
+                },
+                "required": [
+                  "advertiser_ids",
+                  "fields"
+                ],
+                "x-apifox-orders": [
+                  "advertiser_ids",
+                  "fields"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": "{\r\n    \"advertiser_ids\": {{advertiser_ids}},\r\n    \"fields\": [\r\n        \"id\",\r\n        \"name\",\r\n        \"role\",\r\n        \"status\",\r\n        \"address\",\r\n        \"reason\",\r\n        \"license_url\",\r\n        \"license_no\",\r\n        \"license_province\",\r\n        \"license_city\",\r\n        \"company\",\r\n        \"brand\",\r\n        \"promotion_area\",\r\n        \"promotion_center_province\",\r\n        \"promotion_center_city\",\r\n        \"industry\",\r\n        \"create_time\"\r\n    ]\r\n}"
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "description": "广告主ID"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "账户名"
+                          },
+                          "role": {
+                            "type": "integer",
+                            "description": "角色, 详见【附录-广告主角色】"
+                          },
+                          "promotion_area": {
+                            "type": "string",
+                            "description": "运营区域"
+                          },
+                          "brand": {
+                            "type": "string",
+                            "description": "经营类别"
+                          },
+                          "address": {
+                            "type": "string",
+                            "description": "地址"
+                          },
+                          "license_city": {
+                            "type": "string",
+                            "description": "执照城市"
+                          },
+                          "promotion_center_city": {
+                            "type": "string",
+                            "description": "运营城市"
+                          },
+                          "promotion_center_province": {
+                            "type": "string",
+                            "description": "运营省份"
+                          },
+                          "first_industry_name": {
+                            "type": "string",
+                            "description": "一级行业名称（新版）"
+                          },
+                          "second_industry_name": {
+                            "type": "string",
+                            "description": "二级行业名称（新版）"
+                          },
+                          "license_no": {
+                            "type": "string",
+                            "description": "执照编号"
+                          },
+                          "license_url": {
+                            "type": "string",
+                            "description": "执照预览地址(链接默认1小时内有效)"
+                          },
+                          "license_province": {
+                            "type": "string",
+                            "description": "执照省份"
+                          },
+                          "company": {
+                            "type": "string",
+                            "description": "公司名"
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "状态,详见【附录-广告主状态】"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "id",
+                          "name",
+                          "role",
+                          "promotion_area",
+                          "brand",
+                          "address",
+                          "license_city",
+                          "promotion_center_city",
+                          "promotion_center_province",
+                          "first_industry_name",
+                          "second_industry_name",
+                          "license_no",
+                          "license_url",
+                          "license_province",
+                          "company",
+                          "status"
+                        ],
+                        "required": [
+                          "status",
+                          "second_industry_name"
+                        ],
+                        "x-apifox-ignore-properties": []
+                      }
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-orders": [
+                    "01GRT15CDY3CHHM8NYD39DK613",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRT15CDY3CHHM8NYD39DK613": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40002,
+                      "message": "advertiser does no grant you /advertiser/info/ permission",
+                      "request_id": "20230209103609BDD2D2FDCC2D7F097B6B"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61245179-run"
+      }
+    },
+    "/2/report/advertiser/get/": {
+      "get": {
+        "summary": "广告主数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "指定需要的指标名称，可参考应答参数返回的消耗指标字段\n默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost",
+            "required": false,
+            "example": "[\"cost\",\"convert_rate\",\"show\",\"avg_show_cost\",\"click\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "group_by",
+            "in": "query",
+            "description": "分组条件\n默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】",
+            "required": false,
+            "example": "[\"STAT_GROUP_BY_FIELD_STAT_TIME\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "time_granularity",
+            "in": "query",
+            "description": "时间粒度\n默认值: STAT_TIME_GRANULARITY_DAILY\n允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度)",
+            "required": false,
+            "example": "STAT_TIME_GRANULARITY_DAILY",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filtering",
+            "in": "query",
+            "description": "过滤字段，json格式，支持字段如下\ndelivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&省心投放\nplatform_version: 获取的数据平台版本允许值:V1:原版。V2:巨量引擎体验版。ALL:原版+巨量引擎体验版（默认值）",
+            "required": false,
+            "example": "{\"delivery_mode\":[\"STANDARD\"],\"platform_version\":\"ALL\"}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_field",
+            "in": "query",
+            "description": "排序字段，所有的统计指标均可参与排序",
+            "required": false,
+            "example": "convert_rate",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_type",
+            "in": "query",
+            "description": "排序方式；默认值: DESC；允许值: ASC, DESC",
+            "required": false,
+            "example": "DESC",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码 默认值: 1",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000",
+            "required": false,
+            "example": "20",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "total_number": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            },
+                            "page": {
+                              "type": "integer"
+                            },
+                            "page_size": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "total_number",
+                            "total_page",
+                            "page",
+                            "page_size"
+                          ],
+                          "x-apifox-ignore-properties": [],
+                          "x-apifox-orders": [
+                            "total_number",
+                            "total_page",
+                            "page",
+                            "page_size"
+                          ]
+                        },
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "cost": {
+                                "type": "integer"
+                              },
+                              "advertiser_id": {
+                                "type": "integer"
+                              },
+                              "stat_datetime": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "cost",
+                              "advertiser_id",
+                              "stat_datetime"
+                            ],
+                            "x-apifox-ignore-properties": [],
+                            "x-apifox-orders": [
+                              "cost",
+                              "advertiser_id",
+                              "stat_datetime"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "page_info",
+                        "list"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "page_info",
+                        "list"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "request_id",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "20230209115029D19DFDDDF9138B93C546",
+                      "data": {
+                        "list": [
+                          {
+                            "click": 0,
+                            "advertiser_id": 123456,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-07 00:00:00",
+                            "avg_show_cost": 0
+                          },
+                          {
+                            "click": 0,
+                            "advertiser_id": 123456,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-10 00:00:00",
+                            "avg_show_cost": 0
+                          },
+                          {
+                            "click": 0,
+                            "advertiser_id": 1234567,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-06 00:00:00",
+                            "avg_show_cost": 0
+                          },
+                          {
+                            "click": 0,
+                            "advertiser_id": 1234567,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-04 00:00:00",
+                            "avg_show_cost": 0
+                          },
+                          {
+                            "click": 0,
+                            "advertiser_id": 1234567,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-03 00:00:00",
+                            "avg_show_cost": 0
+                          },
+                          {
+                            "click": 0,
+                            "advertiser_id": 123456,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-08 00:00:00",
+                            "avg_show_cost": 0
+                          },
+                          {
+                            "click": 0,
+                            "advertiser_id": 123456,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-05 00:00:00",
+                            "avg_show_cost": 0
+                          },
+                          {
+                            "click": 0,
+                            "advertiser_id": 123456,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-02 00:00:00",
+                            "avg_show_cost": 0
+                          },
+                          {
+                            "click": 0,
+                            "advertiser_id": 123456,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-01 00:00:00",
+                            "avg_show_cost": 0
+                          },
+                          {
+                            "click": 0,
+                            "advertiser_id": 123456,
+                            "cost": 0,
+                            "show": 0,
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-09 00:00:00",
+                            "avg_show_cost": 0
+                          }
+                        ],
+                        "page_info": {
+                          "page_size": 20,
+                          "page": 1,
+                          "total_number": 10,
+                          "total_page": 1
+                        }
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40002,
+                      "message": "Account 1747123456891912 doesn't exist or the role is wrong",
+                      "request_id": "202302091115428D3A93AE53693E01D46D"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61264378-run"
+      }
     }
   },
   "components": {
     "schemas": {
+      "AdvertiserList": {
+        "type": "object",
+        "properties": {
+          "advertiser_id": {
+            "type": "number"
+          },
+          "advertiser_name": {
+            "type": "string"
+          },
+          "advertiser_role": {
+            "type": "number",
+            "description": "旧版账号角色，1-普通广告主，2-纵横组织账户，3-一级代理商，4-二级代理商，6-星图账号"
+          },
+          "is_valid": {
+            "type": "boolean",
+            "description": "授权有效性，允许值：true/false；false表示对应的user在客户中心/一站式平台代理商平台变更了对此账号的权限,需要到对应平台进行调整过来；"
+          },
+          "account_role": {
+            "type": "string",
+            "description": "新版账号角色，见【枚举值-账户角色】"
+          },
+          "company_list": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "customer_company_id": {
+                  "type": "number",
+                  "description": "客户公司id"
+                },
+                "customer_company_name": {
+                  "type": "string",
+                  "description": "客户公司名"
+                }
+              },
+              "x-apifox-orders": [
+                "customer_company_id",
+                "customer_company_name"
+              ],
+              "required": [
+                "customer_company_id",
+                "customer_company_name"
+              ],
+              "x-apifox-ignore-properties": []
+            },
+            "description": "代理商账户下勾选账户，但授权时选择的是代理商类型账户时，该字段才有意义 company_list为空时，代表当前代理商账户下所有adv均可访问；不为空时，代表仅能访问该部分客户id下的adv"
+          }
+        },
+        "title": "已授权账号列表",
+        "x-apifox-orders": [
+          "advertiser_id",
+          "advertiser_name",
+          "advertiser_role",
+          "is_valid",
+          "account_role",
+          "company_list"
+        ],
+        "required": [
+          "company_list",
+          "account_role",
+          "is_valid",
+          "advertiser_role",
+          "advertiser_name"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "oauth2"
+      },
+      "AdvertiserGet": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AdvertiserList"
+                }
+              }
+            },
+            "x-apifox-orders": [
+              "list"
+            ],
+            "required": [
+              "list"
+            ],
+            "x-apifox-ignore-properties": []
+          }
+        },
+        "title": "获取已授权账户",
+        "x-apifox-orders": [
+          "data"
+        ],
+        "required": [
+          "data"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "oauth2"
+      },
+      "refreshTokenData": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "access_token": {
+                "type": "string"
+              },
+              "expires_in": {
+                "type": "number"
+              },
+              "refresh_token": {
+                "type": "string"
+              },
+              "refresh_token_expires_in": {
+                "type": "number"
+              }
+            },
+            "x-apifox-orders": [
+              "access_token",
+              "expires_in",
+              "refresh_token",
+              "refresh_token_expires_in"
+            ],
+            "required": [
+              "access_token",
+              "refresh_token_expires_in",
+              "refresh_token",
+              "expires_in"
+            ],
+            "x-apifox-ignore-properties": []
+          }
+        },
+        "x-apifox-orders": [
+          "data"
+        ],
+        "required": [
+          "data"
+        ],
+        "title": "RefreshToken",
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "oauth2"
+      },
       "result": {
         "type": "object",
         "properties": {
@@ -208,7 +1480,7 @@
             }
           }
         },
-        "title": "",
+        "title": "AccessToken",
         "x-apifox-orders": [
           "access_token",
           "expires_in",
