@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006
+ * InlineResponse20016DataDimensions
  *
  * PHP version 5
  *
@@ -33,14 +33,15 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse2006 Class Doc Comment
+ * InlineResponse20016DataDimensions Class Doc Comment
  *
  * @category Class
+ * @description 维度数据
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse2006 implements ModelInterface, ArrayAccess
+class InlineResponse20016DataDimensions implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6';
+    protected static $openAPIModelName = 'inline_response_200_16_data_dimensions';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +58,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'request_id' => 'string',
-        'data' => '\Oceanengine\Open\Model\InlineResponse2006Data'
+        'cdp_project_id' => 'string',
+        'stat_time_hour' => 'string'
     ];
 
     /**
@@ -69,10 +68,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => 'int32',
-        'message' => null,
-        'request_id' => null,
-        'data' => null
+        'cdp_project_id' => null,
+        'stat_time_hour' => null
     ];
 
     /**
@@ -102,10 +99,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'request_id' => 'request_id',
-        'data' => 'data'
+        'cdp_project_id' => 'cdp_project_id',
+        'stat_time_hour' => 'stat_time_hour'
     ];
 
     /**
@@ -114,10 +109,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'request_id' => 'setRequestId',
-        'data' => 'setData'
+        'cdp_project_id' => 'setCdpProjectId',
+        'stat_time_hour' => 'setStatTimeHour'
     ];
 
     /**
@@ -126,10 +119,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'request_id' => 'getRequestId',
-        'data' => 'getData'
+        'cdp_project_id' => 'getCdpProjectId',
+        'stat_time_hour' => 'getStatTimeHour'
     ];
 
     /**
@@ -192,10 +183,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['cdp_project_id'] = isset($data['cdp_project_id']) ? $data['cdp_project_id'] : null;
+        $this->container['stat_time_hour'] = isset($data['stat_time_hour']) ? $data['stat_time_hour'] : null;
     }
 
     /**
@@ -207,14 +196,11 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        if ($this->container['cdp_project_id'] === null) {
+            $invalidProperties[] = "'cdp_project_id' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['request_id'] === null) {
-            $invalidProperties[] = "'request_id' can't be null";
+        if ($this->container['stat_time_hour'] === null) {
+            $invalidProperties[] = "'stat_time_hour' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,97 +218,49 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
-     *
-     * @return int
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int $code code
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
+     * Gets cdp_project_id
      *
      * @return string
      */
-    public function getMessage()
+    public function getCdpProjectId()
     {
-        return $this->container['message'];
+        return $this->container['cdp_project_id'];
     }
 
     /**
-     * Sets message
+     * Sets cdp_project_id
      *
-     * @param string $message message
+     * @param string $cdp_project_id cdp_project_id
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setCdpProjectId($cdp_project_id)
     {
-        $this->container['message'] = $message;
+        $this->container['cdp_project_id'] = $cdp_project_id;
 
         return $this;
     }
 
     /**
-     * Gets request_id
+     * Gets stat_time_hour
      *
      * @return string
      */
-    public function getRequestId()
+    public function getStatTimeHour()
     {
-        return $this->container['request_id'];
+        return $this->container['stat_time_hour'];
     }
 
     /**
-     * Sets request_id
+     * Sets stat_time_hour
      *
-     * @param string $request_id request_id
+     * @param string $stat_time_hour stat_time_hour
      *
      * @return $this
      */
-    public function setRequestId($request_id)
+    public function setStatTimeHour($stat_time_hour)
     {
-        $this->container['request_id'] = $request_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse2006Data|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse2006Data|null $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
+        $this->container['stat_time_hour'] = $stat_time_hour;
 
         return $this;
     }

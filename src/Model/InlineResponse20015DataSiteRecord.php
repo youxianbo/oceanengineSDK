@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006
+ * InlineResponse20015DataSiteRecord
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse2006 Class Doc Comment
+ * InlineResponse20015DataSiteRecord Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse2006 implements ModelInterface, ArrayAccess
+class InlineResponse20015DataSiteRecord implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6';
+    protected static $openAPIModelName = 'inline_response_200_15_data_site_record';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'request_id' => 'string',
-        'data' => '\Oceanengine\Open\Model\InlineResponse2006Data'
+        'avg_load_time' => '\Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]',
+        'avg_exposure_rate' => '\Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]',
+        'pv' => '\Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]',
+        'uv' => '\Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]',
+        'cvr' => '\Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]',
+        'avg_visit_time' => '\Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]'
     ];
 
     /**
@@ -69,10 +71,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => 'int32',
-        'message' => null,
-        'request_id' => null,
-        'data' => null
+        'avg_load_time' => null,
+        'avg_exposure_rate' => null,
+        'pv' => null,
+        'uv' => null,
+        'cvr' => null,
+        'avg_visit_time' => null
     ];
 
     /**
@@ -102,10 +106,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'request_id' => 'request_id',
-        'data' => 'data'
+        'avg_load_time' => 'AVG_LOAD_TIME',
+        'avg_exposure_rate' => 'AVG_EXPOSURE_RATE',
+        'pv' => 'PV',
+        'uv' => 'UV',
+        'cvr' => 'CVR',
+        'avg_visit_time' => 'AVG_VISIT_TIME'
     ];
 
     /**
@@ -114,10 +120,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'request_id' => 'setRequestId',
-        'data' => 'setData'
+        'avg_load_time' => 'setAvgLoadTime',
+        'avg_exposure_rate' => 'setAvgExposureRate',
+        'pv' => 'setPv',
+        'uv' => 'setUv',
+        'cvr' => 'setCvr',
+        'avg_visit_time' => 'setAvgVisitTime'
     ];
 
     /**
@@ -126,10 +134,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'request_id' => 'getRequestId',
-        'data' => 'getData'
+        'avg_load_time' => 'getAvgLoadTime',
+        'avg_exposure_rate' => 'getAvgExposureRate',
+        'pv' => 'getPv',
+        'uv' => 'getUv',
+        'cvr' => 'getCvr',
+        'avg_visit_time' => 'getAvgVisitTime'
     ];
 
     /**
@@ -192,10 +202,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['avg_load_time'] = isset($data['avg_load_time']) ? $data['avg_load_time'] : null;
+        $this->container['avg_exposure_rate'] = isset($data['avg_exposure_rate']) ? $data['avg_exposure_rate'] : null;
+        $this->container['pv'] = isset($data['pv']) ? $data['pv'] : null;
+        $this->container['uv'] = isset($data['uv']) ? $data['uv'] : null;
+        $this->container['cvr'] = isset($data['cvr']) ? $data['cvr'] : null;
+        $this->container['avg_visit_time'] = isset($data['avg_visit_time']) ? $data['avg_visit_time'] : null;
     }
 
     /**
@@ -207,14 +219,23 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        if ($this->container['avg_load_time'] === null) {
+            $invalidProperties[] = "'avg_load_time' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['avg_exposure_rate'] === null) {
+            $invalidProperties[] = "'avg_exposure_rate' can't be null";
         }
-        if ($this->container['request_id'] === null) {
-            $invalidProperties[] = "'request_id' can't be null";
+        if ($this->container['pv'] === null) {
+            $invalidProperties[] = "'pv' can't be null";
+        }
+        if ($this->container['uv'] === null) {
+            $invalidProperties[] = "'uv' can't be null";
+        }
+        if ($this->container['cvr'] === null) {
+            $invalidProperties[] = "'cvr' can't be null";
+        }
+        if ($this->container['avg_visit_time'] === null) {
+            $invalidProperties[] = "'avg_visit_time' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,97 +253,145 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets avg_load_time
      *
-     * @return int
+     * @return \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]
      */
-    public function getCode()
+    public function getAvgLoadTime()
     {
-        return $this->container['code'];
+        return $this->container['avg_load_time'];
     }
 
     /**
-     * Sets code
+     * Sets avg_load_time
      *
-     * @param int $code code
+     * @param \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[] $avg_load_time avg_load_time
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setAvgLoadTime($avg_load_time)
     {
-        $this->container['code'] = $code;
+        $this->container['avg_load_time'] = $avg_load_time;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets avg_exposure_rate
      *
-     * @return string
+     * @return \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]
      */
-    public function getMessage()
+    public function getAvgExposureRate()
     {
-        return $this->container['message'];
+        return $this->container['avg_exposure_rate'];
     }
 
     /**
-     * Sets message
+     * Sets avg_exposure_rate
      *
-     * @param string $message message
+     * @param \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[] $avg_exposure_rate avg_exposure_rate
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setAvgExposureRate($avg_exposure_rate)
     {
-        $this->container['message'] = $message;
+        $this->container['avg_exposure_rate'] = $avg_exposure_rate;
 
         return $this;
     }
 
     /**
-     * Gets request_id
+     * Gets pv
      *
-     * @return string
+     * @return \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]
      */
-    public function getRequestId()
+    public function getPv()
     {
-        return $this->container['request_id'];
+        return $this->container['pv'];
     }
 
     /**
-     * Sets request_id
+     * Sets pv
      *
-     * @param string $request_id request_id
+     * @param \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[] $pv pv
      *
      * @return $this
      */
-    public function setRequestId($request_id)
+    public function setPv($pv)
     {
-        $this->container['request_id'] = $request_id;
+        $this->container['pv'] = $pv;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets uv
      *
-     * @return \Oceanengine\Open\Model\InlineResponse2006Data|null
+     * @return \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]
      */
-    public function getData()
+    public function getUv()
     {
-        return $this->container['data'];
+        return $this->container['uv'];
     }
 
     /**
-     * Sets data
+     * Sets uv
      *
-     * @param \Oceanengine\Open\Model\InlineResponse2006Data|null $data data
+     * @param \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[] $uv uv
      *
      * @return $this
      */
-    public function setData($data)
+    public function setUv($uv)
     {
-        $this->container['data'] = $data;
+        $this->container['uv'] = $uv;
+
+        return $this;
+    }
+
+    /**
+     * Gets cvr
+     *
+     * @return \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]
+     */
+    public function getCvr()
+    {
+        return $this->container['cvr'];
+    }
+
+    /**
+     * Sets cvr
+     *
+     * @param \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[] $cvr cvr
+     *
+     * @return $this
+     */
+    public function setCvr($cvr)
+    {
+        $this->container['cvr'] = $cvr;
+
+        return $this;
+    }
+
+    /**
+     * Gets avg_visit_time
+     *
+     * @return \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[]
+     */
+    public function getAvgVisitTime()
+    {
+        return $this->container['avg_visit_time'];
+    }
+
+    /**
+     * Sets avg_visit_time
+     *
+     * @param \Oceanengine\Open\Model\InlineResponse20015DataSiteRecordAVGLOADTIME[] $avg_visit_time avg_visit_time
+     *
+     * @return $this
+     */
+    public function setAvgVisitTime($avg_visit_time)
+    {
+        $this->container['avg_visit_time'] = $avg_visit_time;
 
         return $this;
     }

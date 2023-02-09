@@ -88,13 +88,401 @@ class ReportApi
     }
 
     /**
+     * Operation call2ReportAdGetGet
+     *
+     * 广告计划数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_name:广告计划名称：按照ad_name过滤，字符串长度限制1-30 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse2008
+     */
+    public function call2ReportAdGetGet($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->call2ReportAdGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation call2ReportAdGetGetWithHttpInfo
+     *
+     * 广告计划数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_name:广告计划名称：按照ad_name过滤，字符串长度限制1-30 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2ReportAdGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->call2ReportAdGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse2008' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse2008', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse2008';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse2008',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2ReportAdGetGetAsync
+     *
+     * 广告计划数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_name:广告计划名称：按照ad_name过滤，字符串长度限制1-30 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAdGetGetAsync($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->call2ReportAdGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2ReportAdGetGetAsyncWithHttpInfo
+     *
+     * 广告计划数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_name:广告计划名称：按照ad_name过滤，字符串长度限制1-30 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAdGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse2008';
+        $request = $this->call2ReportAdGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2ReportAdGetGet'
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_name:广告计划名称：按照ad_name过滤，字符串长度限制1-30 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2ReportAdGetGetRequest($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling call2ReportAdGetGet'
+            );
+        }
+        // verify the required parameter 'start_date' is set
+        if ($start_date === null || (is_array($start_date) && count($start_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_date when calling call2ReportAdGetGet'
+            );
+        }
+        // verify the required parameter 'end_date' is set
+        if ($end_date === null || (is_array($end_date) && count($end_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end_date when calling call2ReportAdGetGet'
+            );
+        }
+
+        $resourcePath = '/2/report/ad/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($start_date !== null) {
+            $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($group_by !== null) {
+            $queryParams['group_by'] = ObjectSerializer::toQueryValue($group_by);
+        }
+        // query params
+        if ($time_granularity !== null) {
+            $queryParams['time_granularity'] = ObjectSerializer::toQueryValue($time_granularity);
+        }
+        // query params
+        if ($filtering !== null) {
+            $queryParams['filtering'] = ObjectSerializer::toQueryValue($filtering);
+        }
+        // query params
+        if ($order_field !== null) {
+            $queryParams['order_field'] = ObjectSerializer::toQueryValue($order_field);
+        }
+        // query params
+        if ($order_type !== null) {
+            $queryParams['order_type'] = ObjectSerializer::toQueryValue($order_type);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['page_size'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation call2ReportAdvertiserGetGet
      *
      * 广告主数据
      *
-     * @param  string $advertiser_id advertiser_id (required)
-     * @param  string $start_date start_date (required)
-     * @param  string $end_date end_date (required)
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
      * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
      * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
      * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
@@ -103,15 +491,16 @@ class ReportApi
      * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
      * @param  float $page 页码 默认值: 1 (optional)
      * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token access_token (optional)
      * @param  int $x_debug_mode x_debug_mode (optional)
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Oceanengine\Open\Model\InlineResponse2006
      */
-    public function call2ReportAdvertiserGetGet($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $x_debug_mode = null)
+    public function call2ReportAdvertiserGetGet($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
-        list($response) = $this->call2ReportAdvertiserGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $x_debug_mode);
+        list($response) = $this->call2ReportAdvertiserGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
         return $response;
     }
 
@@ -120,9 +509,9 @@ class ReportApi
      *
      * 广告主数据
      *
-     * @param  string $advertiser_id (required)
-     * @param  string $start_date (required)
-     * @param  string $end_date (required)
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
      * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
      * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
      * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
@@ -131,15 +520,16 @@ class ReportApi
      * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
      * @param  float $page 页码 默认值: 1 (optional)
      * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
      * @param  int $x_debug_mode (optional)
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Oceanengine\Open\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
      */
-    public function call2ReportAdvertiserGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $x_debug_mode = null)
+    public function call2ReportAdvertiserGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
-        $request = $this->call2ReportAdvertiserGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $x_debug_mode);
+        $request = $this->call2ReportAdvertiserGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
 
         try {
             $options = $this->createHttpClientOption();
@@ -219,9 +609,9 @@ class ReportApi
      *
      * 广告主数据
      *
-     * @param  string $advertiser_id (required)
-     * @param  string $start_date (required)
-     * @param  string $end_date (required)
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
      * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
      * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
      * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
@@ -230,14 +620,15 @@ class ReportApi
      * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
      * @param  float $page 页码 默认值: 1 (optional)
      * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
      * @param  int $x_debug_mode (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call2ReportAdvertiserGetGetAsync($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $x_debug_mode = null)
+    public function call2ReportAdvertiserGetGetAsync($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
-        return $this->call2ReportAdvertiserGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $x_debug_mode)
+        return $this->call2ReportAdvertiserGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -250,9 +641,9 @@ class ReportApi
      *
      * 广告主数据
      *
-     * @param  string $advertiser_id (required)
-     * @param  string $start_date (required)
-     * @param  string $end_date (required)
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
      * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
      * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
      * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
@@ -261,15 +652,16 @@ class ReportApi
      * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
      * @param  float $page 页码 默认值: 1 (optional)
      * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
      * @param  int $x_debug_mode (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call2ReportAdvertiserGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $x_debug_mode = null)
+    public function call2ReportAdvertiserGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
         $returnType = '\Oceanengine\Open\Model\InlineResponse2006';
-        $request = $this->call2ReportAdvertiserGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $x_debug_mode);
+        $request = $this->call2ReportAdvertiserGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -308,9 +700,9 @@ class ReportApi
     /**
      * Create request for operation 'call2ReportAdvertiserGetGet'
      *
-     * @param  string $advertiser_id (required)
-     * @param  string $start_date (required)
-     * @param  string $end_date (required)
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
      * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
      * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
      * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
@@ -319,12 +711,13 @@ class ReportApi
      * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
      * @param  float $page 页码 默认值: 1 (optional)
      * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
      * @param  int $x_debug_mode (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function call2ReportAdvertiserGetGetRequest($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $x_debug_mode = null)
+    protected function call2ReportAdvertiserGetGetRequest($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
         // verify the required parameter 'advertiser_id' is set
         if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
@@ -397,8 +790,3267 @@ class ReportApi
             $queryParams['page_size'] = ObjectSerializer::toQueryValue($page_size);
         }
         // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
         if ($x_debug_mode !== null) {
             $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2ReportAudienceAgeGet
+     *
+     * 年龄数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20014
+     */
+    public function call2ReportAudienceAgeGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->call2ReportAudienceAgeGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation call2ReportAudienceAgeGetWithHttpInfo
+     *
+     * 年龄数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20014, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2ReportAudienceAgeGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->call2ReportAudienceAgeGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20014' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20014', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20014';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20014',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2ReportAudienceAgeGetAsync
+     *
+     * 年龄数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceAgeGetAsync($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->call2ReportAudienceAgeGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2ReportAudienceAgeGetAsyncWithHttpInfo
+     *
+     * 年龄数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceAgeGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20014';
+        $request = $this->call2ReportAudienceAgeGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2ReportAudienceAgeGet'
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2ReportAudienceAgeGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling call2ReportAudienceAgeGet'
+            );
+        }
+        // verify the required parameter 'start_date' is set
+        if ($start_date === null || (is_array($start_date) && count($start_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_date when calling call2ReportAudienceAgeGet'
+            );
+        }
+        // verify the required parameter 'end_date' is set
+        if ($end_date === null || (is_array($end_date) && count($end_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end_date when calling call2ReportAudienceAgeGet'
+            );
+        }
+        // verify the required parameter 'id_type' is set
+        if ($id_type === null || (is_array($id_type) && count($id_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id_type when calling call2ReportAudienceAgeGet'
+            );
+        }
+        // verify the required parameter 'metrics' is set
+        if ($metrics === null || (is_array($metrics) && count($metrics) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $metrics when calling call2ReportAudienceAgeGet'
+            );
+        }
+
+        $resourcePath = '/2/report/audience/age/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($start_date !== null) {
+            $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($id_type !== null) {
+            $queryParams['id_type'] = ObjectSerializer::toQueryValue($id_type);
+        }
+        // query params
+        if ($ids !== null) {
+            $queryParams['ids'] = ObjectSerializer::toQueryValue($ids);
+        }
+        // query params
+        if ($metrics !== null) {
+            $queryParams['metrics'] = ObjectSerializer::toQueryValue($metrics);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2ReportAudienceCityGet
+     *
+     * 市级数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20012
+     */
+    public function call2ReportAudienceCityGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->call2ReportAudienceCityGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation call2ReportAudienceCityGetWithHttpInfo
+     *
+     * 市级数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2ReportAudienceCityGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->call2ReportAudienceCityGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20012' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20012', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20012';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20012',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2ReportAudienceCityGetAsync
+     *
+     * 市级数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceCityGetAsync($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->call2ReportAudienceCityGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2ReportAudienceCityGetAsyncWithHttpInfo
+     *
+     * 市级数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceCityGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20012';
+        $request = $this->call2ReportAudienceCityGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2ReportAudienceCityGet'
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2ReportAudienceCityGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling call2ReportAudienceCityGet'
+            );
+        }
+        // verify the required parameter 'start_date' is set
+        if ($start_date === null || (is_array($start_date) && count($start_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_date when calling call2ReportAudienceCityGet'
+            );
+        }
+        // verify the required parameter 'end_date' is set
+        if ($end_date === null || (is_array($end_date) && count($end_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end_date when calling call2ReportAudienceCityGet'
+            );
+        }
+        // verify the required parameter 'id_type' is set
+        if ($id_type === null || (is_array($id_type) && count($id_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id_type when calling call2ReportAudienceCityGet'
+            );
+        }
+        // verify the required parameter 'metrics' is set
+        if ($metrics === null || (is_array($metrics) && count($metrics) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $metrics when calling call2ReportAudienceCityGet'
+            );
+        }
+
+        $resourcePath = '/2/report/audience/city/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($start_date !== null) {
+            $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($id_type !== null) {
+            $queryParams['id_type'] = ObjectSerializer::toQueryValue($id_type);
+        }
+        // query params
+        if ($ids !== null) {
+            $queryParams['ids'] = ObjectSerializer::toQueryValue($ids);
+        }
+        // query params
+        if ($metrics !== null) {
+            $queryParams['metrics'] = ObjectSerializer::toQueryValue($metrics);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2ReportAudienceGenderGet
+     *
+     * 性别数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20013
+     */
+    public function call2ReportAudienceGenderGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->call2ReportAudienceGenderGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation call2ReportAudienceGenderGetWithHttpInfo
+     *
+     * 性别数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2ReportAudienceGenderGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->call2ReportAudienceGenderGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20013' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20013', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20013';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20013',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2ReportAudienceGenderGetAsync
+     *
+     * 性别数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceGenderGetAsync($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->call2ReportAudienceGenderGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2ReportAudienceGenderGetAsyncWithHttpInfo
+     *
+     * 性别数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceGenderGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20013';
+        $request = $this->call2ReportAudienceGenderGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2ReportAudienceGenderGet'
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2ReportAudienceGenderGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling call2ReportAudienceGenderGet'
+            );
+        }
+        // verify the required parameter 'start_date' is set
+        if ($start_date === null || (is_array($start_date) && count($start_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_date when calling call2ReportAudienceGenderGet'
+            );
+        }
+        // verify the required parameter 'end_date' is set
+        if ($end_date === null || (is_array($end_date) && count($end_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end_date when calling call2ReportAudienceGenderGet'
+            );
+        }
+        // verify the required parameter 'id_type' is set
+        if ($id_type === null || (is_array($id_type) && count($id_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id_type when calling call2ReportAudienceGenderGet'
+            );
+        }
+        // verify the required parameter 'metrics' is set
+        if ($metrics === null || (is_array($metrics) && count($metrics) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $metrics when calling call2ReportAudienceGenderGet'
+            );
+        }
+
+        $resourcePath = '/2/report/audience/gender/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($start_date !== null) {
+            $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($id_type !== null) {
+            $queryParams['id_type'] = ObjectSerializer::toQueryValue($id_type);
+        }
+        // query params
+        if ($ids !== null) {
+            $queryParams['ids'] = ObjectSerializer::toQueryValue($ids);
+        }
+        // query params
+        if ($metrics !== null) {
+            $queryParams['metrics'] = ObjectSerializer::toQueryValue($metrics);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2ReportAudienceInterestActionListGet
+     *
+     * 行为兴趣数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-08-15默认15天前，即不指定起止时间获取最近15天数据 (optional)
+     * @param  string $end_date 结束日期，至24时止，格式2020-08-29默认昨天，即不指定起止时间获取最近15天数据,起始时间与结束时间之差小于15天，否则报错并提示\&quot;max time span is 15 days\&quot; (optional)
+     * @param  string $metrics 查询指标列表，允许值：stat_cost, show_cnt, cpm_platform, click_cnt, ctr, cpc_platform, convert_cnt, conversion_cost, conversion_rate, deep_convert_cnt, deep_convert_cost, deep_convert_rate, total_play, valid_play, valid_play_rate, valid_play_cost, dy_follow, dy_like, dy_comment, dy_share。默认值: [\&quot;stat_cost\&quot;, \&quot;show_cnt\&quot;, \&quot;cpm_platform\&quot;, \&quot;click_cnt\&quot;, \&quot;ctr\&quot;, \&quot;cpc_platform\&quot;, \&quot;convert_cnt\&quot;, \&quot;conversion_cost\&quot;, \&quot;conversion_rate\&quot;, \&quot;deep_convert_cnt\&quot;, \&quot;deep_convert_cost\&quot;, \&quot;deep_convert_rate\&quot;] (optional)
+     * @param  string $filtering 过滤字段 interest_action_type：行为兴趣类型，详见【附录-行为兴趣类型】可选值: ACTION（行为）,INTEREST（兴趣）默认值: INTEREST，当传ACTION时，表示获取“行为”受众数据，当传INTEREST时，表示获取“兴趣”受众数据 audience_level：类目词级别 详见【附录-类目词级别】可选值: FIRST_LEVEL,SECOND_LEVEL,THIRD_LEVEL,FOURTH_LEVEL,KEYWORD_AWEME，默认值: FIRST_LEVEL campaign_ids:广告组查询列表，长度1-100 ad_ids:广告计划查询列表，长度1-100 action_scene:行为场景，仅在行为兴趣类型为ACTION时传入，详见【附录-行为场景】允许值：E-COMMERCE, NEWS, APP 默认值: [\&quot;E-COMMERCE\&quot;, \&quot;NEWS\&quot;, \&quot;APP\&quot;] action_days:行为天数，仅在行为兴趣类型为ACTION时传入 默认值: 30 (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20010
+     */
+    public function call2ReportAudienceInterestActionListGet($advertiser_id, $start_date = null, $end_date = null, $metrics = null, $filtering = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->call2ReportAudienceInterestActionListGetWithHttpInfo($advertiser_id, $start_date, $end_date, $metrics, $filtering, $page, $page_size, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation call2ReportAudienceInterestActionListGetWithHttpInfo
+     *
+     * 行为兴趣数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-08-15默认15天前，即不指定起止时间获取最近15天数据 (optional)
+     * @param  string $end_date 结束日期，至24时止，格式2020-08-29默认昨天，即不指定起止时间获取最近15天数据,起始时间与结束时间之差小于15天，否则报错并提示\&quot;max time span is 15 days\&quot; (optional)
+     * @param  string $metrics 查询指标列表，允许值：stat_cost, show_cnt, cpm_platform, click_cnt, ctr, cpc_platform, convert_cnt, conversion_cost, conversion_rate, deep_convert_cnt, deep_convert_cost, deep_convert_rate, total_play, valid_play, valid_play_rate, valid_play_cost, dy_follow, dy_like, dy_comment, dy_share。默认值: [\&quot;stat_cost\&quot;, \&quot;show_cnt\&quot;, \&quot;cpm_platform\&quot;, \&quot;click_cnt\&quot;, \&quot;ctr\&quot;, \&quot;cpc_platform\&quot;, \&quot;convert_cnt\&quot;, \&quot;conversion_cost\&quot;, \&quot;conversion_rate\&quot;, \&quot;deep_convert_cnt\&quot;, \&quot;deep_convert_cost\&quot;, \&quot;deep_convert_rate\&quot;] (optional)
+     * @param  string $filtering 过滤字段 interest_action_type：行为兴趣类型，详见【附录-行为兴趣类型】可选值: ACTION（行为）,INTEREST（兴趣）默认值: INTEREST，当传ACTION时，表示获取“行为”受众数据，当传INTEREST时，表示获取“兴趣”受众数据 audience_level：类目词级别 详见【附录-类目词级别】可选值: FIRST_LEVEL,SECOND_LEVEL,THIRD_LEVEL,FOURTH_LEVEL,KEYWORD_AWEME，默认值: FIRST_LEVEL campaign_ids:广告组查询列表，长度1-100 ad_ids:广告计划查询列表，长度1-100 action_scene:行为场景，仅在行为兴趣类型为ACTION时传入，详见【附录-行为场景】允许值：E-COMMERCE, NEWS, APP 默认值: [\&quot;E-COMMERCE\&quot;, \&quot;NEWS\&quot;, \&quot;APP\&quot;] action_days:行为天数，仅在行为兴趣类型为ACTION时传入 默认值: 30 (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2ReportAudienceInterestActionListGetWithHttpInfo($advertiser_id, $start_date = null, $end_date = null, $metrics = null, $filtering = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->call2ReportAudienceInterestActionListGetRequest($advertiser_id, $start_date, $end_date, $metrics, $filtering, $page, $page_size, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20010' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20010', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20010';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20010',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2ReportAudienceInterestActionListGetAsync
+     *
+     * 行为兴趣数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-08-15默认15天前，即不指定起止时间获取最近15天数据 (optional)
+     * @param  string $end_date 结束日期，至24时止，格式2020-08-29默认昨天，即不指定起止时间获取最近15天数据,起始时间与结束时间之差小于15天，否则报错并提示\&quot;max time span is 15 days\&quot; (optional)
+     * @param  string $metrics 查询指标列表，允许值：stat_cost, show_cnt, cpm_platform, click_cnt, ctr, cpc_platform, convert_cnt, conversion_cost, conversion_rate, deep_convert_cnt, deep_convert_cost, deep_convert_rate, total_play, valid_play, valid_play_rate, valid_play_cost, dy_follow, dy_like, dy_comment, dy_share。默认值: [\&quot;stat_cost\&quot;, \&quot;show_cnt\&quot;, \&quot;cpm_platform\&quot;, \&quot;click_cnt\&quot;, \&quot;ctr\&quot;, \&quot;cpc_platform\&quot;, \&quot;convert_cnt\&quot;, \&quot;conversion_cost\&quot;, \&quot;conversion_rate\&quot;, \&quot;deep_convert_cnt\&quot;, \&quot;deep_convert_cost\&quot;, \&quot;deep_convert_rate\&quot;] (optional)
+     * @param  string $filtering 过滤字段 interest_action_type：行为兴趣类型，详见【附录-行为兴趣类型】可选值: ACTION（行为）,INTEREST（兴趣）默认值: INTEREST，当传ACTION时，表示获取“行为”受众数据，当传INTEREST时，表示获取“兴趣”受众数据 audience_level：类目词级别 详见【附录-类目词级别】可选值: FIRST_LEVEL,SECOND_LEVEL,THIRD_LEVEL,FOURTH_LEVEL,KEYWORD_AWEME，默认值: FIRST_LEVEL campaign_ids:广告组查询列表，长度1-100 ad_ids:广告计划查询列表，长度1-100 action_scene:行为场景，仅在行为兴趣类型为ACTION时传入，详见【附录-行为场景】允许值：E-COMMERCE, NEWS, APP 默认值: [\&quot;E-COMMERCE\&quot;, \&quot;NEWS\&quot;, \&quot;APP\&quot;] action_days:行为天数，仅在行为兴趣类型为ACTION时传入 默认值: 30 (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceInterestActionListGetAsync($advertiser_id, $start_date = null, $end_date = null, $metrics = null, $filtering = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->call2ReportAudienceInterestActionListGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $metrics, $filtering, $page, $page_size, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2ReportAudienceInterestActionListGetAsyncWithHttpInfo
+     *
+     * 行为兴趣数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-08-15默认15天前，即不指定起止时间获取最近15天数据 (optional)
+     * @param  string $end_date 结束日期，至24时止，格式2020-08-29默认昨天，即不指定起止时间获取最近15天数据,起始时间与结束时间之差小于15天，否则报错并提示\&quot;max time span is 15 days\&quot; (optional)
+     * @param  string $metrics 查询指标列表，允许值：stat_cost, show_cnt, cpm_platform, click_cnt, ctr, cpc_platform, convert_cnt, conversion_cost, conversion_rate, deep_convert_cnt, deep_convert_cost, deep_convert_rate, total_play, valid_play, valid_play_rate, valid_play_cost, dy_follow, dy_like, dy_comment, dy_share。默认值: [\&quot;stat_cost\&quot;, \&quot;show_cnt\&quot;, \&quot;cpm_platform\&quot;, \&quot;click_cnt\&quot;, \&quot;ctr\&quot;, \&quot;cpc_platform\&quot;, \&quot;convert_cnt\&quot;, \&quot;conversion_cost\&quot;, \&quot;conversion_rate\&quot;, \&quot;deep_convert_cnt\&quot;, \&quot;deep_convert_cost\&quot;, \&quot;deep_convert_rate\&quot;] (optional)
+     * @param  string $filtering 过滤字段 interest_action_type：行为兴趣类型，详见【附录-行为兴趣类型】可选值: ACTION（行为）,INTEREST（兴趣）默认值: INTEREST，当传ACTION时，表示获取“行为”受众数据，当传INTEREST时，表示获取“兴趣”受众数据 audience_level：类目词级别 详见【附录-类目词级别】可选值: FIRST_LEVEL,SECOND_LEVEL,THIRD_LEVEL,FOURTH_LEVEL,KEYWORD_AWEME，默认值: FIRST_LEVEL campaign_ids:广告组查询列表，长度1-100 ad_ids:广告计划查询列表，长度1-100 action_scene:行为场景，仅在行为兴趣类型为ACTION时传入，详见【附录-行为场景】允许值：E-COMMERCE, NEWS, APP 默认值: [\&quot;E-COMMERCE\&quot;, \&quot;NEWS\&quot;, \&quot;APP\&quot;] action_days:行为天数，仅在行为兴趣类型为ACTION时传入 默认值: 30 (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceInterestActionListGetAsyncWithHttpInfo($advertiser_id, $start_date = null, $end_date = null, $metrics = null, $filtering = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20010';
+        $request = $this->call2ReportAudienceInterestActionListGetRequest($advertiser_id, $start_date, $end_date, $metrics, $filtering, $page, $page_size, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2ReportAudienceInterestActionListGet'
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-08-15默认15天前，即不指定起止时间获取最近15天数据 (optional)
+     * @param  string $end_date 结束日期，至24时止，格式2020-08-29默认昨天，即不指定起止时间获取最近15天数据,起始时间与结束时间之差小于15天，否则报错并提示\&quot;max time span is 15 days\&quot; (optional)
+     * @param  string $metrics 查询指标列表，允许值：stat_cost, show_cnt, cpm_platform, click_cnt, ctr, cpc_platform, convert_cnt, conversion_cost, conversion_rate, deep_convert_cnt, deep_convert_cost, deep_convert_rate, total_play, valid_play, valid_play_rate, valid_play_cost, dy_follow, dy_like, dy_comment, dy_share。默认值: [\&quot;stat_cost\&quot;, \&quot;show_cnt\&quot;, \&quot;cpm_platform\&quot;, \&quot;click_cnt\&quot;, \&quot;ctr\&quot;, \&quot;cpc_platform\&quot;, \&quot;convert_cnt\&quot;, \&quot;conversion_cost\&quot;, \&quot;conversion_rate\&quot;, \&quot;deep_convert_cnt\&quot;, \&quot;deep_convert_cost\&quot;, \&quot;deep_convert_rate\&quot;] (optional)
+     * @param  string $filtering 过滤字段 interest_action_type：行为兴趣类型，详见【附录-行为兴趣类型】可选值: ACTION（行为）,INTEREST（兴趣）默认值: INTEREST，当传ACTION时，表示获取“行为”受众数据，当传INTEREST时，表示获取“兴趣”受众数据 audience_level：类目词级别 详见【附录-类目词级别】可选值: FIRST_LEVEL,SECOND_LEVEL,THIRD_LEVEL,FOURTH_LEVEL,KEYWORD_AWEME，默认值: FIRST_LEVEL campaign_ids:广告组查询列表，长度1-100 ad_ids:广告计划查询列表，长度1-100 action_scene:行为场景，仅在行为兴趣类型为ACTION时传入，详见【附录-行为场景】允许值：E-COMMERCE, NEWS, APP 默认值: [\&quot;E-COMMERCE\&quot;, \&quot;NEWS\&quot;, \&quot;APP\&quot;] action_days:行为天数，仅在行为兴趣类型为ACTION时传入 默认值: 30 (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2ReportAudienceInterestActionListGetRequest($advertiser_id, $start_date = null, $end_date = null, $metrics = null, $filtering = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling call2ReportAudienceInterestActionListGet'
+            );
+        }
+
+        $resourcePath = '/2/report/audience/interest_action/list/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($start_date !== null) {
+            $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($metrics !== null) {
+            $queryParams['metrics'] = ObjectSerializer::toQueryValue($metrics);
+        }
+        // query params
+        if ($filtering !== null) {
+            $queryParams['filtering'] = ObjectSerializer::toQueryValue($filtering);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['page_size'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2ReportAudienceProvinceGet
+     *
+     * 省级数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20011
+     */
+    public function call2ReportAudienceProvinceGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->call2ReportAudienceProvinceGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation call2ReportAudienceProvinceGetWithHttpInfo
+     *
+     * 省级数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2ReportAudienceProvinceGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->call2ReportAudienceProvinceGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20011' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20011', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20011';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20011',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2ReportAudienceProvinceGetAsync
+     *
+     * 省级数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceProvinceGetAsync($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->call2ReportAudienceProvinceGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2ReportAudienceProvinceGetAsyncWithHttpInfo
+     *
+     * 省级数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportAudienceProvinceGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20011';
+        $request = $this->call2ReportAudienceProvinceGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2ReportAudienceProvinceGet'
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期 最大查询跨度1年 (required)
+     * @param  string $id_type 查询ID类型，可选值： AUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询 (required)
+     * @param  string $metrics 查询指标列表，详见此文档下方【查询指标】 允许值：cost，show，click，convert (required)
+     * @param  string $ids 查询ID列表，长度1-100 id_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2ReportAudienceProvinceGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling call2ReportAudienceProvinceGet'
+            );
+        }
+        // verify the required parameter 'start_date' is set
+        if ($start_date === null || (is_array($start_date) && count($start_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_date when calling call2ReportAudienceProvinceGet'
+            );
+        }
+        // verify the required parameter 'end_date' is set
+        if ($end_date === null || (is_array($end_date) && count($end_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end_date when calling call2ReportAudienceProvinceGet'
+            );
+        }
+        // verify the required parameter 'id_type' is set
+        if ($id_type === null || (is_array($id_type) && count($id_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id_type when calling call2ReportAudienceProvinceGet'
+            );
+        }
+        // verify the required parameter 'metrics' is set
+        if ($metrics === null || (is_array($metrics) && count($metrics) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $metrics when calling call2ReportAudienceProvinceGet'
+            );
+        }
+
+        $resourcePath = '/2/report/audience/province/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($start_date !== null) {
+            $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($id_type !== null) {
+            $queryParams['id_type'] = ObjectSerializer::toQueryValue($id_type);
+        }
+        // query params
+        if ($ids !== null) {
+            $queryParams['ids'] = ObjectSerializer::toQueryValue($ids);
+        }
+        // query params
+        if ($metrics !== null) {
+            $queryParams['metrics'] = ObjectSerializer::toQueryValue($metrics);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2ReportCampaignGetGet
+     *
+     * 广告组数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 campaign_name:广告组名称：按照campaign_name过滤，字符串长度限制1-30 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse2007
+     */
+    public function call2ReportCampaignGetGet($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->call2ReportCampaignGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation call2ReportCampaignGetGetWithHttpInfo
+     *
+     * 广告组数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 campaign_name:广告组名称：按照campaign_name过滤，字符串长度限制1-30 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2ReportCampaignGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->call2ReportCampaignGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse2007' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse2007', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse2007';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse2007',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2ReportCampaignGetGetAsync
+     *
+     * 广告组数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 campaign_name:广告组名称：按照campaign_name过滤，字符串长度限制1-30 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportCampaignGetGetAsync($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->call2ReportCampaignGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2ReportCampaignGetGetAsyncWithHttpInfo
+     *
+     * 广告组数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 campaign_name:广告组名称：按照campaign_name过滤，字符串长度限制1-30 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportCampaignGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse2007';
+        $request = $this->call2ReportCampaignGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2ReportCampaignGetGet'
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 campaign_name:广告组名称：按照campaign_name过滤，字符串长度限制1-30 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2ReportCampaignGetGetRequest($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling call2ReportCampaignGetGet'
+            );
+        }
+        // verify the required parameter 'start_date' is set
+        if ($start_date === null || (is_array($start_date) && count($start_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_date when calling call2ReportCampaignGetGet'
+            );
+        }
+        // verify the required parameter 'end_date' is set
+        if ($end_date === null || (is_array($end_date) && count($end_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end_date when calling call2ReportCampaignGetGet'
+            );
+        }
+
+        $resourcePath = '/2/report/campaign/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($start_date !== null) {
+            $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($group_by !== null) {
+            $queryParams['group_by'] = ObjectSerializer::toQueryValue($group_by);
+        }
+        // query params
+        if ($time_granularity !== null) {
+            $queryParams['time_granularity'] = ObjectSerializer::toQueryValue($time_granularity);
+        }
+        // query params
+        if ($filtering !== null) {
+            $queryParams['filtering'] = ObjectSerializer::toQueryValue($filtering);
+        }
+        // query params
+        if ($order_field !== null) {
+            $queryParams['order_field'] = ObjectSerializer::toQueryValue($order_field);
+        }
+        // query params
+        if ($order_type !== null) {
+            $queryParams['order_type'] = ObjectSerializer::toQueryValue($order_type);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['page_size'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2ReportCreativeGetGet
+     *
+     * 广告创意数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 creative_ids:广告创意id列表：按照 creative_id 过滤，最多支持100个 inventory_types:广告位置列表：按照广告位置过滤，详见【附录-首选投放位置】 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 image_modes:素材类型列表：按照类型过滤，详见【附录-素材类型】 creative_material_modes:创意类型列表：按照创意类型过滤，STATIC_ASSEMBLE 表示程序化创意，INTERVENE表示自定义创意。 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告创意状态：按照广告创意状态过滤，详见【附录-创意状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse2009
+     */
+    public function call2ReportCreativeGetGet($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->call2ReportCreativeGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation call2ReportCreativeGetGetWithHttpInfo
+     *
+     * 广告创意数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 creative_ids:广告创意id列表：按照 creative_id 过滤，最多支持100个 inventory_types:广告位置列表：按照广告位置过滤，详见【附录-首选投放位置】 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 image_modes:素材类型列表：按照类型过滤，详见【附录-素材类型】 creative_material_modes:创意类型列表：按照创意类型过滤，STATIC_ASSEMBLE 表示程序化创意，INTERVENE表示自定义创意。 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告创意状态：按照广告创意状态过滤，详见【附录-创意状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2ReportCreativeGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->call2ReportCreativeGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse2009' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse2009', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse2009';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse2009',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2ReportCreativeGetGetAsync
+     *
+     * 广告创意数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 creative_ids:广告创意id列表：按照 creative_id 过滤，最多支持100个 inventory_types:广告位置列表：按照广告位置过滤，详见【附录-首选投放位置】 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 image_modes:素材类型列表：按照类型过滤，详见【附录-素材类型】 creative_material_modes:创意类型列表：按照创意类型过滤，STATIC_ASSEMBLE 表示程序化创意，INTERVENE表示自定义创意。 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告创意状态：按照广告创意状态过滤，详见【附录-创意状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportCreativeGetGetAsync($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->call2ReportCreativeGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2ReportCreativeGetGetAsyncWithHttpInfo
+     *
+     * 广告创意数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 creative_ids:广告创意id列表：按照 creative_id 过滤，最多支持100个 inventory_types:广告位置列表：按照广告位置过滤，详见【附录-首选投放位置】 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 image_modes:素材类型列表：按照类型过滤，详见【附录-素材类型】 creative_material_modes:创意类型列表：按照创意类型过滤，STATIC_ASSEMBLE 表示程序化创意，INTERVENE表示自定义创意。 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告创意状态：按照广告创意状态过滤，详见【附录-创意状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportCreativeGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse2009';
+        $request = $this->call2ReportCreativeGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2ReportCreativeGetGet'
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $start_date 起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期 (required)
+     * @param  string $end_date 结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天 (required)
+     * @param  string $fields 指定需要的指标名称，可参考应答参数返回的消耗指标字段 默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost (optional)
+     * @param  string $group_by 分组条件 默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】 (optional)
+     * @param  string $time_granularity 时间粒度 默认值: STAT_TIME_GRANULARITY_DAILY 允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度) (optional)
+     * @param  string $filtering 过滤字段，json格式，支持字段如下 campaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个 ad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个 creative_ids:广告创意id列表：按照 creative_id 过滤，最多支持100个 inventory_types:广告位置列表：按照广告位置过滤，详见【附录-首选投放位置】 pricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】 image_modes:素材类型列表：按照类型过滤，详见【附录-素材类型】 creative_material_modes:创意类型列表：按照创意类型过滤，STATIC_ASSEMBLE 表示程序化创意，INTERVENE表示自定义创意。 landing_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\&quot;LINK\&quot;,\&quot;APP\&quot;,\&quot;DPA\&quot;,\&quot;GOODS\&quot;,\&quot;STORE\&quot;,\&quot;SHOP\&quot;,\&quot;AWEME\&quot; status:广告创意状态：按照广告创意状态过滤，详见【附录-创意状态】 delivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&amp;省心投放 (optional)
+     * @param  string $order_field 排序字段，所有的统计指标均可参与排序 (optional)
+     * @param  string $order_type 排序方式；默认值: DESC；允许值: ASC, DESC (optional)
+     * @param  float $page 页码 默认值: 1 (optional)
+     * @param  float $page_size 页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2ReportCreativeGetGetRequest($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling call2ReportCreativeGetGet'
+            );
+        }
+        // verify the required parameter 'start_date' is set
+        if ($start_date === null || (is_array($start_date) && count($start_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_date when calling call2ReportCreativeGetGet'
+            );
+        }
+        // verify the required parameter 'end_date' is set
+        if ($end_date === null || (is_array($end_date) && count($end_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end_date when calling call2ReportCreativeGetGet'
+            );
+        }
+
+        $resourcePath = '/2/report/creative/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($start_date !== null) {
+            $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($group_by !== null) {
+            $queryParams['group_by'] = ObjectSerializer::toQueryValue($group_by);
+        }
+        // query params
+        if ($time_granularity !== null) {
+            $queryParams['time_granularity'] = ObjectSerializer::toQueryValue($time_granularity);
+        }
+        // query params
+        if ($filtering !== null) {
+            $queryParams['filtering'] = ObjectSerializer::toQueryValue($filtering);
+        }
+        // query params
+        if ($order_field !== null) {
+            $queryParams['order_field'] = ObjectSerializer::toQueryValue($order_field);
+        }
+        // query params
+        if ($order_type !== null) {
+            $queryParams['order_type'] = ObjectSerializer::toQueryValue($order_type);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['page_size'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2ReportSitePageGet
+     *
+     * 橙子建站落地页数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $site_id 站点ID (required)
+     * @param  string $time_duration 查询时间周期。DAY:1天。THREE_DAY: 3天。WEEK:7天。MONTH:30天。 (required)
+     * @param  string $inventory_type 首选投放位置。不传默认查全部。WATERMELON:西瓜。HOTSOON:火山。AWEME:抖音。TOUTIAO: 头条。UNION_SLOT:穿山甲。 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20015
+     */
+    public function call2ReportSitePageGet($advertiser_id, $site_id, $time_duration, $inventory_type = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->call2ReportSitePageGetWithHttpInfo($advertiser_id, $site_id, $time_duration, $inventory_type, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation call2ReportSitePageGetWithHttpInfo
+     *
+     * 橙子建站落地页数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $site_id 站点ID (required)
+     * @param  string $time_duration 查询时间周期。DAY:1天。THREE_DAY: 3天。WEEK:7天。MONTH:30天。 (required)
+     * @param  string $inventory_type 首选投放位置。不传默认查全部。WATERMELON:西瓜。HOTSOON:火山。AWEME:抖音。TOUTIAO: 头条。UNION_SLOT:穿山甲。 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20015, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2ReportSitePageGetWithHttpInfo($advertiser_id, $site_id, $time_duration, $inventory_type = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->call2ReportSitePageGetRequest($advertiser_id, $site_id, $time_duration, $inventory_type, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20015' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20015', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20015';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20015',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2ReportSitePageGetAsync
+     *
+     * 橙子建站落地页数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $site_id 站点ID (required)
+     * @param  string $time_duration 查询时间周期。DAY:1天。THREE_DAY: 3天。WEEK:7天。MONTH:30天。 (required)
+     * @param  string $inventory_type 首选投放位置。不传默认查全部。WATERMELON:西瓜。HOTSOON:火山。AWEME:抖音。TOUTIAO: 头条。UNION_SLOT:穿山甲。 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportSitePageGetAsync($advertiser_id, $site_id, $time_duration, $inventory_type = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->call2ReportSitePageGetAsyncWithHttpInfo($advertiser_id, $site_id, $time_duration, $inventory_type, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2ReportSitePageGetAsyncWithHttpInfo
+     *
+     * 橙子建站落地页数据
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $site_id 站点ID (required)
+     * @param  string $time_duration 查询时间周期。DAY:1天。THREE_DAY: 3天。WEEK:7天。MONTH:30天。 (required)
+     * @param  string $inventory_type 首选投放位置。不传默认查全部。WATERMELON:西瓜。HOTSOON:火山。AWEME:抖音。TOUTIAO: 头条。UNION_SLOT:穿山甲。 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2ReportSitePageGetAsyncWithHttpInfo($advertiser_id, $site_id, $time_duration, $inventory_type = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20015';
+        $request = $this->call2ReportSitePageGetRequest($advertiser_id, $site_id, $time_duration, $inventory_type, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2ReportSitePageGet'
+     *
+     * @param  string $advertiser_id 广告主ID (required)
+     * @param  string $site_id 站点ID (required)
+     * @param  string $time_duration 查询时间周期。DAY:1天。THREE_DAY: 3天。WEEK:7天。MONTH:30天。 (required)
+     * @param  string $inventory_type 首选投放位置。不传默认查全部。WATERMELON:西瓜。HOTSOON:火山。AWEME:抖音。TOUTIAO: 头条。UNION_SLOT:穿山甲。 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2ReportSitePageGetRequest($advertiser_id, $site_id, $time_duration, $inventory_type = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling call2ReportSitePageGet'
+            );
+        }
+        // verify the required parameter 'site_id' is set
+        if ($site_id === null || (is_array($site_id) && count($site_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $site_id when calling call2ReportSitePageGet'
+            );
+        }
+        // verify the required parameter 'time_duration' is set
+        if ($time_duration === null || (is_array($time_duration) && count($time_duration) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $time_duration when calling call2ReportSitePageGet'
+            );
+        }
+
+        $resourcePath = '/2/report/site/page/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($site_id !== null) {
+            $queryParams['site_id'] = ObjectSerializer::toQueryValue($site_id);
+        }
+        // query params
+        if ($time_duration !== null) {
+            $queryParams['time_duration'] = ObjectSerializer::toQueryValue($time_duration);
+        }
+        // query params
+        if ($inventory_type !== null) {
+            $queryParams['inventory_type'] = ObjectSerializer::toQueryValue($inventory_type);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation v30ReportCustomGetGet
+     *
+     * 自定义报表
+     *
+     * @param  string $advertiser_id 广告主id (required)
+     * @param  string $dimensions 维度列表。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $metrics 指标列表 。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $filters 过滤条件。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 字段： field：条件必填，过滤的消耗指标字段 type：条件必填，字段类型。允许值：1 -固定枚举值，2 - 固定输入值，3 -数类型 operator：条件必填，处理方式。 允许值：1 -等于，2 -小于，3 -小于等于，4 -大于，5 -大于等于，6 -不等于，7-包含，8 -不包含，9 -范围查询，10 -多个值匹配包含，11 -多个值匹配都要包含 values：条件必填，过滤字段具体值 (required)
+     * @param  string $start_time 开始时间。格式为：yyyy-MM-dd。例如2022-08-01 (required)
+     * @param  string $end_time 结束时间。格式为：yyyy-MM-dd。例如2022-08-01（默认为当天23:59:59） (required)
+     * @param  string $order_by 排序 field:排序字段。字段必须在选中的metrics或dimensions中。其中metrics所有字段支持排序。dimensions是否排序请参考维度、指标说明。 type:排序类型 可选值:ASC: 升序DESC: 降序 (required)
+     * @param  string $page page (optional)
+     * @param  string $page_size 页面大小。默认为10，最大100 (optional)
+     * @param  string $data_topic 数据主题，默认值：BASIC_DATA广告基础数据，枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据，注：从巨量引擎体验版平台获取到API参数生成后需在请求参数中手动添加对应的数据主题，否则将无法正确获取数据 (optional)
+     * @param  string $access_token access_token (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20016
+     */
+    public function v30ReportCustomGetGet($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page = null, $page_size = null, $data_topic = null, $access_token = null)
+    {
+        list($response) = $this->v30ReportCustomGetGetWithHttpInfo($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page, $page_size, $data_topic, $access_token);
+        return $response;
+    }
+
+    /**
+     * Operation v30ReportCustomGetGetWithHttpInfo
+     *
+     * 自定义报表
+     *
+     * @param  string $advertiser_id 广告主id (required)
+     * @param  string $dimensions 维度列表。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $metrics 指标列表 。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $filters 过滤条件。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 字段： field：条件必填，过滤的消耗指标字段 type：条件必填，字段类型。允许值：1 -固定枚举值，2 - 固定输入值，3 -数类型 operator：条件必填，处理方式。 允许值：1 -等于，2 -小于，3 -小于等于，4 -大于，5 -大于等于，6 -不等于，7-包含，8 -不包含，9 -范围查询，10 -多个值匹配包含，11 -多个值匹配都要包含 values：条件必填，过滤字段具体值 (required)
+     * @param  string $start_time 开始时间。格式为：yyyy-MM-dd。例如2022-08-01 (required)
+     * @param  string $end_time 结束时间。格式为：yyyy-MM-dd。例如2022-08-01（默认为当天23:59:59） (required)
+     * @param  string $order_by 排序 field:排序字段。字段必须在选中的metrics或dimensions中。其中metrics所有字段支持排序。dimensions是否排序请参考维度、指标说明。 type:排序类型 可选值:ASC: 升序DESC: 降序 (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面大小。默认为10，最大100 (optional)
+     * @param  string $data_topic 数据主题，默认值：BASIC_DATA广告基础数据，枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据，注：从巨量引擎体验版平台获取到API参数生成后需在请求参数中手动添加对应的数据主题，否则将无法正确获取数据 (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20016, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v30ReportCustomGetGetWithHttpInfo($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page = null, $page_size = null, $data_topic = null, $access_token = null)
+    {
+        $request = $this->v30ReportCustomGetGetRequest($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page, $page_size, $data_topic, $access_token);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20016' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20016', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20016';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20016',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v30ReportCustomGetGetAsync
+     *
+     * 自定义报表
+     *
+     * @param  string $advertiser_id 广告主id (required)
+     * @param  string $dimensions 维度列表。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $metrics 指标列表 。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $filters 过滤条件。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 字段： field：条件必填，过滤的消耗指标字段 type：条件必填，字段类型。允许值：1 -固定枚举值，2 - 固定输入值，3 -数类型 operator：条件必填，处理方式。 允许值：1 -等于，2 -小于，3 -小于等于，4 -大于，5 -大于等于，6 -不等于，7-包含，8 -不包含，9 -范围查询，10 -多个值匹配包含，11 -多个值匹配都要包含 values：条件必填，过滤字段具体值 (required)
+     * @param  string $start_time 开始时间。格式为：yyyy-MM-dd。例如2022-08-01 (required)
+     * @param  string $end_time 结束时间。格式为：yyyy-MM-dd。例如2022-08-01（默认为当天23:59:59） (required)
+     * @param  string $order_by 排序 field:排序字段。字段必须在选中的metrics或dimensions中。其中metrics所有字段支持排序。dimensions是否排序请参考维度、指标说明。 type:排序类型 可选值:ASC: 升序DESC: 降序 (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面大小。默认为10，最大100 (optional)
+     * @param  string $data_topic 数据主题，默认值：BASIC_DATA广告基础数据，枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据，注：从巨量引擎体验版平台获取到API参数生成后需在请求参数中手动添加对应的数据主题，否则将无法正确获取数据 (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v30ReportCustomGetGetAsync($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page = null, $page_size = null, $data_topic = null, $access_token = null)
+    {
+        return $this->v30ReportCustomGetGetAsyncWithHttpInfo($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page, $page_size, $data_topic, $access_token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation v30ReportCustomGetGetAsyncWithHttpInfo
+     *
+     * 自定义报表
+     *
+     * @param  string $advertiser_id 广告主id (required)
+     * @param  string $dimensions 维度列表。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $metrics 指标列表 。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $filters 过滤条件。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 字段： field：条件必填，过滤的消耗指标字段 type：条件必填，字段类型。允许值：1 -固定枚举值，2 - 固定输入值，3 -数类型 operator：条件必填，处理方式。 允许值：1 -等于，2 -小于，3 -小于等于，4 -大于，5 -大于等于，6 -不等于，7-包含，8 -不包含，9 -范围查询，10 -多个值匹配包含，11 -多个值匹配都要包含 values：条件必填，过滤字段具体值 (required)
+     * @param  string $start_time 开始时间。格式为：yyyy-MM-dd。例如2022-08-01 (required)
+     * @param  string $end_time 结束时间。格式为：yyyy-MM-dd。例如2022-08-01（默认为当天23:59:59） (required)
+     * @param  string $order_by 排序 field:排序字段。字段必须在选中的metrics或dimensions中。其中metrics所有字段支持排序。dimensions是否排序请参考维度、指标说明。 type:排序类型 可选值:ASC: 升序DESC: 降序 (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面大小。默认为10，最大100 (optional)
+     * @param  string $data_topic 数据主题，默认值：BASIC_DATA广告基础数据，枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据，注：从巨量引擎体验版平台获取到API参数生成后需在请求参数中手动添加对应的数据主题，否则将无法正确获取数据 (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v30ReportCustomGetGetAsyncWithHttpInfo($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page = null, $page_size = null, $data_topic = null, $access_token = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20016';
+        $request = $this->v30ReportCustomGetGetRequest($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page, $page_size, $data_topic, $access_token);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'v30ReportCustomGetGet'
+     *
+     * @param  string $advertiser_id 广告主id (required)
+     * @param  string $dimensions 维度列表。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $metrics 指标列表 。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 (required)
+     * @param  string $filters 过滤条件。 获取方式： 1.巨量引擎体验版—&gt;报表—&gt;新建/编辑自定义报表—&gt;API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 字段： field：条件必填，过滤的消耗指标字段 type：条件必填，字段类型。允许值：1 -固定枚举值，2 - 固定输入值，3 -数类型 operator：条件必填，处理方式。 允许值：1 -等于，2 -小于，3 -小于等于，4 -大于，5 -大于等于，6 -不等于，7-包含，8 -不包含，9 -范围查询，10 -多个值匹配包含，11 -多个值匹配都要包含 values：条件必填，过滤字段具体值 (required)
+     * @param  string $start_time 开始时间。格式为：yyyy-MM-dd。例如2022-08-01 (required)
+     * @param  string $end_time 结束时间。格式为：yyyy-MM-dd。例如2022-08-01（默认为当天23:59:59） (required)
+     * @param  string $order_by 排序 field:排序字段。字段必须在选中的metrics或dimensions中。其中metrics所有字段支持排序。dimensions是否排序请参考维度、指标说明。 type:排序类型 可选值:ASC: 升序DESC: 降序 (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面大小。默认为10，最大100 (optional)
+     * @param  string $data_topic 数据主题，默认值：BASIC_DATA广告基础数据，枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据，注：从巨量引擎体验版平台获取到API参数生成后需在请求参数中手动添加对应的数据主题，否则将无法正确获取数据 (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function v30ReportCustomGetGetRequest($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page = null, $page_size = null, $data_topic = null, $access_token = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling v30ReportCustomGetGet'
+            );
+        }
+        // verify the required parameter 'dimensions' is set
+        if ($dimensions === null || (is_array($dimensions) && count($dimensions) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dimensions when calling v30ReportCustomGetGet'
+            );
+        }
+        // verify the required parameter 'metrics' is set
+        if ($metrics === null || (is_array($metrics) && count($metrics) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $metrics when calling v30ReportCustomGetGet'
+            );
+        }
+        // verify the required parameter 'filters' is set
+        if ($filters === null || (is_array($filters) && count($filters) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $filters when calling v30ReportCustomGetGet'
+            );
+        }
+        // verify the required parameter 'start_time' is set
+        if ($start_time === null || (is_array($start_time) && count($start_time) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_time when calling v30ReportCustomGetGet'
+            );
+        }
+        // verify the required parameter 'end_time' is set
+        if ($end_time === null || (is_array($end_time) && count($end_time) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end_time when calling v30ReportCustomGetGet'
+            );
+        }
+        // verify the required parameter 'order_by' is set
+        if ($order_by === null || (is_array($order_by) && count($order_by) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_by when calling v30ReportCustomGetGet'
+            );
+        }
+
+        $resourcePath = '/v3.0/report/custom/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if ($dimensions !== null) {
+            $queryParams['dimensions'] = ObjectSerializer::toQueryValue($dimensions);
+        }
+        // query params
+        if ($metrics !== null) {
+            $queryParams['metrics'] = ObjectSerializer::toQueryValue($metrics);
+        }
+        // query params
+        if ($filters !== null) {
+            $queryParams['filters'] = ObjectSerializer::toQueryValue($filters);
+        }
+        // query params
+        if ($start_time !== null) {
+            $queryParams['start_time'] = ObjectSerializer::toQueryValue($start_time);
+        }
+        // query params
+        if ($end_time !== null) {
+            $queryParams['end_time'] = ObjectSerializer::toQueryValue($end_time);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order_by'] = ObjectSerializer::toQueryValue($order_by);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['page_size'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // query params
+        if ($data_topic !== null) {
+            $queryParams['data_topic'] = ObjectSerializer::toQueryValue($data_topic);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
         }
 
 

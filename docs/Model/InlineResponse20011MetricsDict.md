@@ -1,12 +1,12 @@
-# InlineResponse2006
+# InlineResponse20011MetricsDict
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** |  | 
-**message** | **string** |  | 
-**request_id** | **string** |  | 
-**data** | [**\Oceanengine\Open\Model\InlineResponse2006Data**](InlineResponse2006Data.md) |  | [optional] 
+**show** | **int** |  | 
+**convert** | **int** | 转化数 | 
+**cost** | **int** | 总消耗(单位元,精确到分) | 
+**click** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

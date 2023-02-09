@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006
+ * InlineResponse20012
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse2006 Class Doc Comment
+ * InlineResponse20012 Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse2006 implements ModelInterface, ArrayAccess
+class InlineResponse20012 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6';
+    protected static $openAPIModelName = 'inline_response_200_12';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
         'code' => 'int',
         'message' => 'string',
         'request_id' => 'string',
-        'data' => '\Oceanengine\Open\Model\InlineResponse2006Data'
+        'data' => '\Oceanengine\Open\Model\InlineResponse20012Data[]'
     ];
 
     /**
@@ -306,7 +306,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \Oceanengine\Open\Model\InlineResponse2006Data|null
+     * @return \Oceanengine\Open\Model\InlineResponse20012Data[]|null
      */
     public function getData()
     {
@@ -316,7 +316,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \Oceanengine\Open\Model\InlineResponse2006Data|null $data data
+     * @param \Oceanengine\Open\Model\InlineResponse20012Data[]|null $data data
      *
      * @return $this
      */

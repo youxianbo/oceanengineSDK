@@ -1,12 +1,10 @@
-# InlineResponse2006
+# InlineResponse20013Data
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** |  | 
-**message** | **string** |  | 
-**request_id** | **string** |  | 
-**data** | [**\Oceanengine\Open\Model\InlineResponse2006Data**](InlineResponse2006Data.md) |  | [optional] 
+**metrics_dict** | [**\Oceanengine\Open\Model\InlineResponse20011MetricsDict**](InlineResponse20011MetricsDict.md) |  | [optional] 
+**gender_name** | **string** | 性别，允许值：男，女，其他 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

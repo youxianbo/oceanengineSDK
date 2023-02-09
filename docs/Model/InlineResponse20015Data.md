@@ -1,12 +1,10 @@
-# InlineResponse2006
+# InlineResponse20015Data
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** |  | 
-**message** | **string** |  | 
-**request_id** | **string** |  | 
-**data** | [**\Oceanengine\Open\Model\InlineResponse2006Data**](InlineResponse2006Data.md) |  | [optional] 
+**site_record** | [**\Oceanengine\Open\Model\InlineResponse20015DataSiteRecord**](InlineResponse20015DataSiteRecord.md) |  | 
+**site_id** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -940,7 +940,7 @@
           {
             "name": "advertiser_id",
             "in": "query",
-            "description": "",
+            "description": "广告主ID",
             "required": true,
             "example": "1",
             "schema": {
@@ -950,7 +950,7 @@
           {
             "name": "start_date",
             "in": "query",
-            "description": "",
+            "description": "起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期",
             "required": true,
             "example": "2023-02-01",
             "schema": {
@@ -960,7 +960,7 @@
           {
             "name": "end_date",
             "in": "query",
-            "description": "",
+            "description": "结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天",
             "required": true,
             "example": "2023-02-10",
             "schema": {
@@ -1048,6 +1048,16 @@
             }
           },
           {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "X-Debug-Mode",
             "in": "header",
             "description": "",
@@ -1099,13 +1109,13 @@
                             "page",
                             "page_size"
                           ],
-                          "x-apifox-ignore-properties": [],
                           "x-apifox-orders": [
                             "total_number",
                             "total_page",
                             "page",
                             "page_size"
-                          ]
+                          ],
+                          "x-apifox-ignore-properties": []
                         },
                         "list": {
                           "type": "array",
@@ -1127,12 +1137,12 @@
                               "advertiser_id",
                               "stat_datetime"
                             ],
-                            "x-apifox-ignore-properties": [],
                             "x-apifox-orders": [
                               "cost",
                               "advertiser_id",
                               "stat_datetime"
-                            ]
+                            ],
+                            "x-apifox-ignore-properties": []
                           }
                         }
                       },
@@ -1140,26 +1150,25 @@
                         "page_info",
                         "list"
                       ],
-                      "x-apifox-ignore-properties": [],
                       "x-apifox-orders": [
                         "page_info",
                         "list"
-                      ]
+                      ],
+                      "x-apifox-ignore-properties": []
                     }
                   },
                   "required": [
                     "code",
                     "message",
-                    "request_id",
-                    "data"
+                    "request_id"
                   ],
-                  "x-apifox-ignore-properties": [],
                   "x-apifox-orders": [
                     "code",
                     "message",
                     "request_id",
                     "data"
-                  ]
+                  ],
+                  "x-apifox-ignore-properties": []
                 },
                 "examples": {
                   "1": {
@@ -1284,6 +1293,3532 @@
           }
         },
         "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61264378-run"
+      }
+    },
+    "/2/report/campaign/get/": {
+      "get": {
+        "summary": "广告组数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期",
+            "required": true,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天",
+            "required": true,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "指定需要的指标名称，可参考应答参数返回的消耗指标字段\n默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost",
+            "required": false,
+            "example": "[\"cost\",\"convert_rate\",\"show\",\"avg_show_cost\",\"click\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "group_by",
+            "in": "query",
+            "description": "分组条件\n默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】",
+            "required": false,
+            "example": "[\"STAT_GROUP_BY_FIELD_STAT_TIME\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "time_granularity",
+            "in": "query",
+            "description": "时间粒度\n默认值: STAT_TIME_GRANULARITY_DAILY\n允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度)",
+            "required": false,
+            "example": "STAT_TIME_GRANULARITY_DAILY",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filtering",
+            "in": "query",
+            "description": "过滤字段，json格式，支持字段如下\ncampaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个\ncampaign_name:广告组名称：按照campaign_name过滤，字符串长度限制1-30\nlanding_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\"LINK\",\"APP\",\"DPA\",\"GOODS\",\"STORE\",\"SHOP\",\"AWEME\"\nstatus:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】\ndelivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&省心投放",
+            "required": false,
+            "example": "{\"campaign_ids\":[123],\"campaign_name\":\"广告组名称\",\"landing_types\":[\"LINK\",\"APP\",\"DPA\",\"GOODS\",\"STORE\",\"SHOP\",\"AWEME\"],\"status\":\"CAMPAIGN_STATUS_NOT_DELETE\",\"delivery_mode\":\"STANDARD\"}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_field",
+            "in": "query",
+            "description": "排序字段，所有的统计指标均可参与排序",
+            "required": false,
+            "example": "convert_rate",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_type",
+            "in": "query",
+            "description": "排序方式；默认值: DESC；允许值: ASC, DESC",
+            "required": false,
+            "example": "DESC",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码 默认值: 1",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000",
+            "required": false,
+            "example": "20",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "total_number": {
+                              "type": "integer"
+                            },
+                            "page_size": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            },
+                            "page": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "total_number",
+                            "page_size",
+                            "total_page",
+                            "page"
+                          ],
+                          "x-apifox-orders": [
+                            "total_number",
+                            "page_size",
+                            "total_page",
+                            "page"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        },
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "convert_rate": {
+                                "type": "integer"
+                              },
+                              "stat_datetime": {
+                                "type": "string"
+                              },
+                              "campaign_id": {
+                                "type": "null"
+                              },
+                              "click": {
+                                "type": "integer"
+                              },
+                              "id": {
+                                "type": "null"
+                              },
+                              "avg_show_cost": {
+                                "type": "integer"
+                              },
+                              "campaign_name": {
+                                "type": "null"
+                              },
+                              "cost": {
+                                "type": "integer"
+                              },
+                              "show": {
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "convert_rate",
+                              "stat_datetime",
+                              "campaign_id",
+                              "click",
+                              "id",
+                              "avg_show_cost",
+                              "campaign_name",
+                              "cost",
+                              "show"
+                            ],
+                            "x-apifox-orders": [
+                              "convert_rate",
+                              "stat_datetime",
+                              "campaign_id",
+                              "click",
+                              "id",
+                              "avg_show_cost",
+                              "campaign_name",
+                              "cost",
+                              "show"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        }
+                      },
+                      "required": [
+                        "page_info",
+                        "list"
+                      ],
+                      "x-apifox-orders": [
+                        "page_info",
+                        "list"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-orders": [
+                    "01GRTF48ATHT9XF4CZY0QXJZE9",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRTF48ATHT9XF4CZY0QXJZE9": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "2023020914523598B0CEE7D9852DC0587A",
+                      "data": {
+                        "page_info": {
+                          "total_number": 10,
+                          "page_size": 20,
+                          "total_page": 1,
+                          "page": 1
+                        },
+                        "list": [
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-07 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          },
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-10 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          },
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-06 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          },
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-04 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          },
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-03 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          },
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-08 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          },
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-05 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          },
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-02 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          },
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-01 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          },
+                          {
+                            "convert_rate": 0,
+                            "stat_datetime": "2023-02-09 00:00:00",
+                            "campaign_id": null,
+                            "click": 0,
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "campaign_name": null,
+                            "cost": 0,
+                            "show": 0
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40002,
+                      "message": "Account 123456 doesn't exist or the role is wrong",
+                      "request_id": "202302091435041C58826AC8095ECD5D6D"
+                    }
+                  },
+                  "3": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40000,
+                      "message": "time_granularity: one or more value of the params is not acceptable, correct is STAT_TIME_GRANULARITY_MONTH, STAT_TIME_GRANULARITY_WEEK, STAT_TIME_GRANULARITY_DAILY, STAT_TIME_GRANULARITY_HOURLY, current is [\"STAT_TIME_GRANULARITY_DAILY\"]",
+                      "request_id": "20230209113136ED32AB6DC4B6AA980B04"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61314909-run"
+      }
+    },
+    "/2/report/ad/get/": {
+      "get": {
+        "summary": "广告计划数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期",
+            "required": true,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天",
+            "required": true,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "指定需要的指标名称，可参考应答参数返回的消耗指标字段\n默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost",
+            "required": false,
+            "example": "[\"cost\",\"convert_rate\",\"show\",\"avg_show_cost\",\"click\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "group_by",
+            "in": "query",
+            "description": "分组条件\n默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】",
+            "required": false,
+            "example": "[\"STAT_GROUP_BY_FIELD_STAT_TIME\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "time_granularity",
+            "in": "query",
+            "description": "时间粒度\n默认值: STAT_TIME_GRANULARITY_DAILY\n允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度)",
+            "required": false,
+            "example": "STAT_TIME_GRANULARITY_DAILY",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filtering",
+            "in": "query",
+            "description": "过滤字段，json格式，支持字段如下\ncampaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个\nad_name:广告计划名称：按照ad_name过滤，字符串长度限制1-30\nad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个\npricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】\nlanding_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\"LINK\",\"APP\",\"DPA\",\"GOODS\",\"STORE\",\"SHOP\",\"AWEME\"\nstatus:广告组状态：按照广告组状态过滤，默认为返回“所有不包含已删除”，如果要返回所有包含已删除有对应枚举表示，详见【附录-广告组状态】\ndelivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&省心投放",
+            "required": false,
+            "example": "{\"campaign_ids\":[123],\"ad_name\":\"广告计划名称\",\"ad_ids\":[123],\"pricings\":[\"PRICING_CPC\"],\"landing_types\":[\"LINK\",\"APP\",\"DPA\",\"GOODS\",\"STORE\",\"SHOP\",\"AWEME\"],\"status\":\"AD_STATUS_DELIVERY_OK\",\"delivery_mode\":\"STANDARD\"}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_field",
+            "in": "query",
+            "description": "排序字段，所有的统计指标均可参与排序",
+            "required": false,
+            "example": "convert_rate",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_type",
+            "in": "query",
+            "description": "排序方式；默认值: DESC；允许值: ASC, DESC",
+            "required": false,
+            "example": "DESC",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码 默认值: 1",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000",
+            "required": false,
+            "example": "20",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01GRTEXRETPZF5Z2FVW7V2BAH2": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRTEXRETPZF5Z2FVW7V2BAH2",
+                    "data"
+                  ],
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "202302091442238FA53B73D3BE370DD1D4",
+                      "data": {
+                        "page_info": {
+                          "page": 1,
+                          "total_page": 1,
+                          "total_number": 10,
+                          "page_size": 20
+                        },
+                        "list": [
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-07 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          },
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-10 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          },
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-06 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          },
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-04 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          },
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-03 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          },
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-08 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          },
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-05 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          },
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-02 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          },
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-01 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          },
+                          {
+                            "cost": 0,
+                            "id": null,
+                            "ad_id": null,
+                            "show": 0,
+                            "ad_name": null,
+                            "stat_datetime": "2023-02-09 00:00:00",
+                            "click": 0,
+                            "campaign_name": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "campaign_id": null
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40002,
+                      "message": "Account 123456 doesn't exist or the role is wrong",
+                      "request_id": "202302091435041C58826AC8095ECD5D6D"
+                    }
+                  },
+                  "3": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40000,
+                      "message": "time_granularity: one or more value of the params is not acceptable, correct is STAT_TIME_GRANULARITY_MONTH, STAT_TIME_GRANULARITY_WEEK, STAT_TIME_GRANULARITY_DAILY, STAT_TIME_GRANULARITY_HOURLY, current is [\"STAT_TIME_GRANULARITY_DAILY\"]",
+                      "request_id": "20230209113136ED32AB6DC4B6AA980B04"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61328018-run"
+      }
+    },
+    "/2/report/creative/get/": {
+      "get": {
+        "summary": "广告创意数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "起始日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期",
+            "required": true,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "结束日期,格式YYYY-MM-DD,只支持查询2016-10-26及以后的日期,时间跨度不能超过30天",
+            "required": true,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "指定需要的指标名称，可参考应答参数返回的消耗指标字段\n默认值：cost、show、avg_show_cost、click、ctr、avg_click_cost、convert、convert_rate、convert_cost",
+            "required": false,
+            "example": "[\"cost\",\"convert_rate\",\"show\",\"avg_show_cost\",\"click\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "group_by",
+            "in": "query",
+            "description": "分组条件\n默认为STAT_GROUP_BY_FIELD_STAT_TIME，支持多种分组条件，具体详见【分组组合规则】",
+            "required": false,
+            "example": "[\"STAT_GROUP_BY_FIELD_STAT_TIME\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "time_granularity",
+            "in": "query",
+            "description": "时间粒度\n默认值: STAT_TIME_GRANULARITY_DAILY\n允许值:STAT_TIME_GRANULARITY_DAILY (按天维度),STAT_TIME_GRANULARITY_HOURLY (按小时维度)",
+            "required": false,
+            "example": "STAT_TIME_GRANULARITY_DAILY",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filtering",
+            "in": "query",
+            "description": "过滤字段，json格式，支持字段如下\ncampaign_ids:广告组id列表：按照campaign_id过滤，最多支持100个\nad_ids:广告计划id列表：按照 ad_id 过滤，最多支持100个\ncreative_ids:广告创意id列表：按照 creative_id 过滤，最多支持100个\ninventory_types:广告位置列表：按照广告位置过滤，详见【附录-首选投放位置】\npricings:出价方式列表：按照出价方式过滤，详见【附录-计划出价类型】\nimage_modes:素材类型列表：按照类型过滤，详见【附录-素材类型】\ncreative_material_modes:创意类型列表：按照创意类型过滤，STATIC_ASSEMBLE 表示程序化创意，INTERVENE表示自定义创意。\nlanding_types:推广目的列表：按照广告组推广目的过滤,详见【附录-推广目的类型】允许值:\"LINK\",\"APP\",\"DPA\",\"GOODS\",\"STORE\",\"SHOP\",\"AWEME\"\nstatus:广告创意状态：按照广告创意状态过滤，详见【附录-创意状态】\ndelivery_mode:投放模式筛选。允许值:STANDARD:标准投放。ADLAB_FREE:管家&省心投放",
+            "required": false,
+            "example": "{\"campaign_ids\":[123],\"creative_ids\":[123],\"inventory_types\":[\"INVENTORY_FEED\",\"INVENTORY_TEXT_LINK\"],\"ad_ids\":[123],\"pricings\":[\"PRICING_CPC\"],\"image_modes\":[\"CREATIVE_IMAGE_MODE_SMALL\",\"CREATIVE_IMAGE_MODE_LARGE\"],\"creative_material_modes\":[\"INTERVENE\",\"STATIC_ASSEMBLE\"],\"landing_types\":[\"LINK\",\"APP\",\"DPA\",\"GOODS\",\"STORE\",\"SHOP\",\"AWEME\"],\"status\":\"CREATIVE_STATUS_DELIVERY_OK\",\"delivery_mode\":\"STANDARD\"}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_field",
+            "in": "query",
+            "description": "排序字段，所有的统计指标均可参与排序",
+            "required": false,
+            "example": "convert_rate",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_type",
+            "in": "query",
+            "description": "排序方式；默认值: DESC；允许值: ASC, DESC",
+            "required": false,
+            "example": "DESC",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码 默认值: 1",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000",
+            "required": false,
+            "example": "20",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "campaign_name": {
+                                "type": "null"
+                              },
+                              "stat_datetime": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "null"
+                              },
+                              "avg_show_cost": {
+                                "type": "integer"
+                              },
+                              "convert_rate": {
+                                "type": "integer"
+                              },
+                              "click": {
+                                "type": "integer"
+                              },
+                              "show": {
+                                "type": "integer"
+                              },
+                              "cost": {
+                                "type": "integer"
+                              },
+                              "ad_name": {
+                                "type": "null"
+                              },
+                              "inventory": {
+                                "type": "null"
+                              },
+                              "ad_id": {
+                                "type": "null"
+                              },
+                              "campaign_id": {
+                                "type": "null"
+                              },
+                              "creative_id": {
+                                "type": "null"
+                              }
+                            },
+                            "required": [
+                              "campaign_name",
+                              "stat_datetime",
+                              "id",
+                              "avg_show_cost",
+                              "convert_rate",
+                              "click",
+                              "show",
+                              "cost",
+                              "ad_name",
+                              "inventory",
+                              "ad_id",
+                              "campaign_id",
+                              "creative_id"
+                            ],
+                            "x-apifox-orders": [
+                              "campaign_name",
+                              "stat_datetime",
+                              "id",
+                              "avg_show_cost",
+                              "convert_rate",
+                              "click",
+                              "show",
+                              "cost",
+                              "ad_name",
+                              "inventory",
+                              "ad_id",
+                              "campaign_id",
+                              "creative_id"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        },
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "page_size": {
+                              "type": "integer"
+                            },
+                            "page": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            },
+                            "total_number": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "page_size",
+                            "page",
+                            "total_page",
+                            "total_number"
+                          ],
+                          "x-apifox-orders": [
+                            "page_size",
+                            "page",
+                            "total_page",
+                            "total_number"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "list",
+                        "page_info"
+                      ],
+                      "required": [
+                        "list",
+                        "page_info"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRTFN6AC0BDCTYMT0EJDEVBS",
+                    "data"
+                  ],
+                  "required": [
+                    "data",
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRTFN6AC0BDCTYMT0EJDEVBS": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "20230209150153E6D67B15AF3EBDA8332B",
+                      "data": {
+                        "list": [
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-07 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          },
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-10 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          },
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-06 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          },
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-04 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          },
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-03 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          },
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-08 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          },
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-05 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          },
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-02 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          },
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-01 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          },
+                          {
+                            "campaign_name": null,
+                            "stat_datetime": "2023-02-09 00:00:00",
+                            "id": null,
+                            "avg_show_cost": 0,
+                            "convert_rate": 0,
+                            "click": 0,
+                            "show": 0,
+                            "cost": 0,
+                            "ad_name": null,
+                            "inventory": null,
+                            "ad_id": null,
+                            "campaign_id": null,
+                            "creative_id": null
+                          }
+                        ],
+                        "page_info": {
+                          "page_size": 20,
+                          "page": 1,
+                          "total_page": 1,
+                          "total_number": 10
+                        }
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40002,
+                      "message": "Account 123456 doesn't exist or the role is wrong",
+                      "request_id": "202302091435041C58826AC8095ECD5D6D"
+                    }
+                  },
+                  "3": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40000,
+                      "message": "time_granularity: one or more value of the params is not acceptable, correct is STAT_TIME_GRANULARITY_MONTH, STAT_TIME_GRANULARITY_WEEK, STAT_TIME_GRANULARITY_DAILY, STAT_TIME_GRANULARITY_HOURLY, current is [\"STAT_TIME_GRANULARITY_DAILY\"]",
+                      "request_id": "20230209113136ED32AB6DC4B6AA980B04"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61336960-run"
+      }
+    },
+    "/2/report/audience/interest_action/list/": {
+      "get": {
+        "summary": "行为兴趣数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "起始日期，从0时起，格式2020-08-15默认15天前，即不指定起止时间获取最近15天数据",
+            "required": false,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "结束日期，至24时止，格式2020-08-29默认昨天，即不指定起止时间获取最近15天数据,起始时间与结束时间之差小于15天，否则报错并提示\"max time span is 15 days\"",
+            "required": false,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metrics",
+            "in": "query",
+            "description": "查询指标列表，允许值：stat_cost, show_cnt, cpm_platform, click_cnt, ctr, cpc_platform, convert_cnt, conversion_cost, conversion_rate, deep_convert_cnt, deep_convert_cost, deep_convert_rate, total_play, valid_play, valid_play_rate, valid_play_cost, dy_follow, dy_like, dy_comment, dy_share。默认值: [\"stat_cost\", \"show_cnt\", \"cpm_platform\", \"click_cnt\", \"ctr\", \"cpc_platform\", \"convert_cnt\", \"conversion_cost\", \"conversion_rate\", \"deep_convert_cnt\", \"deep_convert_cost\", \"deep_convert_rate\"]",
+            "required": false,
+            "example": "[\"stat_cost\", \"show_cnt\", \"cpm_platform\", \"click_cnt\", \"ctr\", \"cpc_platform\", \"convert_cnt\", \"conversion_cost\", \"conversion_rate\", \"deep_convert_cnt\", \"deep_convert_cost\", \"deep_convert_rate\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filtering",
+            "in": "query",
+            "description": "过滤字段\ninterest_action_type：行为兴趣类型，详见【附录-行为兴趣类型】可选值: ACTION（行为）,INTEREST（兴趣）默认值: INTEREST，当传ACTION时，表示获取“行为”受众数据，当传INTEREST时，表示获取“兴趣”受众数据\naudience_level：类目词级别 详见【附录-类目词级别】可选值: FIRST_LEVEL,SECOND_LEVEL,THIRD_LEVEL,FOURTH_LEVEL,KEYWORD_AWEME，默认值: FIRST_LEVEL\ncampaign_ids:广告组查询列表，长度1-100\nad_ids:广告计划查询列表，长度1-100\naction_scene:行为场景，仅在行为兴趣类型为ACTION时传入，详见【附录-行为场景】允许值：E-COMMERCE, NEWS, APP 默认值: [\"E-COMMERCE\", \"NEWS\", \"APP\"]\naction_days:行为天数，仅在行为兴趣类型为ACTION时传入\n默认值: 30",
+            "required": false,
+            "example": "{\"interest_action_type\":\"INTEREST\",\"audience_level\":\"FIRST_LEVEL\",\"campaign_ids\":[1234],\"ad_ids\":[1234],\"action_scene\":[\"E-COMMERCE\", \"NEWS\", \"APP\"],\"action_days\":30}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码 默认值: 1",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "页面大小，即每页展示的数据量 默认值: 20 取值范围: 1-1000",
+            "required": false,
+            "example": "20",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "campaign_name": {
+                                "type": "null"
+                              },
+                              "stat_datetime": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "null"
+                              },
+                              "avg_show_cost": {
+                                "type": "integer"
+                              },
+                              "convert_rate": {
+                                "type": "integer"
+                              },
+                              "click": {
+                                "type": "integer"
+                              },
+                              "show": {
+                                "type": "integer"
+                              },
+                              "cost": {
+                                "type": "integer"
+                              },
+                              "ad_name": {
+                                "type": "null"
+                              },
+                              "inventory": {
+                                "type": "null"
+                              },
+                              "ad_id": {
+                                "type": "null"
+                              },
+                              "campaign_id": {
+                                "type": "null"
+                              },
+                              "creative_id": {
+                                "type": "null"
+                              },
+                              "label_name": {
+                                "type": "string"
+                              },
+                              "superior_label_name": {
+                                "type": "string"
+                              },
+                              "audience_level": {
+                                "type": "string"
+                              },
+                              "metrics": {
+                                "type": "object",
+                                "properties": {
+                                  "stat_cost": {
+                                    "type": "string"
+                                  },
+                                  "show_cnt": {
+                                    "type": "string"
+                                  },
+                                  "cpc_platform": {
+                                    "type": "string"
+                                  },
+                                  "click_cnt": {
+                                    "type": "string"
+                                  },
+                                  "ctr": {
+                                    "type": "string"
+                                  },
+                                  "convert_cnt": {
+                                    "type": "string"
+                                  },
+                                  "conversion_cost": {
+                                    "type": "string"
+                                  },
+                                  "conversion_rate": {
+                                    "type": "string"
+                                  },
+                                  "deep_convert_cnt": {
+                                    "type": "string"
+                                  },
+                                  "deep_convert_cost": {
+                                    "type": "string"
+                                  },
+                                  "deep_convert_rate": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "stat_cost",
+                                  "show_cnt",
+                                  "cpc_platform",
+                                  "click_cnt",
+                                  "ctr",
+                                  "convert_cnt",
+                                  "conversion_cost",
+                                  "conversion_rate",
+                                  "deep_convert_cnt",
+                                  "deep_convert_cost",
+                                  "deep_convert_rate"
+                                ],
+                                "x-apifox-orders": [
+                                  "stat_cost",
+                                  "show_cnt",
+                                  "cpc_platform",
+                                  "click_cnt",
+                                  "ctr",
+                                  "convert_cnt",
+                                  "conversion_cost",
+                                  "conversion_rate",
+                                  "deep_convert_cnt",
+                                  "deep_convert_cost",
+                                  "deep_convert_rate"
+                                ],
+                                "x-apifox-ignore-properties": []
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "campaign_name",
+                              "stat_datetime",
+                              "id",
+                              "avg_show_cost",
+                              "convert_rate",
+                              "click",
+                              "show",
+                              "cost",
+                              "ad_name",
+                              "inventory",
+                              "ad_id",
+                              "campaign_id",
+                              "creative_id",
+                              "label_name",
+                              "superior_label_name",
+                              "audience_level",
+                              "metrics"
+                            ],
+                            "required": [
+                              "campaign_name",
+                              "stat_datetime",
+                              "id",
+                              "avg_show_cost",
+                              "convert_rate",
+                              "click",
+                              "show",
+                              "cost",
+                              "ad_name",
+                              "inventory",
+                              "ad_id",
+                              "campaign_id",
+                              "creative_id"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        },
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "page_size": {
+                              "type": "integer"
+                            },
+                            "page": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            },
+                            "total_number": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "total_number",
+                            "page",
+                            "page_size",
+                            "total_page"
+                          ],
+                          "x-apifox-orders": [
+                            "page_size",
+                            "page",
+                            "total_page",
+                            "total_number"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        }
+                      },
+                      "required": [
+                        "list",
+                        "page_info"
+                      ],
+                      "x-apifox-orders": [
+                        "list",
+                        "page_info"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-orders": [
+                    "01GRTFN6AC0BDCTYMT0EJDEVBS",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRTFN6AC0BDCTYMT0EJDEVBS": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "message": "OK",
+                      "code": 0,
+                      "data": {
+                        "list": [
+                          {
+                            "label_name": "装修设计",
+                            "superior_label_name": "家居家装",
+                            "audience_level": "二级行为类目词",
+                            "metrics": {
+                              "stat_cost": "0.00",
+                              "show_cnt": "1",
+                              "cpc_platform": "0.00",
+                              "click_cnt": "0",
+                              "ctr": "0.00",
+                              "convert_cnt": "0",
+                              "conversion_cost": "0.00",
+                              "conversion_rate": "0.00",
+                              "deep_convert_cnt": "0",
+                              "deep_convert_cost": "0.00",
+                              "deep_convert_rate": "0.00"
+                            }
+                          }
+                        ],
+                        "page_info": {
+                          "total_number": 1,
+                          "page": 1,
+                          "page_size": 20,
+                          "total_page": 1
+                        }
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40002,
+                      "message": "Account 123456 doesn't exist or the role is wrong",
+                      "request_id": "202302091435041C58826AC8095ECD5D6D"
+                    }
+                  },
+                  "3": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 40000,
+                      "message": "time_granularity: one or more value of the params is not acceptable, correct is STAT_TIME_GRANULARITY_MONTH, STAT_TIME_GRANULARITY_WEEK, STAT_TIME_GRANULARITY_DAILY, STAT_TIME_GRANULARITY_HOURLY, current is [\"STAT_TIME_GRANULARITY_DAILY\"]",
+                      "request_id": "20230209113136ED32AB6DC4B6AA980B04"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61347290-run"
+      }
+    },
+    "/2/report/audience/province/": {
+      "get": {
+        "summary": "省级数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期",
+            "required": true,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期\n最大查询跨度1年",
+            "required": true,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id_type",
+            "in": "query",
+            "description": "查询ID类型，可选值：\nAUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询",
+            "required": true,
+            "example": "AUDIENCE_STAT_ID_TYPE_ADVERTISER",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "查询ID列表，长度1-100\nid_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填",
+            "required": false,
+            "example": "[123]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metrics",
+            "in": "query",
+            "description": "查询指标列表，详见此文档下方【查询指标】\n允许值：cost，show，click，convert",
+            "required": true,
+            "example": "[\"cost\",\"show\",\"click\",\"convert\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "metrics_dict": {
+                            "type": "object",
+                            "properties": {
+                              "show": {
+                                "type": "integer"
+                              },
+                              "convert": {
+                                "type": "integer",
+                                "description": "转化数"
+                              },
+                              "cost": {
+                                "type": "integer",
+                                "description": "总消耗(单位元,精确到分)"
+                              },
+                              "click": {
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "show",
+                              "convert",
+                              "cost",
+                              "click"
+                            ],
+                            "x-apifox-orders": [
+                              "show",
+                              "convert",
+                              "cost",
+                              "click"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          },
+                          "province_name": {
+                            "type": "string"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "metrics_dict",
+                          "province_name"
+                        ],
+                        "x-apifox-ignore-properties": []
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRTK8BKPSZ4ZST42B9R921GN",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRTK8BKPSZ4ZST42B9R921GN": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 28,
+                      "message": "non irure",
+                      "request_id": "17",
+                      "data": [
+                        {
+                          "metrics_dict": {
+                            "show": 23,
+                            "convert": 99,
+                            "cost": 36,
+                            "click": 34
+                          },
+                          "province_name": "厂只验示共养"
+                        },
+                        {
+                          "province_name": "育常克数之年身",
+                          "metrics_dict": {
+                            "show": 48,
+                            "convert": 46,
+                            "cost": 63,
+                            "click": 89
+                          }
+                        },
+                        {
+                          "metrics_dict": {
+                            "show": 53,
+                            "convert": 42,
+                            "cost": 77,
+                            "click": 99
+                          },
+                          "province_name": "半问人质难"
+                        },
+                        {
+                          "metrics_dict": {
+                            "show": 93,
+                            "convert": 66,
+                            "cost": 6,
+                            "click": 47
+                          },
+                          "province_name": "小采据调国劳"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61383783-run"
+      }
+    },
+    "/2/report/audience/city/": {
+      "get": {
+        "summary": "市级数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期",
+            "required": true,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期\n最大查询跨度1年",
+            "required": true,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id_type",
+            "in": "query",
+            "description": "查询ID类型，可选值：\nAUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询",
+            "required": true,
+            "example": "AUDIENCE_STAT_ID_TYPE_ADVERTISER",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "查询ID列表，长度1-100\nid_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填",
+            "required": false,
+            "example": "[123]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metrics",
+            "in": "query",
+            "description": "查询指标列表，详见此文档下方【查询指标】\n允许值：cost，show，click，convert",
+            "required": true,
+            "example": "[\"cost\",\"show\",\"click\",\"convert\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "metrics_dict": {
+                            "type": "object",
+                            "properties": {
+                              "show": {
+                                "type": "integer"
+                              },
+                              "convert": {
+                                "type": "integer",
+                                "description": "转化数"
+                              },
+                              "cost": {
+                                "type": "integer",
+                                "description": "总消耗(单位元,精确到分)"
+                              },
+                              "click": {
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "convert",
+                              "cost",
+                              "click",
+                              "show"
+                            ],
+                            "x-apifox-orders": [
+                              "show",
+                              "convert",
+                              "cost",
+                              "click"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          },
+                          "province_name": {
+                            "type": "string"
+                          },
+                          "city_name": {
+                            "type": "string"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "metrics_dict",
+                          "province_name",
+                          "city_name"
+                        ],
+                        "x-apifox-ignore-properties": []
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRTK8BKPSZ4ZST42B9R921GN",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRTK8BKPSZ4ZST42B9R921GN": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": [
+                        {
+                          "city_name": "土正院完律",
+                          "metrics_dict": {
+                            "convert": 5,
+                            "cost": 88,
+                            "click": 86,
+                            "show": 47
+                          },
+                          "province_name": "严经设工查立"
+                        },
+                        {
+                          "province_name": "住写提场把",
+                          "city_name": "例运民切广图",
+                          "metrics_dict": {
+                            "convert": 41,
+                            "cost": 42,
+                            "click": 35,
+                            "show": 31
+                          }
+                        },
+                        {
+                          "province_name": "清当色特",
+                          "metrics_dict": {
+                            "convert": 19,
+                            "cost": 20,
+                            "click": 65,
+                            "show": 43
+                          },
+                          "city_name": "非系际位行"
+                        }
+                      ],
+                      "code": 52,
+                      "message": "ipsum qui Lorem labore",
+                      "request_id": "62"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61385627-run"
+      }
+    },
+    "/2/report/audience/gender/": {
+      "get": {
+        "summary": "性别数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期",
+            "required": true,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期\n最大查询跨度1年",
+            "required": true,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id_type",
+            "in": "query",
+            "description": "查询ID类型，可选值：\nAUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询",
+            "required": true,
+            "example": "AUDIENCE_STAT_ID_TYPE_ADVERTISER",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "查询ID列表，长度1-100\nid_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填",
+            "required": false,
+            "example": "[123]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metrics",
+            "in": "query",
+            "description": "查询指标列表，详见此文档下方【查询指标】\n允许值：cost，show，click，convert",
+            "required": true,
+            "example": "[\"cost\",\"show\",\"click\",\"convert\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "metrics_dict": {
+                            "type": "object",
+                            "properties": {
+                              "show": {
+                                "type": "integer"
+                              },
+                              "convert": {
+                                "type": "integer",
+                                "description": "转化数"
+                              },
+                              "cost": {
+                                "type": "integer",
+                                "description": "总消耗(单位元,精确到分)"
+                              },
+                              "click": {
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "convert",
+                              "cost",
+                              "click",
+                              "show"
+                            ],
+                            "x-apifox-orders": [
+                              "show",
+                              "convert",
+                              "cost",
+                              "click"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          },
+                          "gender_name": {
+                            "type": "string",
+                            "description": "性别，允许值：男，女，其他"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "metrics_dict",
+                          "gender_name"
+                        ],
+                        "x-apifox-ignore-properties": []
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRTK8BKPSZ4ZST42B9R921GN",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRTK8BKPSZ4ZST42B9R921GN": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": [
+                        {
+                          "metrics_dict": {
+                            "convert": 33,
+                            "cost": 59,
+                            "click": 42,
+                            "show": 42
+                          },
+                          "gender_name": "济音积队"
+                        },
+                        {
+                          "metrics_dict": {
+                            "convert": 28,
+                            "cost": 22,
+                            "click": 5,
+                            "show": 50
+                          },
+                          "gender_name": "过了广"
+                        },
+                        {
+                          "metrics_dict": {
+                            "convert": 51,
+                            "cost": 53,
+                            "click": 94,
+                            "show": 64
+                          },
+                          "gender_name": "治在变象深改"
+                        }
+                      ],
+                      "code": 70,
+                      "message": "sed amet do nulla sint",
+                      "request_id": "6"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61387133-run"
+      }
+    },
+    "/2/report/audience/age/": {
+      "get": {
+        "summary": "年龄数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "获取年龄定向受众数据，当前包括6个年龄段（1-18；18-23；24-30；31-40；41-50；50岁以上），可以查看受众中不同年龄段用户的投放数据，包括花费、展示、点击等数据。",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "起始日期，从0时起，格式2020-01-01，只支持查询2016-10-26及以后的日期",
+            "required": true,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "结束日期，至0时止，格式2020-01-08，只支持查询2016-10-26及以后的日期\n最大查询跨度1年",
+            "required": true,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id_type",
+            "in": "query",
+            "description": "查询ID类型，可选值：\nAUDIENCE_STAT_ID_TYPE_ADVERTISER 按广告主查询、AUDIENCE_STAT_ID_TYPE_CAMPAIGN 按广告组查询、AUDIENCE_STAT_ID_TYPE_AD 按广告计划查询",
+            "required": true,
+            "example": "AUDIENCE_STAT_ID_TYPE_ADVERTISER",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "查询ID列表，长度1-100\nid_type为AUDIENCE_STAT_ID_TYPE_ADVERTISER时，选填；其他类型，必填",
+            "required": false,
+            "example": "[123]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metrics",
+            "in": "query",
+            "description": "查询指标列表，详见此文档下方【查询指标】\n允许值：cost，show，click，convert",
+            "required": true,
+            "example": "[\"cost\",\"show\",\"click\",\"convert\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "metrics_dict": {
+                            "type": "object",
+                            "properties": {
+                              "show": {
+                                "type": "integer"
+                              },
+                              "convert": {
+                                "type": "integer",
+                                "description": "转化数"
+                              },
+                              "cost": {
+                                "type": "integer",
+                                "description": "总消耗(单位元,精确到分)"
+                              },
+                              "click": {
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "convert",
+                              "cost",
+                              "click",
+                              "show"
+                            ],
+                            "x-apifox-orders": [
+                              "show",
+                              "convert",
+                              "cost",
+                              "click"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          },
+                          "age_name": {
+                            "type": "string",
+                            "description": "年龄段"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "metrics_dict",
+                          "age_name"
+                        ],
+                        "x-apifox-ignore-properties": []
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRTK8BKPSZ4ZST42B9R921GN",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRTK8BKPSZ4ZST42B9R921GN": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 4,
+                      "message": "enim et proident quis pariatur",
+                      "request_id": "21",
+                      "data": [
+                        {
+                          "age_name": "型花低目",
+                          "metrics_dict": {
+                            "convert": 17,
+                            "cost": 27,
+                            "click": 48,
+                            "show": 96
+                          }
+                        },
+                        {
+                          "metrics_dict": {
+                            "convert": 67,
+                            "cost": 68,
+                            "click": 39,
+                            "show": 60
+                          },
+                          "age_name": "圆如用被"
+                        },
+                        {
+                          "age_name": "严每安史",
+                          "metrics_dict": {
+                            "convert": 31,
+                            "cost": 21,
+                            "click": 75,
+                            "show": 13
+                          }
+                        },
+                        {
+                          "metrics_dict": {
+                            "convert": 92,
+                            "cost": 91,
+                            "click": 47,
+                            "show": 2
+                          },
+                          "age_name": "指龙下门值部"
+                        },
+                        {
+                          "age_name": "开命温金要克准",
+                          "metrics_dict": {
+                            "convert": 94,
+                            "cost": 56,
+                            "click": 44,
+                            "show": 17
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61388227-run"
+      }
+    },
+    "/2/report/site/page/": {
+      "get": {
+        "summary": "橙子建站落地页数据",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "获取橙子建站和程序化落地页的数据。不包含第三方落地页。落地页数据以当日前两天的方式返回，如：当3号入参查询周期1天，返回1号数据",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "site_id",
+            "in": "query",
+            "description": "站点ID",
+            "required": true,
+            "example": "123",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "time_duration",
+            "in": "query",
+            "description": "查询时间周期。DAY:1天。THREE_DAY: 3天。WEEK:7天。MONTH:30天。",
+            "required": true,
+            "example": "WEEK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "inventory_type",
+            "in": "query",
+            "description": "首选投放位置。不传默认查全部。WATERMELON:西瓜。HOTSOON:火山。AWEME:抖音。TOUTIAO: 头条。UNION_SLOT:穿山甲。",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "site_record": {
+                          "type": "object",
+                          "properties": {
+                            "AVG_LOAD_TIME": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "integer"
+                                  },
+                                  "date_time": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-orders": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-ignore-properties": []
+                              }
+                            },
+                            "AVG_EXPOSURE_RATE": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "integer"
+                                  },
+                                  "date_time": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-orders": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-ignore-properties": []
+                              }
+                            },
+                            "PV": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "integer"
+                                  },
+                                  "date_time": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-orders": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-ignore-properties": []
+                              }
+                            },
+                            "UV": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "integer"
+                                  },
+                                  "date_time": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-orders": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-ignore-properties": []
+                              }
+                            },
+                            "CVR": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "integer"
+                                  },
+                                  "date_time": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-orders": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-ignore-properties": []
+                              }
+                            },
+                            "AVG_VISIT_TIME": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "integer"
+                                  },
+                                  "date_time": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-orders": [
+                                  "value",
+                                  "date_time"
+                                ],
+                                "x-apifox-ignore-properties": []
+                              }
+                            }
+                          },
+                          "required": [
+                            "AVG_LOAD_TIME",
+                            "AVG_EXPOSURE_RATE",
+                            "PV",
+                            "UV",
+                            "CVR",
+                            "AVG_VISIT_TIME"
+                          ],
+                          "x-apifox-orders": [
+                            "AVG_LOAD_TIME",
+                            "AVG_EXPOSURE_RATE",
+                            "PV",
+                            "UV",
+                            "CVR",
+                            "AVG_VISIT_TIME"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        },
+                        "site_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "site_record",
+                        "site_id"
+                      ],
+                      "x-apifox-orders": [
+                        "site_record",
+                        "site_id"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-orders": [
+                    "01GRTK8BKPSZ4ZST42B9R921GN",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRTK8BKPSZ4ZST42B9R921GN": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "site_record": {
+                          "AVG_LOAD_TIME": [
+                            {
+                              "value": 65,
+                              "date_time": "2015-11-12 12:42:35"
+                            },
+                            {
+                              "value": 40,
+                              "date_time": "1993-07-30 09:14:36"
+                            }
+                          ],
+                          "AVG_EXPOSURE_RATE": [
+                            {
+                              "value": 40,
+                              "date_time": "2013-08-19 21:30:48"
+                            },
+                            {
+                              "value": 36,
+                              "date_time": "1985-01-27 11:00:49"
+                            }
+                          ],
+                          "PV": [
+                            {
+                              "value": 67,
+                              "date_time": "2003-03-03 15:38:40"
+                            },
+                            {
+                              "value": 20,
+                              "date_time": "2001-01-21 22:41:02"
+                            }
+                          ],
+                          "UV": [
+                            {
+                              "value": 77,
+                              "date_time": "1999-01-21 05:13:19"
+                            },
+                            {
+                              "value": 30,
+                              "date_time": "1987-06-29 23:27:19"
+                            }
+                          ],
+                          "CVR": [
+                            {
+                              "value": 43,
+                              "date_time": "2006-02-02 08:24:52"
+                            },
+                            {
+                              "value": 9,
+                              "date_time": "1983-05-13 04:37:05"
+                            }
+                          ],
+                          "AVG_VISIT_TIME": [
+                            {
+                              "value": 52,
+                              "date_time": "2017-09-25 13:06:03"
+                            },
+                            {
+                              "value": 43,
+                              "date_time": "2012-01-08 17:03:08"
+                            },
+                            {
+                              "value": 80,
+                              "date_time": "1991-09-08 00:00:47"
+                            },
+                            {
+                              "value": 91,
+                              "date_time": "1986-10-04 00:18:36"
+                            },
+                            {
+                              "value": 15,
+                              "date_time": "2001-04-15 07:38:17"
+                            }
+                          ]
+                        },
+                        "site_id": "47"
+                      },
+                      "code": 83,
+                      "message": "Ut dolor adipisicing qui minim",
+                      "request_id": "68"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61391213-run"
+      }
+    },
+    "/v3.0/report/custom/get/": {
+      "get": {
+        "summary": "自定义报表",
+        "x-apifox-folder": "report",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "自定义报表是基于巨量引擎体验版对于数据报表提供新的接口能力，用户可以自由选择和组合指标和维度，以此定义数据报表的字段。\n相关指标和维度可通过获取自定义报表可用维度和指标接口获取不同数据主题下的可用维度和指标。",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "description": "广告主id",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dimensions",
+            "in": "query",
+            "description": "维度列表。\n获取方式：\n1.巨量引擎体验版—>报表—>新建/编辑自定义报表—>API参数生成。该字段从前端自定义报表中获取，建议不要修改。\n2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标",
+            "required": true,
+            "example": "[\"ABC\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metrics",
+            "in": "query",
+            "description": "指标列表 。\n获取方式：\n1.巨量引擎体验版—>报表—>新建/编辑自定义报表—>API参数生成。该字段从前端自定义报表中获取，建议不要修改。\n2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标",
+            "required": true,
+            "example": "[\"ABC\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "过滤条件。\n获取方式：\n1.巨量引擎体验版—>报表—>新建/编辑自定义报表—>API参数生成。该字段从前端自定义报表中获取，建议不要修改。\n2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标\n字段：\nfield：条件必填，过滤的消耗指标字段\ntype：条件必填，字段类型。允许值：1 -固定枚举值，2 - 固定输入值，3 -数类型\noperator：条件必填，处理方式。 允许值：1 -等于，2 -小于，3 -小于等于，4 -大于，5 -大于等于，6 -不等于，7-包含，8 -不包含，9 -范围查询，10 -多个值匹配包含，11 -多个值匹配都要包含\nvalues：条件必填，过滤字段具体值",
+            "required": true,
+            "example": "[{\"field\":\"abc\", \"type\":123,\"operator\":1,\"values\":\"abc\"}]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_time",
+            "in": "query",
+            "description": "开始时间。格式为：yyyy-MM-dd。例如2022-08-01",
+            "required": true,
+            "example": "2023-02-01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_time",
+            "in": "query",
+            "description": "结束时间。格式为：yyyy-MM-dd。例如2022-08-01（默认为当天23:59:59）",
+            "required": true,
+            "example": "2023-02-10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "description": "排序\nfield:排序字段。字段必须在选中的metrics或dimensions中。其中metrics所有字段支持排序。dimensions是否排序请参考维度、指标说明。\ntype:排序类型 可选值:ASC: 升序DESC: 降序",
+            "required": true,
+            "example": "[{\"field\":\"ABC\",\"type\":\"DESC\"}]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "页面大小。默认为10，最大100",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "data_topic",
+            "in": "query",
+            "description": "数据主题，默认值：BASIC_DATA广告基础数据，枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据，注：从巨量引擎体验版平台获取到API参数生成后需在请求参数中手动添加对应的数据主题，否则将无法正确获取数据",
+            "required": false,
+            "example": "BASIC_DATA",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "integer"
+                            },
+                            "page_size": {
+                              "type": "integer"
+                            },
+                            "total_number": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "x-apifox-orders": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "description": "分页信息",
+                          "x-apifox-ignore-properties": []
+                        },
+                        "rows": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dimensions": {
+                                "type": "object",
+                                "properties": {
+                                  "cdp_project_id": {
+                                    "type": "string"
+                                  },
+                                  "stat_time_hour": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "cdp_project_id",
+                                  "stat_time_hour"
+                                ],
+                                "x-apifox-orders": [
+                                  "cdp_project_id",
+                                  "stat_time_hour"
+                                ],
+                                "description": "维度数据",
+                                "x-apifox-ignore-properties": []
+                              },
+                              "metrics": {
+                                "type": "object",
+                                "properties": {
+                                  "click_cnt": {
+                                    "type": "string"
+                                  },
+                                  "conversion_cost": {
+                                    "type": "string"
+                                  },
+                                  "conversion_rate": {
+                                    "type": "string"
+                                  },
+                                  "convert_cnt": {
+                                    "type": "string"
+                                  },
+                                  "cpc_platform": {
+                                    "type": "string"
+                                  },
+                                  "cpm_platform": {
+                                    "type": "string"
+                                  },
+                                  "ctr": {
+                                    "type": "string"
+                                  },
+                                  "deep_convert_cnt": {
+                                    "type": "string"
+                                  },
+                                  "deep_convert_cost": {
+                                    "type": "string"
+                                  },
+                                  "deep_convert_rate": {
+                                    "type": "string"
+                                  },
+                                  "show_cnt": {
+                                    "type": "string"
+                                  },
+                                  "stat_cost": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "click_cnt",
+                                  "conversion_cost",
+                                  "conversion_rate",
+                                  "convert_cnt",
+                                  "cpc_platform",
+                                  "cpm_platform",
+                                  "ctr",
+                                  "deep_convert_cnt",
+                                  "deep_convert_cost",
+                                  "deep_convert_rate",
+                                  "show_cnt",
+                                  "stat_cost"
+                                ],
+                                "x-apifox-orders": [
+                                  "click_cnt",
+                                  "conversion_cost",
+                                  "conversion_rate",
+                                  "convert_cnt",
+                                  "cpc_platform",
+                                  "cpm_platform",
+                                  "ctr",
+                                  "deep_convert_cnt",
+                                  "deep_convert_cost",
+                                  "deep_convert_rate",
+                                  "show_cnt",
+                                  "stat_cost"
+                                ],
+                                "description": "指标数据",
+                                "x-apifox-ignore-properties": []
+                              }
+                            },
+                            "required": [
+                              "dimensions",
+                              "metrics"
+                            ],
+                            "x-apifox-orders": [
+                              "dimensions",
+                              "metrics"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        },
+                        "total_metrics": {
+                          "type": "object",
+                          "properties": {
+                            "click_cnt": {
+                              "type": "string"
+                            },
+                            "conversion_cost": {
+                              "type": "string"
+                            },
+                            "conversion_rate": {
+                              "type": "string"
+                            },
+                            "convert_cnt": {
+                              "type": "string"
+                            },
+                            "cpc_platform": {
+                              "type": "string"
+                            },
+                            "cpm_platform": {
+                              "type": "string"
+                            },
+                            "ctr": {
+                              "type": "string"
+                            },
+                            "deep_convert_cnt": {
+                              "type": "string"
+                            },
+                            "deep_convert_cost": {
+                              "type": "string"
+                            },
+                            "deep_convert_rate": {
+                              "type": "string"
+                            },
+                            "show_cnt": {
+                              "type": "string"
+                            },
+                            "stat_cost": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "click_cnt",
+                            "conversion_cost",
+                            "conversion_rate",
+                            "convert_cnt",
+                            "cpc_platform",
+                            "cpm_platform",
+                            "ctr",
+                            "deep_convert_cnt",
+                            "deep_convert_cost",
+                            "deep_convert_rate",
+                            "show_cnt",
+                            "stat_cost"
+                          ],
+                          "x-apifox-orders": [
+                            "click_cnt",
+                            "conversion_cost",
+                            "conversion_rate",
+                            "convert_cnt",
+                            "cpc_platform",
+                            "cpm_platform",
+                            "ctr",
+                            "deep_convert_cnt",
+                            "deep_convert_cost",
+                            "deep_convert_rate",
+                            "show_cnt",
+                            "stat_cost"
+                          ],
+                          "description": "指标汇总数据",
+                          "x-apifox-ignore-properties": []
+                        }
+                      },
+                      "required": [
+                        "page_info",
+                        "rows",
+                        "total_metrics"
+                      ],
+                      "x-apifox-orders": [
+                        "page_info",
+                        "rows",
+                        "total_metrics"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-orders": [
+                    "01GRTN4Q8WKK960Z1R19HJBQEG",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRTN4Q8WKK960Z1R19HJBQEG": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "page_info": {
+                          "page": 48,
+                          "page_size": 53,
+                          "total_number": 67,
+                          "total_page": 16
+                        },
+                        "rows": [
+                          {
+                            "dimensions": {
+                              "cdp_project_id": "65",
+                              "stat_time_hour": "2017-08-28 18:19:14"
+                            },
+                            "metrics": {
+                              "click_cnt": "sint",
+                              "conversion_cost": "veniam officia",
+                              "conversion_rate": "ad culpa anim",
+                              "convert_cnt": "in irure",
+                              "cpc_platform": "sit proident",
+                              "cpm_platform": "ex dolor nostrud",
+                              "ctr": "et cillum voluptate ex",
+                              "deep_convert_cnt": "dolore",
+                              "deep_convert_cost": "dolor amet",
+                              "deep_convert_rate": "occaecat dolore nostrud labore est",
+                              "show_cnt": "voluptate aliqua do laboris eu",
+                              "stat_cost": "in sunt anim incididunt magna"
+                            }
+                          },
+                          {
+                            "dimensions": {
+                              "cdp_project_id": "72",
+                              "stat_time_hour": "1986-02-26 04:55:06"
+                            },
+                            "metrics": {
+                              "click_cnt": "anim Excepteur ea",
+                              "conversion_cost": "nisi deserunt exercitation velit",
+                              "conversion_rate": "dolor Lorem fugiat id dolor",
+                              "convert_cnt": "mollit nostrud eu",
+                              "cpc_platform": "elit deserunt pariatur Excepteur",
+                              "cpm_platform": "qui deserunt Duis aute",
+                              "ctr": "amet",
+                              "deep_convert_cnt": "reprehenderit culpa occaecat nulla",
+                              "deep_convert_cost": "tempor",
+                              "deep_convert_rate": "deserunt enim",
+                              "show_cnt": "in esse incididunt et",
+                              "stat_cost": "sed sunt"
+                            }
+                          },
+                          {
+                            "dimensions": {
+                              "cdp_project_id": "63",
+                              "stat_time_hour": "1971-05-28 20:19:51"
+                            },
+                            "metrics": {
+                              "click_cnt": "nisi laboris et",
+                              "conversion_cost": "quis qui",
+                              "conversion_rate": "Duis dolor velit ea incididunt",
+                              "convert_cnt": "sit dolore dolor reprehenderit consequat",
+                              "cpc_platform": "in",
+                              "cpm_platform": "in adipisicing Lorem fugiat",
+                              "ctr": "dolore nisi enim ad occaecat",
+                              "deep_convert_cnt": "commodo velit aliqua pariatur",
+                              "deep_convert_cost": "laboris est voluptate",
+                              "deep_convert_rate": "ut ipsum quis non consequat",
+                              "show_cnt": "ipsum",
+                              "stat_cost": "magna irure deserunt"
+                            }
+                          },
+                          {
+                            "dimensions": {
+                              "cdp_project_id": "68",
+                              "stat_time_hour": "1976-05-14 06:24:05"
+                            },
+                            "metrics": {
+                              "click_cnt": "in pariatur",
+                              "conversion_cost": "Ut nostrud ipsum amet dolore",
+                              "conversion_rate": "non",
+                              "convert_cnt": "sint est dolore nostrud",
+                              "cpc_platform": "consectetur dolore officia cillum",
+                              "cpm_platform": "labore incididunt",
+                              "ctr": "incididunt eiusmod",
+                              "deep_convert_cnt": "sunt in in",
+                              "deep_convert_cost": "veniam culpa irure eu laborum",
+                              "deep_convert_rate": "culpa do",
+                              "show_cnt": "ipsum do commodo eiusmod anim",
+                              "stat_cost": "non Duis pariatur"
+                            }
+                          },
+                          {
+                            "dimensions": {
+                              "cdp_project_id": "1",
+                              "stat_time_hour": "2012-08-26 14:57:24"
+                            },
+                            "metrics": {
+                              "click_cnt": "fugiat tempor ad sed aliqua",
+                              "conversion_cost": "labore",
+                              "conversion_rate": "consequat eiusmod voluptate",
+                              "convert_cnt": "quis",
+                              "cpc_platform": "est in proident",
+                              "cpm_platform": "adipisicing occaecat",
+                              "ctr": "quis voluptate dolor ex",
+                              "deep_convert_cnt": "consequat magna esse",
+                              "deep_convert_cost": "cillum",
+                              "deep_convert_rate": "nisi sit irure",
+                              "show_cnt": "mollit",
+                              "stat_cost": "in non est ut ut"
+                            }
+                          }
+                        ],
+                        "total_metrics": {
+                          "click_cnt": "aliquip",
+                          "conversion_cost": "et cupidatat est dolor",
+                          "conversion_rate": "dolore non dolor",
+                          "convert_cnt": "est dolor adipisicing consectetur",
+                          "cpc_platform": "quis",
+                          "cpm_platform": "ipsum quis sint eiusmod",
+                          "ctr": "nulla veniam",
+                          "deep_convert_cnt": "quis nisi",
+                          "deep_convert_cost": "ex id amet ad sit",
+                          "deep_convert_rate": "id voluptate",
+                          "show_cnt": "tempor magna velit",
+                          "stat_cost": "pariatur cupidatat ullamco consequat"
+                        }
+                      },
+                      "code": 44,
+                      "message": "tempor Ut",
+                      "request_id": "49"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61406479-run"
       }
     }
   },

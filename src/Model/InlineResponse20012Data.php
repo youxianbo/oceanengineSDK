@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006
+ * InlineResponse20012Data
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse2006 Class Doc Comment
+ * InlineResponse20012Data Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse2006 implements ModelInterface, ArrayAccess
+class InlineResponse20012Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6';
+    protected static $openAPIModelName = 'inline_response_200_12_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,9 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'request_id' => 'string',
-        'data' => '\Oceanengine\Open\Model\InlineResponse2006Data'
+        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20011MetricsDict',
+        'province_name' => 'string',
+        'city_name' => 'string'
     ];
 
     /**
@@ -69,10 +68,9 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => 'int32',
-        'message' => null,
-        'request_id' => null,
-        'data' => null
+        'metrics_dict' => null,
+        'province_name' => null,
+        'city_name' => null
     ];
 
     /**
@@ -102,10 +100,9 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'request_id' => 'request_id',
-        'data' => 'data'
+        'metrics_dict' => 'metrics_dict',
+        'province_name' => 'province_name',
+        'city_name' => 'city_name'
     ];
 
     /**
@@ -114,10 +111,9 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'request_id' => 'setRequestId',
-        'data' => 'setData'
+        'metrics_dict' => 'setMetricsDict',
+        'province_name' => 'setProvinceName',
+        'city_name' => 'setCityName'
     ];
 
     /**
@@ -126,10 +122,9 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'request_id' => 'getRequestId',
-        'data' => 'getData'
+        'metrics_dict' => 'getMetricsDict',
+        'province_name' => 'getProvinceName',
+        'city_name' => 'getCityName'
     ];
 
     /**
@@ -192,10 +187,9 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['metrics_dict'] = isset($data['metrics_dict']) ? $data['metrics_dict'] : null;
+        $this->container['province_name'] = isset($data['province_name']) ? $data['province_name'] : null;
+        $this->container['city_name'] = isset($data['city_name']) ? $data['city_name'] : null;
     }
 
     /**
@@ -207,15 +201,6 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['request_id'] === null) {
-            $invalidProperties[] = "'request_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -232,97 +217,73 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets metrics_dict
      *
-     * @return int
+     * @return \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null
      */
-    public function getCode()
+    public function getMetricsDict()
     {
-        return $this->container['code'];
+        return $this->container['metrics_dict'];
     }
 
     /**
-     * Sets code
+     * Sets metrics_dict
      *
-     * @param int $code code
+     * @param \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null $metrics_dict metrics_dict
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setMetricsDict($metrics_dict)
     {
-        $this->container['code'] = $code;
+        $this->container['metrics_dict'] = $metrics_dict;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets province_name
      *
-     * @return string
+     * @return string|null
      */
-    public function getMessage()
+    public function getProvinceName()
     {
-        return $this->container['message'];
+        return $this->container['province_name'];
     }
 
     /**
-     * Sets message
+     * Sets province_name
      *
-     * @param string $message message
+     * @param string|null $province_name province_name
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setProvinceName($province_name)
     {
-        $this->container['message'] = $message;
+        $this->container['province_name'] = $province_name;
 
         return $this;
     }
 
     /**
-     * Gets request_id
+     * Gets city_name
      *
-     * @return string
+     * @return string|null
      */
-    public function getRequestId()
+    public function getCityName()
     {
-        return $this->container['request_id'];
+        return $this->container['city_name'];
     }
 
     /**
-     * Sets request_id
+     * Sets city_name
      *
-     * @param string $request_id request_id
+     * @param string|null $city_name city_name
      *
      * @return $this
      */
-    public function setRequestId($request_id)
+    public function setCityName($city_name)
     {
-        $this->container['request_id'] = $request_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse2006Data|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse2006Data|null $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
+        $this->container['city_name'] = $city_name;
 
         return $this;
     }

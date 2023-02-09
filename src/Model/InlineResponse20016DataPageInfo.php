@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006
+ * InlineResponse20016DataPageInfo
  *
  * PHP version 5
  *
@@ -33,14 +33,15 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse2006 Class Doc Comment
+ * InlineResponse20016DataPageInfo Class Doc Comment
  *
  * @category Class
+ * @description 分页信息
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse2006 implements ModelInterface, ArrayAccess
+class InlineResponse20016DataPageInfo implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6';
+    protected static $openAPIModelName = 'inline_response_200_16_data_page_info';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +58,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'request_id' => 'string',
-        'data' => '\Oceanengine\Open\Model\InlineResponse2006Data'
+        'page' => 'int',
+        'page_size' => 'int',
+        'total_number' => 'int',
+        'total_page' => 'int'
     ];
 
     /**
@@ -69,10 +70,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => 'int32',
-        'message' => null,
-        'request_id' => null,
-        'data' => null
+        'page' => 'int32',
+        'page_size' => 'int32',
+        'total_number' => 'int32',
+        'total_page' => 'int32'
     ];
 
     /**
@@ -102,10 +103,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'request_id' => 'request_id',
-        'data' => 'data'
+        'page' => 'page',
+        'page_size' => 'page_size',
+        'total_number' => 'total_number',
+        'total_page' => 'total_page'
     ];
 
     /**
@@ -114,10 +115,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'request_id' => 'setRequestId',
-        'data' => 'setData'
+        'page' => 'setPage',
+        'page_size' => 'setPageSize',
+        'total_number' => 'setTotalNumber',
+        'total_page' => 'setTotalPage'
     ];
 
     /**
@@ -126,10 +127,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'request_id' => 'getRequestId',
-        'data' => 'getData'
+        'page' => 'getPage',
+        'page_size' => 'getPageSize',
+        'total_number' => 'getTotalNumber',
+        'total_page' => 'getTotalPage'
     ];
 
     /**
@@ -192,10 +193,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
+        $this->container['total_number'] = isset($data['total_number']) ? $data['total_number'] : null;
+        $this->container['total_page'] = isset($data['total_page']) ? $data['total_page'] : null;
     }
 
     /**
@@ -207,14 +208,17 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        if ($this->container['page'] === null) {
+            $invalidProperties[] = "'page' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['page_size'] === null) {
+            $invalidProperties[] = "'page_size' can't be null";
         }
-        if ($this->container['request_id'] === null) {
-            $invalidProperties[] = "'request_id' can't be null";
+        if ($this->container['total_number'] === null) {
+            $invalidProperties[] = "'total_number' can't be null";
+        }
+        if ($this->container['total_page'] === null) {
+            $invalidProperties[] = "'total_page' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,97 +236,97 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets page
      *
      * @return int
      */
-    public function getCode()
+    public function getPage()
     {
-        return $this->container['code'];
+        return $this->container['page'];
     }
 
     /**
-     * Sets code
+     * Sets page
      *
-     * @param int $code code
+     * @param int $page page
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setPage($page)
     {
-        $this->container['code'] = $code;
+        $this->container['page'] = $page;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets page_size
      *
-     * @return string
+     * @return int
      */
-    public function getMessage()
+    public function getPageSize()
     {
-        return $this->container['message'];
+        return $this->container['page_size'];
     }
 
     /**
-     * Sets message
+     * Sets page_size
      *
-     * @param string $message message
+     * @param int $page_size page_size
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setPageSize($page_size)
     {
-        $this->container['message'] = $message;
+        $this->container['page_size'] = $page_size;
 
         return $this;
     }
 
     /**
-     * Gets request_id
+     * Gets total_number
      *
-     * @return string
+     * @return int
      */
-    public function getRequestId()
+    public function getTotalNumber()
     {
-        return $this->container['request_id'];
+        return $this->container['total_number'];
     }
 
     /**
-     * Sets request_id
+     * Sets total_number
      *
-     * @param string $request_id request_id
+     * @param int $total_number total_number
      *
      * @return $this
      */
-    public function setRequestId($request_id)
+    public function setTotalNumber($total_number)
     {
-        $this->container['request_id'] = $request_id;
+        $this->container['total_number'] = $total_number;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets total_page
      *
-     * @return \Oceanengine\Open\Model\InlineResponse2006Data|null
+     * @return int
      */
-    public function getData()
+    public function getTotalPage()
     {
-        return $this->container['data'];
+        return $this->container['total_page'];
     }
 
     /**
-     * Sets data
+     * Sets total_page
      *
-     * @param \Oceanengine\Open\Model\InlineResponse2006Data|null $data data
+     * @param int $total_page total_page
      *
      * @return $this
      */
-    public function setData($data)
+    public function setTotalPage($total_page)
     {
-        $this->container['data'] = $data;
+        $this->container['total_page'] = $total_page;
 
         return $this;
     }

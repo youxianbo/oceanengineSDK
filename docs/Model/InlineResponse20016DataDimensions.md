@@ -1,12 +1,10 @@
-# InlineResponse2006
+# InlineResponse20016DataDimensions
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** |  | 
-**message** | **string** |  | 
-**request_id** | **string** |  | 
-**data** | [**\Oceanengine\Open\Model\InlineResponse2006Data**](InlineResponse2006Data.md) |  | [optional] 
+**cdp_project_id** | **string** |  | 
+**stat_time_hour** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

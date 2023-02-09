@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006
+ * InlineResponse20011MetricsDict
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse2006 Class Doc Comment
+ * InlineResponse20011MetricsDict Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse2006 implements ModelInterface, ArrayAccess
+class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6';
+    protected static $openAPIModelName = 'inline_response_200_11_metrics_dict';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'request_id' => 'string',
-        'data' => '\Oceanengine\Open\Model\InlineResponse2006Data'
+        'show' => 'int',
+        'convert' => 'int',
+        'cost' => 'int',
+        'click' => 'int'
     ];
 
     /**
@@ -69,10 +69,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => 'int32',
-        'message' => null,
-        'request_id' => null,
-        'data' => null
+        'show' => 'int32',
+        'convert' => 'int32',
+        'cost' => 'int32',
+        'click' => 'int32'
     ];
 
     /**
@@ -102,10 +102,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'request_id' => 'request_id',
-        'data' => 'data'
+        'show' => 'show',
+        'convert' => 'convert',
+        'cost' => 'cost',
+        'click' => 'click'
     ];
 
     /**
@@ -114,10 +114,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'request_id' => 'setRequestId',
-        'data' => 'setData'
+        'show' => 'setShow',
+        'convert' => 'setConvert',
+        'cost' => 'setCost',
+        'click' => 'setClick'
     ];
 
     /**
@@ -126,10 +126,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'request_id' => 'getRequestId',
-        'data' => 'getData'
+        'show' => 'getShow',
+        'convert' => 'getConvert',
+        'cost' => 'getCost',
+        'click' => 'getClick'
     ];
 
     /**
@@ -192,10 +192,10 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['show'] = isset($data['show']) ? $data['show'] : null;
+        $this->container['convert'] = isset($data['convert']) ? $data['convert'] : null;
+        $this->container['cost'] = isset($data['cost']) ? $data['cost'] : null;
+        $this->container['click'] = isset($data['click']) ? $data['click'] : null;
     }
 
     /**
@@ -207,14 +207,17 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        if ($this->container['show'] === null) {
+            $invalidProperties[] = "'show' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['convert'] === null) {
+            $invalidProperties[] = "'convert' can't be null";
         }
-        if ($this->container['request_id'] === null) {
-            $invalidProperties[] = "'request_id' can't be null";
+        if ($this->container['cost'] === null) {
+            $invalidProperties[] = "'cost' can't be null";
+        }
+        if ($this->container['click'] === null) {
+            $invalidProperties[] = "'click' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,97 +235,97 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets show
      *
      * @return int
      */
-    public function getCode()
+    public function getShow()
     {
-        return $this->container['code'];
+        return $this->container['show'];
     }
 
     /**
-     * Sets code
+     * Sets show
      *
-     * @param int $code code
+     * @param int $show show
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setShow($show)
     {
-        $this->container['code'] = $code;
+        $this->container['show'] = $show;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets convert
      *
-     * @return string
+     * @return int
      */
-    public function getMessage()
+    public function getConvert()
     {
-        return $this->container['message'];
+        return $this->container['convert'];
     }
 
     /**
-     * Sets message
+     * Sets convert
      *
-     * @param string $message message
+     * @param int $convert 转化数
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setConvert($convert)
     {
-        $this->container['message'] = $message;
+        $this->container['convert'] = $convert;
 
         return $this;
     }
 
     /**
-     * Gets request_id
+     * Gets cost
      *
-     * @return string
+     * @return int
      */
-    public function getRequestId()
+    public function getCost()
     {
-        return $this->container['request_id'];
+        return $this->container['cost'];
     }
 
     /**
-     * Sets request_id
+     * Sets cost
      *
-     * @param string $request_id request_id
+     * @param int $cost 总消耗(单位元,精确到分)
      *
      * @return $this
      */
-    public function setRequestId($request_id)
+    public function setCost($cost)
     {
-        $this->container['request_id'] = $request_id;
+        $this->container['cost'] = $cost;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets click
      *
-     * @return \Oceanengine\Open\Model\InlineResponse2006Data|null
+     * @return int
      */
-    public function getData()
+    public function getClick()
     {
-        return $this->container['data'];
+        return $this->container['click'];
     }
 
     /**
-     * Sets data
+     * Sets click
      *
-     * @param \Oceanengine\Open\Model\InlineResponse2006Data|null $data data
+     * @param int $click click
      *
      * @return $this
      */
-    public function setData($data)
+    public function setClick($click)
     {
-        $this->container['data'] = $data;
+        $this->container['click'] = $click;
 
         return $this;
     }

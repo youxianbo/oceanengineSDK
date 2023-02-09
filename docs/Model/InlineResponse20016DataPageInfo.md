@@ -1,12 +1,12 @@
-# InlineResponse2006
+# InlineResponse20016DataPageInfo
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** |  | 
-**message** | **string** |  | 
-**request_id** | **string** |  | 
-**data** | [**\Oceanengine\Open\Model\InlineResponse2006Data**](InlineResponse2006Data.md) |  | [optional] 
+**page** | **int** |  | 
+**page_size** | **int** |  | 
+**total_number** | **int** |  | 
+**total_page** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

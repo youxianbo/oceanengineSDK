@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006
+ * InlineResponse20015DataSiteRecordAVGLOADTIME
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse2006 Class Doc Comment
+ * InlineResponse20015DataSiteRecordAVGLOADTIME Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse2006 implements ModelInterface, ArrayAccess
+class InlineResponse20015DataSiteRecordAVGLOADTIME implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6';
+    protected static $openAPIModelName = 'inline_response_200_15_data_site_record_AVG_LOAD_TIME';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'request_id' => 'string',
-        'data' => '\Oceanengine\Open\Model\InlineResponse2006Data'
+        'value' => 'int',
+        'date_time' => 'string'
     ];
 
     /**
@@ -69,10 +67,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => 'int32',
-        'message' => null,
-        'request_id' => null,
-        'data' => null
+        'value' => 'int32',
+        'date_time' => null
     ];
 
     /**
@@ -102,10 +98,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'request_id' => 'request_id',
-        'data' => 'data'
+        'value' => 'value',
+        'date_time' => 'date_time'
     ];
 
     /**
@@ -114,10 +108,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'request_id' => 'setRequestId',
-        'data' => 'setData'
+        'value' => 'setValue',
+        'date_time' => 'setDateTime'
     ];
 
     /**
@@ -126,10 +118,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'request_id' => 'getRequestId',
-        'data' => 'getData'
+        'value' => 'getValue',
+        'date_time' => 'getDateTime'
     ];
 
     /**
@@ -192,10 +182,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['date_time'] = isset($data['date_time']) ? $data['date_time'] : null;
     }
 
     /**
@@ -207,14 +195,11 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['request_id'] === null) {
-            $invalidProperties[] = "'request_id' can't be null";
+        if ($this->container['date_time'] === null) {
+            $invalidProperties[] = "'date_time' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,97 +217,49 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets value
      *
      * @return int
      */
-    public function getCode()
+    public function getValue()
     {
-        return $this->container['code'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets code
+     * Sets value
      *
-     * @param int $code code
+     * @param int $value value
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setValue($value)
     {
-        $this->container['code'] = $code;
+        $this->container['value'] = $value;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets date_time
      *
      * @return string
      */
-    public function getMessage()
+    public function getDateTime()
     {
-        return $this->container['message'];
+        return $this->container['date_time'];
     }
 
     /**
-     * Sets message
+     * Sets date_time
      *
-     * @param string $message message
+     * @param string $date_time date_time
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setDateTime($date_time)
     {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_id
-     *
-     * @return string
-     */
-    public function getRequestId()
-    {
-        return $this->container['request_id'];
-    }
-
-    /**
-     * Sets request_id
-     *
-     * @param string $request_id request_id
-     *
-     * @return $this
-     */
-    public function setRequestId($request_id)
-    {
-        $this->container['request_id'] = $request_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse2006Data|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse2006Data|null $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
+        $this->container['date_time'] = $date_time;
 
         return $this;
     }

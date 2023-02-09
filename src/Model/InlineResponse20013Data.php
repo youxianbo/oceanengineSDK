@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006
+ * InlineResponse20013Data
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse2006 Class Doc Comment
+ * InlineResponse20013Data Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse2006 implements ModelInterface, ArrayAccess
+class InlineResponse20013Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6';
+    protected static $openAPIModelName = 'inline_response_200_13_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'request_id' => 'string',
-        'data' => '\Oceanengine\Open\Model\InlineResponse2006Data'
+        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20011MetricsDict',
+        'gender_name' => 'string'
     ];
 
     /**
@@ -69,10 +67,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => 'int32',
-        'message' => null,
-        'request_id' => null,
-        'data' => null
+        'metrics_dict' => null,
+        'gender_name' => null
     ];
 
     /**
@@ -102,10 +98,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'request_id' => 'request_id',
-        'data' => 'data'
+        'metrics_dict' => 'metrics_dict',
+        'gender_name' => 'gender_name'
     ];
 
     /**
@@ -114,10 +108,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'request_id' => 'setRequestId',
-        'data' => 'setData'
+        'metrics_dict' => 'setMetricsDict',
+        'gender_name' => 'setGenderName'
     ];
 
     /**
@@ -126,10 +118,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'request_id' => 'getRequestId',
-        'data' => 'getData'
+        'metrics_dict' => 'getMetricsDict',
+        'gender_name' => 'getGenderName'
     ];
 
     /**
@@ -192,10 +182,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['metrics_dict'] = isset($data['metrics_dict']) ? $data['metrics_dict'] : null;
+        $this->container['gender_name'] = isset($data['gender_name']) ? $data['gender_name'] : null;
     }
 
     /**
@@ -207,15 +195,6 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['request_id'] === null) {
-            $invalidProperties[] = "'request_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -232,97 +211,49 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets metrics_dict
      *
-     * @return int
+     * @return \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null
      */
-    public function getCode()
+    public function getMetricsDict()
     {
-        return $this->container['code'];
+        return $this->container['metrics_dict'];
     }
 
     /**
-     * Sets code
+     * Sets metrics_dict
      *
-     * @param int $code code
+     * @param \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null $metrics_dict metrics_dict
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setMetricsDict($metrics_dict)
     {
-        $this->container['code'] = $code;
+        $this->container['metrics_dict'] = $metrics_dict;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets gender_name
      *
-     * @return string
+     * @return string|null
      */
-    public function getMessage()
+    public function getGenderName()
     {
-        return $this->container['message'];
+        return $this->container['gender_name'];
     }
 
     /**
-     * Sets message
+     * Sets gender_name
      *
-     * @param string $message message
+     * @param string|null $gender_name 性别，允许值：男，女，其他
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setGenderName($gender_name)
     {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_id
-     *
-     * @return string
-     */
-    public function getRequestId()
-    {
-        return $this->container['request_id'];
-    }
-
-    /**
-     * Sets request_id
-     *
-     * @param string $request_id request_id
-     *
-     * @return $this
-     */
-    public function setRequestId($request_id)
-    {
-        $this->container['request_id'] = $request_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse2006Data|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse2006Data|null $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
+        $this->container['gender_name'] = $gender_name;
 
         return $this;
     }

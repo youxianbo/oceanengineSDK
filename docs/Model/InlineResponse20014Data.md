@@ -1,12 +1,10 @@
-# InlineResponse2006
+# InlineResponse20014Data
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** |  | 
-**message** | **string** |  | 
-**request_id** | **string** |  | 
-**data** | [**\Oceanengine\Open\Model\InlineResponse2006Data**](InlineResponse2006Data.md) |  | [optional] 
+**metrics_dict** | [**\Oceanengine\Open\Model\InlineResponse20011MetricsDict**](InlineResponse20011MetricsDict.md) |  | [optional] 
+**age_name** | **string** | 年龄段 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
