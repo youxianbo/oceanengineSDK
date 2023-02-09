@@ -17,6 +17,5 @@
   "enumUnknownDefaultCase": false,
   "disallowAdditionalPropertiesIfNotPresent": true,
   "allowUnicodeIdentifiers": false,
-  "variableNamingConvention": "snake_case",
-  "classname": "TestClassName"
+  "variableNamingConvention": "snake_case"
 }
