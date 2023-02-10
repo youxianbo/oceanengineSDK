@@ -4820,6 +4820,1699 @@
         },
         "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61406479-run"
       }
+    },
+    "/2/majordomo/advertiser/select/": {
+      "get": {
+        "summary": "获取纵横组织下资产账户列表",
+        "x-apifox-folder": "advertiser",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "advertiser"
+        ],
+        "parameters": [
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "advertiser_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "纵横组织id"
+                  }
+                },
+                "x-apifox-orders": [
+                  "advertiser_id"
+                ],
+                "required": [
+                  "advertiser_id"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "advertiser_id": {
+                                "type": "integer"
+                              },
+                              "advertiser_name": {
+                                "type": "string"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "advertiser_id",
+                              "advertiser_name"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        }
+                      },
+                      "required": [
+                        "list"
+                      ],
+                      "x-apifox-orders": [
+                        "list"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRWQQY2RRE2N21SFQQMKDQMX",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRWQQY2RRE2N21SFQQMKDQMX": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "message": "OK",
+                      "code": 0,
+                      "data": {
+                        "list": [
+                          {
+                            "advertiser_id": 1712345617528077,
+                            "advertiser_name": "成都XXX文化传播有限公司A2"
+                          }
+                        ]
+                      },
+                      "request_id": "20230210115836843BAA52C0B784B0E483"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61548501-run"
+      }
+    },
+    "/2/business_platform/partner_organization/list/": {
+      "get": {
+        "summary": "查询合作组织",
+        "x-apifox-folder": "advertiser",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "合作组织：合作组织的设立，可以帮助实现跨组织协作及跨组织资产管理。",
+        "tags": [
+          "advertiser"
+        ],
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "query",
+            "description": "巨量纵横组织id（即管家账户）",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "页面大小，默认值为10，最大不超过200",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filtering",
+            "in": "query",
+            "description": "合作状态，默认查询绑定成功的状态，允许值：BOUND（已绑定）、BINDING（绑定中）、INVALID（失效）、DELETED（删除）",
+            "required": false,
+            "example": "[\"partner_organization_ids\":[123],\"status\":[\"BOUND\"]]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "partner_organization_id": {
+                                "type": "integer"
+                              },
+                              "remark": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "partner_organization_id",
+                              "remark",
+                              "status"
+                            ],
+                            "x-apifox-orders": [
+                              "partner_organization_id",
+                              "remark",
+                              "status"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        },
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "integer"
+                            },
+                            "page_size": {
+                              "type": "integer"
+                            },
+                            "total_number": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "x-apifox-orders": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        }
+                      },
+                      "required": [
+                        "list",
+                        "page_info"
+                      ],
+                      "x-apifox-orders": [
+                        "list",
+                        "page_info"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRWYX60BCM4X2293RKT15XHF",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRWYX60BCM4X2293RKT15XHF": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "202109081725140102112191331607F047",
+                      "data": {
+                        "list": [
+                          {
+                            "partner_organization_id": 0,
+                            "remark": "",
+                            "status": "BOUND"
+                          },
+                          {
+                            "partner_organization_id": 1,
+                            "remark": "",
+                            "status": "BOUND"
+                          },
+                          {
+                            "partner_organization_id": 2,
+                            "remark": "",
+                            "status": "BOUND"
+                          }
+                        ],
+                        "page_info": {
+                          "page": 1,
+                          "page_size": 10,
+                          "total_number": 3,
+                          "total_page": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61587204-run"
+      }
+    },
+    "/v3.0/business_platform/company_info/get/": {
+      "get": {
+        "summary": "获取纵横组织下所有主体信息",
+        "x-apifox-folder": "advertiser",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "advertiser"
+        ],
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "query",
+            "description": "纵横组织id",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "页面数据量. 默认值: 10\n",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "company_info": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "company_id": {
+                                "type": "integer"
+                              },
+                              "company_name": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "company_id",
+                              "company_name",
+                              "status",
+                              "type"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        },
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "integer"
+                            },
+                            "page_size": {
+                              "type": "integer"
+                            },
+                            "total_number": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "x-apifox-orders": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        }
+                      },
+                      "required": [
+                        "company_info",
+                        "page_info"
+                      ],
+                      "x-apifox-orders": [
+                        "company_info",
+                        "page_info"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRWZ2XXZFKSDD09EKJG9TE10",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRWZ2XXZFKSDD09EKJG9TE10": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "202302101409059CEA01FB0834F3F6A8CD",
+                      "data": {
+                        "company_info": [
+                          {
+                            "company_id": 112334331389,
+                            "company_name": "成都XXX文化传播有限公司",
+                            "status": "SUCCESS",
+                            "type": "BP_OWN"
+                          }
+                        ],
+                        "page_info": {
+                          "page": 1,
+                          "page_size": 10,
+                          "total_number": 1,
+                          "total_page": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61590360-run"
+      }
+    },
+    "/v3.0/business_platform/company_account/get/": {
+      "get": {
+        "summary": "获取主体下的账户列表",
+        "x-apifox-folder": "advertiser",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "advertiser"
+        ],
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "query",
+            "description": "纵横组织id",
+            "required": true,
+            "example": "123",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "company_id",
+            "in": "query",
+            "description": "公司主体id",
+            "required": true,
+            "example": "123",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_type",
+            "in": "query",
+            "description": "账户类型，可选值:AD: 广告账户,QIANCHUAN:千川广告账户",
+            "required": true,
+            "example": "[\"AD\"]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "页面数据量. 默认值: 10",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "account_list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "account_id": {
+                                "type": "integer"
+                              },
+                              "account_type": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "account_id",
+                              "account_type"
+                            ],
+                            "x-apifox-orders": [
+                              "account_id",
+                              "account_type"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        },
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "integer"
+                            },
+                            "page_size": {
+                              "type": "integer"
+                            },
+                            "total_number": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "x-apifox-orders": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        }
+                      },
+                      "required": [
+                        "account_list",
+                        "page_info"
+                      ],
+                      "x-apifox-orders": [
+                        "account_list",
+                        "page_info"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRWZDDCV4T3333H6WXSPEJWP",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRWZDDCV4T3333H6WXSPEJWP": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "20230210141457275764CA073C8E961D99",
+                      "data": {
+                        "account_list": [
+                          {
+                            "account_id": 123,
+                            "account_type": null
+                          },
+                          {
+                            "account_id": 123,
+                            "account_type": null
+                          },
+                          {
+                            "account_id": 123,
+                            "account_type": null
+                          },
+                          {
+                            "account_id": 123,
+                            "account_type": null
+                          },
+                          {
+                            "account_id": 123,
+                            "account_type": null
+                          },
+                          {
+                            "account_id": 123,
+                            "account_type": null
+                          },
+                          {
+                            "account_id": 123,
+                            "account_type": null
+                          },
+                          {
+                            "account_id": 123,
+                            "account_type": null
+                          },
+                          {
+                            "account_id": 123,
+                            "account_type": null
+                          }
+                        ],
+                        "page_info": {
+                          "page": 1,
+                          "page_size": 10,
+                          "total_number": 9,
+                          "total_page": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61591397-run"
+      }
+    },
+    "/2/advertiser/fund/get/": {
+      "get": {
+        "summary": "查询账号余额",
+        "x-apifox-folder": "advertiser",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "获取广告主或代理商账户余额信息。",
+        "tags": [
+          "advertiser"
+        ],
+        "parameters": [
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "advertiser_id": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                },
+                "x-apifox-orders": [
+                  "advertiser_id"
+                ],
+                "required": [
+                  "advertiser_id"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "advertiser_id": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "emal": {
+                          "type": "string"
+                        },
+                        "balance": {
+                          "type": "integer"
+                        },
+                        "valid_balance": {
+                          "type": "integer"
+                        },
+                        "cash": {
+                          "type": "integer"
+                        },
+                        "valid_cash": {
+                          "type": "integer"
+                        },
+                        "grant": {
+                          "type": "integer"
+                        },
+                        "union_grant": {
+                          "type": "integer"
+                        },
+                        "search_grant": {
+                          "type": "integer"
+                        },
+                        "common_grant": {
+                          "type": "integer"
+                        },
+                        "default_grant": {
+                          "type": "integer"
+                        },
+                        "valid_grant": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "advertiser_id",
+                        "name",
+                        "emal",
+                        "balance",
+                        "valid_balance",
+                        "cash",
+                        "valid_cash",
+                        "grant",
+                        "union_grant",
+                        "search_grant",
+                        "common_grant",
+                        "default_grant",
+                        "valid_grant"
+                      ],
+                      "x-apifox-orders": [
+                        "advertiser_id",
+                        "name",
+                        "emal",
+                        "balance",
+                        "valid_balance",
+                        "cash",
+                        "valid_cash",
+                        "grant",
+                        "union_grant",
+                        "search_grant",
+                        "common_grant",
+                        "default_grant",
+                        "valid_grant"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-orders": [
+                    "01GRWZQH436V147TY7J5AXDXJE",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRWZQH436V147TY7J5AXDXJE": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "message": "OK",
+                      "code": 0,
+                      "data": {
+                        "advertiser_id": "xxx",
+                        "name": "xxx",
+                        "emal": "xxx",
+                        "balance": 0,
+                        "valid_balance": 0,
+                        "cash": 0,
+                        "valid_cash": 0,
+                        "grant": 0,
+                        "union_grant": 0,
+                        "search_grant": 0,
+                        "common_grant": 0,
+                        "default_grant": 0,
+                        "valid_grant": 0
+                      },
+                      "request_id": "×××"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61594541-run"
+      }
+    },
+    "/2/advertiser/fund/daily_stat/": {
+      "get": {
+        "summary": "查询账户日流水",
+        "x-apifox-folder": "advertiser",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "获取广告主日流水信息，一般每天8点会出来前一天的数据，如果当天存在数据延迟可往后再尝试。",
+        "tags": [
+          "advertiser"
+        ],
+        "parameters": [
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "advertiser_id": {
+                    "type": "string",
+                    "description": "广告主ID"
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "description": "开始时间，格式YYYY-MM-DD，默认当前年份的1月1日"
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "description": "结束时间，格式YYYY-MM-DD，默认为今天，起止时间间隔不能超过一年。"
+                  },
+                  "page": {
+                    "type": "string",
+                    "description": "页码. 默认值: 1，注意：page*page_size不可大于10000"
+                  },
+                  "page_size": {
+                    "type": "string",
+                    "description": "页码. 默认值: 1，注意：page*page_size不可大于10000"
+                  }
+                },
+                "x-apifox-orders": [
+                  "advertiser_id",
+                  "start_date",
+                  "end_date",
+                  "page",
+                  "page_size"
+                ],
+                "required": [
+                  "advertiser_id",
+                  "start_date",
+                  "end_date",
+                  "page",
+                  "page_size"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "advertiser_id": {
+                                "type": "integer"
+                              },
+                              "date": {
+                                "type": "string"
+                              },
+                              "balance": {
+                                "type": "integer"
+                              },
+                              "cash_cost": {
+                                "type": "integer"
+                              },
+                              "shared_wallet_cost": {
+                                "type": "integer"
+                              },
+                              "cost": {
+                                "type": "integer"
+                              },
+                              "frozen": {
+                                "type": "integer"
+                              },
+                              "grant": {
+                                "type": "integer"
+                              },
+                              "income": {
+                                "type": "integer"
+                              },
+                              "reward_cost": {
+                                "type": "integer"
+                              },
+                              "transfer_in": {
+                                "type": "integer"
+                              },
+                              "transfer_out": {
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "advertiser_id",
+                              "date",
+                              "balance",
+                              "cash_cost",
+                              "shared_wallet_cost",
+                              "cost",
+                              "frozen",
+                              "grant",
+                              "income",
+                              "reward_cost",
+                              "transfer_in",
+                              "transfer_out"
+                            ],
+                            "x-apifox-orders": [
+                              "advertiser_id",
+                              "date",
+                              "balance",
+                              "cash_cost",
+                              "shared_wallet_cost",
+                              "cost",
+                              "frozen",
+                              "grant",
+                              "income",
+                              "reward_cost",
+                              "transfer_in",
+                              "transfer_out"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        },
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "page": {
+                              "type": "integer"
+                            },
+                            "page_size": {
+                              "type": "integer"
+                            },
+                            "total_number": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "x-apifox-orders": [
+                            "page",
+                            "page_size",
+                            "total_number",
+                            "total_page"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        }
+                      },
+                      "required": [
+                        "list",
+                        "page_info"
+                      ],
+                      "x-apifox-orders": [
+                        "list",
+                        "page_info"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-orders": [
+                    "01GRX01WBGX1WZNKRACTTX40JJ",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRX01WBGX1WZNKRACTTX40JJ": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "message": "OK",
+                      "code": 0,
+                      "data": {
+                        "list": [
+                          {
+                            "advertiser_id": 123,
+                            "date": "2018-01-01",
+                            "balance": 0,
+                            "cash_cost": 1,
+                            "shared_wallet_cost": 0,
+                            "cost": 0,
+                            "frozen": 0,
+                            "grant": 0,
+                            "income": 0,
+                            "reward_cost": 0,
+                            "transfer_in": 0,
+                            "transfer_out": 0
+                          },
+                          {
+                            "advertiser_id": 123,
+                            "date": "2018-01-02",
+                            "balance": 0,
+                            "cash_cost": 1,
+                            "shared_wallet_cost": 0,
+                            "cost": 0,
+                            "frozen": 0,
+                            "grant": 0,
+                            "income": 0,
+                            "reward_cost": 0,
+                            "transfer_in": 0,
+                            "transfer_out": 0
+                          }
+                        ],
+                        "page_info": {
+                          "page": 1,
+                          "page_size": 10,
+                          "total_number": 2,
+                          "total_page": 1
+                        }
+                      },
+                      "request_id": "×××"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61596470-run"
+      }
+    },
+    "/2/advertiser/fund/transaction/get/": {
+      "get": {
+        "summary": "查询账号流水明细",
+        "x-apifox-folder": "advertiser",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "获取广告主或代理商账户流水明细信息。接口规则如下：\n1.假设某广告主A是代理商下广告主，对于A来说，如果流水类型是转账，而收款方是A则意味着是转账加款，如果付款方是A则意味着是转账退款。\n2.假设某广告主B是直客广告主，未在任何代理商下，如果交易流水类型为充值，则收款方和付款方将都显示广告主B，如果金额为正则是充值交易，金额为负则是退款交易。",
+        "tags": [
+          "advertiser"
+        ],
+        "parameters": [
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Debug-Mode",
+            "in": "header",
+            "description": "",
+            "example": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "advertiser_id": {
+                    "type": "string",
+                    "description": "广告主ID"
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "description": "开始时间，格式YYYY-MM-DD"
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "description": "结束时间，格式YYYY-MM-DD"
+                  },
+                  "transaction_type": {
+                    "type": "string",
+                    "description": "流水类型，详见附录【流水类型】. 允许值: \"RECHARGE\", \"TRANSFER\""
+                  },
+                  "page": {
+                    "type": "string",
+                    "description": "页码. 默认值: 1"
+                  },
+                  "page_size": {
+                    "type": "string",
+                    "description": "页面数据量. 默认值: 10"
+                  }
+                },
+                "x-apifox-orders": [
+                  "advertiser_id",
+                  "start_date",
+                  "end_date",
+                  "transaction_type",
+                  "page",
+                  "page_size"
+                ],
+                "required": [
+                  "advertiser_id",
+                  "transaction_type",
+                  "end_date",
+                  "start_date"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "advertiser_id": {
+                                "type": "integer"
+                              },
+                              "transaction_type": {
+                                "type": "string"
+                              },
+                              "create_time": {
+                                "type": "string"
+                              },
+                              "grant": {
+                                "type": "integer"
+                              },
+                              "frozen": {
+                                "type": "integer"
+                              },
+                              "cash": {
+                                "type": "integer"
+                              },
+                              "amount": {
+                                "type": "integer"
+                              },
+                              "return_goods": {
+                                "type": "integer"
+                              },
+                              "transaction_seq": {
+                                "type": "integer"
+                              },
+                              "remitter": {
+                                "type": "integer"
+                              },
+                              "payee": {
+                                "type": "integer"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "advertiser_id",
+                              "transaction_type",
+                              "create_time",
+                              "grant",
+                              "frozen",
+                              "cash",
+                              "amount",
+                              "return_goods",
+                              "transaction_seq",
+                              "remitter",
+                              "payee"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        }
+                      },
+                      "required": [
+                        "list"
+                      ],
+                      "x-apifox-orders": [
+                        "list"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GRX0ADKPBMPEBA03HVG12WS6",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRX0ADKPBMPEBA03HVG12WS6": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "message": "OK",
+                      "code": 0,
+                      "data": {
+                        "list": [
+                          {
+                            "advertiser_id": 123,
+                            "transaction_type": "TRANSFER",
+                            "create_time": "2018-01-01 00:00:00",
+                            "grant": 0,
+                            "frozen": 0,
+                            "cash": 0,
+                            "amount": 0,
+                            "return_goods": 0,
+                            "transaction_seq": 0,
+                            "remitter": 0,
+                            "payee": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61597682-run"
+      }
+    },
+    "/2/fund/shared_wallet_balance/get/": {
+      "get": {
+        "summary": "获取共享钱包余额",
+        "x-apifox-folder": "advertiser",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "返货相关需要咨询相关的运营和销售同学对接，具备返货相关前置条件下，相关返货资金信息可以通过本接口获得",
+        "tags": [
+          "advertiser"
+        ],
+        "parameters": [
+          {
+            "name": "Access-Token",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{access_token}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "advertiser_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "广告主ID列表，长度1-100"
+                  }
+                },
+                "x-apifox-orders": [
+                  "advertiser_ids"
+                ],
+                "required": [
+                  "advertiser_ids"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "request_id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "balance_detail": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "billing_inventory": {
+                                      "type": "string"
+                                    },
+                                    "balance": {
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "required": [
+                                    "billing_inventory",
+                                    "balance"
+                                  ],
+                                  "x-apifox-orders": [
+                                    "billing_inventory",
+                                    "balance"
+                                  ],
+                                  "x-apifox-ignore-properties": []
+                                }
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "status_message": {
+                                "type": "string"
+                              },
+                              "advertiser_id": {
+                                "type": "integer"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "balance_detail",
+                              "status",
+                              "status_message",
+                              "advertiser_id"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        }
+                      },
+                      "required": [
+                        "list"
+                      ],
+                      "x-apifox-orders": [
+                        "list"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code",
+                    "message",
+                    "request_id"
+                  ],
+                  "x-apifox-orders": [
+                    "01GRX0FD9FFTSC1GJA2DMBXGSG",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRX0FD9FFTSC1GJA2DMBXGSG": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "message",
+                    "request_id"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "message": "OK",
+                      "request_id": "xxxxxxxxxxxxxx",
+                      "data": {
+                        "list": [
+                          {
+                            "balance_detail": [
+                              {
+                                "billing_inventory": "DEFAULT",
+                                "balance": 5000
+                              },
+                              {
+                                "billing_inventory": "UNION",
+                                "balance": 0
+                              }
+                            ],
+                            "status": "SUCCESS",
+                            "status_message": "Success",
+                            "advertiser_id": 123
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox'": "https://www.apifox.cn/web/project/2255772/apis/api-61598324-run"
+      }
     }
   },
   "components": {

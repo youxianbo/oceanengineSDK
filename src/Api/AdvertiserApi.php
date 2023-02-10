@@ -88,6 +88,843 @@ class AdvertiserApi
     }
 
     /**
+     * Operation call2AdvertiserFundDailyStatGet
+     *
+     * 查询账户日流水
+     *
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject7 $inline_object7 inline_object7 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20022
+     */
+    public function call2AdvertiserFundDailyStatGet($access_token = null, $x_debug_mode = null, $inline_object7 = null)
+    {
+        list($response) = $this->call2AdvertiserFundDailyStatGetWithHttpInfo($access_token, $x_debug_mode, $inline_object7);
+        return $response;
+    }
+
+    /**
+     * Operation call2AdvertiserFundDailyStatGetWithHttpInfo
+     *
+     * 查询账户日流水
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject7 $inline_object7 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20022, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2AdvertiserFundDailyStatGetWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object7 = null)
+    {
+        $request = $this->call2AdvertiserFundDailyStatGetRequest($access_token, $x_debug_mode, $inline_object7);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20022' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20022', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20022';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20022',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2AdvertiserFundDailyStatGetAsync
+     *
+     * 查询账户日流水
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject7 $inline_object7 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2AdvertiserFundDailyStatGetAsync($access_token = null, $x_debug_mode = null, $inline_object7 = null)
+    {
+        return $this->call2AdvertiserFundDailyStatGetAsyncWithHttpInfo($access_token, $x_debug_mode, $inline_object7)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2AdvertiserFundDailyStatGetAsyncWithHttpInfo
+     *
+     * 查询账户日流水
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject7 $inline_object7 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2AdvertiserFundDailyStatGetAsyncWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object7 = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20022';
+        $request = $this->call2AdvertiserFundDailyStatGetRequest($access_token, $x_debug_mode, $inline_object7);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2AdvertiserFundDailyStatGet'
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject7 $inline_object7 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2AdvertiserFundDailyStatGetRequest($access_token = null, $x_debug_mode = null, $inline_object7 = null)
+    {
+
+        $resourcePath = '/2/advertiser/fund/daily_stat/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($inline_object7)) {
+            $_tempBody = $inline_object7;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2AdvertiserFundGetGet
+     *
+     * 查询账号余额
+     *
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject6 $inline_object6 inline_object6 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20021
+     */
+    public function call2AdvertiserFundGetGet($access_token = null, $x_debug_mode = null, $inline_object6 = null)
+    {
+        list($response) = $this->call2AdvertiserFundGetGetWithHttpInfo($access_token, $x_debug_mode, $inline_object6);
+        return $response;
+    }
+
+    /**
+     * Operation call2AdvertiserFundGetGetWithHttpInfo
+     *
+     * 查询账号余额
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject6 $inline_object6 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20021, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2AdvertiserFundGetGetWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object6 = null)
+    {
+        $request = $this->call2AdvertiserFundGetGetRequest($access_token, $x_debug_mode, $inline_object6);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20021' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20021', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20021';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20021',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2AdvertiserFundGetGetAsync
+     *
+     * 查询账号余额
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject6 $inline_object6 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2AdvertiserFundGetGetAsync($access_token = null, $x_debug_mode = null, $inline_object6 = null)
+    {
+        return $this->call2AdvertiserFundGetGetAsyncWithHttpInfo($access_token, $x_debug_mode, $inline_object6)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2AdvertiserFundGetGetAsyncWithHttpInfo
+     *
+     * 查询账号余额
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject6 $inline_object6 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2AdvertiserFundGetGetAsyncWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object6 = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20021';
+        $request = $this->call2AdvertiserFundGetGetRequest($access_token, $x_debug_mode, $inline_object6);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2AdvertiserFundGetGet'
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject6 $inline_object6 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2AdvertiserFundGetGetRequest($access_token = null, $x_debug_mode = null, $inline_object6 = null)
+    {
+
+        $resourcePath = '/2/advertiser/fund/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($inline_object6)) {
+            $_tempBody = $inline_object6;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2AdvertiserFundTransactionGetGet
+     *
+     * 查询账号流水明细
+     *
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject8 $inline_object8 inline_object8 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20023
+     */
+    public function call2AdvertiserFundTransactionGetGet($access_token = null, $x_debug_mode = null, $inline_object8 = null)
+    {
+        list($response) = $this->call2AdvertiserFundTransactionGetGetWithHttpInfo($access_token, $x_debug_mode, $inline_object8);
+        return $response;
+    }
+
+    /**
+     * Operation call2AdvertiserFundTransactionGetGetWithHttpInfo
+     *
+     * 查询账号流水明细
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject8 $inline_object8 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20023, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2AdvertiserFundTransactionGetGetWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object8 = null)
+    {
+        $request = $this->call2AdvertiserFundTransactionGetGetRequest($access_token, $x_debug_mode, $inline_object8);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20023' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20023', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20023';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20023',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2AdvertiserFundTransactionGetGetAsync
+     *
+     * 查询账号流水明细
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject8 $inline_object8 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2AdvertiserFundTransactionGetGetAsync($access_token = null, $x_debug_mode = null, $inline_object8 = null)
+    {
+        return $this->call2AdvertiserFundTransactionGetGetAsyncWithHttpInfo($access_token, $x_debug_mode, $inline_object8)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2AdvertiserFundTransactionGetGetAsyncWithHttpInfo
+     *
+     * 查询账号流水明细
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject8 $inline_object8 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2AdvertiserFundTransactionGetGetAsyncWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object8 = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20023';
+        $request = $this->call2AdvertiserFundTransactionGetGetRequest($access_token, $x_debug_mode, $inline_object8);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2AdvertiserFundTransactionGetGet'
+     *
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject8 $inline_object8 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2AdvertiserFundTransactionGetGetRequest($access_token = null, $x_debug_mode = null, $inline_object8 = null)
+    {
+
+        $resourcePath = '/2/advertiser/fund/transaction/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($inline_object8)) {
+            $_tempBody = $inline_object8;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation call2AdvertiserInfoGet
      *
      * 广告主信息
@@ -319,6 +1156,1488 @@ class AdvertiserApi
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
                 ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2BusinessPlatformPartnerOrganizationListGet
+     *
+     * 查询合作组织
+     *
+     * @param  string $organization_id 巨量纵横组织id（即管家账户） (required)
+     * @param  string $page page (optional)
+     * @param  string $page_size 页面大小，默认值为10，最大不超过200 (optional)
+     * @param  string $filtering 合作状态，默认查询绑定成功的状态，允许值：BOUND（已绑定）、BINDING（绑定中）、INVALID（失效）、DELETED（删除） (optional)
+     * @param  string $access_token access_token (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20018
+     */
+    public function call2BusinessPlatformPartnerOrganizationListGet($organization_id, $page = null, $page_size = null, $filtering = null, $access_token = null)
+    {
+        list($response) = $this->call2BusinessPlatformPartnerOrganizationListGetWithHttpInfo($organization_id, $page, $page_size, $filtering, $access_token);
+        return $response;
+    }
+
+    /**
+     * Operation call2BusinessPlatformPartnerOrganizationListGetWithHttpInfo
+     *
+     * 查询合作组织
+     *
+     * @param  string $organization_id 巨量纵横组织id（即管家账户） (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面大小，默认值为10，最大不超过200 (optional)
+     * @param  string $filtering 合作状态，默认查询绑定成功的状态，允许值：BOUND（已绑定）、BINDING（绑定中）、INVALID（失效）、DELETED（删除） (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20018, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2BusinessPlatformPartnerOrganizationListGetWithHttpInfo($organization_id, $page = null, $page_size = null, $filtering = null, $access_token = null)
+    {
+        $request = $this->call2BusinessPlatformPartnerOrganizationListGetRequest($organization_id, $page, $page_size, $filtering, $access_token);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20018' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20018', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20018';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20018',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2BusinessPlatformPartnerOrganizationListGetAsync
+     *
+     * 查询合作组织
+     *
+     * @param  string $organization_id 巨量纵横组织id（即管家账户） (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面大小，默认值为10，最大不超过200 (optional)
+     * @param  string $filtering 合作状态，默认查询绑定成功的状态，允许值：BOUND（已绑定）、BINDING（绑定中）、INVALID（失效）、DELETED（删除） (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2BusinessPlatformPartnerOrganizationListGetAsync($organization_id, $page = null, $page_size = null, $filtering = null, $access_token = null)
+    {
+        return $this->call2BusinessPlatformPartnerOrganizationListGetAsyncWithHttpInfo($organization_id, $page, $page_size, $filtering, $access_token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2BusinessPlatformPartnerOrganizationListGetAsyncWithHttpInfo
+     *
+     * 查询合作组织
+     *
+     * @param  string $organization_id 巨量纵横组织id（即管家账户） (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面大小，默认值为10，最大不超过200 (optional)
+     * @param  string $filtering 合作状态，默认查询绑定成功的状态，允许值：BOUND（已绑定）、BINDING（绑定中）、INVALID（失效）、DELETED（删除） (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2BusinessPlatformPartnerOrganizationListGetAsyncWithHttpInfo($organization_id, $page = null, $page_size = null, $filtering = null, $access_token = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20018';
+        $request = $this->call2BusinessPlatformPartnerOrganizationListGetRequest($organization_id, $page, $page_size, $filtering, $access_token);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2BusinessPlatformPartnerOrganizationListGet'
+     *
+     * @param  string $organization_id 巨量纵横组织id（即管家账户） (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面大小，默认值为10，最大不超过200 (optional)
+     * @param  string $filtering 合作状态，默认查询绑定成功的状态，允许值：BOUND（已绑定）、BINDING（绑定中）、INVALID（失效）、DELETED（删除） (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2BusinessPlatformPartnerOrganizationListGetRequest($organization_id, $page = null, $page_size = null, $filtering = null, $access_token = null)
+    {
+        // verify the required parameter 'organization_id' is set
+        if ($organization_id === null || (is_array($organization_id) && count($organization_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $organization_id when calling call2BusinessPlatformPartnerOrganizationListGet'
+            );
+        }
+
+        $resourcePath = '/2/business_platform/partner_organization/list/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($organization_id !== null) {
+            $queryParams['organization_id'] = ObjectSerializer::toQueryValue($organization_id);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['page_size'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // query params
+        if ($filtering !== null) {
+            $queryParams['filtering'] = ObjectSerializer::toQueryValue($filtering);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2FundSharedWalletBalanceGetGet
+     *
+     * 获取共享钱包余额
+     *
+     * @param  string $access_token access_token (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject9 $inline_object9 inline_object9 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20024
+     */
+    public function call2FundSharedWalletBalanceGetGet($access_token = null, $inline_object9 = null)
+    {
+        list($response) = $this->call2FundSharedWalletBalanceGetGetWithHttpInfo($access_token, $inline_object9);
+        return $response;
+    }
+
+    /**
+     * Operation call2FundSharedWalletBalanceGetGetWithHttpInfo
+     *
+     * 获取共享钱包余额
+     *
+     * @param  string $access_token (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject9 $inline_object9 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20024, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2FundSharedWalletBalanceGetGetWithHttpInfo($access_token = null, $inline_object9 = null)
+    {
+        $request = $this->call2FundSharedWalletBalanceGetGetRequest($access_token, $inline_object9);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20024' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20024', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20024';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20024',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2FundSharedWalletBalanceGetGetAsync
+     *
+     * 获取共享钱包余额
+     *
+     * @param  string $access_token (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject9 $inline_object9 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2FundSharedWalletBalanceGetGetAsync($access_token = null, $inline_object9 = null)
+    {
+        return $this->call2FundSharedWalletBalanceGetGetAsyncWithHttpInfo($access_token, $inline_object9)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2FundSharedWalletBalanceGetGetAsyncWithHttpInfo
+     *
+     * 获取共享钱包余额
+     *
+     * @param  string $access_token (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject9 $inline_object9 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2FundSharedWalletBalanceGetGetAsyncWithHttpInfo($access_token = null, $inline_object9 = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20024';
+        $request = $this->call2FundSharedWalletBalanceGetGetRequest($access_token, $inline_object9);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2FundSharedWalletBalanceGetGet'
+     *
+     * @param  string $access_token (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject9 $inline_object9 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2FundSharedWalletBalanceGetGetRequest($access_token = null, $inline_object9 = null)
+    {
+
+        $resourcePath = '/2/fund/shared_wallet_balance/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($inline_object9)) {
+            $_tempBody = $inline_object9;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation call2MajordomoAdvertiserSelectGet
+     *
+     * 获取纵横组织下资产账户列表
+     *
+     * @param  string $access_token access_token (required)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject5 $inline_object5 inline_object5 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20017
+     */
+    public function call2MajordomoAdvertiserSelectGet($access_token, $x_debug_mode = null, $inline_object5 = null)
+    {
+        list($response) = $this->call2MajordomoAdvertiserSelectGetWithHttpInfo($access_token, $x_debug_mode, $inline_object5);
+        return $response;
+    }
+
+    /**
+     * Operation call2MajordomoAdvertiserSelectGetWithHttpInfo
+     *
+     * 获取纵横组织下资产账户列表
+     *
+     * @param  string $access_token (required)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject5 $inline_object5 (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20017, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function call2MajordomoAdvertiserSelectGetWithHttpInfo($access_token, $x_debug_mode = null, $inline_object5 = null)
+    {
+        $request = $this->call2MajordomoAdvertiserSelectGetRequest($access_token, $x_debug_mode, $inline_object5);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20017' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20017', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20017';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20017',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation call2MajordomoAdvertiserSelectGetAsync
+     *
+     * 获取纵横组织下资产账户列表
+     *
+     * @param  string $access_token (required)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject5 $inline_object5 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2MajordomoAdvertiserSelectGetAsync($access_token, $x_debug_mode = null, $inline_object5 = null)
+    {
+        return $this->call2MajordomoAdvertiserSelectGetAsyncWithHttpInfo($access_token, $x_debug_mode, $inline_object5)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation call2MajordomoAdvertiserSelectGetAsyncWithHttpInfo
+     *
+     * 获取纵横组织下资产账户列表
+     *
+     * @param  string $access_token (required)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject5 $inline_object5 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function call2MajordomoAdvertiserSelectGetAsyncWithHttpInfo($access_token, $x_debug_mode = null, $inline_object5 = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20017';
+        $request = $this->call2MajordomoAdvertiserSelectGetRequest($access_token, $x_debug_mode, $inline_object5);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'call2MajordomoAdvertiserSelectGet'
+     *
+     * @param  string $access_token (required)
+     * @param  int $x_debug_mode (optional)
+     * @param  \Oceanengine\Open\Model\InlineObject5 $inline_object5 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function call2MajordomoAdvertiserSelectGetRequest($access_token, $x_debug_mode = null, $inline_object5 = null)
+    {
+        // verify the required parameter 'access_token' is set
+        if ($access_token === null || (is_array($access_token) && count($access_token) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $access_token when calling call2MajordomoAdvertiserSelectGet'
+            );
+        }
+
+        $resourcePath = '/2/majordomo/advertiser/select/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($inline_object5)) {
+            $_tempBody = $inline_object5;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation v30BusinessPlatformCompanyAccountGetGet
+     *
+     * 获取主体下的账户列表
+     *
+     * @param  string $organization_id 纵横组织id (required)
+     * @param  string $company_id 公司主体id (required)
+     * @param  string $account_type 账户类型，可选值:AD: 广告账户,QIANCHUAN:千川广告账户 (required)
+     * @param  string $page page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token access_token (optional)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20020
+     */
+    public function v30BusinessPlatformCompanyAccountGetGet($organization_id, $company_id, $account_type, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        list($response) = $this->v30BusinessPlatformCompanyAccountGetGetWithHttpInfo($organization_id, $company_id, $account_type, $page, $page_size, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation v30BusinessPlatformCompanyAccountGetGetWithHttpInfo
+     *
+     * 获取主体下的账户列表
+     *
+     * @param  string $organization_id 纵横组织id (required)
+     * @param  string $company_id 公司主体id (required)
+     * @param  string $account_type 账户类型，可选值:AD: 广告账户,QIANCHUAN:千川广告账户 (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20020, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v30BusinessPlatformCompanyAccountGetGetWithHttpInfo($organization_id, $company_id, $account_type, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $request = $this->v30BusinessPlatformCompanyAccountGetGetRequest($organization_id, $company_id, $account_type, $page, $page_size, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20020' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20020', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20020';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20020',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v30BusinessPlatformCompanyAccountGetGetAsync
+     *
+     * 获取主体下的账户列表
+     *
+     * @param  string $organization_id 纵横组织id (required)
+     * @param  string $company_id 公司主体id (required)
+     * @param  string $account_type 账户类型，可选值:AD: 广告账户,QIANCHUAN:千川广告账户 (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v30BusinessPlatformCompanyAccountGetGetAsync($organization_id, $company_id, $account_type, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        return $this->v30BusinessPlatformCompanyAccountGetGetAsyncWithHttpInfo($organization_id, $company_id, $account_type, $page, $page_size, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation v30BusinessPlatformCompanyAccountGetGetAsyncWithHttpInfo
+     *
+     * 获取主体下的账户列表
+     *
+     * @param  string $organization_id 纵横组织id (required)
+     * @param  string $company_id 公司主体id (required)
+     * @param  string $account_type 账户类型，可选值:AD: 广告账户,QIANCHUAN:千川广告账户 (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v30BusinessPlatformCompanyAccountGetGetAsyncWithHttpInfo($organization_id, $company_id, $account_type, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20020';
+        $request = $this->v30BusinessPlatformCompanyAccountGetGetRequest($organization_id, $company_id, $account_type, $page, $page_size, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'v30BusinessPlatformCompanyAccountGetGet'
+     *
+     * @param  string $organization_id 纵横组织id (required)
+     * @param  string $company_id 公司主体id (required)
+     * @param  string $account_type 账户类型，可选值:AD: 广告账户,QIANCHUAN:千川广告账户 (required)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token (optional)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function v30BusinessPlatformCompanyAccountGetGetRequest($organization_id, $company_id, $account_type, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
+    {
+        // verify the required parameter 'organization_id' is set
+        if ($organization_id === null || (is_array($organization_id) && count($organization_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $organization_id when calling v30BusinessPlatformCompanyAccountGetGet'
+            );
+        }
+        // verify the required parameter 'company_id' is set
+        if ($company_id === null || (is_array($company_id) && count($company_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $company_id when calling v30BusinessPlatformCompanyAccountGetGet'
+            );
+        }
+        // verify the required parameter 'account_type' is set
+        if ($account_type === null || (is_array($account_type) && count($account_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_type when calling v30BusinessPlatformCompanyAccountGetGet'
+            );
+        }
+
+        $resourcePath = '/v3.0/business_platform/company_account/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($organization_id !== null) {
+            $queryParams['organization_id'] = ObjectSerializer::toQueryValue($organization_id);
+        }
+        // query params
+        if ($company_id !== null) {
+            $queryParams['company_id'] = ObjectSerializer::toQueryValue($company_id);
+        }
+        // query params
+        if ($account_type !== null) {
+            $queryParams['account_type'] = ObjectSerializer::toQueryValue($account_type);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['page_size'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation v30BusinessPlatformCompanyInfoGetGet
+     *
+     * 获取纵横组织下所有主体信息
+     *
+     * @param  string $organization_id 纵横组织id (optional)
+     * @param  string $page page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token access_token (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20019
+     */
+    public function v30BusinessPlatformCompanyInfoGetGet($organization_id = null, $page = null, $page_size = null, $access_token = null)
+    {
+        list($response) = $this->v30BusinessPlatformCompanyInfoGetGetWithHttpInfo($organization_id, $page, $page_size, $access_token);
+        return $response;
+    }
+
+    /**
+     * Operation v30BusinessPlatformCompanyInfoGetGetWithHttpInfo
+     *
+     * 获取纵横组织下所有主体信息
+     *
+     * @param  string $organization_id 纵横组织id (optional)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20019, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v30BusinessPlatformCompanyInfoGetGetWithHttpInfo($organization_id = null, $page = null, $page_size = null, $access_token = null)
+    {
+        $request = $this->v30BusinessPlatformCompanyInfoGetGetRequest($organization_id, $page, $page_size, $access_token);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20019' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20019', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20019';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20019',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v30BusinessPlatformCompanyInfoGetGetAsync
+     *
+     * 获取纵横组织下所有主体信息
+     *
+     * @param  string $organization_id 纵横组织id (optional)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v30BusinessPlatformCompanyInfoGetGetAsync($organization_id = null, $page = null, $page_size = null, $access_token = null)
+    {
+        return $this->v30BusinessPlatformCompanyInfoGetGetAsyncWithHttpInfo($organization_id, $page, $page_size, $access_token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation v30BusinessPlatformCompanyInfoGetGetAsyncWithHttpInfo
+     *
+     * 获取纵横组织下所有主体信息
+     *
+     * @param  string $organization_id 纵横组织id (optional)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v30BusinessPlatformCompanyInfoGetGetAsyncWithHttpInfo($organization_id = null, $page = null, $page_size = null, $access_token = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20019';
+        $request = $this->v30BusinessPlatformCompanyInfoGetGetRequest($organization_id, $page, $page_size, $access_token);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'v30BusinessPlatformCompanyInfoGetGet'
+     *
+     * @param  string $organization_id 纵横组织id (optional)
+     * @param  string $page (optional)
+     * @param  string $page_size 页面数据量. 默认值: 10 (optional)
+     * @param  string $access_token (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function v30BusinessPlatformCompanyInfoGetGetRequest($organization_id = null, $page = null, $page_size = null, $access_token = null)
+    {
+
+        $resourcePath = '/v3.0/business_platform/company_info/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($organization_id !== null) {
+            $queryParams['organization_id'] = ObjectSerializer::toQueryValue($organization_id);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($page_size !== null) {
+            $queryParams['page_size'] = ObjectSerializer::toQueryValue($page_size);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
             );
         }
 

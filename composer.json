@@ -1,6 +1,6 @@
 {
     "name": "youxianbo/oceanengine-sdk",
-    "version": "0.0.1-beta2",
+    "version": "0.0.1-beta3",
     "description": "根据项目需求完成的接口，非所有接口都有相应的代码",
     "keywords": [
         "openapitools",
