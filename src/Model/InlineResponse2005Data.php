@@ -57,22 +57,23 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
         'name' => 'string',
-        'role' => 'int',
-        'promotion_area' => 'string',
+        'company' => 'string',
+        'role' => 'string',
         'brand' => 'string',
-        'address' => 'string',
+        'license_no' => 'string',
+        'license_province' => 'string',
+        'industry' => 'string',
         'license_city' => 'string',
         'promotion_center_city' => 'string',
-        'promotion_center_province' => 'string',
-        'first_industry_name' => 'string',
-        'second_industry_name' => 'string',
-        'license_no' => 'string',
+        'address' => 'string',
+        'status' => 'string',
+        'id' => 'int',
         'license_url' => 'string',
-        'license_province' => 'string',
-        'company' => 'string',
-        'status' => 'string'
+        'create_time' => 'string',
+        'promotion_center_province' => 'string',
+        'reason' => 'string',
+        'promotion_area' => 'string'
     ];
 
     /**
@@ -81,22 +82,23 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => 'int32',
         'name' => null,
-        'role' => 'int32',
-        'promotion_area' => null,
+        'company' => null,
+        'role' => null,
         'brand' => null,
-        'address' => null,
+        'license_no' => null,
+        'license_province' => null,
+        'industry' => null,
         'license_city' => null,
         'promotion_center_city' => null,
-        'promotion_center_province' => null,
-        'first_industry_name' => null,
-        'second_industry_name' => null,
-        'license_no' => null,
+        'address' => null,
+        'status' => null,
+        'id' => 'int64',
         'license_url' => null,
-        'license_province' => null,
-        'company' => null,
-        'status' => null
+        'create_time' => null,
+        'promotion_center_province' => null,
+        'reason' => null,
+        'promotion_area' => null
     ];
 
     /**
@@ -126,22 +128,23 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'name' => 'name',
+        'company' => 'company',
         'role' => 'role',
-        'promotion_area' => 'promotion_area',
         'brand' => 'brand',
-        'address' => 'address',
+        'license_no' => 'license_no',
+        'license_province' => 'license_province',
+        'industry' => 'industry',
         'license_city' => 'license_city',
         'promotion_center_city' => 'promotion_center_city',
-        'promotion_center_province' => 'promotion_center_province',
-        'first_industry_name' => 'first_industry_name',
-        'second_industry_name' => 'second_industry_name',
-        'license_no' => 'license_no',
+        'address' => 'address',
+        'status' => 'status',
+        'id' => 'id',
         'license_url' => 'license_url',
-        'license_province' => 'license_province',
-        'company' => 'company',
-        'status' => 'status'
+        'create_time' => 'create_time',
+        'promotion_center_province' => 'promotion_center_province',
+        'reason' => 'reason',
+        'promotion_area' => 'promotion_area'
     ];
 
     /**
@@ -150,22 +153,23 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'name' => 'setName',
+        'company' => 'setCompany',
         'role' => 'setRole',
-        'promotion_area' => 'setPromotionArea',
         'brand' => 'setBrand',
-        'address' => 'setAddress',
+        'license_no' => 'setLicenseNo',
+        'license_province' => 'setLicenseProvince',
+        'industry' => 'setIndustry',
         'license_city' => 'setLicenseCity',
         'promotion_center_city' => 'setPromotionCenterCity',
-        'promotion_center_province' => 'setPromotionCenterProvince',
-        'first_industry_name' => 'setFirstIndustryName',
-        'second_industry_name' => 'setSecondIndustryName',
-        'license_no' => 'setLicenseNo',
+        'address' => 'setAddress',
+        'status' => 'setStatus',
+        'id' => 'setId',
         'license_url' => 'setLicenseUrl',
-        'license_province' => 'setLicenseProvince',
-        'company' => 'setCompany',
-        'status' => 'setStatus'
+        'create_time' => 'setCreateTime',
+        'promotion_center_province' => 'setPromotionCenterProvince',
+        'reason' => 'setReason',
+        'promotion_area' => 'setPromotionArea'
     ];
 
     /**
@@ -174,22 +178,23 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'name' => 'getName',
+        'company' => 'getCompany',
         'role' => 'getRole',
-        'promotion_area' => 'getPromotionArea',
         'brand' => 'getBrand',
-        'address' => 'getAddress',
+        'license_no' => 'getLicenseNo',
+        'license_province' => 'getLicenseProvince',
+        'industry' => 'getIndustry',
         'license_city' => 'getLicenseCity',
         'promotion_center_city' => 'getPromotionCenterCity',
-        'promotion_center_province' => 'getPromotionCenterProvince',
-        'first_industry_name' => 'getFirstIndustryName',
-        'second_industry_name' => 'getSecondIndustryName',
-        'license_no' => 'getLicenseNo',
+        'address' => 'getAddress',
+        'status' => 'getStatus',
+        'id' => 'getId',
         'license_url' => 'getLicenseUrl',
-        'license_province' => 'getLicenseProvince',
-        'company' => 'getCompany',
-        'status' => 'getStatus'
+        'create_time' => 'getCreateTime',
+        'promotion_center_province' => 'getPromotionCenterProvince',
+        'reason' => 'getReason',
+        'promotion_area' => 'getPromotionArea'
     ];
 
     /**
@@ -252,22 +257,23 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['company'] = isset($data['company']) ? $data['company'] : null;
         $this->container['role'] = isset($data['role']) ? $data['role'] : null;
-        $this->container['promotion_area'] = isset($data['promotion_area']) ? $data['promotion_area'] : null;
         $this->container['brand'] = isset($data['brand']) ? $data['brand'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['license_no'] = isset($data['license_no']) ? $data['license_no'] : null;
+        $this->container['license_province'] = isset($data['license_province']) ? $data['license_province'] : null;
+        $this->container['industry'] = isset($data['industry']) ? $data['industry'] : null;
         $this->container['license_city'] = isset($data['license_city']) ? $data['license_city'] : null;
         $this->container['promotion_center_city'] = isset($data['promotion_center_city']) ? $data['promotion_center_city'] : null;
-        $this->container['promotion_center_province'] = isset($data['promotion_center_province']) ? $data['promotion_center_province'] : null;
-        $this->container['first_industry_name'] = isset($data['first_industry_name']) ? $data['first_industry_name'] : null;
-        $this->container['second_industry_name'] = isset($data['second_industry_name']) ? $data['second_industry_name'] : null;
-        $this->container['license_no'] = isset($data['license_no']) ? $data['license_no'] : null;
-        $this->container['license_url'] = isset($data['license_url']) ? $data['license_url'] : null;
-        $this->container['license_province'] = isset($data['license_province']) ? $data['license_province'] : null;
-        $this->container['company'] = isset($data['company']) ? $data['company'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['license_url'] = isset($data['license_url']) ? $data['license_url'] : null;
+        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['promotion_center_province'] = isset($data['promotion_center_province']) ? $data['promotion_center_province'] : null;
+        $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        $this->container['promotion_area'] = isset($data['promotion_area']) ? $data['promotion_area'] : null;
     }
 
     /**
@@ -279,12 +285,6 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['second_industry_name'] === null) {
-            $invalidProperties[] = "'second_industry_name' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -299,30 +299,6 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return int|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int|null $id 广告主ID
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -349,9 +325,33 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets company
+     *
+     * @return string|null
+     */
+    public function getCompany()
+    {
+        return $this->container['company'];
+    }
+
+    /**
+     * Sets company
+     *
+     * @param string|null $company 公司名
+     *
+     * @return $this
+     */
+    public function setCompany($company)
+    {
+        $this->container['company'] = $company;
+
+        return $this;
+    }
+
+    /**
      * Gets role
      *
-     * @return int|null
+     * @return string|null
      */
     public function getRole()
     {
@@ -361,37 +361,13 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
     /**
      * Sets role
      *
-     * @param int|null $role 角色, 详见【附录-广告主角色】
+     * @param string|null $role role
      *
      * @return $this
      */
     public function setRole($role)
     {
         $this->container['role'] = $role;
-
-        return $this;
-    }
-
-    /**
-     * Gets promotion_area
-     *
-     * @return string|null
-     */
-    public function getPromotionArea()
-    {
-        return $this->container['promotion_area'];
-    }
-
-    /**
-     * Sets promotion_area
-     *
-     * @param string|null $promotion_area 运营区域
-     *
-     * @return $this
-     */
-    public function setPromotionArea($promotion_area)
-    {
-        $this->container['promotion_area'] = $promotion_area;
 
         return $this;
     }
@@ -421,25 +397,73 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets address
+     * Gets license_no
      *
      * @return string|null
      */
-    public function getAddress()
+    public function getLicenseNo()
     {
-        return $this->container['address'];
+        return $this->container['license_no'];
     }
 
     /**
-     * Sets address
+     * Sets license_no
      *
-     * @param string|null $address 地址
+     * @param string|null $license_no 执照编号
      *
      * @return $this
      */
-    public function setAddress($address)
+    public function setLicenseNo($license_no)
     {
-        $this->container['address'] = $address;
+        $this->container['license_no'] = $license_no;
+
+        return $this;
+    }
+
+    /**
+     * Gets license_province
+     *
+     * @return string|null
+     */
+    public function getLicenseProvince()
+    {
+        return $this->container['license_province'];
+    }
+
+    /**
+     * Sets license_province
+     *
+     * @param string|null $license_province 执照省份
+     *
+     * @return $this
+     */
+    public function setLicenseProvince($license_province)
+    {
+        $this->container['license_province'] = $license_province;
+
+        return $this;
+    }
+
+    /**
+     * Gets industry
+     *
+     * @return string|null
+     */
+    public function getIndustry()
+    {
+        return $this->container['industry'];
+    }
+
+    /**
+     * Sets industry
+     *
+     * @param string|null $industry industry
+     *
+     * @return $this
+     */
+    public function setIndustry($industry)
+    {
+        $this->container['industry'] = $industry;
 
         return $this;
     }
@@ -493,97 +517,73 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets promotion_center_province
+     * Gets address
      *
      * @return string|null
      */
-    public function getPromotionCenterProvince()
+    public function getAddress()
     {
-        return $this->container['promotion_center_province'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets promotion_center_province
+     * Sets address
      *
-     * @param string|null $promotion_center_province 运营省份
+     * @param string|null $address 地址
      *
      * @return $this
      */
-    public function setPromotionCenterProvince($promotion_center_province)
+    public function setAddress($address)
     {
-        $this->container['promotion_center_province'] = $promotion_center_province;
+        $this->container['address'] = $address;
 
         return $this;
     }
 
     /**
-     * Gets first_industry_name
+     * Gets status
      *
      * @return string|null
      */
-    public function getFirstIndustryName()
+    public function getStatus()
     {
-        return $this->container['first_industry_name'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets first_industry_name
+     * Sets status
      *
-     * @param string|null $first_industry_name 一级行业名称（新版）
+     * @param string|null $status 状态,详见【附录-广告主状态】
      *
      * @return $this
      */
-    public function setFirstIndustryName($first_industry_name)
+    public function setStatus($status)
     {
-        $this->container['first_industry_name'] = $first_industry_name;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets second_industry_name
+     * Gets id
      *
-     * @return string
+     * @return int|null
      */
-    public function getSecondIndustryName()
+    public function getId()
     {
-        return $this->container['second_industry_name'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets second_industry_name
+     * Sets id
      *
-     * @param string $second_industry_name 二级行业名称（新版）
+     * @param int|null $id 广告主ID
      *
      * @return $this
      */
-    public function setSecondIndustryName($second_industry_name)
+    public function setId($id)
     {
-        $this->container['second_industry_name'] = $second_industry_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets license_no
-     *
-     * @return string|null
-     */
-    public function getLicenseNo()
-    {
-        return $this->container['license_no'];
-    }
-
-    /**
-     * Sets license_no
-     *
-     * @param string|null $license_no 执照编号
-     *
-     * @return $this
-     */
-    public function setLicenseNo($license_no)
-    {
-        $this->container['license_no'] = $license_no;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -613,73 +613,97 @@ class InlineResponse2005Data implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets license_province
+     * Gets create_time
      *
      * @return string|null
      */
-    public function getLicenseProvince()
+    public function getCreateTime()
     {
-        return $this->container['license_province'];
+        return $this->container['create_time'];
     }
 
     /**
-     * Sets license_province
+     * Sets create_time
      *
-     * @param string|null $license_province 执照省份
+     * @param string|null $create_time create_time
      *
      * @return $this
      */
-    public function setLicenseProvince($license_province)
+    public function setCreateTime($create_time)
     {
-        $this->container['license_province'] = $license_province;
+        $this->container['create_time'] = $create_time;
 
         return $this;
     }
 
     /**
-     * Gets company
+     * Gets promotion_center_province
      *
      * @return string|null
      */
-    public function getCompany()
+    public function getPromotionCenterProvince()
     {
-        return $this->container['company'];
+        return $this->container['promotion_center_province'];
     }
 
     /**
-     * Sets company
+     * Sets promotion_center_province
      *
-     * @param string|null $company 公司名
+     * @param string|null $promotion_center_province 运营省份
      *
      * @return $this
      */
-    public function setCompany($company)
+    public function setPromotionCenterProvince($promotion_center_province)
     {
-        $this->container['company'] = $company;
+        $this->container['promotion_center_province'] = $promotion_center_province;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets reason
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus()
+    public function getReason()
     {
-        return $this->container['status'];
+        return $this->container['reason'];
     }
 
     /**
-     * Sets status
+     * Sets reason
      *
-     * @param string $status 状态,详见【附录-广告主状态】
+     * @param string|null $reason reason
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setReason($reason)
     {
-        $this->container['status'] = $status;
+        $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets promotion_area
+     *
+     * @return string|null
+     */
+    public function getPromotionArea()
+    {
+        return $this->container['promotion_area'];
+    }
+
+    /**
+     * Sets promotion_area
+     *
+     * @param string|null $promotion_area 运营区域
+     *
+     * @return $this
+     */
+    public function setPromotionArea($promotion_area)
+    {
+        $this->container['promotion_area'] = $promotion_area;
 
         return $this;
     }
