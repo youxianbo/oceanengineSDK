@@ -69,7 +69,7 @@ class InlineResponse20019DataCompanyInfo implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'company_id' => 'int32',
+        'company_id' => 'int64',
         'company_name' => null,
         'status' => null,
         'type' => null

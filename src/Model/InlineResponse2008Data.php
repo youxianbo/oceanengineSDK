@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20011MetricsDict
+ * InlineResponse2008Data
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20011MetricsDict Class Doc Comment
+ * InlineResponse2008Data Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
+class InlineResponse2008Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_11_metrics_dict';
+    protected static $openAPIModelName = 'inline_response_200_8_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'show' => 'int',
-        'convert' => 'int',
-        'cost' => 'float',
-        'click' => 'int'
+        'page_info' => '\Oceanengine\Open\Model\InlineResponse2007DataPageInfo',
+        'list' => '\Oceanengine\Open\Model\InlineResponse2008DataList[]'
     ];
 
     /**
@@ -69,10 +67,8 @@ class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'show' => 'int32',
-        'convert' => 'int32',
-        'cost' => null,
-        'click' => 'int32'
+        'page_info' => null,
+        'list' => null
     ];
 
     /**
@@ -102,10 +98,8 @@ class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'show' => 'show',
-        'convert' => 'convert',
-        'cost' => 'cost',
-        'click' => 'click'
+        'page_info' => 'page_info',
+        'list' => 'list'
     ];
 
     /**
@@ -114,10 +108,8 @@ class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'show' => 'setShow',
-        'convert' => 'setConvert',
-        'cost' => 'setCost',
-        'click' => 'setClick'
+        'page_info' => 'setPageInfo',
+        'list' => 'setList'
     ];
 
     /**
@@ -126,10 +118,8 @@ class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'show' => 'getShow',
-        'convert' => 'getConvert',
-        'cost' => 'getCost',
-        'click' => 'getClick'
+        'page_info' => 'getPageInfo',
+        'list' => 'getList'
     ];
 
     /**
@@ -192,10 +182,8 @@ class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['show'] = isset($data['show']) ? $data['show'] : null;
-        $this->container['convert'] = isset($data['convert']) ? $data['convert'] : null;
-        $this->container['cost'] = isset($data['cost']) ? $data['cost'] : null;
-        $this->container['click'] = isset($data['click']) ? $data['click'] : null;
+        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
     /**
@@ -207,17 +195,11 @@ class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['show'] === null) {
-            $invalidProperties[] = "'show' can't be null";
+        if ($this->container['page_info'] === null) {
+            $invalidProperties[] = "'page_info' can't be null";
         }
-        if ($this->container['convert'] === null) {
-            $invalidProperties[] = "'convert' can't be null";
-        }
-        if ($this->container['cost'] === null) {
-            $invalidProperties[] = "'cost' can't be null";
-        }
-        if ($this->container['click'] === null) {
-            $invalidProperties[] = "'click' can't be null";
+        if ($this->container['list'] === null) {
+            $invalidProperties[] = "'list' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,97 +217,49 @@ class InlineResponse20011MetricsDict implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets show
+     * Gets page_info
      *
-     * @return int
+     * @return \Oceanengine\Open\Model\InlineResponse2007DataPageInfo
      */
-    public function getShow()
+    public function getPageInfo()
     {
-        return $this->container['show'];
+        return $this->container['page_info'];
     }
 
     /**
-     * Sets show
+     * Sets page_info
      *
-     * @param int $show show
+     * @param \Oceanengine\Open\Model\InlineResponse2007DataPageInfo $page_info page_info
      *
      * @return $this
      */
-    public function setShow($show)
+    public function setPageInfo($page_info)
     {
-        $this->container['show'] = $show;
+        $this->container['page_info'] = $page_info;
 
         return $this;
     }
 
     /**
-     * Gets convert
+     * Gets list
      *
-     * @return int
+     * @return \Oceanengine\Open\Model\InlineResponse2008DataList[]
      */
-    public function getConvert()
+    public function getList()
     {
-        return $this->container['convert'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets convert
+     * Sets list
      *
-     * @param int $convert 转化数
+     * @param \Oceanengine\Open\Model\InlineResponse2008DataList[] $list list
      *
      * @return $this
      */
-    public function setConvert($convert)
+    public function setList($list)
     {
-        $this->container['convert'] = $convert;
-
-        return $this;
-    }
-
-    /**
-     * Gets cost
-     *
-     * @return float
-     */
-    public function getCost()
-    {
-        return $this->container['cost'];
-    }
-
-    /**
-     * Sets cost
-     *
-     * @param float $cost 总消耗(单位元,精确到分)
-     *
-     * @return $this
-     */
-    public function setCost($cost)
-    {
-        $this->container['cost'] = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets click
-     *
-     * @return int
-     */
-    public function getClick()
-    {
-        return $this->container['click'];
-    }
-
-    /**
-     * Sets click
-     *
-     * @param int $click click
-     *
-     * @return $this
-     */
-    public function setClick($click)
-    {
-        $this->container['click'] = $click;
+        $this->container['list'] = $list;
 
         return $this;
     }

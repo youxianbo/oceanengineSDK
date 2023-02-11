@@ -60,14 +60,15 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
         'advertiser_id' => 'int',
         'transaction_type' => 'string',
         'create_time' => 'string',
-        'grant' => 'int',
-        'frozen' => 'int',
-        'cash' => 'int',
-        'amount' => 'int',
-        'return_goods' => 'int',
-        'transaction_seq' => 'int',
-        'remitter' => 'int',
-        'payee' => 'int'
+        'grant' => 'float',
+        'frozen' => 'float',
+        'cash' => 'float',
+        'amount' => 'float',
+        'return_goods' => 'float',
+        'transaction_seq' => 'string',
+        'remitter' => 'string',
+        'payee' => 'float',
+        'dealbase' => 'float'
     ];
 
     /**
@@ -76,17 +77,18 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'advertiser_id' => 'int32',
+        'advertiser_id' => 'int64',
         'transaction_type' => null,
         'create_time' => null,
-        'grant' => 'int32',
-        'frozen' => 'int32',
-        'cash' => 'int32',
-        'amount' => 'int32',
-        'return_goods' => 'int32',
-        'transaction_seq' => 'int32',
-        'remitter' => 'int32',
-        'payee' => 'int32'
+        'grant' => null,
+        'frozen' => null,
+        'cash' => null,
+        'amount' => null,
+        'return_goods' => null,
+        'transaction_seq' => null,
+        'remitter' => null,
+        'payee' => null,
+        'dealbase' => null
     ];
 
     /**
@@ -126,7 +128,8 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
         'return_goods' => 'return_goods',
         'transaction_seq' => 'transaction_seq',
         'remitter' => 'remitter',
-        'payee' => 'payee'
+        'payee' => 'payee',
+        'dealbase' => 'dealbase'
     ];
 
     /**
@@ -145,7 +148,8 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
         'return_goods' => 'setReturnGoods',
         'transaction_seq' => 'setTransactionSeq',
         'remitter' => 'setRemitter',
-        'payee' => 'setPayee'
+        'payee' => 'setPayee',
+        'dealbase' => 'setDealbase'
     ];
 
     /**
@@ -164,7 +168,8 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
         'return_goods' => 'getReturnGoods',
         'transaction_seq' => 'getTransactionSeq',
         'remitter' => 'getRemitter',
-        'payee' => 'getPayee'
+        'payee' => 'getPayee',
+        'dealbase' => 'getDealbase'
     ];
 
     /**
@@ -238,6 +243,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
         $this->container['transaction_seq'] = isset($data['transaction_seq']) ? $data['transaction_seq'] : null;
         $this->container['remitter'] = isset($data['remitter']) ? $data['remitter'] : null;
         $this->container['payee'] = isset($data['payee']) ? $data['payee'] : null;
+        $this->container['dealbase'] = isset($data['dealbase']) ? $data['dealbase'] : null;
     }
 
     /**
@@ -249,6 +255,9 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['dealbase'] === null) {
+            $invalidProperties[] = "'dealbase' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -277,7 +286,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets advertiser_id
      *
-     * @param int|null $advertiser_id advertiser_id
+     * @param int|null $advertiser_id 广告主ID
      *
      * @return $this
      */
@@ -301,7 +310,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets transaction_type
      *
-     * @param string|null $transaction_type transaction_type
+     * @param string|null $transaction_type 流水类型，详见附录【流水类型】，包含转账、充值
      *
      * @return $this
      */
@@ -325,7 +334,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets create_time
      *
-     * @param string|null $create_time create_time
+     * @param string|null $create_time 冻结总金额(单位元)
      *
      * @return $this
      */
@@ -339,7 +348,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Gets grant
      *
-     * @return int|null
+     * @return float|null
      */
     public function getGrant()
     {
@@ -349,7 +358,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets grant
      *
-     * @param int|null $grant grant
+     * @param float|null $grant 赠款总金额(单位元）
      *
      * @return $this
      */
@@ -363,7 +372,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Gets frozen
      *
-     * @return int|null
+     * @return float|null
      */
     public function getFrozen()
     {
@@ -373,7 +382,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets frozen
      *
-     * @param int|null $frozen frozen
+     * @param float|null $frozen 冻结总金额(单位元)
      *
      * @return $this
      */
@@ -387,7 +396,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Gets cash
      *
-     * @return int|null
+     * @return float|null
      */
     public function getCash()
     {
@@ -397,7 +406,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets cash
      *
-     * @param int|null $cash cash
+     * @param float|null $cash 现金总金额(单位元)
      *
      * @return $this
      */
@@ -411,7 +420,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Gets amount
      *
-     * @return int|null
+     * @return float|null
      */
     public function getAmount()
     {
@@ -421,7 +430,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param int|null $amount amount
+     * @param float|null $amount 交易总金额(单位元)
      *
      * @return $this
      */
@@ -435,7 +444,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Gets return_goods
      *
-     * @return int|null
+     * @return float|null
      */
     public function getReturnGoods()
     {
@@ -445,7 +454,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets return_goods
      *
-     * @param int|null $return_goods return_goods
+     * @param float|null $return_goods 返货总金额(单位元)
      *
      * @return $this
      */
@@ -459,7 +468,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Gets transaction_seq
      *
-     * @return int|null
+     * @return string|null
      */
     public function getTransactionSeq()
     {
@@ -469,7 +478,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets transaction_seq
      *
-     * @param int|null $transaction_seq transaction_seq
+     * @param string|null $transaction_seq 付款方，即广告主id。
      *
      * @return $this
      */
@@ -483,7 +492,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Gets remitter
      *
-     * @return int|null
+     * @return string|null
      */
     public function getRemitter()
     {
@@ -493,7 +502,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets remitter
      *
-     * @param int|null $remitter remitter
+     * @param string|null $remitter 付款方，即广告主id。
      *
      * @return $this
      */
@@ -507,7 +516,7 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Gets payee
      *
-     * @return int|null
+     * @return float|null
      */
     public function getPayee()
     {
@@ -517,13 +526,37 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets payee
      *
-     * @param int|null $payee payee
+     * @param float|null $payee 收款方，即广告主id。
      *
      * @return $this
      */
     public function setPayee($payee)
     {
         $this->container['payee'] = $payee;
+
+        return $this;
+    }
+
+    /**
+     * Gets dealbase
+     *
+     * @return float
+     */
+    public function getDealbase()
+    {
+        return $this->container['dealbase'];
+    }
+
+    /**
+     * Sets dealbase
+     *
+     * @param float $dealbase 返点
+     *
+     * @return $this
+     */
+    public function setDealbase($dealbase)
+    {
+        $this->container['dealbase'] = $dealbase;
 
         return $this;
     }

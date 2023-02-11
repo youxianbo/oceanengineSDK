@@ -72,7 +72,7 @@ class InlineResponse20024DataList implements ModelInterface, ArrayAccess
         'balance_detail' => null,
         'status' => null,
         'status_message' => null,
-        'advertiser_id' => 'int32'
+        'advertiser_id' => 'int64'
     ];
 
     /**

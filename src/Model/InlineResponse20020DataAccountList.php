@@ -67,7 +67,7 @@ class InlineResponse20020DataAccountList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'account_id' => 'int32',
+        'account_id' => 'int64',
         'account_type' => null
     ];
 

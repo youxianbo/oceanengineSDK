@@ -57,19 +57,19 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'campaign_name' => 'Null',
+        'campaign_name' => 'string',
         'stat_datetime' => 'string',
-        'id' => 'Null',
-        'avg_show_cost' => 'int',
-        'convert_rate' => 'int',
+        'id' => 'string',
+        'avg_show_cost' => 'float',
+        'convert_rate' => 'float',
         'click' => 'int',
         'show' => 'int',
-        'cost' => 'int',
-        'ad_name' => 'Null',
-        'inventory' => 'Null',
-        'ad_id' => 'Null',
-        'campaign_id' => 'Null',
-        'creative_id' => 'Null',
+        'cost' => 'float',
+        'ad_name' => 'string',
+        'inventory' => 'string',
+        'ad_id' => 'string',
+        'campaign_id' => 'string',
+        'creative_id' => 'string',
         'label_name' => 'string',
         'superior_label_name' => 'string',
         'audience_level' => 'string',
@@ -85,11 +85,11 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
         'campaign_name' => null,
         'stat_datetime' => null,
         'id' => null,
-        'avg_show_cost' => 'int32',
-        'convert_rate' => 'int32',
+        'avg_show_cost' => null,
+        'convert_rate' => null,
         'click' => 'int32',
         'show' => 'int32',
-        'cost' => 'int32',
+        'cost' => null,
         'ad_name' => null,
         'inventory' => null,
         'ad_id' => null,
@@ -342,7 +342,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets campaign_name
      *
-     * @return Null
+     * @return string
      */
     public function getCampaignName()
     {
@@ -352,7 +352,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets campaign_name
      *
-     * @param Null $campaign_name campaign_name
+     * @param string $campaign_name campaign_name
      *
      * @return $this
      */
@@ -390,7 +390,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return Null
+     * @return string
      */
     public function getId()
     {
@@ -400,7 +400,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param Null $id id
+     * @param string $id id
      *
      * @return $this
      */
@@ -414,7 +414,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets avg_show_cost
      *
-     * @return int
+     * @return float
      */
     public function getAvgShowCost()
     {
@@ -424,7 +424,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets avg_show_cost
      *
-     * @param int $avg_show_cost avg_show_cost
+     * @param float $avg_show_cost avg_show_cost
      *
      * @return $this
      */
@@ -438,7 +438,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets convert_rate
      *
-     * @return int
+     * @return float
      */
     public function getConvertRate()
     {
@@ -448,7 +448,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets convert_rate
      *
-     * @param int $convert_rate convert_rate
+     * @param float $convert_rate convert_rate
      *
      * @return $this
      */
@@ -510,7 +510,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets cost
      *
-     * @return int
+     * @return float
      */
     public function getCost()
     {
@@ -520,7 +520,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets cost
      *
-     * @param int $cost cost
+     * @param float $cost cost
      *
      * @return $this
      */
@@ -534,7 +534,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets ad_name
      *
-     * @return Null
+     * @return string
      */
     public function getAdName()
     {
@@ -544,7 +544,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets ad_name
      *
-     * @param Null $ad_name ad_name
+     * @param string $ad_name ad_name
      *
      * @return $this
      */
@@ -558,7 +558,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets inventory
      *
-     * @return Null
+     * @return string
      */
     public function getInventory()
     {
@@ -568,7 +568,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets inventory
      *
-     * @param Null $inventory inventory
+     * @param string $inventory inventory
      *
      * @return $this
      */
@@ -582,7 +582,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets ad_id
      *
-     * @return Null
+     * @return string
      */
     public function getAdId()
     {
@@ -592,7 +592,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets ad_id
      *
-     * @param Null $ad_id ad_id
+     * @param string $ad_id ad_id
      *
      * @return $this
      */
@@ -606,7 +606,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets campaign_id
      *
-     * @return Null
+     * @return string
      */
     public function getCampaignId()
     {
@@ -616,7 +616,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets campaign_id
      *
-     * @param Null $campaign_id campaign_id
+     * @param string $campaign_id campaign_id
      *
      * @return $this
      */
@@ -630,7 +630,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Gets creative_id
      *
-     * @return Null
+     * @return string
      */
     public function getCreativeId()
     {
@@ -640,7 +640,7 @@ class InlineResponse20010DataList implements ModelInterface, ArrayAccess
     /**
      * Sets creative_id
      *
-     * @param Null $creative_id creative_id
+     * @param string $creative_id creative_id
      *
      * @return $this
      */

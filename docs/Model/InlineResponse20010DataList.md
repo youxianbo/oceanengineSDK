@@ -3,19 +3,19 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaign_name** | [**Null**](Null.md) |  | 
+**campaign_name** | **string** |  | 
 **stat_datetime** | **string** |  | 
-**id** | [**Null**](Null.md) |  | 
-**avg_show_cost** | **int** |  | 
-**convert_rate** | **int** |  | 
+**id** | **string** |  | 
+**avg_show_cost** | **float** |  | 
+**convert_rate** | **float** |  | 
 **click** | **int** |  | 
 **show** | **int** |  | 
-**cost** | **int** |  | 
-**ad_name** | [**Null**](Null.md) |  | 
-**inventory** | [**Null**](Null.md) |  | 
-**ad_id** | [**Null**](Null.md) |  | 
-**campaign_id** | [**Null**](Null.md) |  | 
-**creative_id** | [**Null**](Null.md) |  | 
+**cost** | **float** |  | 
+**ad_name** | **string** |  | 
+**inventory** | **string** |  | 
+**ad_id** | **string** |  | 
+**campaign_id** | **string** |  | 
+**creative_id** | **string** |  | 
 **label_name** | **string** |  | [optional] 
 **superior_label_name** | **string** |  | [optional] 
 **audience_level** | **string** |  | [optional] 

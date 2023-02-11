@@ -57,7 +57,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'cost' => 'int',
+        'cost' => 'float',
         'advertiser_id' => 'int',
         'stat_datetime' => 'string'
     ];
@@ -68,8 +68,8 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'cost' => 'int32',
-        'advertiser_id' => 'int32',
+        'cost' => null,
+        'advertiser_id' => 'int64',
         'stat_datetime' => null
     ];
 
@@ -228,7 +228,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
     /**
      * Gets cost
      *
-     * @return int
+     * @return float
      */
     public function getCost()
     {
@@ -238,7 +238,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
     /**
      * Sets cost
      *
-     * @param int $cost cost
+     * @param float $cost cost
      *
      * @return $this
      */

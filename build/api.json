@@ -546,7 +546,8 @@
                         },
                         "id": {
                           "type": "integer",
-                          "description": "用户id"
+                          "description": "用户id",
+                          "format": "int64"
                         }
                       },
                       "required": [
@@ -1153,10 +1154,11 @@
                             "type": "object",
                             "properties": {
                               "cost": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "advertiser_id": {
-                                "type": "integer"
+                                "type": "integer",
+                                "format": "int64"
                               },
                               "stat_datetime": {
                                 "type": "string"
@@ -1522,28 +1524,28 @@
                             "type": "object",
                             "properties": {
                               "convert_rate": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "stat_datetime": {
                                 "type": "string"
                               },
                               "campaign_id": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "click": {
                                 "type": "integer"
                               },
                               "id": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "avg_show_cost": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "campaign_name": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "cost": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "show": {
                                 "type": "integer"
@@ -1908,11 +1910,6 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "x-apifox-refs": {
-                    "01GRTEXRETPZF5Z2FVW7V2BAH2": {
-                      "$ref": "#/components/schemas/result"
-                    }
-                  },
                   "properties": {
                     "code": {
                       "type": "integer"
@@ -1925,20 +1922,132 @@
                     },
                     "data": {
                       "type": "object",
-                      "properties": {},
-                      "x-apifox-orders": [],
+                      "properties": {
+                        "page_info": {
+                          "type": "object",
+                          "properties": {
+                            "total_number": {
+                              "type": "integer"
+                            },
+                            "page_size": {
+                              "type": "integer"
+                            },
+                            "total_page": {
+                              "type": "integer"
+                            },
+                            "page": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "total_number",
+                            "page_size",
+                            "total_page",
+                            "page"
+                          ],
+                          "x-apifox-orders": [
+                            "total_number",
+                            "page_size",
+                            "total_page",
+                            "page"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        },
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "avg_show_cost": {
+                                "type": "number"
+                              },
+                              "show": {
+                                "type": "integer"
+                              },
+                              "ad_name": {
+                                "type": "string"
+                              },
+                              "convert_rate": {
+                                "type": "number"
+                              },
+                              "stat_datetime": {
+                                "type": "string"
+                              },
+                              "campaign_id": {
+                                "type": "string"
+                              },
+                              "campaign_name": {
+                                "type": "string"
+                              },
+                              "click": {
+                                "type": "integer"
+                              },
+                              "cost": {
+                                "type": "number"
+                              },
+                              "ad_id": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "avg_show_cost",
+                              "show",
+                              "ad_name",
+                              "convert_rate",
+                              "stat_datetime",
+                              "campaign_id",
+                              "campaign_name",
+                              "click",
+                              "cost",
+                              "ad_id",
+                              "id"
+                            ],
+                            "x-apifox-orders": [
+                              "avg_show_cost",
+                              "show",
+                              "ad_name",
+                              "convert_rate",
+                              "stat_datetime",
+                              "campaign_id",
+                              "campaign_name",
+                              "click",
+                              "cost",
+                              "ad_id",
+                              "id"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        }
+                      },
+                      "required": [
+                        "page_info",
+                        "list"
+                      ],
+                      "x-apifox-orders": [
+                        "page_info",
+                        "list"
+                      ],
                       "x-apifox-ignore-properties": []
                     }
                   },
-                  "x-apifox-orders": [
-                    "01GRTEXRETPZF5Z2FVW7V2BAH2",
-                    "data"
-                  ],
                   "required": [
+                    "data",
                     "code",
                     "message",
                     "request_id"
                   ],
+                  "x-apifox-orders": [
+                    "01GRZH3FER5Z251HMBJESAH60Z",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GRZH3FER5Z251HMBJESAH60Z": {
+                      "$ref": "#/components/schemas/result"
+                    }
+                  },
                   "x-apifox-ignore-properties": [
                     "code",
                     "message",
@@ -2285,19 +2394,19 @@
                             "type": "object",
                             "properties": {
                               "campaign_name": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "stat_datetime": {
                                 "type": "string"
                               },
                               "id": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "avg_show_cost": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "convert_rate": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "click": {
                                 "type": "integer"
@@ -2306,22 +2415,22 @@
                                 "type": "integer"
                               },
                               "cost": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "ad_name": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "inventory": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "ad_id": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "campaign_id": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "creative_id": {
-                                "type": "null"
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -2740,19 +2849,19 @@
                             "type": "object",
                             "properties": {
                               "campaign_name": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "stat_datetime": {
                                 "type": "string"
                               },
                               "id": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "avg_show_cost": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "convert_rate": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "click": {
                                 "type": "integer"
@@ -2761,22 +2870,22 @@
                                 "type": "integer"
                               },
                               "cost": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "ad_name": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "inventory": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "ad_id": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "campaign_id": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "creative_id": {
-                                "type": "null"
+                                "type": "string"
                               },
                               "label_name": {
                                 "type": "string"
@@ -3137,7 +3246,7 @@
                                 "description": "转化数"
                               },
                               "cost": {
-                                "type": "integer",
+                                "type": "number",
                                 "description": "总消耗(单位元,精确到分)"
                               },
                               "click": {
@@ -3369,7 +3478,7 @@
                                 "description": "转化数"
                               },
                               "cost": {
-                                "type": "integer",
+                                "type": "number",
                                 "description": "总消耗(单位元,精确到分)"
                               },
                               "click": {
@@ -3599,7 +3708,7 @@
                                 "description": "转化数"
                               },
                               "cost": {
-                                "type": "integer",
+                                "type": "number",
                                 "description": "总消耗(单位元,精确到分)"
                               },
                               "click": {
@@ -3823,7 +3932,7 @@
                                 "description": "转化数"
                               },
                               "cost": {
-                                "type": "integer",
+                                "type": "number",
                                 "description": "总消耗(单位元,精确到分)"
                               },
                               "click": {
@@ -4931,7 +5040,8 @@
                             "type": "object",
                             "properties": {
                               "advertiser_id": {
-                                "type": "integer"
+                                "type": "integer",
+                                "format": "int64"
                               },
                               "advertiser_name": {
                                 "type": "string"
@@ -5087,7 +5197,8 @@
                             "type": "object",
                             "properties": {
                               "partner_organization_id": {
-                                "type": "integer"
+                                "type": "integer",
+                                "format": "int64"
                               },
                               "remark": {
                                 "type": "string"
@@ -5291,7 +5402,8 @@
                             "type": "object",
                             "properties": {
                               "company_id": {
-                                "type": "integer"
+                                "type": "integer",
+                                "format": "int64"
                               },
                               "company_name": {
                                 "type": "string"
@@ -5514,7 +5626,8 @@
                             "type": "object",
                             "properties": {
                               "account_id": {
-                                "type": "integer"
+                                "type": "integer",
+                                "format": "int64"
                               },
                               "account_type": {
                                 "type": "string"
@@ -5959,40 +6072,50 @@
                             "type": "object",
                             "properties": {
                               "advertiser_id": {
-                                "type": "integer"
+                                "type": "integer",
+                                "format": "int64"
                               },
                               "date": {
                                 "type": "string"
                               },
                               "balance": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "日终结余(单位元）"
                               },
                               "cash_cost": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "现金支出(单位元)"
                               },
                               "shared_wallet_cost": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "共享钱包支出（单位元）"
                               },
                               "cost": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "总支出(单位元)"
                               },
                               "frozen": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "冻结(单位元)"
                               },
                               "grant": {
-                                "type": "integer"
+                                "type": "number"
                               },
                               "income": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "总存入(单位元)"
                               },
                               "reward_cost": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "共享钱包支出（单位元）"
                               },
                               "transfer_in": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "总转入(单位元)"
                               },
                               "transfer_out": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "总转出(单位元)"
                               }
                             },
                             "required": [
@@ -6251,37 +6374,53 @@
                             "type": "object",
                             "properties": {
                               "advertiser_id": {
-                                "type": "integer"
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "广告主ID"
                               },
                               "transaction_type": {
-                                "type": "string"
+                                "type": "string",
+                                "description": "流水类型，详见附录【流水类型】，包含转账、充值"
                               },
                               "create_time": {
-                                "type": "string"
+                                "type": "string",
+                                "description": "冻结总金额(单位元)"
                               },
                               "grant": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "赠款总金额(单位元）"
                               },
                               "frozen": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "冻结总金额(单位元)"
                               },
                               "cash": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "现金总金额(单位元)"
                               },
                               "amount": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "交易总金额(单位元)"
                               },
                               "return_goods": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "返货总金额(单位元)"
                               },
                               "transaction_seq": {
-                                "type": "integer"
+                                "type": "string",
+                                "description": "付款方，即广告主id。"
                               },
                               "remitter": {
-                                "type": "integer"
+                                "type": "string",
+                                "description": "付款方，即广告主id。"
                               },
                               "payee": {
-                                "type": "integer"
+                                "type": "number",
+                                "description": "收款方，即广告主id。"
+                              },
+                              "dealbase": {
+                                "type": "number",
+                                "description": "返点"
                               }
                             },
                             "x-apifox-orders": [
@@ -6295,7 +6434,11 @@
                               "return_goods",
                               "transaction_seq",
                               "remitter",
-                              "payee"
+                              "payee",
+                              "dealbase"
+                            ],
+                            "required": [
+                              "dealbase"
                             ],
                             "x-apifox-ignore-properties": []
                           }
@@ -6444,7 +6587,7 @@
                                       "type": "string"
                                     },
                                     "balance": {
-                                      "type": "integer"
+                                      "type": "number"
                                     }
                                   },
                                   "required": [
@@ -6465,7 +6608,8 @@
                                 "type": "string"
                               },
                               "advertiser_id": {
-                                "type": "integer"
+                                "type": "integer",
+                                "format": "int64"
                               }
                             },
                             "x-apifox-orders": [
@@ -7184,7 +7328,8 @@
         "type": "object",
         "properties": {
           "advertiser_id": {
-            "type": "number"
+            "type": "integer",
+            "format": "int64"
           },
           "advertiser_name": {
             "type": "string"
@@ -7367,8 +7512,17 @@
           "advertiser_ids": {
             "type": "array",
             "items": {
-              "type": "integer"
+              "type": "integer",
+              "format": "int64"
             }
+          },
+          "advertiser_name": {
+            "type": "string",
+            "description": "官方文档没有此字段，但实际返回有"
+          },
+          "advertiser_id": {
+            "type": "string",
+            "description": "将废弃，见官方文档说明"
           }
         },
         "title": "AccessToken",
@@ -7377,14 +7531,18 @@
           "expires_in",
           "refresh_token",
           "refresh_token_expires_in",
-          "advertiser_ids"
+          "advertiser_ids",
+          "advertiser_name",
+          "advertiser_id"
         ],
         "required": [
           "access_token",
           "expires_in",
           "refresh_token",
           "refresh_token_expires_in",
-          "advertiser_ids"
+          "advertiser_ids",
+          "advertiser_name",
+          "advertiser_id"
         ],
         "x-apifox-ignore-properties": [],
         "x-apifox-folder": "oauth2"

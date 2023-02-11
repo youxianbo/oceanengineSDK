@@ -67,7 +67,7 @@ class InlineResponse20017DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'advertiser_id' => 'int32',
+        'advertiser_id' => 'int64',
         'advertiser_name' => null
     ];
 

@@ -70,7 +70,7 @@ class InlineResponse2003Data implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'display_name' => null,
         'email' => null,
-        'id' => 'int32'
+        'id' => 'int64'
     ];
 
     /**

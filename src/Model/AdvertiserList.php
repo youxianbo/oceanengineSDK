@@ -57,7 +57,7 @@ class AdvertiserList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'advertiser_id' => 'float',
+        'advertiser_id' => 'int',
         'advertiser_name' => 'string',
         'advertiser_role' => 'float',
         'is_valid' => 'bool',
@@ -71,7 +71,7 @@ class AdvertiserList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'advertiser_id' => null,
+        'advertiser_id' => 'int64',
         'advertiser_name' => null,
         'advertiser_role' => null,
         'is_valid' => null,
@@ -252,7 +252,7 @@ class AdvertiserList implements ModelInterface, ArrayAccess
     /**
      * Gets advertiser_id
      *
-     * @return float|null
+     * @return int|null
      */
     public function getAdvertiserId()
     {
@@ -262,7 +262,7 @@ class AdvertiserList implements ModelInterface, ArrayAccess
     /**
      * Sets advertiser_id
      *
-     * @param float|null $advertiser_id advertiser_id
+     * @param int|null $advertiser_id advertiser_id
      *
      * @return $this
      */

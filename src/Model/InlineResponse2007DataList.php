@@ -57,14 +57,14 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'convert_rate' => 'int',
+        'convert_rate' => 'float',
         'stat_datetime' => 'string',
-        'campaign_id' => 'Null',
+        'campaign_id' => 'string',
         'click' => 'int',
-        'id' => 'Null',
-        'avg_show_cost' => 'int',
-        'campaign_name' => 'Null',
-        'cost' => 'int',
+        'id' => 'string',
+        'avg_show_cost' => 'float',
+        'campaign_name' => 'string',
+        'cost' => 'float',
         'show' => 'int'
     ];
 
@@ -74,14 +74,14 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'convert_rate' => 'int32',
+        'convert_rate' => null,
         'stat_datetime' => null,
         'campaign_id' => null,
         'click' => 'int32',
         'id' => null,
-        'avg_show_cost' => 'int32',
+        'avg_show_cost' => null,
         'campaign_name' => null,
-        'cost' => 'int32',
+        'cost' => null,
         'show' => 'int32'
     ];
 
@@ -282,7 +282,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Gets convert_rate
      *
-     * @return int
+     * @return float
      */
     public function getConvertRate()
     {
@@ -292,7 +292,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Sets convert_rate
      *
-     * @param int $convert_rate convert_rate
+     * @param float $convert_rate convert_rate
      *
      * @return $this
      */
@@ -330,7 +330,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Gets campaign_id
      *
-     * @return Null
+     * @return string
      */
     public function getCampaignId()
     {
@@ -340,7 +340,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Sets campaign_id
      *
-     * @param Null $campaign_id campaign_id
+     * @param string $campaign_id campaign_id
      *
      * @return $this
      */
@@ -378,7 +378,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return Null
+     * @return string
      */
     public function getId()
     {
@@ -388,7 +388,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param Null $id id
+     * @param string $id id
      *
      * @return $this
      */
@@ -402,7 +402,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Gets avg_show_cost
      *
-     * @return int
+     * @return float
      */
     public function getAvgShowCost()
     {
@@ -412,7 +412,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Sets avg_show_cost
      *
-     * @param int $avg_show_cost avg_show_cost
+     * @param float $avg_show_cost avg_show_cost
      *
      * @return $this
      */
@@ -426,7 +426,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Gets campaign_name
      *
-     * @return Null
+     * @return string
      */
     public function getCampaignName()
     {
@@ -436,7 +436,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Sets campaign_name
      *
-     * @param Null $campaign_name campaign_name
+     * @param string $campaign_name campaign_name
      *
      * @return $this
      */
@@ -450,7 +450,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Gets cost
      *
-     * @return int
+     * @return float
      */
     public function getCost()
     {
@@ -460,7 +460,7 @@ class InlineResponse2007DataList implements ModelInterface, ArrayAccess
     /**
      * Sets cost
      *
-     * @param int $cost cost
+     * @param float $cost cost
      *
      * @return $this
      */

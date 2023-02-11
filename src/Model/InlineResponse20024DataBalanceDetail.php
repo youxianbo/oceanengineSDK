@@ -58,7 +58,7 @@ class InlineResponse20024DataBalanceDetail implements ModelInterface, ArrayAcces
       */
     protected static $openAPITypes = [
         'billing_inventory' => 'string',
-        'balance' => 'int'
+        'balance' => 'float'
     ];
 
     /**
@@ -68,7 +68,7 @@ class InlineResponse20024DataBalanceDetail implements ModelInterface, ArrayAcces
       */
     protected static $openAPIFormats = [
         'billing_inventory' => null,
-        'balance' => 'int32'
+        'balance' => null
     ];
 
     /**
@@ -243,7 +243,7 @@ class InlineResponse20024DataBalanceDetail implements ModelInterface, ArrayAcces
     /**
      * Gets balance
      *
-     * @return int
+     * @return float
      */
     public function getBalance()
     {
@@ -253,7 +253,7 @@ class InlineResponse20024DataBalanceDetail implements ModelInterface, ArrayAcces
     /**
      * Sets balance
      *
-     * @param int $balance balance
+     * @param float $balance balance
      *
      * @return $this
      */

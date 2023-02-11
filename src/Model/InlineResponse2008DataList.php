@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2009DataList
+ * InlineResponse2008DataList
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse2009DataList Class Doc Comment
+ * InlineResponse2008DataList Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse2009DataList implements ModelInterface, ArrayAccess
+class InlineResponse2008DataList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_9_data_list';
+    protected static $openAPIModelName = 'inline_response_200_8_data_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,19 +57,17 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'campaign_name' => 'string',
-        'stat_datetime' => 'string',
-        'id' => 'string',
         'avg_show_cost' => 'float',
-        'convert_rate' => 'float',
-        'click' => 'int',
         'show' => 'int',
-        'cost' => 'float',
         'ad_name' => 'string',
-        'inventory' => 'string',
-        'ad_id' => 'string',
+        'convert_rate' => 'float',
+        'stat_datetime' => 'string',
         'campaign_id' => 'string',
-        'creative_id' => 'string'
+        'campaign_name' => 'string',
+        'click' => 'int',
+        'cost' => 'float',
+        'ad_id' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -78,19 +76,17 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'campaign_name' => null,
-        'stat_datetime' => null,
-        'id' => null,
         'avg_show_cost' => null,
-        'convert_rate' => null,
-        'click' => 'int32',
         'show' => 'int32',
-        'cost' => null,
         'ad_name' => null,
-        'inventory' => null,
-        'ad_id' => null,
+        'convert_rate' => null,
+        'stat_datetime' => null,
         'campaign_id' => null,
-        'creative_id' => null
+        'campaign_name' => null,
+        'click' => 'int32',
+        'cost' => null,
+        'ad_id' => null,
+        'id' => null
     ];
 
     /**
@@ -120,19 +116,17 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'campaign_name' => 'campaign_name',
-        'stat_datetime' => 'stat_datetime',
-        'id' => 'id',
         'avg_show_cost' => 'avg_show_cost',
-        'convert_rate' => 'convert_rate',
-        'click' => 'click',
         'show' => 'show',
-        'cost' => 'cost',
         'ad_name' => 'ad_name',
-        'inventory' => 'inventory',
-        'ad_id' => 'ad_id',
+        'convert_rate' => 'convert_rate',
+        'stat_datetime' => 'stat_datetime',
         'campaign_id' => 'campaign_id',
-        'creative_id' => 'creative_id'
+        'campaign_name' => 'campaign_name',
+        'click' => 'click',
+        'cost' => 'cost',
+        'ad_id' => 'ad_id',
+        'id' => 'id'
     ];
 
     /**
@@ -141,19 +135,17 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'campaign_name' => 'setCampaignName',
-        'stat_datetime' => 'setStatDatetime',
-        'id' => 'setId',
         'avg_show_cost' => 'setAvgShowCost',
-        'convert_rate' => 'setConvertRate',
-        'click' => 'setClick',
         'show' => 'setShow',
-        'cost' => 'setCost',
         'ad_name' => 'setAdName',
-        'inventory' => 'setInventory',
-        'ad_id' => 'setAdId',
+        'convert_rate' => 'setConvertRate',
+        'stat_datetime' => 'setStatDatetime',
         'campaign_id' => 'setCampaignId',
-        'creative_id' => 'setCreativeId'
+        'campaign_name' => 'setCampaignName',
+        'click' => 'setClick',
+        'cost' => 'setCost',
+        'ad_id' => 'setAdId',
+        'id' => 'setId'
     ];
 
     /**
@@ -162,19 +154,17 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'campaign_name' => 'getCampaignName',
-        'stat_datetime' => 'getStatDatetime',
-        'id' => 'getId',
         'avg_show_cost' => 'getAvgShowCost',
-        'convert_rate' => 'getConvertRate',
-        'click' => 'getClick',
         'show' => 'getShow',
-        'cost' => 'getCost',
         'ad_name' => 'getAdName',
-        'inventory' => 'getInventory',
-        'ad_id' => 'getAdId',
+        'convert_rate' => 'getConvertRate',
+        'stat_datetime' => 'getStatDatetime',
         'campaign_id' => 'getCampaignId',
-        'creative_id' => 'getCreativeId'
+        'campaign_name' => 'getCampaignName',
+        'click' => 'getClick',
+        'cost' => 'getCost',
+        'ad_id' => 'getAdId',
+        'id' => 'getId'
     ];
 
     /**
@@ -237,19 +227,17 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['campaign_name'] = isset($data['campaign_name']) ? $data['campaign_name'] : null;
-        $this->container['stat_datetime'] = isset($data['stat_datetime']) ? $data['stat_datetime'] : null;
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['avg_show_cost'] = isset($data['avg_show_cost']) ? $data['avg_show_cost'] : null;
-        $this->container['convert_rate'] = isset($data['convert_rate']) ? $data['convert_rate'] : null;
-        $this->container['click'] = isset($data['click']) ? $data['click'] : null;
         $this->container['show'] = isset($data['show']) ? $data['show'] : null;
-        $this->container['cost'] = isset($data['cost']) ? $data['cost'] : null;
         $this->container['ad_name'] = isset($data['ad_name']) ? $data['ad_name'] : null;
-        $this->container['inventory'] = isset($data['inventory']) ? $data['inventory'] : null;
-        $this->container['ad_id'] = isset($data['ad_id']) ? $data['ad_id'] : null;
+        $this->container['convert_rate'] = isset($data['convert_rate']) ? $data['convert_rate'] : null;
+        $this->container['stat_datetime'] = isset($data['stat_datetime']) ? $data['stat_datetime'] : null;
         $this->container['campaign_id'] = isset($data['campaign_id']) ? $data['campaign_id'] : null;
-        $this->container['creative_id'] = isset($data['creative_id']) ? $data['creative_id'] : null;
+        $this->container['campaign_name'] = isset($data['campaign_name']) ? $data['campaign_name'] : null;
+        $this->container['click'] = isset($data['click']) ? $data['click'] : null;
+        $this->container['cost'] = isset($data['cost']) ? $data['cost'] : null;
+        $this->container['ad_id'] = isset($data['ad_id']) ? $data['ad_id'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
 
     /**
@@ -261,44 +249,38 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['campaign_name'] === null) {
-            $invalidProperties[] = "'campaign_name' can't be null";
-        }
-        if ($this->container['stat_datetime'] === null) {
-            $invalidProperties[] = "'stat_datetime' can't be null";
-        }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['avg_show_cost'] === null) {
             $invalidProperties[] = "'avg_show_cost' can't be null";
-        }
-        if ($this->container['convert_rate'] === null) {
-            $invalidProperties[] = "'convert_rate' can't be null";
-        }
-        if ($this->container['click'] === null) {
-            $invalidProperties[] = "'click' can't be null";
         }
         if ($this->container['show'] === null) {
             $invalidProperties[] = "'show' can't be null";
         }
-        if ($this->container['cost'] === null) {
-            $invalidProperties[] = "'cost' can't be null";
-        }
         if ($this->container['ad_name'] === null) {
             $invalidProperties[] = "'ad_name' can't be null";
         }
-        if ($this->container['inventory'] === null) {
-            $invalidProperties[] = "'inventory' can't be null";
+        if ($this->container['convert_rate'] === null) {
+            $invalidProperties[] = "'convert_rate' can't be null";
         }
-        if ($this->container['ad_id'] === null) {
-            $invalidProperties[] = "'ad_id' can't be null";
+        if ($this->container['stat_datetime'] === null) {
+            $invalidProperties[] = "'stat_datetime' can't be null";
         }
         if ($this->container['campaign_id'] === null) {
             $invalidProperties[] = "'campaign_id' can't be null";
         }
-        if ($this->container['creative_id'] === null) {
-            $invalidProperties[] = "'creative_id' can't be null";
+        if ($this->container['campaign_name'] === null) {
+            $invalidProperties[] = "'campaign_name' can't be null";
+        }
+        if ($this->container['click'] === null) {
+            $invalidProperties[] = "'click' can't be null";
+        }
+        if ($this->container['cost'] === null) {
+            $invalidProperties[] = "'cost' can't be null";
+        }
+        if ($this->container['ad_id'] === null) {
+            $invalidProperties[] = "'ad_id' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -314,78 +296,6 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets campaign_name
-     *
-     * @return string
-     */
-    public function getCampaignName()
-    {
-        return $this->container['campaign_name'];
-    }
-
-    /**
-     * Sets campaign_name
-     *
-     * @param string $campaign_name campaign_name
-     *
-     * @return $this
-     */
-    public function setCampaignName($campaign_name)
-    {
-        $this->container['campaign_name'] = $campaign_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets stat_datetime
-     *
-     * @return string
-     */
-    public function getStatDatetime()
-    {
-        return $this->container['stat_datetime'];
-    }
-
-    /**
-     * Sets stat_datetime
-     *
-     * @param string $stat_datetime stat_datetime
-     *
-     * @return $this
-     */
-    public function setStatDatetime($stat_datetime)
-    {
-        $this->container['stat_datetime'] = $stat_datetime;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets avg_show_cost
@@ -407,54 +317,6 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
     public function setAvgShowCost($avg_show_cost)
     {
         $this->container['avg_show_cost'] = $avg_show_cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets convert_rate
-     *
-     * @return float
-     */
-    public function getConvertRate()
-    {
-        return $this->container['convert_rate'];
-    }
-
-    /**
-     * Sets convert_rate
-     *
-     * @param float $convert_rate convert_rate
-     *
-     * @return $this
-     */
-    public function setConvertRate($convert_rate)
-    {
-        $this->container['convert_rate'] = $convert_rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets click
-     *
-     * @return int
-     */
-    public function getClick()
-    {
-        return $this->container['click'];
-    }
-
-    /**
-     * Sets click
-     *
-     * @param int $click click
-     *
-     * @return $this
-     */
-    public function setClick($click)
-    {
-        $this->container['click'] = $click;
 
         return $this;
     }
@@ -484,30 +346,6 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets cost
-     *
-     * @return float
-     */
-    public function getCost()
-    {
-        return $this->container['cost'];
-    }
-
-    /**
-     * Sets cost
-     *
-     * @param float $cost cost
-     *
-     * @return $this
-     */
-    public function setCost($cost)
-    {
-        $this->container['cost'] = $cost;
-
-        return $this;
-    }
-
-    /**
      * Gets ad_name
      *
      * @return string
@@ -532,49 +370,49 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets inventory
+     * Gets convert_rate
      *
-     * @return string
+     * @return float
      */
-    public function getInventory()
+    public function getConvertRate()
     {
-        return $this->container['inventory'];
+        return $this->container['convert_rate'];
     }
 
     /**
-     * Sets inventory
+     * Sets convert_rate
      *
-     * @param string $inventory inventory
+     * @param float $convert_rate convert_rate
      *
      * @return $this
      */
-    public function setInventory($inventory)
+    public function setConvertRate($convert_rate)
     {
-        $this->container['inventory'] = $inventory;
+        $this->container['convert_rate'] = $convert_rate;
 
         return $this;
     }
 
     /**
-     * Gets ad_id
+     * Gets stat_datetime
      *
      * @return string
      */
-    public function getAdId()
+    public function getStatDatetime()
     {
-        return $this->container['ad_id'];
+        return $this->container['stat_datetime'];
     }
 
     /**
-     * Sets ad_id
+     * Sets stat_datetime
      *
-     * @param string $ad_id ad_id
+     * @param string $stat_datetime stat_datetime
      *
      * @return $this
      */
-    public function setAdId($ad_id)
+    public function setStatDatetime($stat_datetime)
     {
-        $this->container['ad_id'] = $ad_id;
+        $this->container['stat_datetime'] = $stat_datetime;
 
         return $this;
     }
@@ -604,25 +442,121 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets creative_id
+     * Gets campaign_name
      *
      * @return string
      */
-    public function getCreativeId()
+    public function getCampaignName()
     {
-        return $this->container['creative_id'];
+        return $this->container['campaign_name'];
     }
 
     /**
-     * Sets creative_id
+     * Sets campaign_name
      *
-     * @param string $creative_id creative_id
+     * @param string $campaign_name campaign_name
      *
      * @return $this
      */
-    public function setCreativeId($creative_id)
+    public function setCampaignName($campaign_name)
     {
-        $this->container['creative_id'] = $creative_id;
+        $this->container['campaign_name'] = $campaign_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets click
+     *
+     * @return int
+     */
+    public function getClick()
+    {
+        return $this->container['click'];
+    }
+
+    /**
+     * Sets click
+     *
+     * @param int $click click
+     *
+     * @return $this
+     */
+    public function setClick($click)
+    {
+        $this->container['click'] = $click;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost
+     *
+     * @return float
+     */
+    public function getCost()
+    {
+        return $this->container['cost'];
+    }
+
+    /**
+     * Sets cost
+     *
+     * @param float $cost cost
+     *
+     * @return $this
+     */
+    public function setCost($cost)
+    {
+        $this->container['cost'] = $cost;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_id
+     *
+     * @return string
+     */
+    public function getAdId()
+    {
+        return $this->container['ad_id'];
+    }
+
+    /**
+     * Sets ad_id
+     *
+     * @param string $ad_id ad_id
+     *
+     * @return $this
+     */
+    public function setAdId($ad_id)
+    {
+        $this->container['ad_id'] = $ad_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

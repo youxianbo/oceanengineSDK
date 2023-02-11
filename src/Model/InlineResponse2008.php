@@ -60,7 +60,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
         'code' => 'int',
         'message' => 'string',
         'request_id' => 'string',
-        'data' => 'object'
+        'data' => '\Oceanengine\Open\Model\InlineResponse2008Data'
     ];
 
     /**
@@ -216,6 +216,9 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
         if ($this->container['request_id'] === null) {
             $invalidProperties[] = "'request_id' can't be null";
         }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +309,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return object|null
+     * @return \Oceanengine\Open\Model\InlineResponse2008Data
      */
     public function getData()
     {
@@ -316,7 +319,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param object|null $data data
+     * @param \Oceanengine\Open\Model\InlineResponse2008Data $data data
      *
      * @return $this
      */

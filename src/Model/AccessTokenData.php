@@ -76,7 +76,7 @@ class AccessTokenData implements ModelInterface, ArrayAccess
         'expires_in' => 'int32',
         'refresh_token' => null,
         'refresh_token_expires_in' => 'int32',
-        'advertiser_ids' => 'int32',
+        'advertiser_ids' => 'int64',
         'advertiser_name' => null,
         'advertiser_id' => null
     ];

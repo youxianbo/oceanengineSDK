@@ -59,16 +59,16 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'advertiser_id' => 'int',
         'date' => 'string',
-        'balance' => 'int',
-        'cash_cost' => 'int',
-        'shared_wallet_cost' => 'int',
-        'cost' => 'int',
-        'frozen' => 'int',
-        'grant' => 'int',
-        'income' => 'int',
-        'reward_cost' => 'int',
-        'transfer_in' => 'int',
-        'transfer_out' => 'int'
+        'balance' => 'float',
+        'cash_cost' => 'float',
+        'shared_wallet_cost' => 'float',
+        'cost' => 'float',
+        'frozen' => 'float',
+        'grant' => 'float',
+        'income' => 'float',
+        'reward_cost' => 'float',
+        'transfer_in' => 'float',
+        'transfer_out' => 'float'
     ];
 
     /**
@@ -77,18 +77,18 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'advertiser_id' => 'int32',
+        'advertiser_id' => 'int64',
         'date' => null,
-        'balance' => 'int32',
-        'cash_cost' => 'int32',
-        'shared_wallet_cost' => 'int32',
-        'cost' => 'int32',
-        'frozen' => 'int32',
-        'grant' => 'int32',
-        'income' => 'int32',
-        'reward_cost' => 'int32',
-        'transfer_in' => 'int32',
-        'transfer_out' => 'int32'
+        'balance' => null,
+        'cash_cost' => null,
+        'shared_wallet_cost' => null,
+        'cost' => null,
+        'frozen' => null,
+        'grant' => null,
+        'income' => null,
+        'reward_cost' => null,
+        'transfer_in' => null,
+        'transfer_out' => null
     ];
 
     /**
@@ -357,7 +357,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets balance
      *
-     * @return int
+     * @return float
      */
     public function getBalance()
     {
@@ -367,7 +367,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets balance
      *
-     * @param int $balance balance
+     * @param float $balance 日终结余(单位元）
      *
      * @return $this
      */
@@ -381,7 +381,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets cash_cost
      *
-     * @return int
+     * @return float
      */
     public function getCashCost()
     {
@@ -391,7 +391,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets cash_cost
      *
-     * @param int $cash_cost cash_cost
+     * @param float $cash_cost 现金支出(单位元)
      *
      * @return $this
      */
@@ -405,7 +405,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets shared_wallet_cost
      *
-     * @return int
+     * @return float
      */
     public function getSharedWalletCost()
     {
@@ -415,7 +415,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets shared_wallet_cost
      *
-     * @param int $shared_wallet_cost shared_wallet_cost
+     * @param float $shared_wallet_cost 共享钱包支出（单位元）
      *
      * @return $this
      */
@@ -429,7 +429,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets cost
      *
-     * @return int
+     * @return float
      */
     public function getCost()
     {
@@ -439,7 +439,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets cost
      *
-     * @param int $cost cost
+     * @param float $cost 总支出(单位元)
      *
      * @return $this
      */
@@ -453,7 +453,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets frozen
      *
-     * @return int
+     * @return float
      */
     public function getFrozen()
     {
@@ -463,7 +463,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets frozen
      *
-     * @param int $frozen frozen
+     * @param float $frozen 冻结(单位元)
      *
      * @return $this
      */
@@ -477,7 +477,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets grant
      *
-     * @return int
+     * @return float
      */
     public function getGrant()
     {
@@ -487,7 +487,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets grant
      *
-     * @param int $grant grant
+     * @param float $grant grant
      *
      * @return $this
      */
@@ -501,7 +501,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets income
      *
-     * @return int
+     * @return float
      */
     public function getIncome()
     {
@@ -511,7 +511,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets income
      *
-     * @param int $income income
+     * @param float $income 总存入(单位元)
      *
      * @return $this
      */
@@ -525,7 +525,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets reward_cost
      *
-     * @return int
+     * @return float
      */
     public function getRewardCost()
     {
@@ -535,7 +535,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets reward_cost
      *
-     * @param int $reward_cost reward_cost
+     * @param float $reward_cost 共享钱包支出（单位元）
      *
      * @return $this
      */
@@ -549,7 +549,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets transfer_in
      *
-     * @return int
+     * @return float
      */
     public function getTransferIn()
     {
@@ -559,7 +559,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets transfer_in
      *
-     * @param int $transfer_in transfer_in
+     * @param float $transfer_in 总转入(单位元)
      *
      * @return $this
      */
@@ -573,7 +573,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets transfer_out
      *
-     * @return int
+     * @return float
      */
     public function getTransferOut()
     {
@@ -583,7 +583,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets transfer_out
      *
-     * @param int $transfer_out transfer_out
+     * @param float $transfer_out 总转出(单位元)
      *
      * @return $this
      */
