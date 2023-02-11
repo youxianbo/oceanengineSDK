@@ -61,7 +61,9 @@ class AccessTokenData implements ModelInterface, ArrayAccess
         'expires_in' => 'int',
         'refresh_token' => 'string',
         'refresh_token_expires_in' => 'int',
-        'advertiser_ids' => 'int[]'
+        'advertiser_ids' => 'int[]',
+        'advertiser_name' => 'string',
+        'advertiser_id' => 'string'
     ];
 
     /**
@@ -74,7 +76,9 @@ class AccessTokenData implements ModelInterface, ArrayAccess
         'expires_in' => 'int32',
         'refresh_token' => null,
         'refresh_token_expires_in' => 'int32',
-        'advertiser_ids' => 'int32'
+        'advertiser_ids' => 'int32',
+        'advertiser_name' => null,
+        'advertiser_id' => null
     ];
 
     /**
@@ -108,7 +112,9 @@ class AccessTokenData implements ModelInterface, ArrayAccess
         'expires_in' => 'expires_in',
         'refresh_token' => 'refresh_token',
         'refresh_token_expires_in' => 'refresh_token_expires_in',
-        'advertiser_ids' => 'advertiser_ids'
+        'advertiser_ids' => 'advertiser_ids',
+        'advertiser_name' => 'advertiser_name',
+        'advertiser_id' => 'advertiser_id'
     ];
 
     /**
@@ -121,7 +127,9 @@ class AccessTokenData implements ModelInterface, ArrayAccess
         'expires_in' => 'setExpiresIn',
         'refresh_token' => 'setRefreshToken',
         'refresh_token_expires_in' => 'setRefreshTokenExpiresIn',
-        'advertiser_ids' => 'setAdvertiserIds'
+        'advertiser_ids' => 'setAdvertiserIds',
+        'advertiser_name' => 'setAdvertiserName',
+        'advertiser_id' => 'setAdvertiserId'
     ];
 
     /**
@@ -134,7 +142,9 @@ class AccessTokenData implements ModelInterface, ArrayAccess
         'expires_in' => 'getExpiresIn',
         'refresh_token' => 'getRefreshToken',
         'refresh_token_expires_in' => 'getRefreshTokenExpiresIn',
-        'advertiser_ids' => 'getAdvertiserIds'
+        'advertiser_ids' => 'getAdvertiserIds',
+        'advertiser_name' => 'getAdvertiserName',
+        'advertiser_id' => 'getAdvertiserId'
     ];
 
     /**
@@ -202,6 +212,8 @@ class AccessTokenData implements ModelInterface, ArrayAccess
         $this->container['refresh_token'] = isset($data['refresh_token']) ? $data['refresh_token'] : null;
         $this->container['refresh_token_expires_in'] = isset($data['refresh_token_expires_in']) ? $data['refresh_token_expires_in'] : null;
         $this->container['advertiser_ids'] = isset($data['advertiser_ids']) ? $data['advertiser_ids'] : null;
+        $this->container['advertiser_name'] = isset($data['advertiser_name']) ? $data['advertiser_name'] : null;
+        $this->container['advertiser_id'] = isset($data['advertiser_id']) ? $data['advertiser_id'] : null;
     }
 
     /**
@@ -227,6 +239,12 @@ class AccessTokenData implements ModelInterface, ArrayAccess
         }
         if ($this->container['advertiser_ids'] === null) {
             $invalidProperties[] = "'advertiser_ids' can't be null";
+        }
+        if ($this->container['advertiser_name'] === null) {
+            $invalidProperties[] = "'advertiser_name' can't be null";
+        }
+        if ($this->container['advertiser_id'] === null) {
+            $invalidProperties[] = "'advertiser_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -359,6 +377,54 @@ class AccessTokenData implements ModelInterface, ArrayAccess
     public function setAdvertiserIds($advertiser_ids)
     {
         $this->container['advertiser_ids'] = $advertiser_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets advertiser_name
+     *
+     * @return string
+     */
+    public function getAdvertiserName()
+    {
+        return $this->container['advertiser_name'];
+    }
+
+    /**
+     * Sets advertiser_name
+     *
+     * @param string $advertiser_name 官方文档没有此字段，但实际返回有
+     *
+     * @return $this
+     */
+    public function setAdvertiserName($advertiser_name)
+    {
+        $this->container['advertiser_name'] = $advertiser_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets advertiser_id
+     *
+     * @return string
+     */
+    public function getAdvertiserId()
+    {
+        return $this->container['advertiser_id'];
+    }
+
+    /**
+     * Sets advertiser_id
+     *
+     * @param string $advertiser_id 将废弃，见官方文档说明
+     *
+     * @return $this
+     */
+    public function setAdvertiserId($advertiser_id)
+    {
+        $this->container['advertiser_id'] = $advertiser_id;
 
         return $this;
     }
