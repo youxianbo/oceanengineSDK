@@ -57,18 +57,10 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'advertiser_id' => 'int',
-        'transaction_type' => 'string',
-        'create_time' => 'string',
-        'grant' => 'float',
-        'frozen' => 'float',
-        'cash' => 'float',
-        'amount' => 'float',
-        'return_goods' => 'float',
-        'transaction_seq' => 'string',
-        'remitter' => 'string',
-        'payee' => 'float',
-        'dealbase' => 'float'
+        'balance_detail' => '\Oceanengine\Open\Model\InlineResponse20023DataBalanceDetail[]',
+        'status' => 'string',
+        'status_message' => 'string',
+        'advertiser_id' => 'int'
     ];
 
     /**
@@ -77,18 +69,10 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'advertiser_id' => 'int64',
-        'transaction_type' => null,
-        'create_time' => null,
-        'grant' => null,
-        'frozen' => null,
-        'cash' => null,
-        'amount' => null,
-        'return_goods' => null,
-        'transaction_seq' => null,
-        'remitter' => null,
-        'payee' => null,
-        'dealbase' => null
+        'balance_detail' => null,
+        'status' => null,
+        'status_message' => null,
+        'advertiser_id' => 'int64'
     ];
 
     /**
@@ -118,18 +102,10 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'advertiser_id' => 'advertiser_id',
-        'transaction_type' => 'transaction_type',
-        'create_time' => 'create_time',
-        'grant' => 'grant',
-        'frozen' => 'frozen',
-        'cash' => 'cash',
-        'amount' => 'amount',
-        'return_goods' => 'return_goods',
-        'transaction_seq' => 'transaction_seq',
-        'remitter' => 'remitter',
-        'payee' => 'payee',
-        'dealbase' => 'dealbase'
+        'balance_detail' => 'balance_detail',
+        'status' => 'status',
+        'status_message' => 'status_message',
+        'advertiser_id' => 'advertiser_id'
     ];
 
     /**
@@ -138,18 +114,10 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'advertiser_id' => 'setAdvertiserId',
-        'transaction_type' => 'setTransactionType',
-        'create_time' => 'setCreateTime',
-        'grant' => 'setGrant',
-        'frozen' => 'setFrozen',
-        'cash' => 'setCash',
-        'amount' => 'setAmount',
-        'return_goods' => 'setReturnGoods',
-        'transaction_seq' => 'setTransactionSeq',
-        'remitter' => 'setRemitter',
-        'payee' => 'setPayee',
-        'dealbase' => 'setDealbase'
+        'balance_detail' => 'setBalanceDetail',
+        'status' => 'setStatus',
+        'status_message' => 'setStatusMessage',
+        'advertiser_id' => 'setAdvertiserId'
     ];
 
     /**
@@ -158,18 +126,10 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'advertiser_id' => 'getAdvertiserId',
-        'transaction_type' => 'getTransactionType',
-        'create_time' => 'getCreateTime',
-        'grant' => 'getGrant',
-        'frozen' => 'getFrozen',
-        'cash' => 'getCash',
-        'amount' => 'getAmount',
-        'return_goods' => 'getReturnGoods',
-        'transaction_seq' => 'getTransactionSeq',
-        'remitter' => 'getRemitter',
-        'payee' => 'getPayee',
-        'dealbase' => 'getDealbase'
+        'balance_detail' => 'getBalanceDetail',
+        'status' => 'getStatus',
+        'status_message' => 'getStatusMessage',
+        'advertiser_id' => 'getAdvertiserId'
     ];
 
     /**
@@ -232,18 +192,10 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['balance_detail'] = isset($data['balance_detail']) ? $data['balance_detail'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['status_message'] = isset($data['status_message']) ? $data['status_message'] : null;
         $this->container['advertiser_id'] = isset($data['advertiser_id']) ? $data['advertiser_id'] : null;
-        $this->container['transaction_type'] = isset($data['transaction_type']) ? $data['transaction_type'] : null;
-        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
-        $this->container['grant'] = isset($data['grant']) ? $data['grant'] : null;
-        $this->container['frozen'] = isset($data['frozen']) ? $data['frozen'] : null;
-        $this->container['cash'] = isset($data['cash']) ? $data['cash'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['return_goods'] = isset($data['return_goods']) ? $data['return_goods'] : null;
-        $this->container['transaction_seq'] = isset($data['transaction_seq']) ? $data['transaction_seq'] : null;
-        $this->container['remitter'] = isset($data['remitter']) ? $data['remitter'] : null;
-        $this->container['payee'] = isset($data['payee']) ? $data['payee'] : null;
-        $this->container['dealbase'] = isset($data['dealbase']) ? $data['dealbase'] : null;
     }
 
     /**
@@ -255,9 +207,6 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['dealbase'] === null) {
-            $invalidProperties[] = "'dealbase' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -274,6 +223,78 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets balance_detail
+     *
+     * @return \Oceanengine\Open\Model\InlineResponse20023DataBalanceDetail[]|null
+     */
+    public function getBalanceDetail()
+    {
+        return $this->container['balance_detail'];
+    }
+
+    /**
+     * Sets balance_detail
+     *
+     * @param \Oceanengine\Open\Model\InlineResponse20023DataBalanceDetail[]|null $balance_detail balance_detail
+     *
+     * @return $this
+     */
+    public function setBalanceDetail($balance_detail)
+    {
+        $this->container['balance_detail'] = $balance_detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_message
+     *
+     * @return string|null
+     */
+    public function getStatusMessage()
+    {
+        return $this->container['status_message'];
+    }
+
+    /**
+     * Sets status_message
+     *
+     * @param string|null $status_message status_message
+     *
+     * @return $this
+     */
+    public function setStatusMessage($status_message)
+    {
+        $this->container['status_message'] = $status_message;
+
+        return $this;
+    }
+
+    /**
      * Gets advertiser_id
      *
      * @return int|null
@@ -286,277 +307,13 @@ class InlineResponse20023DataList implements ModelInterface, ArrayAccess
     /**
      * Sets advertiser_id
      *
-     * @param int|null $advertiser_id 广告主ID
+     * @param int|null $advertiser_id advertiser_id
      *
      * @return $this
      */
     public function setAdvertiserId($advertiser_id)
     {
         $this->container['advertiser_id'] = $advertiser_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_type
-     *
-     * @return string|null
-     */
-    public function getTransactionType()
-    {
-        return $this->container['transaction_type'];
-    }
-
-    /**
-     * Sets transaction_type
-     *
-     * @param string|null $transaction_type 流水类型，详见附录【流水类型】，包含转账、充值
-     *
-     * @return $this
-     */
-    public function setTransactionType($transaction_type)
-    {
-        $this->container['transaction_type'] = $transaction_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_time
-     *
-     * @return string|null
-     */
-    public function getCreateTime()
-    {
-        return $this->container['create_time'];
-    }
-
-    /**
-     * Sets create_time
-     *
-     * @param string|null $create_time 冻结总金额(单位元)
-     *
-     * @return $this
-     */
-    public function setCreateTime($create_time)
-    {
-        $this->container['create_time'] = $create_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets grant
-     *
-     * @return float|null
-     */
-    public function getGrant()
-    {
-        return $this->container['grant'];
-    }
-
-    /**
-     * Sets grant
-     *
-     * @param float|null $grant 赠款总金额(单位元）
-     *
-     * @return $this
-     */
-    public function setGrant($grant)
-    {
-        $this->container['grant'] = $grant;
-
-        return $this;
-    }
-
-    /**
-     * Gets frozen
-     *
-     * @return float|null
-     */
-    public function getFrozen()
-    {
-        return $this->container['frozen'];
-    }
-
-    /**
-     * Sets frozen
-     *
-     * @param float|null $frozen 冻结总金额(单位元)
-     *
-     * @return $this
-     */
-    public function setFrozen($frozen)
-    {
-        $this->container['frozen'] = $frozen;
-
-        return $this;
-    }
-
-    /**
-     * Gets cash
-     *
-     * @return float|null
-     */
-    public function getCash()
-    {
-        return $this->container['cash'];
-    }
-
-    /**
-     * Sets cash
-     *
-     * @param float|null $cash 现金总金额(单位元)
-     *
-     * @return $this
-     */
-    public function setCash($cash)
-    {
-        $this->container['cash'] = $cash;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return float|null
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param float|null $amount 交易总金额(单位元)
-     *
-     * @return $this
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets return_goods
-     *
-     * @return float|null
-     */
-    public function getReturnGoods()
-    {
-        return $this->container['return_goods'];
-    }
-
-    /**
-     * Sets return_goods
-     *
-     * @param float|null $return_goods 返货总金额(单位元)
-     *
-     * @return $this
-     */
-    public function setReturnGoods($return_goods)
-    {
-        $this->container['return_goods'] = $return_goods;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_seq
-     *
-     * @return string|null
-     */
-    public function getTransactionSeq()
-    {
-        return $this->container['transaction_seq'];
-    }
-
-    /**
-     * Sets transaction_seq
-     *
-     * @param string|null $transaction_seq 付款方，即广告主id。
-     *
-     * @return $this
-     */
-    public function setTransactionSeq($transaction_seq)
-    {
-        $this->container['transaction_seq'] = $transaction_seq;
-
-        return $this;
-    }
-
-    /**
-     * Gets remitter
-     *
-     * @return string|null
-     */
-    public function getRemitter()
-    {
-        return $this->container['remitter'];
-    }
-
-    /**
-     * Sets remitter
-     *
-     * @param string|null $remitter 付款方，即广告主id。
-     *
-     * @return $this
-     */
-    public function setRemitter($remitter)
-    {
-        $this->container['remitter'] = $remitter;
-
-        return $this;
-    }
-
-    /**
-     * Gets payee
-     *
-     * @return float|null
-     */
-    public function getPayee()
-    {
-        return $this->container['payee'];
-    }
-
-    /**
-     * Sets payee
-     *
-     * @param float|null $payee 收款方，即广告主id。
-     *
-     * @return $this
-     */
-    public function setPayee($payee)
-    {
-        $this->container['payee'] = $payee;
-
-        return $this;
-    }
-
-    /**
-     * Gets dealbase
-     *
-     * @return float
-     */
-    public function getDealbase()
-    {
-        return $this->container['dealbase'];
-    }
-
-    /**
-     * Sets dealbase
-     *
-     * @param float $dealbase 返点
-     *
-     * @return $this
-     */
-    public function setDealbase($dealbase)
-    {
-        $this->container['dealbase'] = $dealbase;
 
         return $this;
     }

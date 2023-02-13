@@ -57,8 +57,8 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'list' => '\Oceanengine\Open\Model\InlineResponse20010DataList[]',
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse2009DataPageInfo'
+        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20010MetricsDict',
+        'province_name' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'list' => null,
-        'page_info' => null
+        'metrics_dict' => null,
+        'province_name' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'list' => 'list',
-        'page_info' => 'page_info'
+        'metrics_dict' => 'metrics_dict',
+        'province_name' => 'province_name'
     ];
 
     /**
@@ -108,8 +108,8 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'list' => 'setList',
-        'page_info' => 'setPageInfo'
+        'metrics_dict' => 'setMetricsDict',
+        'province_name' => 'setProvinceName'
     ];
 
     /**
@@ -118,8 +118,8 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'list' => 'getList',
-        'page_info' => 'getPageInfo'
+        'metrics_dict' => 'getMetricsDict',
+        'province_name' => 'getProvinceName'
     ];
 
     /**
@@ -182,8 +182,8 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
+        $this->container['metrics_dict'] = isset($data['metrics_dict']) ? $data['metrics_dict'] : null;
+        $this->container['province_name'] = isset($data['province_name']) ? $data['province_name'] : null;
     }
 
     /**
@@ -195,12 +195,6 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
-        }
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -217,49 +211,49 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets list
+     * Gets metrics_dict
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20010DataList[]
+     * @return \Oceanengine\Open\Model\InlineResponse20010MetricsDict|null
      */
-    public function getList()
+    public function getMetricsDict()
     {
-        return $this->container['list'];
+        return $this->container['metrics_dict'];
     }
 
     /**
-     * Sets list
+     * Sets metrics_dict
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20010DataList[] $list list
+     * @param \Oceanengine\Open\Model\InlineResponse20010MetricsDict|null $metrics_dict metrics_dict
      *
      * @return $this
      */
-    public function setList($list)
+    public function setMetricsDict($metrics_dict)
     {
-        $this->container['list'] = $list;
+        $this->container['metrics_dict'] = $metrics_dict;
 
         return $this;
     }
 
     /**
-     * Gets page_info
+     * Gets province_name
      *
-     * @return \Oceanengine\Open\Model\InlineResponse2009DataPageInfo
+     * @return string|null
      */
-    public function getPageInfo()
+    public function getProvinceName()
     {
-        return $this->container['page_info'];
+        return $this->container['province_name'];
     }
 
     /**
-     * Sets page_info
+     * Sets province_name
      *
-     * @param \Oceanengine\Open\Model\InlineResponse2009DataPageInfo $page_info page_info
+     * @param string|null $province_name province_name
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setProvinceName($province_name)
     {
-        $this->container['page_info'] = $page_info;
+        $this->container['province_name'] = $province_name;
 
         return $this;
     }

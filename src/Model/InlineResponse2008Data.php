@@ -57,8 +57,8 @@ class InlineResponse2008Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse2007DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse2008DataList[]'
+        'list' => '\Oceanengine\Open\Model\AdvertiserReport[]',
+        'page_info' => '\Oceanengine\Open\Model\InlineResponse2008DataPageInfo'
     ];
 
     /**
@@ -67,8 +67,8 @@ class InlineResponse2008Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'list' => null
+        'list' => null,
+        'page_info' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class InlineResponse2008Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'list' => 'list'
+        'list' => 'list',
+        'page_info' => 'page_info'
     ];
 
     /**
@@ -108,8 +108,8 @@ class InlineResponse2008Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'list' => 'setList'
+        'list' => 'setList',
+        'page_info' => 'setPageInfo'
     ];
 
     /**
@@ -118,8 +118,8 @@ class InlineResponse2008Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'list' => 'getList'
+        'list' => 'getList',
+        'page_info' => 'getPageInfo'
     ];
 
     /**
@@ -182,8 +182,8 @@ class InlineResponse2008Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
     }
 
     /**
@@ -195,11 +195,11 @@ class InlineResponse2008Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
-        }
         if ($this->container['list'] === null) {
             $invalidProperties[] = "'list' can't be null";
+        }
+        if ($this->container['page_info'] === null) {
+            $invalidProperties[] = "'page_info' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,33 +217,9 @@ class InlineResponse2008Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse2007DataPageInfo
-     */
-    public function getPageInfo()
-    {
-        return $this->container['page_info'];
-    }
-
-    /**
-     * Sets page_info
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse2007DataPageInfo $page_info page_info
-     *
-     * @return $this
-     */
-    public function setPageInfo($page_info)
-    {
-        $this->container['page_info'] = $page_info;
-
-        return $this;
-    }
-
-    /**
      * Gets list
      *
-     * @return \Oceanengine\Open\Model\InlineResponse2008DataList[]
+     * @return \Oceanengine\Open\Model\AdvertiserReport[]
      */
     public function getList()
     {
@@ -253,13 +229,37 @@ class InlineResponse2008Data implements ModelInterface, ArrayAccess
     /**
      * Sets list
      *
-     * @param \Oceanengine\Open\Model\InlineResponse2008DataList[] $list list
+     * @param \Oceanengine\Open\Model\AdvertiserReport[] $list list
      *
      * @return $this
      */
     public function setList($list)
     {
         $this->container['list'] = $list;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_info
+     *
+     * @return \Oceanengine\Open\Model\InlineResponse2008DataPageInfo
+     */
+    public function getPageInfo()
+    {
+        return $this->container['page_info'];
+    }
+
+    /**
+     * Sets page_info
+     *
+     * @param \Oceanengine\Open\Model\InlineResponse2008DataPageInfo $page_info page_info
+     *
+     * @return $this
+     */
+    public function setPageInfo($page_info)
+    {
+        $this->container['page_info'] = $page_info;
 
         return $this;
     }

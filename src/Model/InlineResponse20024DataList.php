@@ -57,10 +57,8 @@ class InlineResponse20024DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'balance_detail' => '\Oceanengine\Open\Model\InlineResponse20024DataBalanceDetail[]',
-        'status' => 'string',
-        'status_message' => 'string',
-        'advertiser_id' => 'int'
+        'e_douyin_id' => 'string',
+        'e_douyin_name' => 'string'
     ];
 
     /**
@@ -69,10 +67,8 @@ class InlineResponse20024DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'balance_detail' => null,
-        'status' => null,
-        'status_message' => null,
-        'advertiser_id' => 'int64'
+        'e_douyin_id' => null,
+        'e_douyin_name' => null
     ];
 
     /**
@@ -102,10 +98,8 @@ class InlineResponse20024DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'balance_detail' => 'balance_detail',
-        'status' => 'status',
-        'status_message' => 'status_message',
-        'advertiser_id' => 'advertiser_id'
+        'e_douyin_id' => 'e_douyin_id',
+        'e_douyin_name' => 'e_douyin_name'
     ];
 
     /**
@@ -114,10 +108,8 @@ class InlineResponse20024DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'balance_detail' => 'setBalanceDetail',
-        'status' => 'setStatus',
-        'status_message' => 'setStatusMessage',
-        'advertiser_id' => 'setAdvertiserId'
+        'e_douyin_id' => 'setEDouyinId',
+        'e_douyin_name' => 'setEDouyinName'
     ];
 
     /**
@@ -126,10 +118,8 @@ class InlineResponse20024DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'balance_detail' => 'getBalanceDetail',
-        'status' => 'getStatus',
-        'status_message' => 'getStatusMessage',
-        'advertiser_id' => 'getAdvertiserId'
+        'e_douyin_id' => 'getEDouyinId',
+        'e_douyin_name' => 'getEDouyinName'
     ];
 
     /**
@@ -192,10 +182,8 @@ class InlineResponse20024DataList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['balance_detail'] = isset($data['balance_detail']) ? $data['balance_detail'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['status_message'] = isset($data['status_message']) ? $data['status_message'] : null;
-        $this->container['advertiser_id'] = isset($data['advertiser_id']) ? $data['advertiser_id'] : null;
+        $this->container['e_douyin_id'] = isset($data['e_douyin_id']) ? $data['e_douyin_id'] : null;
+        $this->container['e_douyin_name'] = isset($data['e_douyin_name']) ? $data['e_douyin_name'] : null;
     }
 
     /**
@@ -223,97 +211,49 @@ class InlineResponse20024DataList implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets balance_detail
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse20024DataBalanceDetail[]|null
-     */
-    public function getBalanceDetail()
-    {
-        return $this->container['balance_detail'];
-    }
-
-    /**
-     * Sets balance_detail
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse20024DataBalanceDetail[]|null $balance_detail balance_detail
-     *
-     * @return $this
-     */
-    public function setBalanceDetail($balance_detail)
-    {
-        $this->container['balance_detail'] = $balance_detail;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
+     * Gets e_douyin_id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getEDouyinId()
     {
-        return $this->container['status'];
+        return $this->container['e_douyin_id'];
     }
 
     /**
-     * Sets status
+     * Sets e_douyin_id
      *
-     * @param string|null $status status
+     * @param string|null $e_douyin_id e_douyin_id
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setEDouyinId($e_douyin_id)
     {
-        $this->container['status'] = $status;
+        $this->container['e_douyin_id'] = $e_douyin_id;
 
         return $this;
     }
 
     /**
-     * Gets status_message
+     * Gets e_douyin_name
      *
      * @return string|null
      */
-    public function getStatusMessage()
+    public function getEDouyinName()
     {
-        return $this->container['status_message'];
+        return $this->container['e_douyin_name'];
     }
 
     /**
-     * Sets status_message
+     * Sets e_douyin_name
      *
-     * @param string|null $status_message status_message
+     * @param string|null $e_douyin_name e_douyin_name
      *
      * @return $this
      */
-    public function setStatusMessage($status_message)
+    public function setEDouyinName($e_douyin_name)
     {
-        $this->container['status_message'] = $status_message;
-
-        return $this;
-    }
-
-    /**
-     * Gets advertiser_id
-     *
-     * @return int|null
-     */
-    public function getAdvertiserId()
-    {
-        return $this->container['advertiser_id'];
-    }
-
-    /**
-     * Sets advertiser_id
-     *
-     * @param int|null $advertiser_id advertiser_id
-     *
-     * @return $this
-     */
-    public function setAdvertiserId($advertiser_id)
-    {
-        $this->container['advertiser_id'] = $advertiser_id;
+        $this->container['e_douyin_name'] = $e_douyin_name;
 
         return $this;
     }

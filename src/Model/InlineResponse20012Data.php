@@ -57,9 +57,8 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20011MetricsDict',
-        'province_name' => 'string',
-        'city_name' => 'string'
+        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20010MetricsDict',
+        'gender_name' => 'string'
     ];
 
     /**
@@ -69,8 +68,7 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'metrics_dict' => null,
-        'province_name' => null,
-        'city_name' => null
+        'gender_name' => null
     ];
 
     /**
@@ -101,8 +99,7 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'metrics_dict' => 'metrics_dict',
-        'province_name' => 'province_name',
-        'city_name' => 'city_name'
+        'gender_name' => 'gender_name'
     ];
 
     /**
@@ -112,8 +109,7 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'metrics_dict' => 'setMetricsDict',
-        'province_name' => 'setProvinceName',
-        'city_name' => 'setCityName'
+        'gender_name' => 'setGenderName'
     ];
 
     /**
@@ -123,8 +119,7 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'metrics_dict' => 'getMetricsDict',
-        'province_name' => 'getProvinceName',
-        'city_name' => 'getCityName'
+        'gender_name' => 'getGenderName'
     ];
 
     /**
@@ -188,8 +183,7 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['metrics_dict'] = isset($data['metrics_dict']) ? $data['metrics_dict'] : null;
-        $this->container['province_name'] = isset($data['province_name']) ? $data['province_name'] : null;
-        $this->container['city_name'] = isset($data['city_name']) ? $data['city_name'] : null;
+        $this->container['gender_name'] = isset($data['gender_name']) ? $data['gender_name'] : null;
     }
 
     /**
@@ -219,7 +213,7 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     /**
      * Gets metrics_dict
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null
+     * @return \Oceanengine\Open\Model\InlineResponse20010MetricsDict|null
      */
     public function getMetricsDict()
     {
@@ -229,7 +223,7 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     /**
      * Sets metrics_dict
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null $metrics_dict metrics_dict
+     * @param \Oceanengine\Open\Model\InlineResponse20010MetricsDict|null $metrics_dict metrics_dict
      *
      * @return $this
      */
@@ -241,49 +235,25 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets province_name
+     * Gets gender_name
      *
      * @return string|null
      */
-    public function getProvinceName()
+    public function getGenderName()
     {
-        return $this->container['province_name'];
+        return $this->container['gender_name'];
     }
 
     /**
-     * Sets province_name
+     * Sets gender_name
      *
-     * @param string|null $province_name province_name
+     * @param string|null $gender_name 性别，允许值：男，女，其他
      *
      * @return $this
      */
-    public function setProvinceName($province_name)
+    public function setGenderName($gender_name)
     {
-        $this->container['province_name'] = $province_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets city_name
-     *
-     * @return string|null
-     */
-    public function getCityName()
-    {
-        return $this->container['city_name'];
-    }
-
-    /**
-     * Sets city_name
-     *
-     * @param string|null $city_name city_name
-     *
-     * @return $this
-     */
-    public function setCityName($city_name)
-    {
-        $this->container['city_name'] = $city_name;
+        $this->container['gender_name'] = $gender_name;
 
         return $this;
     }

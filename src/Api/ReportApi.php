@@ -108,7 +108,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse2008
+     * @return \Oceanengine\Open\Model\InlineResponse2007
      */
     public function call2ReportAdGetGet($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
@@ -137,7 +137,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
     public function call2ReportAdGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
@@ -174,20 +174,20 @@ class ReportApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse2008' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse2007' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse2008', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse2007', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse2008';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse2007';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -206,7 +206,7 @@ class ReportApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse2008',
+                        '\Oceanengine\Open\Model\InlineResponse2007',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -272,7 +272,7 @@ class ReportApi
      */
     public function call2ReportAdGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse2008';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse2007';
         $request = $this->call2ReportAdGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
 
         return $this->client
@@ -879,7 +879,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20014
+     * @return \Oceanengine\Open\Model\InlineResponse20013
      */
     public function call2ReportAudienceAgeGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
@@ -903,7 +903,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20014, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
      */
     public function call2ReportAudienceAgeGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
@@ -940,20 +940,20 @@ class ReportApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20014' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse20013' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20014', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20013', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20014';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20013';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -972,7 +972,7 @@ class ReportApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20014',
+                        '\Oceanengine\Open\Model\InlineResponse20013',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1028,7 +1028,7 @@ class ReportApi
      */
     public function call2ReportAudienceAgeGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20014';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20013';
         $request = $this->call2ReportAudienceAgeGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
 
         return $this->client
@@ -1234,7 +1234,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20012
+     * @return \Oceanengine\Open\Model\InlineResponse20011
      */
     public function call2ReportAudienceCityGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
@@ -1258,7 +1258,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
      */
     public function call2ReportAudienceCityGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
@@ -1295,20 +1295,20 @@ class ReportApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20012' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse20011' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20012', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20011', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20012';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20011';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1327,7 +1327,7 @@ class ReportApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20012',
+                        '\Oceanengine\Open\Model\InlineResponse20011',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1383,7 +1383,7 @@ class ReportApi
      */
     public function call2ReportAudienceCityGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20012';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20011';
         $request = $this->call2ReportAudienceCityGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
 
         return $this->client
@@ -1589,7 +1589,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20013
+     * @return \Oceanengine\Open\Model\InlineResponse20012
      */
     public function call2ReportAudienceGenderGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
@@ -1613,7 +1613,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
      */
     public function call2ReportAudienceGenderGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
@@ -1650,20 +1650,20 @@ class ReportApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20013' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse20012' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20013', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20012', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20013';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20012';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1682,7 +1682,7 @@ class ReportApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20013',
+                        '\Oceanengine\Open\Model\InlineResponse20012',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1738,7 +1738,7 @@ class ReportApi
      */
     public function call2ReportAudienceGenderGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20013';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20012';
         $request = $this->call2ReportAudienceGenderGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
 
         return $this->client
@@ -1945,7 +1945,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20010
+     * @return \Oceanengine\Open\Model\InlineResponse2009
      */
     public function call2ReportAudienceInterestActionListGet($advertiser_id, $start_date = null, $end_date = null, $metrics = null, $filtering = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
@@ -1970,7 +1970,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
      */
     public function call2ReportAudienceInterestActionListGetWithHttpInfo($advertiser_id, $start_date = null, $end_date = null, $metrics = null, $filtering = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
@@ -2007,20 +2007,20 @@ class ReportApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20010' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse2009' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20010', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse2009', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20010';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse2009';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2039,7 +2039,7 @@ class ReportApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20010',
+                        '\Oceanengine\Open\Model\InlineResponse2009',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2097,7 +2097,7 @@ class ReportApi
      */
     public function call2ReportAudienceInterestActionListGetAsyncWithHttpInfo($advertiser_id, $start_date = null, $end_date = null, $metrics = null, $filtering = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20010';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse2009';
         $request = $this->call2ReportAudienceInterestActionListGetRequest($advertiser_id, $start_date, $end_date, $metrics, $filtering, $page, $page_size, $access_token, $x_debug_mode);
 
         return $this->client
@@ -2284,7 +2284,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20011
+     * @return \Oceanengine\Open\Model\InlineResponse20010
      */
     public function call2ReportAudienceProvinceGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
@@ -2308,7 +2308,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
      */
     public function call2ReportAudienceProvinceGetWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
@@ -2345,20 +2345,20 @@ class ReportApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20011' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse20010' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20011', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20010', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20011';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20010';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2377,7 +2377,7 @@ class ReportApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20011',
+                        '\Oceanengine\Open\Model\InlineResponse20010',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2433,7 +2433,7 @@ class ReportApi
      */
     public function call2ReportAudienceProvinceGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids = null, $access_token = null, $x_debug_mode = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20011';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20010';
         $request = $this->call2ReportAudienceProvinceGetRequest($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode);
 
         return $this->client
@@ -3032,7 +3032,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse2009
+     * @return \Oceanengine\Open\Model\InlineResponse2008
      */
     public function call2ReportCreativeGetGet($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
@@ -3061,7 +3061,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
      */
     public function call2ReportCreativeGetGetWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
@@ -3098,20 +3098,20 @@ class ReportApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse2009' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse2008' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse2009', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse2008', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse2009';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse2008';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3130,7 +3130,7 @@ class ReportApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse2009',
+                        '\Oceanengine\Open\Model\InlineResponse2008',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3196,7 +3196,7 @@ class ReportApi
      */
     public function call2ReportCreativeGetGetAsyncWithHttpInfo($advertiser_id, $start_date, $end_date, $fields = null, $group_by = null, $time_granularity = null, $filtering = null, $order_field = null, $order_type = null, $page = null, $page_size = null, $access_token = null, $x_debug_mode = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse2009';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse2008';
         $request = $this->call2ReportCreativeGetGetRequest($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode);
 
         return $this->client
@@ -3413,7 +3413,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20015
+     * @return \Oceanengine\Open\Model\InlineResponse20014
      */
     public function call2ReportSitePageGet($advertiser_id, $site_id, $time_duration, $inventory_type = null, $access_token = null, $x_debug_mode = null)
     {
@@ -3435,7 +3435,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20015, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse20014, HTTP status code, HTTP response headers (array of strings)
      */
     public function call2ReportSitePageGetWithHttpInfo($advertiser_id, $site_id, $time_duration, $inventory_type = null, $access_token = null, $x_debug_mode = null)
     {
@@ -3472,20 +3472,20 @@ class ReportApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20015' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse20014' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20015', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20014', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20015';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20014';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3504,7 +3504,7 @@ class ReportApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20015',
+                        '\Oceanengine\Open\Model\InlineResponse20014',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3556,7 +3556,7 @@ class ReportApi
      */
     public function call2ReportSitePageGetAsyncWithHttpInfo($advertiser_id, $site_id, $time_duration, $inventory_type = null, $access_token = null, $x_debug_mode = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20015';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20014';
         $request = $this->call2ReportSitePageGetRequest($advertiser_id, $site_id, $time_duration, $inventory_type, $access_token, $x_debug_mode);
 
         return $this->client
@@ -3743,7 +3743,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20016
+     * @return \Oceanengine\Open\Model\InlineResponse20015
      */
     public function v30ReportCustomGetGet($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page = null, $page_size = null, $data_topic = null, $access_token = null)
     {
@@ -3770,7 +3770,7 @@ class ReportApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20016, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse20015, HTTP status code, HTTP response headers (array of strings)
      */
     public function v30ReportCustomGetGetWithHttpInfo($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page = null, $page_size = null, $data_topic = null, $access_token = null)
     {
@@ -3807,20 +3807,20 @@ class ReportApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20016' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse20015' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20016', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20015', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20016';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20015';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3839,7 +3839,7 @@ class ReportApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20016',
+                        '\Oceanengine\Open\Model\InlineResponse20015',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3901,7 +3901,7 @@ class ReportApi
      */
     public function v30ReportCustomGetGetAsyncWithHttpInfo($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page = null, $page_size = null, $data_topic = null, $access_token = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20016';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20015';
         $request = $this->v30ReportCustomGetGetRequest($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page, $page_size, $data_topic, $access_token);
 
         return $this->client

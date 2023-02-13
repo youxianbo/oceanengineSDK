@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **call2AdvertiserFundDailyStatGet**
-> \Oceanengine\Open\Model\InlineResponse20022 call2AdvertiserFundDailyStatGet($access_token, $x_debug_mode, $inline_object7)
+> \Oceanengine\Open\Model\InlineResponse20021 call2AdvertiserFundDailyStatGet($access_token, $x_debug_mode, $inline_object7)
 
 查询账户日流水
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20022**](../Model/InlineResponse20022.md)
+[**\Oceanengine\Open\Model\InlineResponse20021**](../Model/InlineResponse20021.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2AdvertiserFundGetGet**
-> \Oceanengine\Open\Model\InlineResponse20021 call2AdvertiserFundGetGet($access_token, $x_debug_mode, $inline_object6)
+> \Oceanengine\Open\Model\InlineResponse20020 call2AdvertiserFundGetGet($access_token, $x_debug_mode, $inline_object6)
 
 查询账号余额
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20021**](../Model/InlineResponse20021.md)
+[**\Oceanengine\Open\Model\InlineResponse20020**](../Model/InlineResponse20020.md)
 
 ### Authorization
 
@@ -122,7 +122,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2AdvertiserFundTransactionGetGet**
-> \Oceanengine\Open\Model\InlineResponse20023 call2AdvertiserFundTransactionGetGet($access_token, $x_debug_mode, $inline_object8)
+> \Oceanengine\Open\Model\InlineResponse20022 call2AdvertiserFundTransactionGetGet($access_token, $x_debug_mode, $inline_object8)
 
 查询账号流水明细
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20023**](../Model/InlineResponse20023.md)
+[**\Oceanengine\Open\Model\InlineResponse20022**](../Model/InlineResponse20022.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2BusinessPlatformPartnerOrganizationListGet**
-> \Oceanengine\Open\Model\InlineResponse20018 call2BusinessPlatformPartnerOrganizationListGet($organization_id, $page, $page_size, $filtering, $access_token)
+> \Oceanengine\Open\Model\InlineResponse20017 call2BusinessPlatformPartnerOrganizationListGet($organization_id, $page, $page_size, $filtering, $access_token)
 
 查询合作组织
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20018**](../Model/InlineResponse20018.md)
+[**\Oceanengine\Open\Model\InlineResponse20017**](../Model/InlineResponse20017.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2FundSharedWalletBalanceGetGet**
-> \Oceanengine\Open\Model\InlineResponse20024 call2FundSharedWalletBalanceGetGet($access_token, $inline_object9)
+> \Oceanengine\Open\Model\InlineResponse20023 call2FundSharedWalletBalanceGetGet($access_token, $inline_object9)
 
 获取共享钱包余额
 
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20024**](../Model/InlineResponse20024.md)
+[**\Oceanengine\Open\Model\InlineResponse20023**](../Model/InlineResponse20023.md)
 
 ### Authorization
 
@@ -334,7 +334,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2MajordomoAdvertiserSelectGet**
-> \Oceanengine\Open\Model\InlineResponse20017 call2MajordomoAdvertiserSelectGet($access_token, $x_debug_mode, $inline_object5)
+> \Oceanengine\Open\Model\InlineResponse20016 call2MajordomoAdvertiserSelectGet($access_token, $x_debug_mode, $inline_object5)
 
 获取纵横组织下资产账户列表
 
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20017**](../Model/InlineResponse20017.md)
+[**\Oceanengine\Open\Model\InlineResponse20016**](../Model/InlineResponse20016.md)
 
 ### Authorization
 
@@ -385,7 +385,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v30BusinessPlatformCompanyAccountGetGet**
-> \Oceanengine\Open\Model\InlineResponse20020 v30BusinessPlatformCompanyAccountGetGet($organization_id, $company_id, $account_type, $page, $page_size, $access_token, $x_debug_mode)
+> \Oceanengine\Open\Model\InlineResponse20019 v30BusinessPlatformCompanyAccountGetGet($organization_id, $company_id, $account_type, $page, $page_size, $access_token, $x_debug_mode)
 
 获取主体下的账户列表
 
@@ -430,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20020**](../Model/InlineResponse20020.md)
+[**\Oceanengine\Open\Model\InlineResponse20019**](../Model/InlineResponse20019.md)
 
 ### Authorization
 
@@ -444,7 +444,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v30BusinessPlatformCompanyInfoGetGet**
-> \Oceanengine\Open\Model\InlineResponse20019 v30BusinessPlatformCompanyInfoGetGet($organization_id, $page, $page_size, $access_token)
+> \Oceanengine\Open\Model\InlineResponse20018 v30BusinessPlatformCompanyInfoGetGet($organization_id, $page, $page_size, $access_token)
 
 获取纵横组织下所有主体信息
 
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20019**](../Model/InlineResponse20019.md)
+[**\Oceanengine\Open\Model\InlineResponse20018**](../Model/InlineResponse20018.md)
 
 ### Authorization
 

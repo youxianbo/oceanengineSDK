@@ -57,8 +57,9 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20011MetricsDict',
-        'province_name' => 'string'
+        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20010MetricsDict',
+        'province_name' => 'string',
+        'city_name' => 'string'
     ];
 
     /**
@@ -68,7 +69,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'metrics_dict' => null,
-        'province_name' => null
+        'province_name' => null,
+        'city_name' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'metrics_dict' => 'metrics_dict',
-        'province_name' => 'province_name'
+        'province_name' => 'province_name',
+        'city_name' => 'city_name'
     ];
 
     /**
@@ -109,7 +112,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'metrics_dict' => 'setMetricsDict',
-        'province_name' => 'setProvinceName'
+        'province_name' => 'setProvinceName',
+        'city_name' => 'setCityName'
     ];
 
     /**
@@ -119,7 +123,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'metrics_dict' => 'getMetricsDict',
-        'province_name' => 'getProvinceName'
+        'province_name' => 'getProvinceName',
+        'city_name' => 'getCityName'
     ];
 
     /**
@@ -184,6 +189,7 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
     {
         $this->container['metrics_dict'] = isset($data['metrics_dict']) ? $data['metrics_dict'] : null;
         $this->container['province_name'] = isset($data['province_name']) ? $data['province_name'] : null;
+        $this->container['city_name'] = isset($data['city_name']) ? $data['city_name'] : null;
     }
 
     /**
@@ -213,7 +219,7 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
     /**
      * Gets metrics_dict
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null
+     * @return \Oceanengine\Open\Model\InlineResponse20010MetricsDict|null
      */
     public function getMetricsDict()
     {
@@ -223,7 +229,7 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
     /**
      * Sets metrics_dict
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null $metrics_dict metrics_dict
+     * @param \Oceanengine\Open\Model\InlineResponse20010MetricsDict|null $metrics_dict metrics_dict
      *
      * @return $this
      */
@@ -254,6 +260,30 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
     public function setProvinceName($province_name)
     {
         $this->container['province_name'] = $province_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets city_name
+     *
+     * @return string|null
+     */
+    public function getCityName()
+    {
+        return $this->container['city_name'];
+    }
+
+    /**
+     * Sets city_name
+     *
+     * @param string|null $city_name city_name
+     *
+     * @return $this
+     */
+    public function setCityName($city_name)
+    {
+        $this->container['city_name'] = $city_name;
 
         return $this;
     }

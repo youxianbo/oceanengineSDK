@@ -57,7 +57,11 @@ class InlineResponse20026Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'list' => '\Oceanengine\Open\Model\InlineResponse20026DataList[]'
+        'list' => '\Oceanengine\Open\Model\InlineResponse20026DataList[]',
+        'total_metrics' => '\Oceanengine\Open\Model\EnterpriseOverviewData',
+        'total_ratio' => '\Oceanengine\Open\Model\EnterpriseOverviewData',
+        'offset' => 'int',
+        'total_count' => 'int'
     ];
 
     /**
@@ -66,7 +70,11 @@ class InlineResponse20026Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'list' => null
+        'list' => null,
+        'total_metrics' => null,
+        'total_ratio' => null,
+        'offset' => 'int32',
+        'total_count' => 'int32'
     ];
 
     /**
@@ -96,7 +104,11 @@ class InlineResponse20026Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'list' => 'list'
+        'list' => 'list',
+        'total_metrics' => 'total_metrics',
+        'total_ratio' => 'total_ratio',
+        'offset' => 'offset',
+        'total_count' => 'total_count'
     ];
 
     /**
@@ -105,7 +117,11 @@ class InlineResponse20026Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'list' => 'setList'
+        'list' => 'setList',
+        'total_metrics' => 'setTotalMetrics',
+        'total_ratio' => 'setTotalRatio',
+        'offset' => 'setOffset',
+        'total_count' => 'setTotalCount'
     ];
 
     /**
@@ -114,7 +130,11 @@ class InlineResponse20026Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'list' => 'getList'
+        'list' => 'getList',
+        'total_metrics' => 'getTotalMetrics',
+        'total_ratio' => 'getTotalRatio',
+        'offset' => 'getOffset',
+        'total_count' => 'getTotalCount'
     ];
 
     /**
@@ -178,6 +198,10 @@ class InlineResponse20026Data implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['total_metrics'] = isset($data['total_metrics']) ? $data['total_metrics'] : null;
+        $this->container['total_ratio'] = isset($data['total_ratio']) ? $data['total_ratio'] : null;
+        $this->container['offset'] = isset($data['offset']) ? $data['offset'] : null;
+        $this->container['total_count'] = isset($data['total_count']) ? $data['total_count'] : null;
     }
 
     /**
@@ -191,6 +215,18 @@ class InlineResponse20026Data implements ModelInterface, ArrayAccess
 
         if ($this->container['list'] === null) {
             $invalidProperties[] = "'list' can't be null";
+        }
+        if ($this->container['total_metrics'] === null) {
+            $invalidProperties[] = "'total_metrics' can't be null";
+        }
+        if ($this->container['total_ratio'] === null) {
+            $invalidProperties[] = "'total_ratio' can't be null";
+        }
+        if ($this->container['offset'] === null) {
+            $invalidProperties[] = "'offset' can't be null";
+        }
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
         }
         return $invalidProperties;
     }
@@ -227,6 +263,102 @@ class InlineResponse20026Data implements ModelInterface, ArrayAccess
     public function setList($list)
     {
         $this->container['list'] = $list;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_metrics
+     *
+     * @return \Oceanengine\Open\Model\EnterpriseOverviewData
+     */
+    public function getTotalMetrics()
+    {
+        return $this->container['total_metrics'];
+    }
+
+    /**
+     * Sets total_metrics
+     *
+     * @param \Oceanengine\Open\Model\EnterpriseOverviewData $total_metrics total_metrics
+     *
+     * @return $this
+     */
+    public function setTotalMetrics($total_metrics)
+    {
+        $this->container['total_metrics'] = $total_metrics;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_ratio
+     *
+     * @return \Oceanengine\Open\Model\EnterpriseOverviewData
+     */
+    public function getTotalRatio()
+    {
+        return $this->container['total_ratio'];
+    }
+
+    /**
+     * Sets total_ratio
+     *
+     * @param \Oceanengine\Open\Model\EnterpriseOverviewData $total_ratio total_ratio
+     *
+     * @return $this
+     */
+    public function setTotalRatio($total_ratio)
+    {
+        $this->container['total_ratio'] = $total_ratio;
+
+        return $this;
+    }
+
+    /**
+     * Gets offset
+     *
+     * @return int
+     */
+    public function getOffset()
+    {
+        return $this->container['offset'];
+    }
+
+    /**
+     * Sets offset
+     *
+     * @param int $offset offset
+     *
+     * @return $this
+     */
+    public function setOffset($offset)
+    {
+        $this->container['offset'] = $offset;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_count
+     *
+     * @return int
+     */
+    public function getTotalCount()
+    {
+        return $this->container['total_count'];
+    }
+
+    /**
+     * Sets total_count
+     *
+     * @param int $total_count total_count
+     *
+     * @return $this
+     */
+    public function setTotalCount($total_count)
+    {
+        $this->container['total_count'] = $total_count;
 
         return $this;
     }

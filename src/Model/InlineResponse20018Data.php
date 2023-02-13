@@ -57,8 +57,8 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'list' => '\Oceanengine\Open\Model\InlineResponse20018DataList[]',
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20018DataPageInfo'
+        'company_info' => '\Oceanengine\Open\Model\InlineResponse20018DataCompanyInfo[]',
+        'page_info' => '\Oceanengine\Open\Model\InlineResponse20017DataPageInfo'
     ];
 
     /**
@@ -67,7 +67,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'list' => null,
+        'company_info' => null,
         'page_info' => null
     ];
 
@@ -98,7 +98,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'list' => 'list',
+        'company_info' => 'company_info',
         'page_info' => 'page_info'
     ];
 
@@ -108,7 +108,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'list' => 'setList',
+        'company_info' => 'setCompanyInfo',
         'page_info' => 'setPageInfo'
     ];
 
@@ -118,7 +118,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'list' => 'getList',
+        'company_info' => 'getCompanyInfo',
         'page_info' => 'getPageInfo'
     ];
 
@@ -182,7 +182,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['company_info'] = isset($data['company_info']) ? $data['company_info'] : null;
         $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
     }
 
@@ -195,8 +195,8 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['company_info'] === null) {
+            $invalidProperties[] = "'company_info' can't be null";
         }
         if ($this->container['page_info'] === null) {
             $invalidProperties[] = "'page_info' can't be null";
@@ -217,25 +217,25 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets list
+     * Gets company_info
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20018DataList[]
+     * @return \Oceanengine\Open\Model\InlineResponse20018DataCompanyInfo[]
      */
-    public function getList()
+    public function getCompanyInfo()
     {
-        return $this->container['list'];
+        return $this->container['company_info'];
     }
 
     /**
-     * Sets list
+     * Sets company_info
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20018DataList[] $list list
+     * @param \Oceanengine\Open\Model\InlineResponse20018DataCompanyInfo[] $company_info company_info
      *
      * @return $this
      */
-    public function setList($list)
+    public function setCompanyInfo($company_info)
     {
-        $this->container['list'] = $list;
+        $this->container['company_info'] = $company_info;
 
         return $this;
     }
@@ -243,7 +243,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets page_info
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20018DataPageInfo
+     * @return \Oceanengine\Open\Model\InlineResponse20017DataPageInfo
      */
     public function getPageInfo()
     {
@@ -253,7 +253,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets page_info
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20018DataPageInfo $page_info page_info
+     * @param \Oceanengine\Open\Model\InlineResponse20017DataPageInfo $page_info page_info
      *
      * @return $this
      */

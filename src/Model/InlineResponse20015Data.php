@@ -57,8 +57,9 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'site_record' => '\Oceanengine\Open\Model\InlineResponse20015DataSiteRecord',
-        'site_id' => 'string'
+        'page_info' => '\Oceanengine\Open\Model\InlineResponse20015DataPageInfo',
+        'rows' => '\Oceanengine\Open\Model\InlineResponse20015DataRows[]',
+        'total_metrics' => '\Oceanengine\Open\Model\InlineResponse20015DataTotalMetrics'
     ];
 
     /**
@@ -67,8 +68,9 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'site_record' => null,
-        'site_id' => null
+        'page_info' => null,
+        'rows' => null,
+        'total_metrics' => null
     ];
 
     /**
@@ -98,8 +100,9 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'site_record' => 'site_record',
-        'site_id' => 'site_id'
+        'page_info' => 'page_info',
+        'rows' => 'rows',
+        'total_metrics' => 'total_metrics'
     ];
 
     /**
@@ -108,8 +111,9 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'site_record' => 'setSiteRecord',
-        'site_id' => 'setSiteId'
+        'page_info' => 'setPageInfo',
+        'rows' => 'setRows',
+        'total_metrics' => 'setTotalMetrics'
     ];
 
     /**
@@ -118,8 +122,9 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'site_record' => 'getSiteRecord',
-        'site_id' => 'getSiteId'
+        'page_info' => 'getPageInfo',
+        'rows' => 'getRows',
+        'total_metrics' => 'getTotalMetrics'
     ];
 
     /**
@@ -182,8 +187,9 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['site_record'] = isset($data['site_record']) ? $data['site_record'] : null;
-        $this->container['site_id'] = isset($data['site_id']) ? $data['site_id'] : null;
+        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
+        $this->container['rows'] = isset($data['rows']) ? $data['rows'] : null;
+        $this->container['total_metrics'] = isset($data['total_metrics']) ? $data['total_metrics'] : null;
     }
 
     /**
@@ -195,11 +201,14 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['site_record'] === null) {
-            $invalidProperties[] = "'site_record' can't be null";
+        if ($this->container['page_info'] === null) {
+            $invalidProperties[] = "'page_info' can't be null";
         }
-        if ($this->container['site_id'] === null) {
-            $invalidProperties[] = "'site_id' can't be null";
+        if ($this->container['rows'] === null) {
+            $invalidProperties[] = "'rows' can't be null";
+        }
+        if ($this->container['total_metrics'] === null) {
+            $invalidProperties[] = "'total_metrics' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,49 +226,73 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets site_record
+     * Gets page_info
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20015DataSiteRecord
+     * @return \Oceanengine\Open\Model\InlineResponse20015DataPageInfo
      */
-    public function getSiteRecord()
+    public function getPageInfo()
     {
-        return $this->container['site_record'];
+        return $this->container['page_info'];
     }
 
     /**
-     * Sets site_record
+     * Sets page_info
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20015DataSiteRecord $site_record site_record
+     * @param \Oceanengine\Open\Model\InlineResponse20015DataPageInfo $page_info page_info
      *
      * @return $this
      */
-    public function setSiteRecord($site_record)
+    public function setPageInfo($page_info)
     {
-        $this->container['site_record'] = $site_record;
+        $this->container['page_info'] = $page_info;
 
         return $this;
     }
 
     /**
-     * Gets site_id
+     * Gets rows
      *
-     * @return string
+     * @return \Oceanengine\Open\Model\InlineResponse20015DataRows[]
      */
-    public function getSiteId()
+    public function getRows()
     {
-        return $this->container['site_id'];
+        return $this->container['rows'];
     }
 
     /**
-     * Sets site_id
+     * Sets rows
      *
-     * @param string $site_id site_id
+     * @param \Oceanengine\Open\Model\InlineResponse20015DataRows[] $rows rows
      *
      * @return $this
      */
-    public function setSiteId($site_id)
+    public function setRows($rows)
     {
-        $this->container['site_id'] = $site_id;
+        $this->container['rows'] = $rows;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_metrics
+     *
+     * @return \Oceanengine\Open\Model\InlineResponse20015DataTotalMetrics
+     */
+    public function getTotalMetrics()
+    {
+        return $this->container['total_metrics'];
+    }
+
+    /**
+     * Sets total_metrics
+     *
+     * @param \Oceanengine\Open\Model\InlineResponse20015DataTotalMetrics $total_metrics total_metrics
+     *
+     * @return $this
+     */
+    public function setTotalMetrics($total_metrics)
+    {
+        $this->container['total_metrics'] = $total_metrics;
 
         return $this;
     }

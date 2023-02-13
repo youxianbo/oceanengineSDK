@@ -57,8 +57,8 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20011MetricsDict',
-        'gender_name' => 'string'
+        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20010MetricsDict',
+        'age_name' => 'string'
     ];
 
     /**
@@ -68,7 +68,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'metrics_dict' => null,
-        'gender_name' => null
+        'age_name' => null
     ];
 
     /**
@@ -99,7 +99,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'metrics_dict' => 'metrics_dict',
-        'gender_name' => 'gender_name'
+        'age_name' => 'age_name'
     ];
 
     /**
@@ -109,7 +109,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'metrics_dict' => 'setMetricsDict',
-        'gender_name' => 'setGenderName'
+        'age_name' => 'setAgeName'
     ];
 
     /**
@@ -119,7 +119,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'metrics_dict' => 'getMetricsDict',
-        'gender_name' => 'getGenderName'
+        'age_name' => 'getAgeName'
     ];
 
     /**
@@ -183,7 +183,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['metrics_dict'] = isset($data['metrics_dict']) ? $data['metrics_dict'] : null;
-        $this->container['gender_name'] = isset($data['gender_name']) ? $data['gender_name'] : null;
+        $this->container['age_name'] = isset($data['age_name']) ? $data['age_name'] : null;
     }
 
     /**
@@ -213,7 +213,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     /**
      * Gets metrics_dict
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null
+     * @return \Oceanengine\Open\Model\InlineResponse20010MetricsDict|null
      */
     public function getMetricsDict()
     {
@@ -223,7 +223,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     /**
      * Sets metrics_dict
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null $metrics_dict metrics_dict
+     * @param \Oceanengine\Open\Model\InlineResponse20010MetricsDict|null $metrics_dict metrics_dict
      *
      * @return $this
      */
@@ -235,25 +235,25 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets gender_name
+     * Gets age_name
      *
      * @return string|null
      */
-    public function getGenderName()
+    public function getAgeName()
     {
-        return $this->container['gender_name'];
+        return $this->container['age_name'];
     }
 
     /**
-     * Sets gender_name
+     * Sets age_name
      *
-     * @param string|null $gender_name 性别，允许值：男，女，其他
+     * @param string|null $age_name 年龄段
      *
      * @return $this
      */
-    public function setGenderName($gender_name)
+    public function setAgeName($age_name)
     {
-        $this->container['gender_name'] = $gender_name;
+        $this->container['age_name'] = $age_name;
 
         return $this;
     }

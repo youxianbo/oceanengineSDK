@@ -57,8 +57,11 @@ class InlineResponse20025DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'e_douyin_id' => 'string',
-        'e_douyin_name' => 'string'
+        'open_id' => 'string',
+        'aweme_id' => 'string',
+        'authorize_times' => '\Oceanengine\Open\Model\InlineResponse20025DataAuthorizeTimes[]',
+        'aweme_name' => 'string',
+        'aweme_avatar' => 'string'
     ];
 
     /**
@@ -67,8 +70,11 @@ class InlineResponse20025DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'e_douyin_id' => null,
-        'e_douyin_name' => null
+        'open_id' => null,
+        'aweme_id' => null,
+        'authorize_times' => null,
+        'aweme_name' => null,
+        'aweme_avatar' => null
     ];
 
     /**
@@ -98,8 +104,11 @@ class InlineResponse20025DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'e_douyin_id' => 'e_douyin_id',
-        'e_douyin_name' => 'e_douyin_name'
+        'open_id' => 'open_id',
+        'aweme_id' => 'aweme_id',
+        'authorize_times' => 'authorize_times',
+        'aweme_name' => 'aweme_name',
+        'aweme_avatar' => 'aweme_avatar'
     ];
 
     /**
@@ -108,8 +117,11 @@ class InlineResponse20025DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'e_douyin_id' => 'setEDouyinId',
-        'e_douyin_name' => 'setEDouyinName'
+        'open_id' => 'setOpenId',
+        'aweme_id' => 'setAwemeId',
+        'authorize_times' => 'setAuthorizeTimes',
+        'aweme_name' => 'setAwemeName',
+        'aweme_avatar' => 'setAwemeAvatar'
     ];
 
     /**
@@ -118,8 +130,11 @@ class InlineResponse20025DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'e_douyin_id' => 'getEDouyinId',
-        'e_douyin_name' => 'getEDouyinName'
+        'open_id' => 'getOpenId',
+        'aweme_id' => 'getAwemeId',
+        'authorize_times' => 'getAuthorizeTimes',
+        'aweme_name' => 'getAwemeName',
+        'aweme_avatar' => 'getAwemeAvatar'
     ];
 
     /**
@@ -182,8 +197,11 @@ class InlineResponse20025DataList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['e_douyin_id'] = isset($data['e_douyin_id']) ? $data['e_douyin_id'] : null;
-        $this->container['e_douyin_name'] = isset($data['e_douyin_name']) ? $data['e_douyin_name'] : null;
+        $this->container['open_id'] = isset($data['open_id']) ? $data['open_id'] : null;
+        $this->container['aweme_id'] = isset($data['aweme_id']) ? $data['aweme_id'] : null;
+        $this->container['authorize_times'] = isset($data['authorize_times']) ? $data['authorize_times'] : null;
+        $this->container['aweme_name'] = isset($data['aweme_name']) ? $data['aweme_name'] : null;
+        $this->container['aweme_avatar'] = isset($data['aweme_avatar']) ? $data['aweme_avatar'] : null;
     }
 
     /**
@@ -195,6 +213,21 @@ class InlineResponse20025DataList implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['open_id'] === null) {
+            $invalidProperties[] = "'open_id' can't be null";
+        }
+        if ($this->container['aweme_id'] === null) {
+            $invalidProperties[] = "'aweme_id' can't be null";
+        }
+        if ($this->container['authorize_times'] === null) {
+            $invalidProperties[] = "'authorize_times' can't be null";
+        }
+        if ($this->container['aweme_name'] === null) {
+            $invalidProperties[] = "'aweme_name' can't be null";
+        }
+        if ($this->container['aweme_avatar'] === null) {
+            $invalidProperties[] = "'aweme_avatar' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -211,49 +244,121 @@ class InlineResponse20025DataList implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets e_douyin_id
+     * Gets open_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getEDouyinId()
+    public function getOpenId()
     {
-        return $this->container['e_douyin_id'];
+        return $this->container['open_id'];
     }
 
     /**
-     * Sets e_douyin_id
+     * Sets open_id
      *
-     * @param string|null $e_douyin_id e_douyin_id
+     * @param string $open_id open_id
      *
      * @return $this
      */
-    public function setEDouyinId($e_douyin_id)
+    public function setOpenId($open_id)
     {
-        $this->container['e_douyin_id'] = $e_douyin_id;
+        $this->container['open_id'] = $open_id;
 
         return $this;
     }
 
     /**
-     * Gets e_douyin_name
+     * Gets aweme_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getEDouyinName()
+    public function getAwemeId()
     {
-        return $this->container['e_douyin_name'];
+        return $this->container['aweme_id'];
     }
 
     /**
-     * Sets e_douyin_name
+     * Sets aweme_id
      *
-     * @param string|null $e_douyin_name e_douyin_name
+     * @param string $aweme_id aweme_id
      *
      * @return $this
      */
-    public function setEDouyinName($e_douyin_name)
+    public function setAwemeId($aweme_id)
     {
-        $this->container['e_douyin_name'] = $e_douyin_name;
+        $this->container['aweme_id'] = $aweme_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets authorize_times
+     *
+     * @return \Oceanengine\Open\Model\InlineResponse20025DataAuthorizeTimes[]
+     */
+    public function getAuthorizeTimes()
+    {
+        return $this->container['authorize_times'];
+    }
+
+    /**
+     * Sets authorize_times
+     *
+     * @param \Oceanengine\Open\Model\InlineResponse20025DataAuthorizeTimes[] $authorize_times authorize_times
+     *
+     * @return $this
+     */
+    public function setAuthorizeTimes($authorize_times)
+    {
+        $this->container['authorize_times'] = $authorize_times;
+
+        return $this;
+    }
+
+    /**
+     * Gets aweme_name
+     *
+     * @return string
+     */
+    public function getAwemeName()
+    {
+        return $this->container['aweme_name'];
+    }
+
+    /**
+     * Sets aweme_name
+     *
+     * @param string $aweme_name aweme_name
+     *
+     * @return $this
+     */
+    public function setAwemeName($aweme_name)
+    {
+        $this->container['aweme_name'] = $aweme_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets aweme_avatar
+     *
+     * @return string
+     */
+    public function getAwemeAvatar()
+    {
+        return $this->container['aweme_avatar'];
+    }
+
+    /**
+     * Sets aweme_avatar
+     *
+     * @param string $aweme_avatar aweme_avatar
+     *
+     * @return $this
+     */
+    public function setAwemeAvatar($aweme_avatar)
+    {
+        $this->container['aweme_avatar'] = $aweme_avatar;
 
         return $this;
     }

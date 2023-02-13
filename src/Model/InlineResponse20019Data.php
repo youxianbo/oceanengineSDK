@@ -57,8 +57,8 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'company_info' => '\Oceanengine\Open\Model\InlineResponse20019DataCompanyInfo[]',
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20018DataPageInfo'
+        'account_list' => '\Oceanengine\Open\Model\InlineResponse20019DataAccountList[]',
+        'page_info' => '\Oceanengine\Open\Model\InlineResponse20017DataPageInfo'
     ];
 
     /**
@@ -67,7 +67,7 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'company_info' => null,
+        'account_list' => null,
         'page_info' => null
     ];
 
@@ -98,7 +98,7 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'company_info' => 'company_info',
+        'account_list' => 'account_list',
         'page_info' => 'page_info'
     ];
 
@@ -108,7 +108,7 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'company_info' => 'setCompanyInfo',
+        'account_list' => 'setAccountList',
         'page_info' => 'setPageInfo'
     ];
 
@@ -118,7 +118,7 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'company_info' => 'getCompanyInfo',
+        'account_list' => 'getAccountList',
         'page_info' => 'getPageInfo'
     ];
 
@@ -182,7 +182,7 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['company_info'] = isset($data['company_info']) ? $data['company_info'] : null;
+        $this->container['account_list'] = isset($data['account_list']) ? $data['account_list'] : null;
         $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
     }
 
@@ -195,8 +195,8 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['company_info'] === null) {
-            $invalidProperties[] = "'company_info' can't be null";
+        if ($this->container['account_list'] === null) {
+            $invalidProperties[] = "'account_list' can't be null";
         }
         if ($this->container['page_info'] === null) {
             $invalidProperties[] = "'page_info' can't be null";
@@ -217,25 +217,25 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets company_info
+     * Gets account_list
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20019DataCompanyInfo[]
+     * @return \Oceanengine\Open\Model\InlineResponse20019DataAccountList[]
      */
-    public function getCompanyInfo()
+    public function getAccountList()
     {
-        return $this->container['company_info'];
+        return $this->container['account_list'];
     }
 
     /**
-     * Sets company_info
+     * Sets account_list
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20019DataCompanyInfo[] $company_info company_info
+     * @param \Oceanengine\Open\Model\InlineResponse20019DataAccountList[] $account_list account_list
      *
      * @return $this
      */
-    public function setCompanyInfo($company_info)
+    public function setAccountList($account_list)
     {
-        $this->container['company_info'] = $company_info;
+        $this->container['account_list'] = $account_list;
 
         return $this;
     }
@@ -243,7 +243,7 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
     /**
      * Gets page_info
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20018DataPageInfo
+     * @return \Oceanengine\Open\Model\InlineResponse20017DataPageInfo
      */
     public function getPageInfo()
     {
@@ -253,7 +253,7 @@ class InlineResponse20019Data implements ModelInterface, ArrayAccess
     /**
      * Sets page_info
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20018DataPageInfo $page_info page_info
+     * @param \Oceanengine\Open\Model\InlineResponse20017DataPageInfo $page_info page_info
      *
      * @return $this
      */

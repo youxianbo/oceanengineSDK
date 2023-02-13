@@ -57,8 +57,7 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'list' => '\Oceanengine\Open\Model\InlineResponse20022DataList[]',
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20018DataPageInfo'
+        'list' => '\Oceanengine\Open\Model\InlineResponse20022DataList[]'
     ];
 
     /**
@@ -67,8 +66,7 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'list' => null,
-        'page_info' => null
+        'list' => null
     ];
 
     /**
@@ -98,8 +96,7 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'list' => 'list',
-        'page_info' => 'page_info'
+        'list' => 'list'
     ];
 
     /**
@@ -108,8 +105,7 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'list' => 'setList',
-        'page_info' => 'setPageInfo'
+        'list' => 'setList'
     ];
 
     /**
@@ -118,8 +114,7 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'list' => 'getList',
-        'page_info' => 'getPageInfo'
+        'list' => 'getList'
     ];
 
     /**
@@ -183,7 +178,6 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
     }
 
     /**
@@ -197,9 +191,6 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
 
         if ($this->container['list'] === null) {
             $invalidProperties[] = "'list' can't be null";
-        }
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
         }
         return $invalidProperties;
     }
@@ -236,30 +227,6 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
     public function setList($list)
     {
         $this->container['list'] = $list;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_info
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse20018DataPageInfo
-     */
-    public function getPageInfo()
-    {
-        return $this->container['page_info'];
-    }
-
-    /**
-     * Sets page_info
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse20018DataPageInfo $page_info page_info
-     *
-     * @return $this
-     */
-    public function setPageInfo($page_info)
-    {
-        $this->container['page_info'] = $page_info;
 
         return $this;
     }

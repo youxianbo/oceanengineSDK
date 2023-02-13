@@ -58,17 +58,17 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'advertiser_id' => 'int',
-        'date' => 'string',
-        'balance' => 'float',
-        'cash_cost' => 'float',
-        'shared_wallet_cost' => 'float',
-        'cost' => 'float',
-        'frozen' => 'float',
+        'transaction_type' => 'string',
+        'create_time' => 'string',
         'grant' => 'float',
-        'income' => 'float',
-        'reward_cost' => 'float',
-        'transfer_in' => 'float',
-        'transfer_out' => 'float'
+        'frozen' => 'float',
+        'cash' => 'float',
+        'amount' => 'float',
+        'return_goods' => 'float',
+        'transaction_seq' => 'string',
+        'remitter' => 'string',
+        'payee' => 'float',
+        'dealbase' => 'float'
     ];
 
     /**
@@ -78,17 +78,17 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'advertiser_id' => 'int64',
-        'date' => null,
-        'balance' => null,
-        'cash_cost' => null,
-        'shared_wallet_cost' => null,
-        'cost' => null,
-        'frozen' => null,
+        'transaction_type' => null,
+        'create_time' => null,
         'grant' => null,
-        'income' => null,
-        'reward_cost' => null,
-        'transfer_in' => null,
-        'transfer_out' => null
+        'frozen' => null,
+        'cash' => null,
+        'amount' => null,
+        'return_goods' => null,
+        'transaction_seq' => null,
+        'remitter' => null,
+        'payee' => null,
+        'dealbase' => null
     ];
 
     /**
@@ -119,17 +119,17 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'advertiser_id' => 'advertiser_id',
-        'date' => 'date',
-        'balance' => 'balance',
-        'cash_cost' => 'cash_cost',
-        'shared_wallet_cost' => 'shared_wallet_cost',
-        'cost' => 'cost',
-        'frozen' => 'frozen',
+        'transaction_type' => 'transaction_type',
+        'create_time' => 'create_time',
         'grant' => 'grant',
-        'income' => 'income',
-        'reward_cost' => 'reward_cost',
-        'transfer_in' => 'transfer_in',
-        'transfer_out' => 'transfer_out'
+        'frozen' => 'frozen',
+        'cash' => 'cash',
+        'amount' => 'amount',
+        'return_goods' => 'return_goods',
+        'transaction_seq' => 'transaction_seq',
+        'remitter' => 'remitter',
+        'payee' => 'payee',
+        'dealbase' => 'dealbase'
     ];
 
     /**
@@ -139,17 +139,17 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'advertiser_id' => 'setAdvertiserId',
-        'date' => 'setDate',
-        'balance' => 'setBalance',
-        'cash_cost' => 'setCashCost',
-        'shared_wallet_cost' => 'setSharedWalletCost',
-        'cost' => 'setCost',
-        'frozen' => 'setFrozen',
+        'transaction_type' => 'setTransactionType',
+        'create_time' => 'setCreateTime',
         'grant' => 'setGrant',
-        'income' => 'setIncome',
-        'reward_cost' => 'setRewardCost',
-        'transfer_in' => 'setTransferIn',
-        'transfer_out' => 'setTransferOut'
+        'frozen' => 'setFrozen',
+        'cash' => 'setCash',
+        'amount' => 'setAmount',
+        'return_goods' => 'setReturnGoods',
+        'transaction_seq' => 'setTransactionSeq',
+        'remitter' => 'setRemitter',
+        'payee' => 'setPayee',
+        'dealbase' => 'setDealbase'
     ];
 
     /**
@@ -159,17 +159,17 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'advertiser_id' => 'getAdvertiserId',
-        'date' => 'getDate',
-        'balance' => 'getBalance',
-        'cash_cost' => 'getCashCost',
-        'shared_wallet_cost' => 'getSharedWalletCost',
-        'cost' => 'getCost',
-        'frozen' => 'getFrozen',
+        'transaction_type' => 'getTransactionType',
+        'create_time' => 'getCreateTime',
         'grant' => 'getGrant',
-        'income' => 'getIncome',
-        'reward_cost' => 'getRewardCost',
-        'transfer_in' => 'getTransferIn',
-        'transfer_out' => 'getTransferOut'
+        'frozen' => 'getFrozen',
+        'cash' => 'getCash',
+        'amount' => 'getAmount',
+        'return_goods' => 'getReturnGoods',
+        'transaction_seq' => 'getTransactionSeq',
+        'remitter' => 'getRemitter',
+        'payee' => 'getPayee',
+        'dealbase' => 'getDealbase'
     ];
 
     /**
@@ -233,17 +233,17 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['advertiser_id'] = isset($data['advertiser_id']) ? $data['advertiser_id'] : null;
-        $this->container['date'] = isset($data['date']) ? $data['date'] : null;
-        $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
-        $this->container['cash_cost'] = isset($data['cash_cost']) ? $data['cash_cost'] : null;
-        $this->container['shared_wallet_cost'] = isset($data['shared_wallet_cost']) ? $data['shared_wallet_cost'] : null;
-        $this->container['cost'] = isset($data['cost']) ? $data['cost'] : null;
-        $this->container['frozen'] = isset($data['frozen']) ? $data['frozen'] : null;
+        $this->container['transaction_type'] = isset($data['transaction_type']) ? $data['transaction_type'] : null;
+        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
         $this->container['grant'] = isset($data['grant']) ? $data['grant'] : null;
-        $this->container['income'] = isset($data['income']) ? $data['income'] : null;
-        $this->container['reward_cost'] = isset($data['reward_cost']) ? $data['reward_cost'] : null;
-        $this->container['transfer_in'] = isset($data['transfer_in']) ? $data['transfer_in'] : null;
-        $this->container['transfer_out'] = isset($data['transfer_out']) ? $data['transfer_out'] : null;
+        $this->container['frozen'] = isset($data['frozen']) ? $data['frozen'] : null;
+        $this->container['cash'] = isset($data['cash']) ? $data['cash'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['return_goods'] = isset($data['return_goods']) ? $data['return_goods'] : null;
+        $this->container['transaction_seq'] = isset($data['transaction_seq']) ? $data['transaction_seq'] : null;
+        $this->container['remitter'] = isset($data['remitter']) ? $data['remitter'] : null;
+        $this->container['payee'] = isset($data['payee']) ? $data['payee'] : null;
+        $this->container['dealbase'] = isset($data['dealbase']) ? $data['dealbase'] : null;
     }
 
     /**
@@ -255,41 +255,8 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['advertiser_id'] === null) {
-            $invalidProperties[] = "'advertiser_id' can't be null";
-        }
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
-        }
-        if ($this->container['balance'] === null) {
-            $invalidProperties[] = "'balance' can't be null";
-        }
-        if ($this->container['cash_cost'] === null) {
-            $invalidProperties[] = "'cash_cost' can't be null";
-        }
-        if ($this->container['shared_wallet_cost'] === null) {
-            $invalidProperties[] = "'shared_wallet_cost' can't be null";
-        }
-        if ($this->container['cost'] === null) {
-            $invalidProperties[] = "'cost' can't be null";
-        }
-        if ($this->container['frozen'] === null) {
-            $invalidProperties[] = "'frozen' can't be null";
-        }
-        if ($this->container['grant'] === null) {
-            $invalidProperties[] = "'grant' can't be null";
-        }
-        if ($this->container['income'] === null) {
-            $invalidProperties[] = "'income' can't be null";
-        }
-        if ($this->container['reward_cost'] === null) {
-            $invalidProperties[] = "'reward_cost' can't be null";
-        }
-        if ($this->container['transfer_in'] === null) {
-            $invalidProperties[] = "'transfer_in' can't be null";
-        }
-        if ($this->container['transfer_out'] === null) {
-            $invalidProperties[] = "'transfer_out' can't be null";
+        if ($this->container['dealbase'] === null) {
+            $invalidProperties[] = "'dealbase' can't be null";
         }
         return $invalidProperties;
     }
@@ -309,7 +276,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets advertiser_id
      *
-     * @return int
+     * @return int|null
      */
     public function getAdvertiserId()
     {
@@ -319,7 +286,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets advertiser_id
      *
-     * @param int $advertiser_id advertiser_id
+     * @param int|null $advertiser_id 广告主ID
      *
      * @return $this
      */
@@ -331,145 +298,49 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets date
+     * Gets transaction_type
      *
-     * @return string
+     * @return string|null
      */
-    public function getDate()
+    public function getTransactionType()
     {
-        return $this->container['date'];
+        return $this->container['transaction_type'];
     }
 
     /**
-     * Sets date
+     * Sets transaction_type
      *
-     * @param string $date date
+     * @param string|null $transaction_type 流水类型，详见附录【流水类型】，包含转账、充值
      *
      * @return $this
      */
-    public function setDate($date)
+    public function setTransactionType($transaction_type)
     {
-        $this->container['date'] = $date;
+        $this->container['transaction_type'] = $transaction_type;
 
         return $this;
     }
 
     /**
-     * Gets balance
+     * Gets create_time
      *
-     * @return float
+     * @return string|null
      */
-    public function getBalance()
+    public function getCreateTime()
     {
-        return $this->container['balance'];
+        return $this->container['create_time'];
     }
 
     /**
-     * Sets balance
+     * Sets create_time
      *
-     * @param float $balance 日终结余(单位元）
+     * @param string|null $create_time 冻结总金额(单位元)
      *
      * @return $this
      */
-    public function setBalance($balance)
+    public function setCreateTime($create_time)
     {
-        $this->container['balance'] = $balance;
-
-        return $this;
-    }
-
-    /**
-     * Gets cash_cost
-     *
-     * @return float
-     */
-    public function getCashCost()
-    {
-        return $this->container['cash_cost'];
-    }
-
-    /**
-     * Sets cash_cost
-     *
-     * @param float $cash_cost 现金支出(单位元)
-     *
-     * @return $this
-     */
-    public function setCashCost($cash_cost)
-    {
-        $this->container['cash_cost'] = $cash_cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets shared_wallet_cost
-     *
-     * @return float
-     */
-    public function getSharedWalletCost()
-    {
-        return $this->container['shared_wallet_cost'];
-    }
-
-    /**
-     * Sets shared_wallet_cost
-     *
-     * @param float $shared_wallet_cost 共享钱包支出（单位元）
-     *
-     * @return $this
-     */
-    public function setSharedWalletCost($shared_wallet_cost)
-    {
-        $this->container['shared_wallet_cost'] = $shared_wallet_cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets cost
-     *
-     * @return float
-     */
-    public function getCost()
-    {
-        return $this->container['cost'];
-    }
-
-    /**
-     * Sets cost
-     *
-     * @param float $cost 总支出(单位元)
-     *
-     * @return $this
-     */
-    public function setCost($cost)
-    {
-        $this->container['cost'] = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets frozen
-     *
-     * @return float
-     */
-    public function getFrozen()
-    {
-        return $this->container['frozen'];
-    }
-
-    /**
-     * Sets frozen
-     *
-     * @param float $frozen 冻结(单位元)
-     *
-     * @return $this
-     */
-    public function setFrozen($frozen)
-    {
-        $this->container['frozen'] = $frozen;
+        $this->container['create_time'] = $create_time;
 
         return $this;
     }
@@ -477,7 +348,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Gets grant
      *
-     * @return float
+     * @return float|null
      */
     public function getGrant()
     {
@@ -487,7 +358,7 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     /**
      * Sets grant
      *
-     * @param float $grant grant
+     * @param float|null $grant 赠款总金额(单位元）
      *
      * @return $this
      */
@@ -499,97 +370,193 @@ class InlineResponse20022DataList implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets income
+     * Gets frozen
      *
-     * @return float
+     * @return float|null
      */
-    public function getIncome()
+    public function getFrozen()
     {
-        return $this->container['income'];
+        return $this->container['frozen'];
     }
 
     /**
-     * Sets income
+     * Sets frozen
      *
-     * @param float $income 总存入(单位元)
+     * @param float|null $frozen 冻结总金额(单位元)
      *
      * @return $this
      */
-    public function setIncome($income)
+    public function setFrozen($frozen)
     {
-        $this->container['income'] = $income;
+        $this->container['frozen'] = $frozen;
 
         return $this;
     }
 
     /**
-     * Gets reward_cost
+     * Gets cash
      *
-     * @return float
+     * @return float|null
      */
-    public function getRewardCost()
+    public function getCash()
     {
-        return $this->container['reward_cost'];
+        return $this->container['cash'];
     }
 
     /**
-     * Sets reward_cost
+     * Sets cash
      *
-     * @param float $reward_cost 共享钱包支出（单位元）
+     * @param float|null $cash 现金总金额(单位元)
      *
      * @return $this
      */
-    public function setRewardCost($reward_cost)
+    public function setCash($cash)
     {
-        $this->container['reward_cost'] = $reward_cost;
+        $this->container['cash'] = $cash;
 
         return $this;
     }
 
     /**
-     * Gets transfer_in
+     * Gets amount
      *
-     * @return float
+     * @return float|null
      */
-    public function getTransferIn()
+    public function getAmount()
     {
-        return $this->container['transfer_in'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets transfer_in
+     * Sets amount
      *
-     * @param float $transfer_in 总转入(单位元)
+     * @param float|null $amount 交易总金额(单位元)
      *
      * @return $this
      */
-    public function setTransferIn($transfer_in)
+    public function setAmount($amount)
     {
-        $this->container['transfer_in'] = $transfer_in;
+        $this->container['amount'] = $amount;
 
         return $this;
     }
 
     /**
-     * Gets transfer_out
+     * Gets return_goods
      *
-     * @return float
+     * @return float|null
      */
-    public function getTransferOut()
+    public function getReturnGoods()
     {
-        return $this->container['transfer_out'];
+        return $this->container['return_goods'];
     }
 
     /**
-     * Sets transfer_out
+     * Sets return_goods
      *
-     * @param float $transfer_out 总转出(单位元)
+     * @param float|null $return_goods 返货总金额(单位元)
      *
      * @return $this
      */
-    public function setTransferOut($transfer_out)
+    public function setReturnGoods($return_goods)
     {
-        $this->container['transfer_out'] = $transfer_out;
+        $this->container['return_goods'] = $return_goods;
+
+        return $this;
+    }
+
+    /**
+     * Gets transaction_seq
+     *
+     * @return string|null
+     */
+    public function getTransactionSeq()
+    {
+        return $this->container['transaction_seq'];
+    }
+
+    /**
+     * Sets transaction_seq
+     *
+     * @param string|null $transaction_seq 付款方，即广告主id。
+     *
+     * @return $this
+     */
+    public function setTransactionSeq($transaction_seq)
+    {
+        $this->container['transaction_seq'] = $transaction_seq;
+
+        return $this;
+    }
+
+    /**
+     * Gets remitter
+     *
+     * @return string|null
+     */
+    public function getRemitter()
+    {
+        return $this->container['remitter'];
+    }
+
+    /**
+     * Sets remitter
+     *
+     * @param string|null $remitter 付款方，即广告主id。
+     *
+     * @return $this
+     */
+    public function setRemitter($remitter)
+    {
+        $this->container['remitter'] = $remitter;
+
+        return $this;
+    }
+
+    /**
+     * Gets payee
+     *
+     * @return float|null
+     */
+    public function getPayee()
+    {
+        return $this->container['payee'];
+    }
+
+    /**
+     * Sets payee
+     *
+     * @param float|null $payee 收款方，即广告主id。
+     *
+     * @return $this
+     */
+    public function setPayee($payee)
+    {
+        $this->container['payee'] = $payee;
+
+        return $this;
+    }
+
+    /**
+     * Gets dealbase
+     *
+     * @return float
+     */
+    public function getDealbase()
+    {
+        return $this->container['dealbase'];
+    }
+
+    /**
+     * Sets dealbase
+     *
+     * @param float $dealbase 返点
+     *
+     * @return $this
+     */
+    public function setDealbase($dealbase)
+    {
+        $this->container['dealbase'] = $dealbase;
 
         return $this;
     }

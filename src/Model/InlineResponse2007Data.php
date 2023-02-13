@@ -58,7 +58,7 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'page_info' => '\Oceanengine\Open\Model\InlineResponse2007DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse2007DataList[]'
+        'list' => '\Oceanengine\Open\Model\AdvertiserReport[]'
     ];
 
     /**
@@ -243,7 +243,7 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
     /**
      * Gets list
      *
-     * @return \Oceanengine\Open\Model\InlineResponse2007DataList[]
+     * @return \Oceanengine\Open\Model\AdvertiserReport[]
      */
     public function getList()
     {
@@ -253,7 +253,7 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
     /**
      * Sets list
      *
-     * @param \Oceanengine\Open\Model\InlineResponse2007DataList[] $list list
+     * @param \Oceanengine\Open\Model\AdvertiserReport[] $list list
      *
      * @return $this
      */

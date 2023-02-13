@@ -57,11 +57,28 @@ class InlineResponse20026DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'open_id' => 'string',
-        'aweme_id' => 'string',
-        'authorize_times' => '\Oceanengine\Open\Model\InlineResponse20026DataAuthorizeTimes[]',
-        'aweme_name' => 'string',
-        'aweme_avatar' => 'string'
+        'start_time_day' => 'string',
+        'business_page_home_visited' => 'string',
+        'business_page_home_visited_ucount' => 'string',
+        'business_page_fans_num_all' => 'string',
+        'business_page_new_fans_num' => 'string',
+        'business_page_disfollow_ucount' => 'string',
+        'business_page_comment' => 'string',
+        'business_page_like' => 'string',
+        'business_page_share' => 'string',
+        'business_page_dp_down_click_cnt' => 'string',
+        'business_page_favourite_video_cnt' => 'string',
+        'business_page_fw_video_vv' => 'string',
+        'business_page_play_over' => 'string',
+        'business_page_total_play' => 'string',
+        'business_page_dislike_cnt' => 'string',
+        'business_page_chat_by_share_video_cnt' => 'string',
+        'business_page_click_cart_count' => 'string',
+        'business_page_click_product' => 'string',
+        'business_page_click_product_go_buy' => 'string',
+        'business_page_order_count' => 'string',
+        'business_page_pay_order_count' => 'string',
+        'business_page_pay_order_gmv' => 'string'
     ];
 
     /**
@@ -70,11 +87,28 @@ class InlineResponse20026DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'open_id' => null,
-        'aweme_id' => null,
-        'authorize_times' => null,
-        'aweme_name' => null,
-        'aweme_avatar' => null
+        'start_time_day' => null,
+        'business_page_home_visited' => null,
+        'business_page_home_visited_ucount' => null,
+        'business_page_fans_num_all' => null,
+        'business_page_new_fans_num' => null,
+        'business_page_disfollow_ucount' => null,
+        'business_page_comment' => null,
+        'business_page_like' => null,
+        'business_page_share' => null,
+        'business_page_dp_down_click_cnt' => null,
+        'business_page_favourite_video_cnt' => null,
+        'business_page_fw_video_vv' => null,
+        'business_page_play_over' => null,
+        'business_page_total_play' => null,
+        'business_page_dislike_cnt' => null,
+        'business_page_chat_by_share_video_cnt' => null,
+        'business_page_click_cart_count' => null,
+        'business_page_click_product' => null,
+        'business_page_click_product_go_buy' => null,
+        'business_page_order_count' => null,
+        'business_page_pay_order_count' => null,
+        'business_page_pay_order_gmv' => null
     ];
 
     /**
@@ -104,11 +138,28 @@ class InlineResponse20026DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'open_id' => 'open_id',
-        'aweme_id' => 'aweme_id',
-        'authorize_times' => 'authorize_times',
-        'aweme_name' => 'aweme_name',
-        'aweme_avatar' => 'aweme_avatar'
+        'start_time_day' => 'start_time_day',
+        'business_page_home_visited' => 'business_page_home_visited',
+        'business_page_home_visited_ucount' => 'business_page_home_visited_ucount',
+        'business_page_fans_num_all' => 'business_page_fans_num_all',
+        'business_page_new_fans_num' => 'business_page_new_fans_num',
+        'business_page_disfollow_ucount' => 'business_page_disfollow_ucount',
+        'business_page_comment' => 'business_page_comment',
+        'business_page_like' => 'business_page_like',
+        'business_page_share' => 'business_page_share',
+        'business_page_dp_down_click_cnt' => 'business_page_dp_down_click_cnt',
+        'business_page_favourite_video_cnt' => 'business_page_favourite_video_cnt',
+        'business_page_fw_video_vv' => 'business_page_fw_video_vv',
+        'business_page_play_over' => 'business_page_play_over',
+        'business_page_total_play' => 'business_page_total_play',
+        'business_page_dislike_cnt' => 'business_page_dislike_cnt',
+        'business_page_chat_by_share_video_cnt' => 'business_page_chat_by_share_video_cnt',
+        'business_page_click_cart_count' => 'business_page_click_cart_count',
+        'business_page_click_product' => 'business_page_click_product',
+        'business_page_click_product_go_buy' => 'business_page_click_product_go_buy',
+        'business_page_order_count' => 'business_page_order_count',
+        'business_page_pay_order_count' => 'business_page_pay_order_count',
+        'business_page_pay_order_gmv' => 'business_page_pay_order_gmv'
     ];
 
     /**
@@ -117,11 +168,28 @@ class InlineResponse20026DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'open_id' => 'setOpenId',
-        'aweme_id' => 'setAwemeId',
-        'authorize_times' => 'setAuthorizeTimes',
-        'aweme_name' => 'setAwemeName',
-        'aweme_avatar' => 'setAwemeAvatar'
+        'start_time_day' => 'setStartTimeDay',
+        'business_page_home_visited' => 'setBusinessPageHomeVisited',
+        'business_page_home_visited_ucount' => 'setBusinessPageHomeVisitedUcount',
+        'business_page_fans_num_all' => 'setBusinessPageFansNumAll',
+        'business_page_new_fans_num' => 'setBusinessPageNewFansNum',
+        'business_page_disfollow_ucount' => 'setBusinessPageDisfollowUcount',
+        'business_page_comment' => 'setBusinessPageComment',
+        'business_page_like' => 'setBusinessPageLike',
+        'business_page_share' => 'setBusinessPageShare',
+        'business_page_dp_down_click_cnt' => 'setBusinessPageDpDownClickCnt',
+        'business_page_favourite_video_cnt' => 'setBusinessPageFavouriteVideoCnt',
+        'business_page_fw_video_vv' => 'setBusinessPageFwVideoVv',
+        'business_page_play_over' => 'setBusinessPagePlayOver',
+        'business_page_total_play' => 'setBusinessPageTotalPlay',
+        'business_page_dislike_cnt' => 'setBusinessPageDislikeCnt',
+        'business_page_chat_by_share_video_cnt' => 'setBusinessPageChatByShareVideoCnt',
+        'business_page_click_cart_count' => 'setBusinessPageClickCartCount',
+        'business_page_click_product' => 'setBusinessPageClickProduct',
+        'business_page_click_product_go_buy' => 'setBusinessPageClickProductGoBuy',
+        'business_page_order_count' => 'setBusinessPageOrderCount',
+        'business_page_pay_order_count' => 'setBusinessPagePayOrderCount',
+        'business_page_pay_order_gmv' => 'setBusinessPagePayOrderGmv'
     ];
 
     /**
@@ -130,11 +198,28 @@ class InlineResponse20026DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'open_id' => 'getOpenId',
-        'aweme_id' => 'getAwemeId',
-        'authorize_times' => 'getAuthorizeTimes',
-        'aweme_name' => 'getAwemeName',
-        'aweme_avatar' => 'getAwemeAvatar'
+        'start_time_day' => 'getStartTimeDay',
+        'business_page_home_visited' => 'getBusinessPageHomeVisited',
+        'business_page_home_visited_ucount' => 'getBusinessPageHomeVisitedUcount',
+        'business_page_fans_num_all' => 'getBusinessPageFansNumAll',
+        'business_page_new_fans_num' => 'getBusinessPageNewFansNum',
+        'business_page_disfollow_ucount' => 'getBusinessPageDisfollowUcount',
+        'business_page_comment' => 'getBusinessPageComment',
+        'business_page_like' => 'getBusinessPageLike',
+        'business_page_share' => 'getBusinessPageShare',
+        'business_page_dp_down_click_cnt' => 'getBusinessPageDpDownClickCnt',
+        'business_page_favourite_video_cnt' => 'getBusinessPageFavouriteVideoCnt',
+        'business_page_fw_video_vv' => 'getBusinessPageFwVideoVv',
+        'business_page_play_over' => 'getBusinessPagePlayOver',
+        'business_page_total_play' => 'getBusinessPageTotalPlay',
+        'business_page_dislike_cnt' => 'getBusinessPageDislikeCnt',
+        'business_page_chat_by_share_video_cnt' => 'getBusinessPageChatByShareVideoCnt',
+        'business_page_click_cart_count' => 'getBusinessPageClickCartCount',
+        'business_page_click_product' => 'getBusinessPageClickProduct',
+        'business_page_click_product_go_buy' => 'getBusinessPageClickProductGoBuy',
+        'business_page_order_count' => 'getBusinessPageOrderCount',
+        'business_page_pay_order_count' => 'getBusinessPagePayOrderCount',
+        'business_page_pay_order_gmv' => 'getBusinessPagePayOrderGmv'
     ];
 
     /**
@@ -197,11 +282,28 @@ class InlineResponse20026DataList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['open_id'] = isset($data['open_id']) ? $data['open_id'] : null;
-        $this->container['aweme_id'] = isset($data['aweme_id']) ? $data['aweme_id'] : null;
-        $this->container['authorize_times'] = isset($data['authorize_times']) ? $data['authorize_times'] : null;
-        $this->container['aweme_name'] = isset($data['aweme_name']) ? $data['aweme_name'] : null;
-        $this->container['aweme_avatar'] = isset($data['aweme_avatar']) ? $data['aweme_avatar'] : null;
+        $this->container['start_time_day'] = isset($data['start_time_day']) ? $data['start_time_day'] : null;
+        $this->container['business_page_home_visited'] = isset($data['business_page_home_visited']) ? $data['business_page_home_visited'] : null;
+        $this->container['business_page_home_visited_ucount'] = isset($data['business_page_home_visited_ucount']) ? $data['business_page_home_visited_ucount'] : null;
+        $this->container['business_page_fans_num_all'] = isset($data['business_page_fans_num_all']) ? $data['business_page_fans_num_all'] : null;
+        $this->container['business_page_new_fans_num'] = isset($data['business_page_new_fans_num']) ? $data['business_page_new_fans_num'] : null;
+        $this->container['business_page_disfollow_ucount'] = isset($data['business_page_disfollow_ucount']) ? $data['business_page_disfollow_ucount'] : null;
+        $this->container['business_page_comment'] = isset($data['business_page_comment']) ? $data['business_page_comment'] : null;
+        $this->container['business_page_like'] = isset($data['business_page_like']) ? $data['business_page_like'] : null;
+        $this->container['business_page_share'] = isset($data['business_page_share']) ? $data['business_page_share'] : null;
+        $this->container['business_page_dp_down_click_cnt'] = isset($data['business_page_dp_down_click_cnt']) ? $data['business_page_dp_down_click_cnt'] : null;
+        $this->container['business_page_favourite_video_cnt'] = isset($data['business_page_favourite_video_cnt']) ? $data['business_page_favourite_video_cnt'] : null;
+        $this->container['business_page_fw_video_vv'] = isset($data['business_page_fw_video_vv']) ? $data['business_page_fw_video_vv'] : null;
+        $this->container['business_page_play_over'] = isset($data['business_page_play_over']) ? $data['business_page_play_over'] : null;
+        $this->container['business_page_total_play'] = isset($data['business_page_total_play']) ? $data['business_page_total_play'] : null;
+        $this->container['business_page_dislike_cnt'] = isset($data['business_page_dislike_cnt']) ? $data['business_page_dislike_cnt'] : null;
+        $this->container['business_page_chat_by_share_video_cnt'] = isset($data['business_page_chat_by_share_video_cnt']) ? $data['business_page_chat_by_share_video_cnt'] : null;
+        $this->container['business_page_click_cart_count'] = isset($data['business_page_click_cart_count']) ? $data['business_page_click_cart_count'] : null;
+        $this->container['business_page_click_product'] = isset($data['business_page_click_product']) ? $data['business_page_click_product'] : null;
+        $this->container['business_page_click_product_go_buy'] = isset($data['business_page_click_product_go_buy']) ? $data['business_page_click_product_go_buy'] : null;
+        $this->container['business_page_order_count'] = isset($data['business_page_order_count']) ? $data['business_page_order_count'] : null;
+        $this->container['business_page_pay_order_count'] = isset($data['business_page_pay_order_count']) ? $data['business_page_pay_order_count'] : null;
+        $this->container['business_page_pay_order_gmv'] = isset($data['business_page_pay_order_gmv']) ? $data['business_page_pay_order_gmv'] : null;
     }
 
     /**
@@ -213,20 +315,71 @@ class InlineResponse20026DataList implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['open_id'] === null) {
-            $invalidProperties[] = "'open_id' can't be null";
+        if ($this->container['start_time_day'] === null) {
+            $invalidProperties[] = "'start_time_day' can't be null";
         }
-        if ($this->container['aweme_id'] === null) {
-            $invalidProperties[] = "'aweme_id' can't be null";
+        if ($this->container['business_page_home_visited'] === null) {
+            $invalidProperties[] = "'business_page_home_visited' can't be null";
         }
-        if ($this->container['authorize_times'] === null) {
-            $invalidProperties[] = "'authorize_times' can't be null";
+        if ($this->container['business_page_home_visited_ucount'] === null) {
+            $invalidProperties[] = "'business_page_home_visited_ucount' can't be null";
         }
-        if ($this->container['aweme_name'] === null) {
-            $invalidProperties[] = "'aweme_name' can't be null";
+        if ($this->container['business_page_fans_num_all'] === null) {
+            $invalidProperties[] = "'business_page_fans_num_all' can't be null";
         }
-        if ($this->container['aweme_avatar'] === null) {
-            $invalidProperties[] = "'aweme_avatar' can't be null";
+        if ($this->container['business_page_new_fans_num'] === null) {
+            $invalidProperties[] = "'business_page_new_fans_num' can't be null";
+        }
+        if ($this->container['business_page_disfollow_ucount'] === null) {
+            $invalidProperties[] = "'business_page_disfollow_ucount' can't be null";
+        }
+        if ($this->container['business_page_comment'] === null) {
+            $invalidProperties[] = "'business_page_comment' can't be null";
+        }
+        if ($this->container['business_page_like'] === null) {
+            $invalidProperties[] = "'business_page_like' can't be null";
+        }
+        if ($this->container['business_page_share'] === null) {
+            $invalidProperties[] = "'business_page_share' can't be null";
+        }
+        if ($this->container['business_page_dp_down_click_cnt'] === null) {
+            $invalidProperties[] = "'business_page_dp_down_click_cnt' can't be null";
+        }
+        if ($this->container['business_page_favourite_video_cnt'] === null) {
+            $invalidProperties[] = "'business_page_favourite_video_cnt' can't be null";
+        }
+        if ($this->container['business_page_fw_video_vv'] === null) {
+            $invalidProperties[] = "'business_page_fw_video_vv' can't be null";
+        }
+        if ($this->container['business_page_play_over'] === null) {
+            $invalidProperties[] = "'business_page_play_over' can't be null";
+        }
+        if ($this->container['business_page_total_play'] === null) {
+            $invalidProperties[] = "'business_page_total_play' can't be null";
+        }
+        if ($this->container['business_page_dislike_cnt'] === null) {
+            $invalidProperties[] = "'business_page_dislike_cnt' can't be null";
+        }
+        if ($this->container['business_page_chat_by_share_video_cnt'] === null) {
+            $invalidProperties[] = "'business_page_chat_by_share_video_cnt' can't be null";
+        }
+        if ($this->container['business_page_click_cart_count'] === null) {
+            $invalidProperties[] = "'business_page_click_cart_count' can't be null";
+        }
+        if ($this->container['business_page_click_product'] === null) {
+            $invalidProperties[] = "'business_page_click_product' can't be null";
+        }
+        if ($this->container['business_page_click_product_go_buy'] === null) {
+            $invalidProperties[] = "'business_page_click_product_go_buy' can't be null";
+        }
+        if ($this->container['business_page_order_count'] === null) {
+            $invalidProperties[] = "'business_page_order_count' can't be null";
+        }
+        if ($this->container['business_page_pay_order_count'] === null) {
+            $invalidProperties[] = "'business_page_pay_order_count' can't be null";
+        }
+        if ($this->container['business_page_pay_order_gmv'] === null) {
+            $invalidProperties[] = "'business_page_pay_order_gmv' can't be null";
         }
         return $invalidProperties;
     }
@@ -244,121 +397,529 @@ class InlineResponse20026DataList implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets open_id
+     * Gets start_time_day
      *
      * @return string
      */
-    public function getOpenId()
+    public function getStartTimeDay()
     {
-        return $this->container['open_id'];
+        return $this->container['start_time_day'];
     }
 
     /**
-     * Sets open_id
+     * Sets start_time_day
      *
-     * @param string $open_id open_id
+     * @param string $start_time_day 数据统计时间
      *
      * @return $this
      */
-    public function setOpenId($open_id)
+    public function setStartTimeDay($start_time_day)
     {
-        $this->container['open_id'] = $open_id;
+        $this->container['start_time_day'] = $start_time_day;
 
         return $this;
     }
 
     /**
-     * Gets aweme_id
+     * Gets business_page_home_visited
      *
      * @return string
      */
-    public function getAwemeId()
+    public function getBusinessPageHomeVisited()
     {
-        return $this->container['aweme_id'];
+        return $this->container['business_page_home_visited'];
     }
 
     /**
-     * Sets aweme_id
+     * Sets business_page_home_visited
      *
-     * @param string $aweme_id aweme_id
+     * @param string $business_page_home_visited 主页访问量
      *
      * @return $this
      */
-    public function setAwemeId($aweme_id)
+    public function setBusinessPageHomeVisited($business_page_home_visited)
     {
-        $this->container['aweme_id'] = $aweme_id;
+        $this->container['business_page_home_visited'] = $business_page_home_visited;
 
         return $this;
     }
 
     /**
-     * Gets authorize_times
+     * Gets business_page_home_visited_ucount
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20026DataAuthorizeTimes[]
+     * @return string
      */
-    public function getAuthorizeTimes()
+    public function getBusinessPageHomeVisitedUcount()
     {
-        return $this->container['authorize_times'];
+        return $this->container['business_page_home_visited_ucount'];
     }
 
     /**
-     * Sets authorize_times
+     * Sets business_page_home_visited_ucount
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20026DataAuthorizeTimes[] $authorize_times authorize_times
+     * @param string $business_page_home_visited_ucount 主页访问人数
      *
      * @return $this
      */
-    public function setAuthorizeTimes($authorize_times)
+    public function setBusinessPageHomeVisitedUcount($business_page_home_visited_ucount)
     {
-        $this->container['authorize_times'] = $authorize_times;
+        $this->container['business_page_home_visited_ucount'] = $business_page_home_visited_ucount;
 
         return $this;
     }
 
     /**
-     * Gets aweme_name
+     * Gets business_page_fans_num_all
      *
      * @return string
      */
-    public function getAwemeName()
+    public function getBusinessPageFansNumAll()
     {
-        return $this->container['aweme_name'];
+        return $this->container['business_page_fans_num_all'];
     }
 
     /**
-     * Sets aweme_name
+     * Sets business_page_fans_num_all
      *
-     * @param string $aweme_name aweme_name
+     * @param string $business_page_fans_num_all 总粉丝数
      *
      * @return $this
      */
-    public function setAwemeName($aweme_name)
+    public function setBusinessPageFansNumAll($business_page_fans_num_all)
     {
-        $this->container['aweme_name'] = $aweme_name;
+        $this->container['business_page_fans_num_all'] = $business_page_fans_num_all;
 
         return $this;
     }
 
     /**
-     * Gets aweme_avatar
+     * Gets business_page_new_fans_num
      *
      * @return string
      */
-    public function getAwemeAvatar()
+    public function getBusinessPageNewFansNum()
     {
-        return $this->container['aweme_avatar'];
+        return $this->container['business_page_new_fans_num'];
     }
 
     /**
-     * Sets aweme_avatar
+     * Sets business_page_new_fans_num
      *
-     * @param string $aweme_avatar aweme_avatar
+     * @param string $business_page_new_fans_num 新增粉丝人数
      *
      * @return $this
      */
-    public function setAwemeAvatar($aweme_avatar)
+    public function setBusinessPageNewFansNum($business_page_new_fans_num)
     {
-        $this->container['aweme_avatar'] = $aweme_avatar;
+        $this->container['business_page_new_fans_num'] = $business_page_new_fans_num;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_disfollow_ucount
+     *
+     * @return string
+     */
+    public function getBusinessPageDisfollowUcount()
+    {
+        return $this->container['business_page_disfollow_ucount'];
+    }
+
+    /**
+     * Sets business_page_disfollow_ucount
+     *
+     * @param string $business_page_disfollow_ucount 流失粉丝人数
+     *
+     * @return $this
+     */
+    public function setBusinessPageDisfollowUcount($business_page_disfollow_ucount)
+    {
+        $this->container['business_page_disfollow_ucount'] = $business_page_disfollow_ucount;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_comment
+     *
+     * @return string
+     */
+    public function getBusinessPageComment()
+    {
+        return $this->container['business_page_comment'];
+    }
+
+    /**
+     * Sets business_page_comment
+     *
+     * @param string $business_page_comment 评论提交数
+     *
+     * @return $this
+     */
+    public function setBusinessPageComment($business_page_comment)
+    {
+        $this->container['business_page_comment'] = $business_page_comment;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_like
+     *
+     * @return string
+     */
+    public function getBusinessPageLike()
+    {
+        return $this->container['business_page_like'];
+    }
+
+    /**
+     * Sets business_page_like
+     *
+     * @param string $business_page_like 点赞数
+     *
+     * @return $this
+     */
+    public function setBusinessPageLike($business_page_like)
+    {
+        $this->container['business_page_like'] = $business_page_like;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_share
+     *
+     * @return string
+     */
+    public function getBusinessPageShare()
+    {
+        return $this->container['business_page_share'];
+    }
+
+    /**
+     * Sets business_page_share
+     *
+     * @param string $business_page_share 分享数
+     *
+     * @return $this
+     */
+    public function setBusinessPageShare($business_page_share)
+    {
+        $this->container['business_page_share'] = $business_page_share;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_dp_down_click_cnt
+     *
+     * @return string
+     */
+    public function getBusinessPageDpDownClickCnt()
+    {
+        return $this->container['business_page_dp_down_click_cnt'];
+    }
+
+    /**
+     * Sets business_page_dp_down_click_cnt
+     *
+     * @param string $business_page_dp_down_click_cnt 保存数
+     *
+     * @return $this
+     */
+    public function setBusinessPageDpDownClickCnt($business_page_dp_down_click_cnt)
+    {
+        $this->container['business_page_dp_down_click_cnt'] = $business_page_dp_down_click_cnt;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_favourite_video_cnt
+     *
+     * @return string
+     */
+    public function getBusinessPageFavouriteVideoCnt()
+    {
+        return $this->container['business_page_favourite_video_cnt'];
+    }
+
+    /**
+     * Sets business_page_favourite_video_cnt
+     *
+     * @param string $business_page_favourite_video_cnt 收藏数
+     *
+     * @return $this
+     */
+    public function setBusinessPageFavouriteVideoCnt($business_page_favourite_video_cnt)
+    {
+        $this->container['business_page_favourite_video_cnt'] = $business_page_favourite_video_cnt;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_fw_video_vv
+     *
+     * @return string
+     */
+    public function getBusinessPageFwVideoVv()
+    {
+        return $this->container['business_page_fw_video_vv'];
+    }
+
+    /**
+     * Sets business_page_fw_video_vv
+     *
+     * @param string $business_page_fw_video_vv 转发数
+     *
+     * @return $this
+     */
+    public function setBusinessPageFwVideoVv($business_page_fw_video_vv)
+    {
+        $this->container['business_page_fw_video_vv'] = $business_page_fw_video_vv;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_play_over
+     *
+     * @return string
+     */
+    public function getBusinessPagePlayOver()
+    {
+        return $this->container['business_page_play_over'];
+    }
+
+    /**
+     * Sets business_page_play_over
+     *
+     * @param string $business_page_play_over 播放完成数
+     *
+     * @return $this
+     */
+    public function setBusinessPagePlayOver($business_page_play_over)
+    {
+        $this->container['business_page_play_over'] = $business_page_play_over;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_total_play
+     *
+     * @return string
+     */
+    public function getBusinessPageTotalPlay()
+    {
+        return $this->container['business_page_total_play'];
+    }
+
+    /**
+     * Sets business_page_total_play
+     *
+     * @param string $business_page_total_play 播放数
+     *
+     * @return $this
+     */
+    public function setBusinessPageTotalPlay($business_page_total_play)
+    {
+        $this->container['business_page_total_play'] = $business_page_total_play;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_dislike_cnt
+     *
+     * @return string
+     */
+    public function getBusinessPageDislikeCnt()
+    {
+        return $this->container['business_page_dislike_cnt'];
+    }
+
+    /**
+     * Sets business_page_dislike_cnt
+     *
+     * @param string $business_page_dislike_cnt 不感兴趣数
+     *
+     * @return $this
+     */
+    public function setBusinessPageDislikeCnt($business_page_dislike_cnt)
+    {
+        $this->container['business_page_dislike_cnt'] = $business_page_dislike_cnt;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_chat_by_share_video_cnt
+     *
+     * @return string
+     */
+    public function getBusinessPageChatByShareVideoCnt()
+    {
+        return $this->container['business_page_chat_by_share_video_cnt'];
+    }
+
+    /**
+     * Sets business_page_chat_by_share_video_cnt
+     *
+     * @param string $business_page_chat_by_share_video_cnt 视频私信分享数
+     *
+     * @return $this
+     */
+    public function setBusinessPageChatByShareVideoCnt($business_page_chat_by_share_video_cnt)
+    {
+        $this->container['business_page_chat_by_share_video_cnt'] = $business_page_chat_by_share_video_cnt;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_click_cart_count
+     *
+     * @return string
+     */
+    public function getBusinessPageClickCartCount()
+    {
+        return $this->container['business_page_click_cart_count'];
+    }
+
+    /**
+     * Sets business_page_click_cart_count
+     *
+     * @param string $business_page_click_cart_count 查看购物车数
+     *
+     * @return $this
+     */
+    public function setBusinessPageClickCartCount($business_page_click_cart_count)
+    {
+        $this->container['business_page_click_cart_count'] = $business_page_click_cart_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_click_product
+     *
+     * @return string
+     */
+    public function getBusinessPageClickProduct()
+    {
+        return $this->container['business_page_click_product'];
+    }
+
+    /**
+     * Sets business_page_click_product
+     *
+     * @param string $business_page_click_product 商品点击数
+     *
+     * @return $this
+     */
+    public function setBusinessPageClickProduct($business_page_click_product)
+    {
+        $this->container['business_page_click_product'] = $business_page_click_product;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_click_product_go_buy
+     *
+     * @return string
+     */
+    public function getBusinessPageClickProductGoBuy()
+    {
+        return $this->container['business_page_click_product_go_buy'];
+    }
+
+    /**
+     * Sets business_page_click_product_go_buy
+     *
+     * @param string $business_page_click_product_go_buy 去购买点击数
+     *
+     * @return $this
+     */
+    public function setBusinessPageClickProductGoBuy($business_page_click_product_go_buy)
+    {
+        $this->container['business_page_click_product_go_buy'] = $business_page_click_product_go_buy;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_order_count
+     *
+     * @return string
+     */
+    public function getBusinessPageOrderCount()
+    {
+        return $this->container['business_page_order_count'];
+    }
+
+    /**
+     * Sets business_page_order_count
+     *
+     * @param string $business_page_order_count 商品订单数
+     *
+     * @return $this
+     */
+    public function setBusinessPageOrderCount($business_page_order_count)
+    {
+        $this->container['business_page_order_count'] = $business_page_order_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_pay_order_count
+     *
+     * @return string
+     */
+    public function getBusinessPagePayOrderCount()
+    {
+        return $this->container['business_page_pay_order_count'];
+    }
+
+    /**
+     * Sets business_page_pay_order_count
+     *
+     * @param string $business_page_pay_order_count 商品订单数
+     *
+     * @return $this
+     */
+    public function setBusinessPagePayOrderCount($business_page_pay_order_count)
+    {
+        $this->container['business_page_pay_order_count'] = $business_page_pay_order_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_page_pay_order_gmv
+     *
+     * @return string
+     */
+    public function getBusinessPagePayOrderGmv()
+    {
+        return $this->container['business_page_pay_order_gmv'];
+    }
+
+    /**
+     * Sets business_page_pay_order_gmv
+     *
+     * @param string $business_page_pay_order_gmv 商品订单金额
+     *
+     * @return $this
+     */
+    public function setBusinessPagePayOrderGmv($business_page_pay_order_gmv)
+    {
+        $this->container['business_page_pay_order_gmv'] = $business_page_pay_order_gmv;
 
         return $this;
     }

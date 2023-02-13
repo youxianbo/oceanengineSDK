@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **v10EnterpriseBindListGetGet**
-> \Oceanengine\Open\Model\InlineResponse20026 v10EnterpriseBindListGetGet($access_token, $x_debug_mode, $inline_object11)
+> \Oceanengine\Open\Model\InlineResponse20025 v10EnterpriseBindListGetGet($access_token, $x_debug_mode, $inline_object11)
 
 获取广告主关联的企业号列表
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20026**](../Model/InlineResponse20026.md)
+[**\Oceanengine\Open\Model\InlineResponse20025**](../Model/InlineResponse20025.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v10EnterpriseInfoGet**
-> \Oceanengine\Open\Model\InlineResponse20025 v10EnterpriseInfoGet($access_token, $x_debug_mode, $inline_object10)
+> \Oceanengine\Open\Model\InlineResponse20024 v10EnterpriseInfoGet($access_token, $x_debug_mode, $inline_object10)
 
 获取企业号信息
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20025**](../Model/InlineResponse20025.md)
+[**\Oceanengine\Open\Model\InlineResponse20024**](../Model/InlineResponse20024.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v10EnterpriseOverviewDataGetGet**
-> \Oceanengine\Open\Model\InlineResponse20027 v10EnterpriseOverviewDataGetGet($access_token, $x_debug_mode, $inline_object12)
+> \Oceanengine\Open\Model\InlineResponse20026 v10EnterpriseOverviewDataGetGet($access_token, $x_debug_mode, $inline_object12)
 
 获取企业号基础数据
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20027**](../Model/InlineResponse20027.md)
+[**\Oceanengine\Open\Model\InlineResponse20026**](../Model/InlineResponse20026.md)
 
 ### Authorization
 

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **call2ReportAdGetGet**
-> \Oceanengine\Open\Model\InlineResponse2008 call2ReportAdGetGet($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode)
+> \Oceanengine\Open\Model\InlineResponse2007 call2ReportAdGetGet($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode)
 
 广告计划数据
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\Oceanengine\Open\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2ReportAudienceAgeGet**
-> \Oceanengine\Open\Model\InlineResponse20014 call2ReportAudienceAgeGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
+> \Oceanengine\Open\Model\InlineResponse20013 call2ReportAudienceAgeGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
 
 年龄数据
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20014**](../Model/InlineResponse20014.md)
+[**\Oceanengine\Open\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
 
 ### Authorization
 
@@ -223,7 +223,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2ReportAudienceCityGet**
-> \Oceanengine\Open\Model\InlineResponse20012 call2ReportAudienceCityGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
+> \Oceanengine\Open\Model\InlineResponse20011 call2ReportAudienceCityGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
 
 市级数据
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\Oceanengine\Open\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 
@@ -284,7 +284,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2ReportAudienceGenderGet**
-> \Oceanengine\Open\Model\InlineResponse20013 call2ReportAudienceGenderGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
+> \Oceanengine\Open\Model\InlineResponse20012 call2ReportAudienceGenderGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
 
 性别数据
 
@@ -331,7 +331,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
+[**\Oceanengine\Open\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 
@@ -345,7 +345,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2ReportAudienceInterestActionListGet**
-> \Oceanengine\Open\Model\InlineResponse20010 call2ReportAudienceInterestActionListGet($advertiser_id, $start_date, $end_date, $metrics, $filtering, $page, $page_size, $access_token, $x_debug_mode)
+> \Oceanengine\Open\Model\InlineResponse2009 call2ReportAudienceInterestActionListGet($advertiser_id, $start_date, $end_date, $metrics, $filtering, $page, $page_size, $access_token, $x_debug_mode)
 
 行为兴趣数据
 
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\Oceanengine\Open\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
 
 ### Authorization
 
@@ -408,7 +408,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2ReportAudienceProvinceGet**
-> \Oceanengine\Open\Model\InlineResponse20011 call2ReportAudienceProvinceGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
+> \Oceanengine\Open\Model\InlineResponse20010 call2ReportAudienceProvinceGet($advertiser_id, $start_date, $end_date, $id_type, $metrics, $ids, $access_token, $x_debug_mode)
 
 省级数据
 
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\Oceanengine\Open\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
 
 ### Authorization
 
@@ -540,7 +540,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2ReportCreativeGetGet**
-> \Oceanengine\Open\Model\InlineResponse2009 call2ReportCreativeGetGet($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode)
+> \Oceanengine\Open\Model\InlineResponse2008 call2ReportCreativeGetGet($advertiser_id, $start_date, $end_date, $fields, $group_by, $time_granularity, $filtering, $order_field, $order_type, $page, $page_size, $access_token, $x_debug_mode)
 
 广告创意数据
 
@@ -597,7 +597,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
+[**\Oceanengine\Open\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -611,7 +611,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **call2ReportSitePageGet**
-> \Oceanengine\Open\Model\InlineResponse20015 call2ReportSitePageGet($advertiser_id, $site_id, $time_duration, $inventory_type, $access_token, $x_debug_mode)
+> \Oceanengine\Open\Model\InlineResponse20014 call2ReportSitePageGet($advertiser_id, $site_id, $time_duration, $inventory_type, $access_token, $x_debug_mode)
 
 橙子建站落地页数据
 
@@ -656,7 +656,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20015**](../Model/InlineResponse20015.md)
+[**\Oceanengine\Open\Model\InlineResponse20014**](../Model/InlineResponse20014.md)
 
 ### Authorization
 
@@ -670,7 +670,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **v30ReportCustomGetGet**
-> \Oceanengine\Open\Model\InlineResponse20016 v30ReportCustomGetGet($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page, $page_size, $data_topic, $access_token)
+> \Oceanengine\Open\Model\InlineResponse20015 v30ReportCustomGetGet($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page, $page_size, $data_topic, $access_token)
 
 自定义报表
 
@@ -725,7 +725,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Oceanengine\Open\Model\InlineResponse20016**](../Model/InlineResponse20016.md)
+[**\Oceanengine\Open\Model\InlineResponse20015**](../Model/InlineResponse20015.md)
 
 ### Authorization
 

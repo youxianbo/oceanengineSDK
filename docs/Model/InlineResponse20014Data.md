@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metrics_dict** | [**\Oceanengine\Open\Model\InlineResponse20011MetricsDict**](InlineResponse20011MetricsDict.md) |  | [optional] 
-**age_name** | **string** | 年龄段 | [optional] 
+**site_record** | [**\Oceanengine\Open\Model\InlineResponse20014DataSiteRecord**](InlineResponse20014DataSiteRecord.md) |  | 
+**site_id** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -57,8 +57,8 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metrics_dict' => '\Oceanengine\Open\Model\InlineResponse20011MetricsDict',
-        'age_name' => 'string'
+        'site_record' => '\Oceanengine\Open\Model\InlineResponse20014DataSiteRecord',
+        'site_id' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'metrics_dict' => null,
-        'age_name' => null
+        'site_record' => null,
+        'site_id' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'metrics_dict' => 'metrics_dict',
-        'age_name' => 'age_name'
+        'site_record' => 'site_record',
+        'site_id' => 'site_id'
     ];
 
     /**
@@ -108,8 +108,8 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'metrics_dict' => 'setMetricsDict',
-        'age_name' => 'setAgeName'
+        'site_record' => 'setSiteRecord',
+        'site_id' => 'setSiteId'
     ];
 
     /**
@@ -118,8 +118,8 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'metrics_dict' => 'getMetricsDict',
-        'age_name' => 'getAgeName'
+        'site_record' => 'getSiteRecord',
+        'site_id' => 'getSiteId'
     ];
 
     /**
@@ -182,8 +182,8 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['metrics_dict'] = isset($data['metrics_dict']) ? $data['metrics_dict'] : null;
-        $this->container['age_name'] = isset($data['age_name']) ? $data['age_name'] : null;
+        $this->container['site_record'] = isset($data['site_record']) ? $data['site_record'] : null;
+        $this->container['site_id'] = isset($data['site_id']) ? $data['site_id'] : null;
     }
 
     /**
@@ -195,6 +195,12 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['site_record'] === null) {
+            $invalidProperties[] = "'site_record' can't be null";
+        }
+        if ($this->container['site_id'] === null) {
+            $invalidProperties[] = "'site_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -211,49 +217,49 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets metrics_dict
+     * Gets site_record
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null
+     * @return \Oceanengine\Open\Model\InlineResponse20014DataSiteRecord
      */
-    public function getMetricsDict()
+    public function getSiteRecord()
     {
-        return $this->container['metrics_dict'];
+        return $this->container['site_record'];
     }
 
     /**
-     * Sets metrics_dict
+     * Sets site_record
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20011MetricsDict|null $metrics_dict metrics_dict
+     * @param \Oceanengine\Open\Model\InlineResponse20014DataSiteRecord $site_record site_record
      *
      * @return $this
      */
-    public function setMetricsDict($metrics_dict)
+    public function setSiteRecord($site_record)
     {
-        $this->container['metrics_dict'] = $metrics_dict;
+        $this->container['site_record'] = $site_record;
 
         return $this;
     }
 
     /**
-     * Gets age_name
+     * Gets site_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getAgeName()
+    public function getSiteId()
     {
-        return $this->container['age_name'];
+        return $this->container['site_id'];
     }
 
     /**
-     * Sets age_name
+     * Sets site_id
      *
-     * @param string|null $age_name 年龄段
+     * @param string $site_id site_id
      *
      * @return $this
      */
-    public function setAgeName($age_name)
+    public function setSiteId($site_id)
     {
-        $this->container['age_name'] = $age_name;
+        $this->container['site_id'] = $site_id;
 
         return $this;
     }

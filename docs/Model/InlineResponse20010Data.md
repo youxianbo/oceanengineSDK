@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**\Oceanengine\Open\Model\InlineResponse20010DataList[]**](InlineResponse20010DataList.md) |  | 
-**page_info** | [**\Oceanengine\Open\Model\InlineResponse2009DataPageInfo**](InlineResponse2009DataPageInfo.md) |  | 
+**metrics_dict** | [**\Oceanengine\Open\Model\InlineResponse20010MetricsDict**](InlineResponse20010MetricsDict.md) |  | [optional] 
+**province_name** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -98,7 +98,7 @@ class EnterpriseApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20026
+     * @return \Oceanengine\Open\Model\InlineResponse20025
      */
     public function v10EnterpriseBindListGetGet($access_token = null, $x_debug_mode = null, $inline_object11 = null)
     {
@@ -117,7 +117,7 @@ class EnterpriseApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20026, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse20025, HTTP status code, HTTP response headers (array of strings)
      */
     public function v10EnterpriseBindListGetGetWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object11 = null)
     {
@@ -154,20 +154,20 @@ class EnterpriseApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20026' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse20025' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20026', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20025', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20026';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20025';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -186,7 +186,7 @@ class EnterpriseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20026',
+                        '\Oceanengine\Open\Model\InlineResponse20025',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -232,7 +232,7 @@ class EnterpriseApi
      */
     public function v10EnterpriseBindListGetGetAsyncWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object11 = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20026';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20025';
         $request = $this->v10EnterpriseBindListGetGetRequest($access_token, $x_debug_mode, $inline_object11);
 
         return $this->client
@@ -377,7 +377,7 @@ class EnterpriseApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20025
+     * @return \Oceanengine\Open\Model\InlineResponse20024
      */
     public function v10EnterpriseInfoGet($access_token = null, $x_debug_mode = null, $inline_object10 = null)
     {
@@ -396,7 +396,7 @@ class EnterpriseApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20025, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse20024, HTTP status code, HTTP response headers (array of strings)
      */
     public function v10EnterpriseInfoGetWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object10 = null)
     {
@@ -433,20 +433,20 @@ class EnterpriseApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20025' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse20024' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20025', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20024', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20025';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20024';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -465,7 +465,7 @@ class EnterpriseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20025',
+                        '\Oceanengine\Open\Model\InlineResponse20024',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -511,7 +511,7 @@ class EnterpriseApi
      */
     public function v10EnterpriseInfoGetAsyncWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object10 = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20025';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20024';
         $request = $this->v10EnterpriseInfoGetRequest($access_token, $x_debug_mode, $inline_object10);
 
         return $this->client
@@ -656,7 +656,7 @@ class EnterpriseApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Oceanengine\Open\Model\InlineResponse20027
+     * @return \Oceanengine\Open\Model\InlineResponse20026
      */
     public function v10EnterpriseOverviewDataGetGet($access_token = null, $x_debug_mode = null, $inline_object12 = null)
     {
@@ -675,7 +675,7 @@ class EnterpriseApi
      *
      * @throws \Oceanengine\Open\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Oceanengine\Open\Model\InlineResponse20027, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Oceanengine\Open\Model\InlineResponse20026, HTTP status code, HTTP response headers (array of strings)
      */
     public function v10EnterpriseOverviewDataGetGetWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object12 = null)
     {
@@ -712,20 +712,20 @@ class EnterpriseApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\Oceanengine\Open\Model\InlineResponse20027' === '\SplFileObject') {
+                    if ('\Oceanengine\Open\Model\InlineResponse20026' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20027', []),
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20026', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Oceanengine\Open\Model\InlineResponse20027';
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20026';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -744,7 +744,7 @@ class EnterpriseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Oceanengine\Open\Model\InlineResponse20027',
+                        '\Oceanengine\Open\Model\InlineResponse20026',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -790,7 +790,7 @@ class EnterpriseApi
      */
     public function v10EnterpriseOverviewDataGetGetAsyncWithHttpInfo($access_token = null, $x_debug_mode = null, $inline_object12 = null)
     {
-        $returnType = '\Oceanengine\Open\Model\InlineResponse20027';
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20026';
         $request = $this->v10EnterpriseOverviewDataGetGetRequest($access_token, $x_debug_mode, $inline_object12);
 
         return $this->client

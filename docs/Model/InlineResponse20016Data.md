@@ -3,9 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page_info** | [**\Oceanengine\Open\Model\InlineResponse20016DataPageInfo**](InlineResponse20016DataPageInfo.md) |  | 
-**rows** | [**\Oceanengine\Open\Model\InlineResponse20016DataRows[]**](InlineResponse20016DataRows.md) |  | 
-**total_metrics** | [**\Oceanengine\Open\Model\InlineResponse20016DataTotalMetrics**](InlineResponse20016DataTotalMetrics.md) |  | 
+**list** | [**\Oceanengine\Open\Model\InlineResponse20016DataList[]**](InlineResponse20016DataList.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -216,6 +216,9 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
         if ($this->container['request_id'] === null) {
             $invalidProperties[] = "'request_id' can't be null";
         }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +309,7 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20023Data|null
+     * @return \Oceanengine\Open\Model\InlineResponse20023Data
      */
     public function getData()
     {
@@ -316,7 +319,7 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20023Data|null $data data
+     * @param \Oceanengine\Open\Model\InlineResponse20023Data $data data
      *
      * @return $this
      */

@@ -57,8 +57,9 @@ class InlineResponse20017DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'advertiser_id' => 'int',
-        'advertiser_name' => 'string'
+        'partner_organization_id' => 'int',
+        'remark' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -67,8 +68,9 @@ class InlineResponse20017DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'advertiser_id' => 'int64',
-        'advertiser_name' => null
+        'partner_organization_id' => 'int64',
+        'remark' => null,
+        'status' => null
     ];
 
     /**
@@ -98,8 +100,9 @@ class InlineResponse20017DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'advertiser_id' => 'advertiser_id',
-        'advertiser_name' => 'advertiser_name'
+        'partner_organization_id' => 'partner_organization_id',
+        'remark' => 'remark',
+        'status' => 'status'
     ];
 
     /**
@@ -108,8 +111,9 @@ class InlineResponse20017DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'advertiser_id' => 'setAdvertiserId',
-        'advertiser_name' => 'setAdvertiserName'
+        'partner_organization_id' => 'setPartnerOrganizationId',
+        'remark' => 'setRemark',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -118,8 +122,9 @@ class InlineResponse20017DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'advertiser_id' => 'getAdvertiserId',
-        'advertiser_name' => 'getAdvertiserName'
+        'partner_organization_id' => 'getPartnerOrganizationId',
+        'remark' => 'getRemark',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -182,8 +187,9 @@ class InlineResponse20017DataList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['advertiser_id'] = isset($data['advertiser_id']) ? $data['advertiser_id'] : null;
-        $this->container['advertiser_name'] = isset($data['advertiser_name']) ? $data['advertiser_name'] : null;
+        $this->container['partner_organization_id'] = isset($data['partner_organization_id']) ? $data['partner_organization_id'] : null;
+        $this->container['remark'] = isset($data['remark']) ? $data['remark'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -195,6 +201,15 @@ class InlineResponse20017DataList implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['partner_organization_id'] === null) {
+            $invalidProperties[] = "'partner_organization_id' can't be null";
+        }
+        if ($this->container['remark'] === null) {
+            $invalidProperties[] = "'remark' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -211,49 +226,73 @@ class InlineResponse20017DataList implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets advertiser_id
+     * Gets partner_organization_id
      *
-     * @return int|null
+     * @return int
      */
-    public function getAdvertiserId()
+    public function getPartnerOrganizationId()
     {
-        return $this->container['advertiser_id'];
+        return $this->container['partner_organization_id'];
     }
 
     /**
-     * Sets advertiser_id
+     * Sets partner_organization_id
      *
-     * @param int|null $advertiser_id advertiser_id
+     * @param int $partner_organization_id partner_organization_id
      *
      * @return $this
      */
-    public function setAdvertiserId($advertiser_id)
+    public function setPartnerOrganizationId($partner_organization_id)
     {
-        $this->container['advertiser_id'] = $advertiser_id;
+        $this->container['partner_organization_id'] = $partner_organization_id;
 
         return $this;
     }
 
     /**
-     * Gets advertiser_name
+     * Gets remark
      *
-     * @return string|null
+     * @return string
      */
-    public function getAdvertiserName()
+    public function getRemark()
     {
-        return $this->container['advertiser_name'];
+        return $this->container['remark'];
     }
 
     /**
-     * Sets advertiser_name
+     * Sets remark
      *
-     * @param string|null $advertiser_name advertiser_name
+     * @param string $remark remark
      *
      * @return $this
      */
-    public function setAdvertiserName($advertiser_name)
+    public function setRemark($remark)
     {
-        $this->container['advertiser_name'] = $advertiser_name;
+        $this->container['remark'] = $remark;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

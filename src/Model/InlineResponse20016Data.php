@@ -57,9 +57,7 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20016DataPageInfo',
-        'rows' => '\Oceanengine\Open\Model\InlineResponse20016DataRows[]',
-        'total_metrics' => '\Oceanengine\Open\Model\InlineResponse20016DataTotalMetrics'
+        'list' => '\Oceanengine\Open\Model\InlineResponse20016DataList[]'
     ];
 
     /**
@@ -68,9 +66,7 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'rows' => null,
-        'total_metrics' => null
+        'list' => null
     ];
 
     /**
@@ -100,9 +96,7 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'rows' => 'rows',
-        'total_metrics' => 'total_metrics'
+        'list' => 'list'
     ];
 
     /**
@@ -111,9 +105,7 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'rows' => 'setRows',
-        'total_metrics' => 'setTotalMetrics'
+        'list' => 'setList'
     ];
 
     /**
@@ -122,9 +114,7 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'rows' => 'getRows',
-        'total_metrics' => 'getTotalMetrics'
+        'list' => 'getList'
     ];
 
     /**
@@ -187,9 +177,7 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
-        $this->container['rows'] = isset($data['rows']) ? $data['rows'] : null;
-        $this->container['total_metrics'] = isset($data['total_metrics']) ? $data['total_metrics'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
     /**
@@ -201,14 +189,8 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
-        }
-        if ($this->container['rows'] === null) {
-            $invalidProperties[] = "'rows' can't be null";
-        }
-        if ($this->container['total_metrics'] === null) {
-            $invalidProperties[] = "'total_metrics' can't be null";
+        if ($this->container['list'] === null) {
+            $invalidProperties[] = "'list' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,73 +208,25 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
+     * Gets list
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20016DataPageInfo
+     * @return \Oceanengine\Open\Model\InlineResponse20016DataList[]
      */
-    public function getPageInfo()
+    public function getList()
     {
-        return $this->container['page_info'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets page_info
+     * Sets list
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20016DataPageInfo $page_info page_info
+     * @param \Oceanengine\Open\Model\InlineResponse20016DataList[] $list list
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setList($list)
     {
-        $this->container['page_info'] = $page_info;
-
-        return $this;
-    }
-
-    /**
-     * Gets rows
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse20016DataRows[]
-     */
-    public function getRows()
-    {
-        return $this->container['rows'];
-    }
-
-    /**
-     * Sets rows
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse20016DataRows[] $rows rows
-     *
-     * @return $this
-     */
-    public function setRows($rows)
-    {
-        $this->container['rows'] = $rows;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_metrics
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse20016DataTotalMetrics
-     */
-    public function getTotalMetrics()
-    {
-        return $this->container['total_metrics'];
-    }
-
-    /**
-     * Sets total_metrics
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse20016DataTotalMetrics $total_metrics total_metrics
-     *
-     * @return $this
-     */
-    public function setTotalMetrics($total_metrics)
-    {
-        $this->container['total_metrics'] = $total_metrics;
+        $this->container['list'] = $list;
 
         return $this;
     }

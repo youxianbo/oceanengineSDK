@@ -57,8 +57,8 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'list' => '\Oceanengine\Open\Model\InlineResponse2009DataList[]',
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse2009DataPageInfo'
+        'list' => '\Oceanengine\Open\Model\InterestAction[]',
+        'page_info' => '\Oceanengine\Open\Model\InlineResponse2008DataPageInfo'
     ];
 
     /**
@@ -198,9 +198,6 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
         if ($this->container['list'] === null) {
             $invalidProperties[] = "'list' can't be null";
         }
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -219,7 +216,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Gets list
      *
-     * @return \Oceanengine\Open\Model\InlineResponse2009DataList[]
+     * @return \Oceanengine\Open\Model\InterestAction[]
      */
     public function getList()
     {
@@ -229,7 +226,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Sets list
      *
-     * @param \Oceanengine\Open\Model\InlineResponse2009DataList[] $list list
+     * @param \Oceanengine\Open\Model\InterestAction[] $list list
      *
      * @return $this
      */
@@ -243,7 +240,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Gets page_info
      *
-     * @return \Oceanengine\Open\Model\InlineResponse2009DataPageInfo
+     * @return \Oceanengine\Open\Model\InlineResponse2008DataPageInfo|null
      */
     public function getPageInfo()
     {
@@ -253,7 +250,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     /**
      * Sets page_info
      *
-     * @param \Oceanengine\Open\Model\InlineResponse2009DataPageInfo $page_info page_info
+     * @param \Oceanengine\Open\Model\InlineResponse2008DataPageInfo|null $page_info page_info
      *
      * @return $this
      */
