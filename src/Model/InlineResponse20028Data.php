@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20027Data
+ * InlineResponse20028Data
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20027Data Class Doc Comment
+ * InlineResponse20028Data Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20027Data implements ModelInterface, ArrayAccess
+class InlineResponse20028Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_27_data';
+    protected static $openAPIModelName = 'inline_response_200_28_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20027DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse20027DataList[]'
+        'offset' => 'int',
+        'list' => '\Oceanengine\Open\Model\InlineResponse20028DataList[]',
+        'action_count' => 'int'
     ];
 
     /**
@@ -67,8 +68,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'list' => null
+        'offset' => 'int32',
+        'list' => null,
+        'action_count' => 'int32'
     ];
 
     /**
@@ -98,8 +100,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'list' => 'list'
+        'offset' => 'offset',
+        'list' => 'list',
+        'action_count' => 'action_count'
     ];
 
     /**
@@ -108,8 +111,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'list' => 'setList'
+        'offset' => 'setOffset',
+        'list' => 'setList',
+        'action_count' => 'setActionCount'
     ];
 
     /**
@@ -118,8 +122,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'list' => 'getList'
+        'offset' => 'getOffset',
+        'list' => 'getList',
+        'action_count' => 'getActionCount'
     ];
 
     /**
@@ -182,8 +187,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
+        $this->container['offset'] = isset($data['offset']) ? $data['offset'] : null;
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['action_count'] = isset($data['action_count']) ? $data['action_count'] : null;
     }
 
     /**
@@ -195,11 +201,14 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
+        if ($this->container['offset'] === null) {
+            $invalidProperties[] = "'offset' can't be null";
         }
         if ($this->container['list'] === null) {
             $invalidProperties[] = "'list' can't be null";
+        }
+        if ($this->container['action_count'] === null) {
+            $invalidProperties[] = "'action_count' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,25 +226,25 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
+     * Gets offset
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataPageInfo
+     * @return int
      */
-    public function getPageInfo()
+    public function getOffset()
     {
-        return $this->container['page_info'];
+        return $this->container['offset'];
     }
 
     /**
-     * Sets page_info
+     * Sets offset
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataPageInfo $page_info page_info
+     * @param int $offset offset
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setOffset($offset)
     {
-        $this->container['page_info'] = $page_info;
+        $this->container['offset'] = $offset;
 
         return $this;
     }
@@ -243,7 +252,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     /**
      * Gets list
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataList[]
+     * @return \Oceanengine\Open\Model\InlineResponse20028DataList[]
      */
     public function getList()
     {
@@ -253,13 +262,37 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     /**
      * Sets list
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataList[] $list list
+     * @param \Oceanengine\Open\Model\InlineResponse20028DataList[] $list list
      *
      * @return $this
      */
     public function setList($list)
     {
         $this->container['list'] = $list;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_count
+     *
+     * @return int
+     */
+    public function getActionCount()
+    {
+        return $this->container['action_count'];
+    }
+
+    /**
+     * Sets action_count
+     *
+     * @param int $action_count action_count
+     *
+     * @return $this
+     */
+    public function setActionCount($action_count)
+    {
+        $this->container['action_count'] = $action_count;
 
         return $this;
     }

@@ -256,42 +256,6 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['click_cnt'] === null) {
-            $invalidProperties[] = "'click_cnt' can't be null";
-        }
-        if ($this->container['conversion_cost'] === null) {
-            $invalidProperties[] = "'conversion_cost' can't be null";
-        }
-        if ($this->container['conversion_rate'] === null) {
-            $invalidProperties[] = "'conversion_rate' can't be null";
-        }
-        if ($this->container['convert_cnt'] === null) {
-            $invalidProperties[] = "'convert_cnt' can't be null";
-        }
-        if ($this->container['cpc_platform'] === null) {
-            $invalidProperties[] = "'cpc_platform' can't be null";
-        }
-        if ($this->container['cpm_platform'] === null) {
-            $invalidProperties[] = "'cpm_platform' can't be null";
-        }
-        if ($this->container['ctr'] === null) {
-            $invalidProperties[] = "'ctr' can't be null";
-        }
-        if ($this->container['deep_convert_cnt'] === null) {
-            $invalidProperties[] = "'deep_convert_cnt' can't be null";
-        }
-        if ($this->container['deep_convert_cost'] === null) {
-            $invalidProperties[] = "'deep_convert_cost' can't be null";
-        }
-        if ($this->container['deep_convert_rate'] === null) {
-            $invalidProperties[] = "'deep_convert_rate' can't be null";
-        }
-        if ($this->container['show_cnt'] === null) {
-            $invalidProperties[] = "'show_cnt' can't be null";
-        }
-        if ($this->container['stat_cost'] === null) {
-            $invalidProperties[] = "'stat_cost' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -310,7 +274,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets click_cnt
      *
-     * @return string
+     * @return string|null
      */
     public function getClickCnt()
     {
@@ -320,7 +284,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets click_cnt
      *
-     * @param string $click_cnt click_cnt
+     * @param string|null $click_cnt click_cnt
      *
      * @return $this
      */
@@ -334,7 +298,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets conversion_cost
      *
-     * @return string
+     * @return string|null
      */
     public function getConversionCost()
     {
@@ -344,7 +308,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets conversion_cost
      *
-     * @param string $conversion_cost conversion_cost
+     * @param string|null $conversion_cost conversion_cost
      *
      * @return $this
      */
@@ -358,7 +322,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets conversion_rate
      *
-     * @return string
+     * @return string|null
      */
     public function getConversionRate()
     {
@@ -368,7 +332,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets conversion_rate
      *
-     * @param string $conversion_rate conversion_rate
+     * @param string|null $conversion_rate conversion_rate
      *
      * @return $this
      */
@@ -382,7 +346,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets convert_cnt
      *
-     * @return string
+     * @return string|null
      */
     public function getConvertCnt()
     {
@@ -392,7 +356,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets convert_cnt
      *
-     * @param string $convert_cnt convert_cnt
+     * @param string|null $convert_cnt convert_cnt
      *
      * @return $this
      */
@@ -406,7 +370,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets cpc_platform
      *
-     * @return string
+     * @return string|null
      */
     public function getCpcPlatform()
     {
@@ -416,7 +380,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets cpc_platform
      *
-     * @param string $cpc_platform cpc_platform
+     * @param string|null $cpc_platform cpc_platform
      *
      * @return $this
      */
@@ -430,7 +394,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets cpm_platform
      *
-     * @return string
+     * @return string|null
      */
     public function getCpmPlatform()
     {
@@ -440,7 +404,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets cpm_platform
      *
-     * @param string $cpm_platform cpm_platform
+     * @param string|null $cpm_platform cpm_platform
      *
      * @return $this
      */
@@ -454,7 +418,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets ctr
      *
-     * @return string
+     * @return string|null
      */
     public function getCtr()
     {
@@ -464,7 +428,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets ctr
      *
-     * @param string $ctr ctr
+     * @param string|null $ctr ctr
      *
      * @return $this
      */
@@ -478,7 +442,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets deep_convert_cnt
      *
-     * @return string
+     * @return string|null
      */
     public function getDeepConvertCnt()
     {
@@ -488,7 +452,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets deep_convert_cnt
      *
-     * @param string $deep_convert_cnt deep_convert_cnt
+     * @param string|null $deep_convert_cnt deep_convert_cnt
      *
      * @return $this
      */
@@ -502,7 +466,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets deep_convert_cost
      *
-     * @return string
+     * @return string|null
      */
     public function getDeepConvertCost()
     {
@@ -512,7 +476,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets deep_convert_cost
      *
-     * @param string $deep_convert_cost deep_convert_cost
+     * @param string|null $deep_convert_cost deep_convert_cost
      *
      * @return $this
      */
@@ -526,7 +490,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets deep_convert_rate
      *
-     * @return string
+     * @return string|null
      */
     public function getDeepConvertRate()
     {
@@ -536,7 +500,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets deep_convert_rate
      *
-     * @param string $deep_convert_rate deep_convert_rate
+     * @param string|null $deep_convert_rate deep_convert_rate
      *
      * @return $this
      */
@@ -550,7 +514,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets show_cnt
      *
-     * @return string
+     * @return string|null
      */
     public function getShowCnt()
     {
@@ -560,7 +524,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets show_cnt
      *
-     * @param string $show_cnt show_cnt
+     * @param string|null $show_cnt show_cnt
      *
      * @return $this
      */
@@ -574,7 +538,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Gets stat_cost
      *
-     * @return string
+     * @return string|null
      */
     public function getStatCost()
     {
@@ -584,7 +548,7 @@ class InlineResponse20015DataTotalMetrics implements ModelInterface, ArrayAccess
     /**
      * Sets stat_cost
      *
-     * @param string $stat_cost stat_cost
+     * @param string|null $stat_cost stat_cost
      *
      * @return $this
      */

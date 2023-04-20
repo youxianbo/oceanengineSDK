@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20027Data
+ * InlineResponse20029
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20027Data Class Doc Comment
+ * InlineResponse20029 Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20027Data implements ModelInterface, ArrayAccess
+class InlineResponse20029 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_27_data';
+    protected static $openAPIModelName = 'inline_response_200_29';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20027DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse20027DataList[]'
+        'code' => 'int',
+        'message' => 'string',
+        'request_id' => 'string',
+        'data' => '\Oceanengine\Open\Model\InlineResponse20029Data'
     ];
 
     /**
@@ -67,8 +69,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'list' => null
+        'code' => 'int32',
+        'message' => null,
+        'request_id' => null,
+        'data' => null
     ];
 
     /**
@@ -98,8 +102,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'list' => 'list'
+        'code' => 'code',
+        'message' => 'message',
+        'request_id' => 'request_id',
+        'data' => 'data'
     ];
 
     /**
@@ -108,8 +114,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'list' => 'setList'
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'request_id' => 'setRequestId',
+        'data' => 'setData'
     ];
 
     /**
@@ -118,8 +126,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'list' => 'getList'
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'request_id' => 'getRequestId',
+        'data' => 'getData'
     ];
 
     /**
@@ -182,8 +192,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -195,11 +207,17 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['request_id'] === null) {
+            $invalidProperties[] = "'request_id' can't be null";
+        }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,49 +235,97 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
+     * Gets code
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataPageInfo
+     * @return int
      */
-    public function getPageInfo()
+    public function getCode()
     {
-        return $this->container['page_info'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets page_info
+     * Sets code
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataPageInfo $page_info page_info
+     * @param int $code code
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setCode($code)
     {
-        $this->container['page_info'] = $page_info;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets message
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataList[]
+     * @return string
      */
-    public function getList()
+    public function getMessage()
     {
-        return $this->container['list'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets list
+     * Sets message
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataList[] $list list
+     * @param string $message message
      *
      * @return $this
      */
-    public function setList($list)
+    public function setMessage($message)
     {
-        $this->container['list'] = $list;
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_id
+     *
+     * @return string
+     */
+    public function getRequestId()
+    {
+        return $this->container['request_id'];
+    }
+
+    /**
+     * Sets request_id
+     *
+     * @param string $request_id request_id
+     *
+     * @return $this
+     */
+    public function setRequestId($request_id)
+    {
+        $this->container['request_id'] = $request_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \Oceanengine\Open\Model\InlineResponse20029Data
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \Oceanengine\Open\Model\InlineResponse20029Data $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

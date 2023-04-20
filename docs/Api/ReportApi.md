@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**call2ReportCampaignGetGet**](ReportApi.md#call2ReportCampaignGetGet) | **GET** /2/report/campaign/get/ | 广告组数据
 [**call2ReportCreativeGetGet**](ReportApi.md#call2ReportCreativeGetGet) | **GET** /2/report/creative/get/ | 广告创意数据
 [**call2ReportSitePageGet**](ReportApi.md#call2ReportSitePageGet) | **GET** /2/report/site/page/ | 橙子建站落地页数据
+[**v30ReportCustomConfigGetGet**](ReportApi.md#v30ReportCustomConfigGetGet) | **GET** /v3.0/report/custom/config/get/ | 获取自定义报表可用指标和维度
 [**v30ReportCustomGetGet**](ReportApi.md#v30ReportCustomGetGet) | **GET** /v3.0/report/custom/get/ | 自定义报表
 
 
@@ -669,6 +670,61 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **v30ReportCustomConfigGetGet**
+> \Oceanengine\Open\Model\InlineResponse20029 v30ReportCustomConfigGetGet($advertiser_id, $data_topics, $access_token, $x_debug_mode)
+
+获取自定义报表可用指标和维度
+
+获取自定义报表可用指标和维度
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Oceanengine\Open\Api\ReportApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$advertiser_id = {{advertiser_id}}; // string | 广告账户id
+$data_topics = ["[\"BASIC_DATA\"]"]; // string[] | 数据主题列表 枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据、PRODUCT_DATA产品数据、  ONE_KEY_BOOST_DATA一键起量（巨量广告升级版）
+$access_token = {{access_token}}; // string | 
+$x_debug_mode = 56; // int | 
+
+try {
+    $result = $apiInstance->v30ReportCustomConfigGetGet($advertiser_id, $data_topics, $access_token, $x_debug_mode);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReportApi->v30ReportCustomConfigGetGet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiser_id** | **string**| 广告账户id |
+ **data_topics** | [**string[]**](../Model/string.md)| 数据主题列表 枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据、PRODUCT_DATA产品数据、  ONE_KEY_BOOST_DATA一键起量（巨量广告升级版） |
+ **access_token** | **string**|  |
+ **x_debug_mode** | **int**|  | [optional]
+
+### Return type
+
+[**\Oceanengine\Open\Model\InlineResponse20029**](../Model/InlineResponse20029.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **v30ReportCustomGetGet**
 > \Oceanengine\Open\Model\InlineResponse20015 v30ReportCustomGetGet($advertiser_id, $dimensions, $metrics, $filters, $start_time, $end_time, $order_by, $page, $page_size, $data_topic, $access_token)
 
@@ -687,8 +743,8 @@ $apiInstance = new Oceanengine\Open\Api\ReportApi(
     new GuzzleHttp\Client()
 );
 $advertiser_id = 1; // string | 广告主id
-$dimensions = ["ABC"]; // string | 维度列表。 获取方式： 1.巨量引擎体验版—>报表—>新建/编辑自定义报表—>API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标
-$metrics = ["ABC"]; // string | 指标列表 。 获取方式： 1.巨量引擎体验版—>报表—>新建/编辑自定义报表—>API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标
+$dimensions = ["stat_time_day","landing_type"]; // string | 维度列表。 获取方式： 1.巨量引擎体验版—>报表—>新建/编辑自定义报表—>API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标
+$metrics = ["stat_cost","show_cnt","cpm_platform","click_cnt","ctr","cpc_platform","attribution_convert_cnt","attribution_convert_cost","attribution_conversion_rate","phone","form","form_submit","map","button","view","download_start","qq","lottery","vote","message","redirect","shopping","consult","consult_effective","phone_confirm","dy_like","dy_comment","dy_share","ad_dislike_cnt","ad_report_cnt","card_show","total_play","play_duration_3s","valid_play","valid_play_cost","valid_play_rate","valid_play_of_mille","valid_play_cost_of_mille","play_25_feed_break","play_50_feed_break","play_75_feed_break","play_99_feed_break","average_play_time_per_play","play_over_rate","ies_challenge_click","ies_music_click","location_click","dy_home_visited","dy_follow","message_action","click_landing_page","click_shopwindow","click_website","click_call_dy","click_download","luban_live_enter_cnt","live_watch_one_minute_count","luban_live_follow_cnt","luban_live_share_cnt","luban_live_comment_cnt","live_component_click_count","live_component_click_cost","live_component_click_rate"]; // string | 指标列表 。 获取方式： 1.巨量引擎体验版—>报表—>新建/编辑自定义报表—>API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标
 $filters = [{"field":"abc", "type":123,"operator":1,"values":"abc"}]; // string | 过滤条件。 获取方式： 1.巨量引擎体验版—>报表—>新建/编辑自定义报表—>API参数生成。该字段从前端自定义报表中获取，建议不要修改。 2.可通过【获取自定义报表可用维度和指标】接口获取不同数据主题下的可用维度和指标 字段： field：条件必填，过滤的消耗指标字段 type：条件必填，字段类型。允许值：1 -固定枚举值，2 - 固定输入值，3 -数类型 operator：条件必填，处理方式。 允许值：1 -等于，2 -小于，3 -小于等于，4 -大于，5 -大于等于，6 -不等于，7-包含，8 -不包含，9 -范围查询，10 -多个值匹配包含，11 -多个值匹配都要包含 values：条件必填，过滤字段具体值
 $start_time = 2023-02-01; // string | 开始时间。格式为：yyyy-MM-dd。例如2022-08-01
 $end_time = 2023-02-10; // string | 结束时间。格式为：yyyy-MM-dd。例如2022-08-01（默认为当天23:59:59）

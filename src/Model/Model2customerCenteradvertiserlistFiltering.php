@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20027Data
+ * Model2customerCenteradvertiserlistFiltering
  *
  * PHP version 5
  *
@@ -33,14 +33,15 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20027Data Class Doc Comment
+ * Model2customerCenteradvertiserlistFiltering Class Doc Comment
  *
  * @category Class
+ * @description 过滤条件
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20027Data implements ModelInterface, ArrayAccess
+class Model2customerCenteradvertiserlistFiltering implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_27_data';
+    protected static $openAPIModelName = '2customer_centeradvertiserlist_filtering';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +58,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20027DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse20027DataList[]'
+        'account_name' => 'string'
     ];
 
     /**
@@ -67,8 +67,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'list' => null
+        'account_name' => null
     ];
 
     /**
@@ -98,8 +97,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'list' => 'list'
+        'account_name' => 'account_name'
     ];
 
     /**
@@ -108,8 +106,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'list' => 'setList'
+        'account_name' => 'setAccountName'
     ];
 
     /**
@@ -118,8 +115,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'list' => 'getList'
+        'account_name' => 'getAccountName'
     ];
 
     /**
@@ -182,8 +178,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['account_name'] = isset($data['account_name']) ? $data['account_name'] : null;
     }
 
     /**
@@ -195,11 +190,8 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
-        }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['account_name'] === null) {
+            $invalidProperties[] = "'account_name' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,49 +209,25 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
+     * Gets account_name
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataPageInfo
+     * @return string
      */
-    public function getPageInfo()
+    public function getAccountName()
     {
-        return $this->container['page_info'];
+        return $this->container['account_name'];
     }
 
     /**
-     * Sets page_info
+     * Sets account_name
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataPageInfo $page_info page_info
+     * @param string $account_name 根据账户名称过滤
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setAccountName($account_name)
     {
-        $this->container['page_info'] = $page_info;
-
-        return $this;
-    }
-
-    /**
-     * Gets list
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataList[]
-     */
-    public function getList()
-    {
-        return $this->container['list'];
-    }
-
-    /**
-     * Sets list
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataList[] $list list
-     *
-     * @return $this
-     */
-    public function setList($list)
-    {
-        $this->container['list'] = $list;
+        $this->container['account_name'] = $account_name;
 
         return $this;
     }

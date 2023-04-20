@@ -1,10 +1,12 @@
-# InlineResponse20027Data
+# InlineResponse20029DataMetrics
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page_info** | [**\Oceanengine\Open\Model\InlineResponse20027DataPageInfo**](InlineResponse20027DataPageInfo.md) |  | 
-**list** | [**\Oceanengine\Open\Model\InlineResponse20027DataList[]**](InlineResponse20027DataList.md) |  | 
+**description** | **string** |  | 
+**field** | **string** |  | 
+**name** | **string** |  | 
+**exclusion_dims** | **string[]** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

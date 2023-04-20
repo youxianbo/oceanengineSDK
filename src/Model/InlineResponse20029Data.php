@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20027Data
+ * InlineResponse20029Data
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20027Data Class Doc Comment
+ * InlineResponse20029Data Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20027Data implements ModelInterface, ArrayAccess
+class InlineResponse20029Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_27_data';
+    protected static $openAPIModelName = 'inline_response_200_29_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20027DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse20027DataList[]'
+        'list' => '\Oceanengine\Open\Model\InlineResponse20029DataList[]'
     ];
 
     /**
@@ -67,7 +66,6 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
         'list' => null
     ];
 
@@ -98,7 +96,6 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
         'list' => 'list'
     ];
 
@@ -108,7 +105,6 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
         'list' => 'setList'
     ];
 
@@ -118,7 +114,6 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
         'list' => 'getList'
     ];
 
@@ -182,7 +177,6 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
@@ -195,9 +189,6 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
-        }
         if ($this->container['list'] === null) {
             $invalidProperties[] = "'list' can't be null";
         }
@@ -217,33 +208,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
-     *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataPageInfo
-     */
-    public function getPageInfo()
-    {
-        return $this->container['page_info'];
-    }
-
-    /**
-     * Sets page_info
-     *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataPageInfo $page_info page_info
-     *
-     * @return $this
-     */
-    public function setPageInfo($page_info)
-    {
-        $this->container['page_info'] = $page_info;
-
-        return $this;
-    }
-
-    /**
      * Gets list
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataList[]
+     * @return \Oceanengine\Open\Model\InlineResponse20029DataList[]
      */
     public function getList()
     {
@@ -253,7 +220,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     /**
      * Sets list
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataList[] $list list
+     * @param \Oceanengine\Open\Model\InlineResponse20029DataList[] $list list
      *
      * @return $this
      */

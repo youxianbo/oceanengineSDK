@@ -57,10 +57,11 @@ class InlineResponse20027DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'business_page_home_visited' => 'string',
-        'business_page_new_fans_num' => 'string',
-        'business_page_total_play' => 'string',
-        'business_page_like' => 'string'
+        'e_douyin_name' => 'string',
+        'e_douyin_id' => 'string',
+        'advertiser_id' => 'string',
+        'advertiser_name' => 'string',
+        'advertiser_type' => 'string'
     ];
 
     /**
@@ -69,10 +70,11 @@ class InlineResponse20027DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'business_page_home_visited' => null,
-        'business_page_new_fans_num' => null,
-        'business_page_total_play' => null,
-        'business_page_like' => null
+        'e_douyin_name' => null,
+        'e_douyin_id' => null,
+        'advertiser_id' => null,
+        'advertiser_name' => null,
+        'advertiser_type' => null
     ];
 
     /**
@@ -102,10 +104,11 @@ class InlineResponse20027DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'business_page_home_visited' => 'business_page_home_visited',
-        'business_page_new_fans_num' => 'business_page_new_fans_num',
-        'business_page_total_play' => 'business_page_total_play',
-        'business_page_like' => 'business_page_like'
+        'e_douyin_name' => 'e_douyin_name',
+        'e_douyin_id' => 'e_douyin_id',
+        'advertiser_id' => 'advertiser_id',
+        'advertiser_name' => 'advertiser_name',
+        'advertiser_type' => 'advertiser_type'
     ];
 
     /**
@@ -114,10 +117,11 @@ class InlineResponse20027DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'business_page_home_visited' => 'setBusinessPageHomeVisited',
-        'business_page_new_fans_num' => 'setBusinessPageNewFansNum',
-        'business_page_total_play' => 'setBusinessPageTotalPlay',
-        'business_page_like' => 'setBusinessPageLike'
+        'e_douyin_name' => 'setEDouyinName',
+        'e_douyin_id' => 'setEDouyinId',
+        'advertiser_id' => 'setAdvertiserId',
+        'advertiser_name' => 'setAdvertiserName',
+        'advertiser_type' => 'setAdvertiserType'
     ];
 
     /**
@@ -126,10 +130,11 @@ class InlineResponse20027DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'business_page_home_visited' => 'getBusinessPageHomeVisited',
-        'business_page_new_fans_num' => 'getBusinessPageNewFansNum',
-        'business_page_total_play' => 'getBusinessPageTotalPlay',
-        'business_page_like' => 'getBusinessPageLike'
+        'e_douyin_name' => 'getEDouyinName',
+        'e_douyin_id' => 'getEDouyinId',
+        'advertiser_id' => 'getAdvertiserId',
+        'advertiser_name' => 'getAdvertiserName',
+        'advertiser_type' => 'getAdvertiserType'
     ];
 
     /**
@@ -192,10 +197,11 @@ class InlineResponse20027DataList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['business_page_home_visited'] = isset($data['business_page_home_visited']) ? $data['business_page_home_visited'] : null;
-        $this->container['business_page_new_fans_num'] = isset($data['business_page_new_fans_num']) ? $data['business_page_new_fans_num'] : null;
-        $this->container['business_page_total_play'] = isset($data['business_page_total_play']) ? $data['business_page_total_play'] : null;
-        $this->container['business_page_like'] = isset($data['business_page_like']) ? $data['business_page_like'] : null;
+        $this->container['e_douyin_name'] = isset($data['e_douyin_name']) ? $data['e_douyin_name'] : null;
+        $this->container['e_douyin_id'] = isset($data['e_douyin_id']) ? $data['e_douyin_id'] : null;
+        $this->container['advertiser_id'] = isset($data['advertiser_id']) ? $data['advertiser_id'] : null;
+        $this->container['advertiser_name'] = isset($data['advertiser_name']) ? $data['advertiser_name'] : null;
+        $this->container['advertiser_type'] = isset($data['advertiser_type']) ? $data['advertiser_type'] : null;
     }
 
     /**
@@ -207,6 +213,21 @@ class InlineResponse20027DataList implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['e_douyin_name'] === null) {
+            $invalidProperties[] = "'e_douyin_name' can't be null";
+        }
+        if ($this->container['e_douyin_id'] === null) {
+            $invalidProperties[] = "'e_douyin_id' can't be null";
+        }
+        if ($this->container['advertiser_id'] === null) {
+            $invalidProperties[] = "'advertiser_id' can't be null";
+        }
+        if ($this->container['advertiser_name'] === null) {
+            $invalidProperties[] = "'advertiser_name' can't be null";
+        }
+        if ($this->container['advertiser_type'] === null) {
+            $invalidProperties[] = "'advertiser_type' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -223,97 +244,121 @@ class InlineResponse20027DataList implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets business_page_home_visited
+     * Gets e_douyin_name
      *
-     * @return string|null
+     * @return string
      */
-    public function getBusinessPageHomeVisited()
+    public function getEDouyinName()
     {
-        return $this->container['business_page_home_visited'];
+        return $this->container['e_douyin_name'];
     }
 
     /**
-     * Sets business_page_home_visited
+     * Sets e_douyin_name
      *
-     * @param string|null $business_page_home_visited business_page_home_visited
+     * @param string $e_douyin_name 企业号名称
      *
      * @return $this
      */
-    public function setBusinessPageHomeVisited($business_page_home_visited)
+    public function setEDouyinName($e_douyin_name)
     {
-        $this->container['business_page_home_visited'] = $business_page_home_visited;
+        $this->container['e_douyin_name'] = $e_douyin_name;
 
         return $this;
     }
 
     /**
-     * Gets business_page_new_fans_num
+     * Gets e_douyin_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getBusinessPageNewFansNum()
+    public function getEDouyinId()
     {
-        return $this->container['business_page_new_fans_num'];
+        return $this->container['e_douyin_id'];
     }
 
     /**
-     * Sets business_page_new_fans_num
+     * Sets e_douyin_id
      *
-     * @param string|null $business_page_new_fans_num business_page_new_fans_num
+     * @param string $e_douyin_id 企业号id(一个对象只会返回企业号和广告主其中一种)
      *
      * @return $this
      */
-    public function setBusinessPageNewFansNum($business_page_new_fans_num)
+    public function setEDouyinId($e_douyin_id)
     {
-        $this->container['business_page_new_fans_num'] = $business_page_new_fans_num;
+        $this->container['e_douyin_id'] = $e_douyin_id;
 
         return $this;
     }
 
     /**
-     * Gets business_page_total_play
+     * Gets advertiser_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getBusinessPageTotalPlay()
+    public function getAdvertiserId()
     {
-        return $this->container['business_page_total_play'];
+        return $this->container['advertiser_id'];
     }
 
     /**
-     * Sets business_page_total_play
+     * Sets advertiser_id
      *
-     * @param string|null $business_page_total_play business_page_total_play
+     * @param string $advertiser_id 广告主id
      *
      * @return $this
      */
-    public function setBusinessPageTotalPlay($business_page_total_play)
+    public function setAdvertiserId($advertiser_id)
     {
-        $this->container['business_page_total_play'] = $business_page_total_play;
+        $this->container['advertiser_id'] = $advertiser_id;
 
         return $this;
     }
 
     /**
-     * Gets business_page_like
+     * Gets advertiser_name
      *
-     * @return string|null
+     * @return string
      */
-    public function getBusinessPageLike()
+    public function getAdvertiserName()
     {
-        return $this->container['business_page_like'];
+        return $this->container['advertiser_name'];
     }
 
     /**
-     * Sets business_page_like
+     * Sets advertiser_name
      *
-     * @param string|null $business_page_like business_page_like
+     * @param string $advertiser_name 广告主名称
      *
      * @return $this
      */
-    public function setBusinessPageLike($business_page_like)
+    public function setAdvertiserName($advertiser_name)
     {
-        $this->container['business_page_like'] = $business_page_like;
+        $this->container['advertiser_name'] = $advertiser_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets advertiser_type
+     *
+     * @return string
+     */
+    public function getAdvertiserType()
+    {
+        return $this->container['advertiser_type'];
+    }
+
+    /**
+     * Sets advertiser_type
+     *
+     * @param string $advertiser_type 广告主类型枚举值：DOU+ DOU+类广告主账号、NORMAL普通广告主帐号
+     *
+     * @return $this
+     */
+    public function setAdvertiserType($advertiser_type)
+    {
+        $this->container['advertiser_type'] = $advertiser_type;
 
         return $this;
     }

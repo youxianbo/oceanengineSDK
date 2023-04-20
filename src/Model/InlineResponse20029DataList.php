@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20027Data
+ * InlineResponse20029DataList
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20027Data Class Doc Comment
+ * InlineResponse20029DataList Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20027Data implements ModelInterface, ArrayAccess
+class InlineResponse20029DataList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_27_data';
+    protected static $openAPIModelName = 'inline_response_200_29_data_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20027DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse20027DataList[]'
+        'data_topic' => 'string',
+        'dimensions' => '\Oceanengine\Open\Model\InlineResponse20029DataDimensions[]',
+        'metrics' => '\Oceanengine\Open\Model\InlineResponse20029DataMetrics[]'
     ];
 
     /**
@@ -67,8 +68,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'list' => null
+        'data_topic' => null,
+        'dimensions' => null,
+        'metrics' => null
     ];
 
     /**
@@ -98,8 +100,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'list' => 'list'
+        'data_topic' => 'data_topic',
+        'dimensions' => 'dimensions',
+        'metrics' => 'metrics'
     ];
 
     /**
@@ -108,8 +111,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'list' => 'setList'
+        'data_topic' => 'setDataTopic',
+        'dimensions' => 'setDimensions',
+        'metrics' => 'setMetrics'
     ];
 
     /**
@@ -118,8 +122,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'list' => 'getList'
+        'data_topic' => 'getDataTopic',
+        'dimensions' => 'getDimensions',
+        'metrics' => 'getMetrics'
     ];
 
     /**
@@ -182,8 +187,9 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['data_topic'] = isset($data['data_topic']) ? $data['data_topic'] : null;
+        $this->container['dimensions'] = isset($data['dimensions']) ? $data['dimensions'] : null;
+        $this->container['metrics'] = isset($data['metrics']) ? $data['metrics'] : null;
     }
 
     /**
@@ -195,12 +201,6 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
-        }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -217,49 +217,73 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
+     * Gets data_topic
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataPageInfo
+     * @return string|null
      */
-    public function getPageInfo()
+    public function getDataTopic()
     {
-        return $this->container['page_info'];
+        return $this->container['data_topic'];
     }
 
     /**
-     * Sets page_info
+     * Sets data_topic
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataPageInfo $page_info page_info
+     * @param string|null $data_topic data_topic
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setDataTopic($data_topic)
     {
-        $this->container['page_info'] = $page_info;
+        $this->container['data_topic'] = $data_topic;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets dimensions
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataList[]
+     * @return \Oceanengine\Open\Model\InlineResponse20029DataDimensions[]|null
      */
-    public function getList()
+    public function getDimensions()
     {
-        return $this->container['list'];
+        return $this->container['dimensions'];
     }
 
     /**
-     * Sets list
+     * Sets dimensions
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataList[] $list list
+     * @param \Oceanengine\Open\Model\InlineResponse20029DataDimensions[]|null $dimensions dimensions
      *
      * @return $this
      */
-    public function setList($list)
+    public function setDimensions($dimensions)
     {
-        $this->container['list'] = $list;
+        $this->container['dimensions'] = $dimensions;
+
+        return $this;
+    }
+
+    /**
+     * Gets metrics
+     *
+     * @return \Oceanengine\Open\Model\InlineResponse20029DataMetrics[]|null
+     */
+    public function getMetrics()
+    {
+        return $this->container['metrics'];
+    }
+
+    /**
+     * Sets metrics
+     *
+     * @param \Oceanengine\Open\Model\InlineResponse20029DataMetrics[]|null $metrics metrics
+     *
+     * @return $this
+     */
+    public function setMetrics($metrics)
+    {
+        $this->container['metrics'] = $metrics;
 
         return $this;
     }

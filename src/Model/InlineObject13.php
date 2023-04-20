@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20027Data
+ * InlineObject13
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20027Data Class Doc Comment
+ * InlineObject13 Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20027Data implements ModelInterface, ArrayAccess
+class InlineObject13 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_27_data';
+    protected static $openAPIModelName = 'inline_object_13';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,11 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20027DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse20027DataList[]'
+        'cc_account_id' => 'float',
+        'account_source' => 'string',
+        'filtering' => '\Oceanengine\Open\Model\Model2customerCenteradvertiserlistFiltering',
+        'page' => 'float',
+        'page_size' => 'float'
     ];
 
     /**
@@ -67,8 +70,11 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'list' => null
+        'cc_account_id' => null,
+        'account_source' => null,
+        'filtering' => null,
+        'page' => null,
+        'page_size' => null
     ];
 
     /**
@@ -98,8 +104,11 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'list' => 'list'
+        'cc_account_id' => 'cc_account_id',
+        'account_source' => 'account_source',
+        'filtering' => 'filtering',
+        'page' => 'page',
+        'page_size' => 'page_size'
     ];
 
     /**
@@ -108,8 +117,11 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'list' => 'setList'
+        'cc_account_id' => 'setCcAccountId',
+        'account_source' => 'setAccountSource',
+        'filtering' => 'setFiltering',
+        'page' => 'setPage',
+        'page_size' => 'setPageSize'
     ];
 
     /**
@@ -118,8 +130,11 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'list' => 'getList'
+        'cc_account_id' => 'getCcAccountId',
+        'account_source' => 'getAccountSource',
+        'filtering' => 'getFiltering',
+        'page' => 'getPage',
+        'page_size' => 'getPageSize'
     ];
 
     /**
@@ -182,8 +197,11 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['cc_account_id'] = isset($data['cc_account_id']) ? $data['cc_account_id'] : null;
+        $this->container['account_source'] = isset($data['account_source']) ? $data['account_source'] : null;
+        $this->container['filtering'] = isset($data['filtering']) ? $data['filtering'] : null;
+        $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
     }
 
     /**
@@ -195,11 +213,14 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
+        if ($this->container['filtering'] === null) {
+            $invalidProperties[] = "'filtering' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['page'] === null) {
+            $invalidProperties[] = "'page' can't be null";
+        }
+        if ($this->container['page_size'] === null) {
+            $invalidProperties[] = "'page_size' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,49 +238,121 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
+     * Gets cc_account_id
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataPageInfo
+     * @return float|null
      */
-    public function getPageInfo()
+    public function getCcAccountId()
     {
-        return $this->container['page_info'];
+        return $this->container['cc_account_id'];
     }
 
     /**
-     * Sets page_info
+     * Sets cc_account_id
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataPageInfo $page_info page_info
+     * @param float|null $cc_account_id 纵横组织id
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setCcAccountId($cc_account_id)
     {
-        $this->container['page_info'] = $page_info;
+        $this->container['cc_account_id'] = $cc_account_id;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets account_source
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataList[]
+     * @return string|null
      */
-    public function getList()
+    public function getAccountSource()
     {
-        return $this->container['list'];
+        return $this->container['account_source'];
     }
 
     /**
-     * Sets list
+     * Sets account_source
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataList[] $list list
+     * @param string|null $account_source 账户类型，可选值：AD 广告主账号、ENTERPRISE企业号，默认值：AD
      *
      * @return $this
      */
-    public function setList($list)
+    public function setAccountSource($account_source)
     {
-        $this->container['list'] = $list;
+        $this->container['account_source'] = $account_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets filtering
+     *
+     * @return \Oceanengine\Open\Model\Model2customerCenteradvertiserlistFiltering
+     */
+    public function getFiltering()
+    {
+        return $this->container['filtering'];
+    }
+
+    /**
+     * Sets filtering
+     *
+     * @param \Oceanengine\Open\Model\Model2customerCenteradvertiserlistFiltering $filtering filtering
+     *
+     * @return $this
+     */
+    public function setFiltering($filtering)
+    {
+        $this->container['filtering'] = $filtering;
+
+        return $this;
+    }
+
+    /**
+     * Gets page
+     *
+     * @return float
+     */
+    public function getPage()
+    {
+        return $this->container['page'];
+    }
+
+    /**
+     * Sets page
+     *
+     * @param float $page 页码 默认值: 1
+     *
+     * @return $this
+     */
+    public function setPage($page)
+    {
+        $this->container['page'] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_size
+     *
+     * @return float
+     */
+    public function getPageSize()
+    {
+        return $this->container['page_size'];
+    }
+
+    /**
+     * Sets page_size
+     *
+     * @param float $page_size 页面大小 默认值: 10，最大值：100
+     *
+     * @return $this
+     */
+    public function setPageSize($page_size)
+    {
+        $this->container['page_size'] = $page_size;
 
         return $this;
     }

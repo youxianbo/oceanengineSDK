@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20027Data
+ * InlineResponse20029DataFilterConfig
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20027Data Class Doc Comment
+ * InlineResponse20029DataFilterConfig Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20027Data implements ModelInterface, ArrayAccess
+class InlineResponse20029DataFilterConfig implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_27_data';
+    protected static $openAPIModelName = 'inline_response_200_29_data_filter_config';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20027DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse20027DataList[]'
+        'operator' => 'int',
+        'type' => 'int',
+        'value_limit' => 'int',
+        'range_value' => '\Oceanengine\Open\Model\InlineResponse20029DataFilterConfigRangeValue[]'
     ];
 
     /**
@@ -67,8 +69,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'list' => null
+        'operator' => 'int32',
+        'type' => 'int32',
+        'value_limit' => 'int32',
+        'range_value' => null
     ];
 
     /**
@@ -98,8 +102,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'list' => 'list'
+        'operator' => 'operator',
+        'type' => 'type',
+        'value_limit' => 'value_limit',
+        'range_value' => 'range_value'
     ];
 
     /**
@@ -108,8 +114,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'list' => 'setList'
+        'operator' => 'setOperator',
+        'type' => 'setType',
+        'value_limit' => 'setValueLimit',
+        'range_value' => 'setRangeValue'
     ];
 
     /**
@@ -118,8 +126,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'list' => 'getList'
+        'operator' => 'getOperator',
+        'type' => 'getType',
+        'value_limit' => 'getValueLimit',
+        'range_value' => 'getRangeValue'
     ];
 
     /**
@@ -182,8 +192,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['operator'] = isset($data['operator']) ? $data['operator'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['value_limit'] = isset($data['value_limit']) ? $data['value_limit'] : null;
+        $this->container['range_value'] = isset($data['range_value']) ? $data['range_value'] : null;
     }
 
     /**
@@ -195,11 +207,17 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
+        if ($this->container['operator'] === null) {
+            $invalidProperties[] = "'operator' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['value_limit'] === null) {
+            $invalidProperties[] = "'value_limit' can't be null";
+        }
+        if ($this->container['range_value'] === null) {
+            $invalidProperties[] = "'range_value' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,49 +235,97 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
+     * Gets operator
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataPageInfo
+     * @return int
      */
-    public function getPageInfo()
+    public function getOperator()
     {
-        return $this->container['page_info'];
+        return $this->container['operator'];
     }
 
     /**
-     * Sets page_info
+     * Sets operator
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataPageInfo $page_info page_info
+     * @param int $operator operator
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setOperator($operator)
     {
-        $this->container['page_info'] = $page_info;
+        $this->container['operator'] = $operator;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets type
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataList[]
+     * @return int
      */
-    public function getList()
+    public function getType()
     {
-        return $this->container['list'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets list
+     * Sets type
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataList[] $list list
+     * @param int $type type
      *
      * @return $this
      */
-    public function setList($list)
+    public function setType($type)
     {
-        $this->container['list'] = $list;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_limit
+     *
+     * @return int
+     */
+    public function getValueLimit()
+    {
+        return $this->container['value_limit'];
+    }
+
+    /**
+     * Sets value_limit
+     *
+     * @param int $value_limit value_limit
+     *
+     * @return $this
+     */
+    public function setValueLimit($value_limit)
+    {
+        $this->container['value_limit'] = $value_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets range_value
+     *
+     * @return \Oceanengine\Open\Model\InlineResponse20029DataFilterConfigRangeValue[]
+     */
+    public function getRangeValue()
+    {
+        return $this->container['range_value'];
+    }
+
+    /**
+     * Sets range_value
+     *
+     * @param \Oceanengine\Open\Model\InlineResponse20029DataFilterConfigRangeValue[] $range_value range_value
+     *
+     * @return $this
+     */
+    public function setRangeValue($range_value)
+    {
+        $this->container['range_value'] = $range_value;
 
         return $this;
     }

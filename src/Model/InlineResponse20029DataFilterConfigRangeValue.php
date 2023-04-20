@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20027Data
+ * InlineResponse20029DataFilterConfigRangeValue
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20027Data Class Doc Comment
+ * InlineResponse20029DataFilterConfigRangeValue Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20027Data implements ModelInterface, ArrayAccess
+class InlineResponse20029DataFilterConfigRangeValue implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_27_data';
+    protected static $openAPIModelName = 'inline_response_200_29_data_filter_config_range_value';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20027DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse20027DataList[]'
+        'label' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'list' => null
+        'label' => null,
+        'value' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'list' => 'list'
+        'label' => 'label',
+        'value' => 'value'
     ];
 
     /**
@@ -108,8 +108,8 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'list' => 'setList'
+        'label' => 'setLabel',
+        'value' => 'setValue'
     ];
 
     /**
@@ -118,8 +118,8 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'list' => 'getList'
+        'label' => 'getLabel',
+        'value' => 'getValue'
     ];
 
     /**
@@ -182,8 +182,8 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
 
     /**
@@ -195,11 +195,11 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,49 +217,49 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
+     * Gets label
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataPageInfo
+     * @return string
      */
-    public function getPageInfo()
+    public function getLabel()
     {
-        return $this->container['page_info'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets page_info
+     * Sets label
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataPageInfo $page_info page_info
+     * @param string $label label
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setLabel($label)
     {
-        $this->container['page_info'] = $page_info;
+        $this->container['label'] = $label;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets value
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataList[]
+     * @return string
      */
-    public function getList()
+    public function getValue()
     {
-        return $this->container['list'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets list
+     * Sets value
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataList[] $list list
+     * @param string $value value
      *
      * @return $this
      */
-    public function setList($list)
+    public function setValue($value)
     {
-        $this->container['list'] = $list;
+        $this->container['value'] = $value;
 
         return $this;
     }

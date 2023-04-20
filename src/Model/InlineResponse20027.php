@@ -57,10 +57,10 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
         'message' => 'string',
-        'request_id' => 'string',
-        'data' => '\Oceanengine\Open\Model\InlineResponse20027Data'
+        'code' => 'int',
+        'data' => '\Oceanengine\Open\Model\InlineResponse20027Data',
+        'request_id' => 'string'
     ];
 
     /**
@@ -69,10 +69,10 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => 'int32',
         'message' => null,
-        'request_id' => null,
-        'data' => null
+        'code' => 'int32',
+        'data' => null,
+        'request_id' => null
     ];
 
     /**
@@ -102,10 +102,10 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
         'message' => 'message',
-        'request_id' => 'request_id',
-        'data' => 'data'
+        'code' => 'code',
+        'data' => 'data',
+        'request_id' => 'request_id'
     ];
 
     /**
@@ -114,10 +114,10 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
         'message' => 'setMessage',
-        'request_id' => 'setRequestId',
-        'data' => 'setData'
+        'code' => 'setCode',
+        'data' => 'setData',
+        'request_id' => 'setRequestId'
     ];
 
     /**
@@ -126,10 +126,10 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
         'message' => 'getMessage',
-        'request_id' => 'getRequestId',
-        'data' => 'getData'
+        'code' => 'getCode',
+        'data' => 'getData',
+        'request_id' => 'getRequestId'
     ];
 
     /**
@@ -192,10 +192,10 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
     }
 
     /**
@@ -207,17 +207,17 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['request_id'] === null) {
-            $invalidProperties[] = "'request_id' can't be null";
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
         }
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['request_id'] === null) {
+            $invalidProperties[] = "'request_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -233,30 +233,6 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets code
-     *
-     * @return int
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int $code code
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
 
     /**
      * Gets message
@@ -283,25 +259,25 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets request_id
+     * Gets code
      *
-     * @return string
+     * @return int
      */
-    public function getRequestId()
+    public function getCode()
     {
-        return $this->container['request_id'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets request_id
+     * Sets code
      *
-     * @param string $request_id request_id
+     * @param int $code code
      *
      * @return $this
      */
-    public function setRequestId($request_id)
+    public function setCode($code)
     {
-        $this->container['request_id'] = $request_id;
+        $this->container['code'] = $code;
 
         return $this;
     }
@@ -326,6 +302,30 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
     public function setData($data)
     {
         $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_id
+     *
+     * @return string
+     */
+    public function getRequestId()
+    {
+        return $this->container['request_id'];
+    }
+
+    /**
+     * Sets request_id
+     *
+     * @param string $request_id request_id
+     *
+     * @return $this
+     */
+    public function setRequestId($request_id)
+    {
+        $this->container['request_id'] = $request_id;
 
         return $this;
     }

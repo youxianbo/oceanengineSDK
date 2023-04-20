@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20027Data
+ * InlineResponse20029DataMetrics
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Oceanengine\Open\ObjectSerializer;
 
 /**
- * InlineResponse20027Data Class Doc Comment
+ * InlineResponse20029DataMetrics Class Doc Comment
  *
  * @category Class
  * @package  Oceanengine\Open
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class InlineResponse20027Data implements ModelInterface, ArrayAccess
+class InlineResponse20029DataMetrics implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_27_data';
+    protected static $openAPIModelName = 'inline_response_200_29_data_metrics';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_info' => '\Oceanengine\Open\Model\InlineResponse20027DataPageInfo',
-        'list' => '\Oceanengine\Open\Model\InlineResponse20027DataList[]'
+        'description' => 'string',
+        'field' => 'string',
+        'name' => 'string',
+        'exclusion_dims' => 'string[]'
     ];
 
     /**
@@ -67,8 +69,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'page_info' => null,
-        'list' => null
+        'description' => null,
+        'field' => null,
+        'name' => null,
+        'exclusion_dims' => null
     ];
 
     /**
@@ -98,8 +102,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_info' => 'page_info',
-        'list' => 'list'
+        'description' => 'description',
+        'field' => 'field',
+        'name' => 'name',
+        'exclusion_dims' => 'exclusion_dims'
     ];
 
     /**
@@ -108,8 +114,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'page_info' => 'setPageInfo',
-        'list' => 'setList'
+        'description' => 'setDescription',
+        'field' => 'setField',
+        'name' => 'setName',
+        'exclusion_dims' => 'setExclusionDims'
     ];
 
     /**
@@ -118,8 +126,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'page_info' => 'getPageInfo',
-        'list' => 'getList'
+        'description' => 'getDescription',
+        'field' => 'getField',
+        'name' => 'getName',
+        'exclusion_dims' => 'getExclusionDims'
     ];
 
     /**
@@ -182,8 +192,10 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['page_info'] = isset($data['page_info']) ? $data['page_info'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['field'] = isset($data['field']) ? $data['field'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['exclusion_dims'] = isset($data['exclusion_dims']) ? $data['exclusion_dims'] : null;
     }
 
     /**
@@ -195,11 +207,17 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['page_info'] === null) {
-            $invalidProperties[] = "'page_info' can't be null";
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['field'] === null) {
+            $invalidProperties[] = "'field' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['exclusion_dims'] === null) {
+            $invalidProperties[] = "'exclusion_dims' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,49 +235,97 @@ class InlineResponse20027Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets page_info
+     * Gets description
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataPageInfo
+     * @return string
      */
-    public function getPageInfo()
+    public function getDescription()
     {
-        return $this->container['page_info'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets page_info
+     * Sets description
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataPageInfo $page_info page_info
+     * @param string $description description
      *
      * @return $this
      */
-    public function setPageInfo($page_info)
+    public function setDescription($description)
     {
-        $this->container['page_info'] = $page_info;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets field
      *
-     * @return \Oceanengine\Open\Model\InlineResponse20027DataList[]
+     * @return string
      */
-    public function getList()
+    public function getField()
     {
-        return $this->container['list'];
+        return $this->container['field'];
     }
 
     /**
-     * Sets list
+     * Sets field
      *
-     * @param \Oceanengine\Open\Model\InlineResponse20027DataList[] $list list
+     * @param string $field field
      *
      * @return $this
      */
-    public function setList($list)
+    public function setField($field)
     {
-        $this->container['list'] = $list;
+        $this->container['field'] = $field;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets exclusion_dims
+     *
+     * @return string[]
+     */
+    public function getExclusionDims()
+    {
+        return $this->container['exclusion_dims'];
+    }
+
+    /**
+     * Sets exclusion_dims
+     *
+     * @param string[] $exclusion_dims exclusion_dims
+     *
+     * @return $this
+     */
+    public function setExclusionDims($exclusion_dims)
+    {
+        $this->container['exclusion_dims'] = $exclusion_dims;
 
         return $this;
     }

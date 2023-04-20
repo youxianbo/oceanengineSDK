@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v10EnterpriseBindListGetGet**](EnterpriseApi.md#v10EnterpriseBindListGetGet) | **GET** /v1.0/enterprise/bind/list/get/ | 获取广告主关联的企业号列表
 [**v10EnterpriseInfoGet**](EnterpriseApi.md#v10EnterpriseInfoGet) | **GET** /v1.0/enterprise/info/ | 获取企业号信息
+[**v10EnterpriseOperationLogGetGet**](EnterpriseApi.md#v10EnterpriseOperationLogGetGet) | **GET** /v1.0/enterprise/operation/log/get/ | 获取企业号推广操作记录
 [**v10EnterpriseOverviewDataGetGet**](EnterpriseApi.md#v10EnterpriseOverviewDataGetGet) | **GET** /v1.0/enterprise/overview/data/get/ | 获取企业号基础数据
 
 
@@ -101,6 +102,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Oceanengine\Open\Model\InlineResponse20024**](../Model/InlineResponse20024.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **v10EnterpriseOperationLogGetGet**
+> \Oceanengine\Open\Model\InlineResponse20028 v10EnterpriseOperationLogGetGet($access_token, $x_debug_mode, $unknown_base_type)
+
+获取企业号推广操作记录
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Oceanengine\Open\Api\EnterpriseApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$access_token = {{access_token}}; // string | 
+$x_debug_mode = 56; // int | 
+$unknown_base_type = {"advertiser_id":"{{advertiser_id}}","start_time":"2023-03-01","open_id":"{{open_id}}"}; // \Oceanengine\Open\Model\UNKNOWN_BASE_TYPE | 
+
+try {
+    $result = $apiInstance->v10EnterpriseOperationLogGetGet($access_token, $x_debug_mode, $unknown_base_type);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EnterpriseApi->v10EnterpriseOperationLogGetGet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **access_token** | **string**|  | [optional]
+ **x_debug_mode** | **int**|  | [optional]
+ **unknown_base_type** | [**\Oceanengine\Open\Model\UNKNOWN_BASE_TYPE**](../Model/UNKNOWN_BASE_TYPE.md)|  | [optional]
+
+### Return type
+
+[**\Oceanengine\Open\Model\InlineResponse20028**](../Model/InlineResponse20028.md)
 
 ### Authorization
 

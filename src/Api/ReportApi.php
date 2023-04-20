@@ -3725,6 +3725,316 @@ class ReportApi
     }
 
     /**
+     * Operation v30ReportCustomConfigGetGet
+     *
+     * 获取自定义报表可用指标和维度
+     *
+     * @param  string $advertiser_id 广告账户id (required)
+     * @param  string[] $data_topics 数据主题列表 枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据、PRODUCT_DATA产品数据、  ONE_KEY_BOOST_DATA一键起量（巨量广告升级版） (required)
+     * @param  string $access_token access_token (required)
+     * @param  int $x_debug_mode x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Oceanengine\Open\Model\InlineResponse20029
+     */
+    public function v30ReportCustomConfigGetGet($advertiser_id, $data_topics, $access_token, $x_debug_mode = null)
+    {
+        list($response) = $this->v30ReportCustomConfigGetGetWithHttpInfo($advertiser_id, $data_topics, $access_token, $x_debug_mode);
+        return $response;
+    }
+
+    /**
+     * Operation v30ReportCustomConfigGetGetWithHttpInfo
+     *
+     * 获取自定义报表可用指标和维度
+     *
+     * @param  string $advertiser_id 广告账户id (required)
+     * @param  string[] $data_topics 数据主题列表 枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据、PRODUCT_DATA产品数据、  ONE_KEY_BOOST_DATA一键起量（巨量广告升级版） (required)
+     * @param  string $access_token (required)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \Oceanengine\Open\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Oceanengine\Open\Model\InlineResponse20029, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function v30ReportCustomConfigGetGetWithHttpInfo($advertiser_id, $data_topics, $access_token, $x_debug_mode = null)
+    {
+        $request = $this->v30ReportCustomConfigGetGetRequest($advertiser_id, $data_topics, $access_token, $x_debug_mode);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\Oceanengine\Open\Model\InlineResponse20029' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Oceanengine\Open\Model\InlineResponse20029', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Oceanengine\Open\Model\InlineResponse20029';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Oceanengine\Open\Model\InlineResponse20029',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation v30ReportCustomConfigGetGetAsync
+     *
+     * 获取自定义报表可用指标和维度
+     *
+     * @param  string $advertiser_id 广告账户id (required)
+     * @param  string[] $data_topics 数据主题列表 枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据、PRODUCT_DATA产品数据、  ONE_KEY_BOOST_DATA一键起量（巨量广告升级版） (required)
+     * @param  string $access_token (required)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v30ReportCustomConfigGetGetAsync($advertiser_id, $data_topics, $access_token, $x_debug_mode = null)
+    {
+        return $this->v30ReportCustomConfigGetGetAsyncWithHttpInfo($advertiser_id, $data_topics, $access_token, $x_debug_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation v30ReportCustomConfigGetGetAsyncWithHttpInfo
+     *
+     * 获取自定义报表可用指标和维度
+     *
+     * @param  string $advertiser_id 广告账户id (required)
+     * @param  string[] $data_topics 数据主题列表 枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据、PRODUCT_DATA产品数据、  ONE_KEY_BOOST_DATA一键起量（巨量广告升级版） (required)
+     * @param  string $access_token (required)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function v30ReportCustomConfigGetGetAsyncWithHttpInfo($advertiser_id, $data_topics, $access_token, $x_debug_mode = null)
+    {
+        $returnType = '\Oceanengine\Open\Model\InlineResponse20029';
+        $request = $this->v30ReportCustomConfigGetGetRequest($advertiser_id, $data_topics, $access_token, $x_debug_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'v30ReportCustomConfigGetGet'
+     *
+     * @param  string $advertiser_id 广告账户id (required)
+     * @param  string[] $data_topics 数据主题列表 枚举值：BASIC_DATA广告基础数据、QUERY_DATA搜索词数据、BIDWORD_DATA关键词数据、MATERIAL_DATA素材数据、PRODUCT_DATA产品数据、  ONE_KEY_BOOST_DATA一键起量（巨量广告升级版） (required)
+     * @param  string $access_token (required)
+     * @param  int $x_debug_mode (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function v30ReportCustomConfigGetGetRequest($advertiser_id, $data_topics, $access_token, $x_debug_mode = null)
+    {
+        // verify the required parameter 'advertiser_id' is set
+        if ($advertiser_id === null || (is_array($advertiser_id) && count($advertiser_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $advertiser_id when calling v30ReportCustomConfigGetGet'
+            );
+        }
+        // verify the required parameter 'data_topics' is set
+        if ($data_topics === null || (is_array($data_topics) && count($data_topics) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $data_topics when calling v30ReportCustomConfigGetGet'
+            );
+        }
+        // verify the required parameter 'access_token' is set
+        if ($access_token === null || (is_array($access_token) && count($access_token) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $access_token when calling v30ReportCustomConfigGetGet'
+            );
+        }
+
+        $resourcePath = '/v3.0/report/custom/config/get/';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($advertiser_id !== null) {
+            $queryParams['advertiser_id'] = ObjectSerializer::toQueryValue($advertiser_id);
+        }
+        // query params
+        if (is_array($data_topics)) {
+            $data_topics = ObjectSerializer::serializeCollection($data_topics, 'multi', true);
+        }
+        if ($data_topics !== null) {
+            $queryParams['data_topics'] = ObjectSerializer::toQueryValue($data_topics);
+        }
+        // header params
+        if ($access_token !== null) {
+            $headerParams['Access-Token'] = ObjectSerializer::toHeaderValue($access_token);
+        }
+        // header params
+        if ($x_debug_mode !== null) {
+            $headerParams['X-Debug-Mode'] = ObjectSerializer::toHeaderValue($x_debug_mode);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation v30ReportCustomGetGet
      *
      * 自定义报表
